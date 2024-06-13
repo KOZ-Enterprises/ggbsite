@@ -9,12 +9,12 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #38444d;
-  text-align: center;
+  
 }
 
-li {  
-  text-align: center;
+li {    
   border-right: 1px solid #f5f5f5;
+  
 }
 li:last-child {
   border-right: none;
