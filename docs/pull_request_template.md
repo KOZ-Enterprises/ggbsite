@@ -5,5 +5,5 @@
 
 
 ## Checklist
-- [] is this smart?
-- [] is this good? 
+-[] is this smart?
+-[] is this good? 
