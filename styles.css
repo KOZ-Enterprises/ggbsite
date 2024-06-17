@@ -1,26 +1,37 @@
 body {
+
+  margin: 10%;
   background-color: #1F1F1F;
   color: #f5f5f5;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
-ul {
+
+nav {
+  display: flex;
+  justify-content: center;
+  /* background-color: #38444d; */
+  border-top: 1px solid #f5f5f5;
+  border-bottom: 1px solid #f5f5f5;
+}
+nav ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  background-color: #38444d;
-  
+  /* overflow: hidden; */
+  /* background-color: #38444d;   */
+  display: flex;
+  align-items: center;
 }
 
-li {    
-  border-right: 1px solid #f5f5f5;
+nav li {    
+  /* border-right: 1px solid #f5f5f5; */
   
 }
-li:last-child {
+nav li:last-child {
   border-right: none;
 }
 
-li a, .dropbtn {
+nav li a, .dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -30,11 +41,11 @@ li a, .dropbtn {
   text-transform: uppercase;
 }
 
-li a:hover, .dropdown:hover .dropbtn {
+nav li a:hover, .dropdown:hover .dropbtn {
   background-color: #007881;
 }
 
-li.dropdown {
+nav li.dropdown {
   display: inline-block;
 
 }
@@ -67,4 +78,37 @@ li.dropdown {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+/* Other existing styles */
+main {
+  width: 80%;
+  padding: 20px;
+  /* margin: 20px auto; Center the main content with margin */
+}
+/* Adding margin to headings */
+main h3 {
+  margin-bottom: 15px; /* Add margin below the heading */
+}
+
+/* Adding margin to paragraphs */
+main p {
+  margin-bottom: 20px; /* Add margin below the paragraph */
+}
+
+main ul {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 20px; /* Adds padding to indent the list items */
+}
+
+main ul li {
+  margin-bottom: 10px; /* Adds space between list items */
+}
+/* Footer styles */
+footer {
+  font-size: 0.8em; /* Adjust the size as needed */
+  color: #f5f5f5;
+  text-align: center;
+  padding: 10px;
+  /* background-color: #38444d; Optional: Add a background color */
 }
