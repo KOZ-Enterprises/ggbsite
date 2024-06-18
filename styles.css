@@ -101,6 +101,16 @@ main ul {
 main ul li {
   margin-bottom: 10px; /* Adds space between list items */
 }
+
+main a {
+  color: #007881;
+  text-decoration: none;
+}
+main a:hover {
+  color: #007881;
+  text-decoration: underline;
+}
+
 /* Footer styles */
 footer {
   font-size: 0.8em; /* Adjust the size as needed */
