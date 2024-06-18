@@ -79,12 +79,14 @@ nav li.dropdown {
 main {
   width: 80%;
   padding: 20px;
+  min-height: 600px;
   /* margin: 20px auto; Center the main content with margin */
 }
 /* Adding margin to headings */
 main h3 {
   margin-bottom: 15px; /* Add margin below the heading */
   color: #007881;
+  
 }
 
 /* Adding margin to paragraphs */
