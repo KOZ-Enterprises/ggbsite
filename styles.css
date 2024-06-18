@@ -26,14 +26,6 @@ nav ul {
   align-items: center;
 }
 
-nav li {    
-  /* border-right: 1px solid #f5f5f5; */
-  
-}
-nav li:last-child {
-  border-right: none;
-}
-
 nav li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -103,7 +95,7 @@ main p {
 main ul {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 20px; /* Adds padding to indent the list items */
+  padding-left: 30px; /* Adds padding to indent the list items */
 }
 
 main ul li {
