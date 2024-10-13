@@ -123,3 +123,16 @@ footer {
   padding: 10px;
   /* background-color: #38444d; Optional: Add a background color */
 }
+
+/* Styles for existing project links */
+.existing {
+  color: #007881; /* Link color */
+  text-decoration: none; /* No underline */
+}
+
+/* Styles for non-existing project titles */
+.non-existing {
+  font-weight: bold; /* Bold text */
+  color: #007881; /* Change color */
+  cursor: default; /* Show default cursor */
+}
