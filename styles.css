@@ -38,7 +38,7 @@ nav li a, .dropbtn {
 }
 
 nav li a:hover, .dropdown:hover .dropbtn {
-  background-color: #007881;
+  background-color: #2a7f85;
 }
 
 nav li.dropdown {
@@ -88,7 +88,7 @@ main {
 
 main h3 {
   margin-bottom: 15px; /* Add margin below the heading */
-  color: #007881;  
+  color: #32a2aa;  
 }
 
 /* Adding margin to paragraphs */
@@ -107,11 +107,11 @@ main ul li {
 }
 
 main a {
-  color: #007881;
+  color: #37a9b1;
   text-decoration: none;
 }
 main a:hover {
-  color: #007881;
+  color: #a4ebf0;
   text-decoration: underline;
 }
 
@@ -124,15 +124,17 @@ footer {
   /* background-color: #38444d; Optional: Add a background color */
 }
 
+
 /* Styles for existing project links */
 .existing {
-  color: #007881; /* Link color */
+  color: #37a9b1; /* Link color */
   text-decoration: none; /* No underline */
 }
+
 
 /* Styles for non-existing project titles */
 .non-existing {
   font-weight: bold; /* Bold text */
-  color: #007881; /* Change color */
+  color: #37a9b1; /* Change color */
   cursor: default; /* Show default cursor */
 }
