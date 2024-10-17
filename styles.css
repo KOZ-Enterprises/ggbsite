@@ -7,6 +7,8 @@ body {
   background-color: #1F1F1F;
   color: #f5f5f5;
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  
+  
 }
 
 nav {
@@ -83,7 +85,8 @@ main {
   width: 80%;
   padding: 40px;
   min-height: 600px;
-  /* margin: 20px auto; Center the main content with margin */
+  
+  margin: 20px auto; 
 }
 
 main h3 {
