@@ -27,7 +27,7 @@ nav ul {
   align-items: center;
 }
 
-nav li a, .dropbtn {
+nav li a, .dropbtn, a:visited{
   display: inline-block;
   color: white;
   text-align: center;
@@ -35,13 +35,14 @@ nav li a, .dropbtn {
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
+  font-size: 22px;
 }
 
 nav li a:hover, .dropdown:hover .dropbtn {
-  background-color: #007881;
+  background-color: #f9f9f9;
 }
 
-nav li.dropdown {
+nav li .dropdown {
   display: inline-block;
 
 }
@@ -79,38 +80,38 @@ nav li.dropdown {
   justify-content: center;
 }
 /* Other existing styles */
-main {
+#main {
   width: 80%;
   padding: 40px;
   min-height: 600px;
   /* margin: 20px auto; Center the main content with margin */
 }
 
-main h3 {
+#main h3 {
   margin-bottom: 15px; /* Add margin below the heading */
   color: #007881;  
 }
 
 /* Adding margin to paragraphs */
-main p {
+#main p {
   margin-bottom: 20px; /* Add margin below the paragraph */
 }
 
-main ul {
+#main ul {
   margin-top: 20px;
   margin-bottom: 20px;
   padding-left: 30px; /* Adds padding to indent the list items */
 }
 
-main ul li {
+#main ul li {
   margin-bottom: 10px; /* Adds space between list items */
 }
 
-main a, a:visited {
+#main a, a:visited {
   color: #007881;
   text-decoration: none;
 }
-main a:hover {
+#main a:hover {
   color: #007881;
   text-decoration: underline;
 }
