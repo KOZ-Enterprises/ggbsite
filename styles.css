@@ -106,7 +106,7 @@ main ul li {
   margin-bottom: 10px; /* Adds space between list items */
 }
 
-main a {
+main a, a:visited {
   color: #007881;
   text-decoration: none;
 }
