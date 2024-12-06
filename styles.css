@@ -136,3 +136,17 @@ footer {
   color: #007881; /* Change color */
   cursor: default; /* Show default cursor */
 }
+/* Style the icons */
+.social-icons a {
+  color: #f5f5f5; /* Default monochrome color (black) */
+  font-size: 24px; /* Adjust icon size */
+  margin: 0 10px; /* Add spacing between icons */
+  text-decoration: none; /* Remove underline for links */
+  display: inline-block;
+  transition: color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+/* Hover effect */
+.social-icons a:hover {
+  color: #555; /* Change to a lighter monochrome shade on hover */
+}
