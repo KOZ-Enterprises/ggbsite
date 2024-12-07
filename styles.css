@@ -33,11 +33,11 @@ nav li a, .dropbtn, a:visited{
   display: inline-block;
   color: #64D5D2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 14px 28px;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 18px;
 }
 
 nav li a:hover, .dropdown:hover .dropbtn {
