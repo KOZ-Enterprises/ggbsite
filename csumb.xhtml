@@ -1,9 +1,9 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 	<meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<link rel="icon" href="imgs/ggbytes-transparent-g.png" type="image/png" />
 	<!-- External Link to our CSS file -->
 	<link rel="stylesheet" href="styles.css" />
@@ -11,40 +11,196 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 
 	<script src="scripts.js" defer="defer"></script>
+
 </head>
+
 <body>
-	
+
 	<div id="header"></div>
 	<div id="main">
-			<h3>Bridging Engineering and Technology: My CSUMB Journey</h3>
-			
-    <p>Welcome to my project showcase! I hold a Bachelor's degree in Mechanical Engineering and am currently pursuing a Bachelor's degree in Computer Science as part of CSUMB's post-baccalaureate program. My passion for technology and innovation drives me to bridge the gap between traditional engineering practices and the exciting world of emerging technologies, including artificial intelligence and machine learning.</p>
-			<ul> 
-				<li><a href="cst300.xhtml">CST300: Major ProSeminar</a></li>
-				<li><a href="cst338.xhtml">CST338: Software Design</a></li>
-				<li><a href="cst363.xhtml">CST363: Database Management</a></li>
-				<li><span style="color: gray;">CST334: Operating Systems <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST311: Introduction to Computer Networking <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST336: Internet Programming<em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST370: Algorithms <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST462S: Race, Gender, Class in the Digital World <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST383: Introduction to Data Science <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST438: Software Engineering <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST489: Capstone Project Planning <em> (planned) </em></span></li>
-				<li><span style="color: gray;">CST499: Directed Group Capstone<em> (planned) </em></span></li>
-				
-			</ul>
+		<h3>Bridging Engineering and Technology: My CSUMB Journey</h3>
 
-			<h3>Future Goals</h3>
-    <p>Upon completing this program, I aim to integrate my engineering expertise with my newfound computer science skills to contribute to innovative projects that harness the power of AI and machine learning in the engineering sector.</p>
-	<div style="display: flex; justify-content: center;">
-		<img src="imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal"/>
+		<p>Welcome to my project showcase! I hold a Bachelor's degree in Mechanical Engineering and am currently
+			pursuing a Bachelor's degree in Computer Science as part of CSUMB's post-baccalaureate program. My passion
+			for technology and innovation drives me to bridge the gap between traditional engineering practices and the
+			exciting world of emerging technologies, including artificial intelligence and machine learning.</p>
+		<br/>
+		<table id="course-table">
+			<thead>
+				<tr>
+					<th>Course</th>
+					<th>Semester</th>
+					<th>Status</th>
+					<th>Final Project</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="clickable-row" onclick="toggleRow(0)">
+					<td><span class="toggle-icon" id="icon0">+</span> CST300: Major ProSeminar</td>
+					<td>Summer 2024</td>
+					<td>Completed</td>
+					<td>
+						<ul>					
+						<li><a href="https://youtu.be/Ps1hElV-MJs?si=k8VgCFX7O1ivLI_0" class="icon-link"><i class="fab fa-youtube"></i> Quantum Computing Education Video</a></li>
+						<li><a href="https://youtu.be/ocg25-n4EtM?si=l2BA1tBM0c0O6mtD" class="icon-link"><i class="fab fa-youtube"></i> Quantum Computing Education Video Extended</a></li>
+						<li><a href="https://www.garygigabytes.com/attachments/Law%20Enforcement%20Use%20of%20Facial%20Recognition%20Technology.pdf" class="icon-link"><i class="fas fa-file-pdf"></i> Law Enforcement Use of Facial Recognition Technology </a></li>
+					</ul>	</td>
+				</tr>
+				<tr class="collapsible-content" id="row0">
+					<td colspan="4">Major ProSeminar, is designed to help students identify and articulate their  personal, professional, and social goals. Additionally, it provides an overview of the entire  program and the exploration of opportunities offered in the tech industry. Students are  encouraged to begin development on professional portfolios, explore career paths and graduate  school options, engage in collaborative projects to develop personal skills and consider  professional ethics in the field. The intended outcome is to instill a spirit of professionalism  through teamwork, integrity, and reliability. Elements of this course are incorporated into the  rest of the program. Many students continue the practice long after achieving their educational  aspirations, highlighting the importance of what is offered by this course.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(1)">
+					<td><span class="toggle-icon" id="icon1">+</span> CST338: Software Design</td>
+					<td>Summer 2024</td>
+					<td>Completed</td>
+					<td>
+						<a href="https://youtu.be/xIz3Psvicts" class="icon-link"><i class="fab fa-youtube"></i> Pill Hub App</a>
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row1">
+					<td colspan="4">This course covers database principles, including relational databases,
+						normalization, and SQL querying techniques.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(2)">
+					<td><span class="toggle-icon" id="icon2">+</span> CST363: Database Management</td>
+					<td>Fall 2024</td>
+					<td>Completed</td>
+					<td>
+						
+						<a href="#" class="icon-link"><i class="fa-regular fa-file"></i> Pharmacy Database</a>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row2">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(3)">
+					<td><span class="toggle-icon" id="icon3">+</span> CST334: Operating Systems</td>
+					<td>Fall 2024</td>
+					<td>In-Progress</td>
+					<td>
+						
+						<a href="https://youtu.be/93KtbAT6_Tg" class="icon-link"><i class="fab fa-youtube"></i> Undergraduate Research Alliance Video</a>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row3">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(4)">
+					<td><span class="toggle-icon" id="icon4">+</span> CST311: Introduction to Computer Networking</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row4">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(5)">
+					<td><span class="toggle-icon" id="icon5">+</span> CST336: Internet Programming</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row5">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(5)">
+					<td><span class="toggle-icon" id="icon5">+</span> CST370: Algorithms</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row5">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(6)">
+					<td><span class="toggle-icon" id="icon6">+</span> CST462S: Race, Gender, Class in the Digital World</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row6">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(7)">
+					<td><span class="toggle-icon" id="icon7">+</span> CST383: Introduction to Data Science</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row7">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(8)">
+					<td><span class="toggle-icon" id="icon8">+</span> CST438: Software Engineering</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row8">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(9)">
+					<td><span class="toggle-icon" id="icon9">+</span> CST489: Capstone Project Planning</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row9">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+				<tr class="clickable-row" onclick="toggleRow(10)">
+					<td><span class="toggle-icon" id="icon10">+</span> CST499: Directed Group Capstone</td>
+					<td></td>
+					<td>Planned</td>
+					<td>
+						
+					</td>
+				</tr>
+				<tr class="collapsible-content" id="row10">
+					<td colspan="4">This course covers career development topics, including resume building, interview
+						preparation, and professional networking strategies.</td>
+				</tr>
+			</tbody>
+		</table>
+		<br />
+		<h3>Future Goals</h3>
+		<p>Upon completing this program, I aim to integrate my engineering expertise with my newfound computer science
+			skills to contribute to innovative projects that harness the power of AI and machine learning in the
+			engineering sector.</p>
+		<div style="display: flex; justify-content: center;">
+			<img src="imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal" />
+		</div>
+
+
+
 	</div>
-	
-    <p><em>Last updated: October 13, 2024</em></p>
-			
-	</div>
-	<div id="footer"></div>  
-	
+	<div id="footer"></div>
+
 </body>
+
 </html>
