@@ -16,6 +16,7 @@ function loadHTML(url, elementId) {
   
   document.addEventListener('DOMContentLoaded', function() {
     loadHTML('header.html', 'header');
+    loadHTML('nav.html', 'nav');
     loadHTML('footer.html', 'footer');
   });
   
