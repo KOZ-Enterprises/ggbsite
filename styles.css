@@ -6,7 +6,7 @@ body {
   /* padding: 20px;  */
   background-color: #141818;
   color: #f5f5f5;
-  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 nav {
@@ -16,8 +16,9 @@ nav {
   border-top: 1px solid #EFF4F1;
   border-bottom: 1px solid #EFF4F1;
 
-  
+
 }
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -29,7 +30,9 @@ nav ul {
 
 }
 
-nav li a, .dropbtn, a:visited{
+nav li a,
+.dropbtn,
+a:visited {
   display: inline-block;
   color: #64D5D2;
   text-align: center;
@@ -40,7 +43,8 @@ nav li a, .dropbtn, a:visited{
   font-size: 18px;
 }
 
-nav li a:hover, .dropdown:hover .dropbtn {
+nav li a:hover,
+.dropdown:hover .dropbtn {
   background-color: #2E4C5B;
 }
 
@@ -54,7 +58,7 @@ nav li .dropdown {
   position: absolute;
   background-color: #2A2F32;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -83,40 +87,47 @@ nav li .dropdown {
   width: 100%;
   justify-content: center;
 }
+
 /* Other existing styles */
 #main {
-  width: 80%;
+  width: 90%;
   padding: 40px;
   min-height: 600px;
   /* margin: 20px auto; Center the main content with margin */
 }
 
 #main h3 {
-  margin-bottom: 15px; /* Add margin below the heading */
+  margin-bottom: 15px;
+  /* Add margin below the heading */
   color: #64D5D2;
 }
 
 /* Adding margin to paragraphs */
-#main p {
-  margin-bottom: 20px; /* Add margin below the paragraph */
+.main p {
+  margin-bottom: 20px;
+  /* Add margin below the paragraph */
   color: #EFF4F1;
   line-height: 1.6;
 }
 
-#main ul {
+.main ul {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 30px; /* Adds padding to indent the list items */
+  padding-left: 30px;
+  /* Adds padding to indent the list items */
 }
 
-#main ul li {
-  margin-bottom: 10px; /* Adds space between list items */
+.main ul li {
+  margin-bottom: 10px;
+  /* Adds space between list items */
 }
 
-#main a, a:visited {
+#main a,
+a:visited {
   color: #64D5D2;
   text-decoration: none;
 }
+
 #main a:hover {
   color: #64D5D2;
   text-decoration: underline;
@@ -124,7 +135,8 @@ nav li .dropdown {
 
 /* Footer styles */
 footer {
-  font-size: 0.8em; /* Adjust the size as needed */
+  font-size: 0.8em;
+  /* Adjust the size as needed */
   color: #EFF4F1;
   text-align: center;
   padding: 10px;
@@ -133,27 +145,89 @@ footer {
 
 /* Styles for existing project links */
 .existing {
-  color: #64D5D2; /* Link color */
-  text-decoration: none; /* No underline */
+  color: #64D5D2;
+  /* Link color */
+  text-decoration: none;
+  /* No underline */
 }
 
 /* Styles for non-existing project titles */
 .non-existing {
-  font-weight: bold; /* Bold text */
-  color: #64D5D2; /* Change color */
-  cursor: default; /* Show default cursor */
+  font-weight: bold;
+  /* Bold text */
+  color: #64D5D2;
+  /* Change color */
+  cursor: default;
+  /* Show default cursor */
 }
+
 /* Style the icons */
 .social-icons a {
-  color: #f5f5f5; /* Default monochrome color (black) */
-  font-size: 24px; /* Adjust icon size */
-  margin: 0 10px; /* Add spacing between icons */
-  text-decoration: none; /* Remove underline for links */
+  color: #64D5D2;
+  /* Default monochrome color (black) */
+  font-size: 24px;
+  /* Adjust icon size */
+  margin: 0 10px;
+  /* Add spacing between icons */
+  text-decoration: none;
+  /* Remove underline for links */
   display: inline-block;
-  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  transition: color 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 /* Hover effect */
 .social-icons a:hover {
-  color: #555; /* Change to a lighter monochrome shade on hover */
+  color: #2E4C5B;
+  /* Change to a lighter monochrome shade on hover */
+}
+table {
+  width: 100%;
+  border: 2px;
+  margin: 10px;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #2A2F32;
+}
+tr {
+  border: 0.5px solid white;
+  padding: 5px;
+}
+.clickable-row:hover {
+  background-color: #2E4C5B;  /* Slightly darker gray for clickable rows */
+}
+.clickable-row ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0px;
+}
+th {
+  color: #64D5D2;
+  padding: 10px;
+}
+td {
+  padding: 10px;
+  line-height: 1.8;
+}
+
+.collapsible-content {
+  display: none;
+  text-align: left;
+  padding: 10px;
+  background-color: #2E4C5B;
+}
+.icon-link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007BFF;
+  
+}
+
+.icon-link:hover {
+  text-decoration: underline;
+}
+
+.toggle-icon {
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 6px;
 }
