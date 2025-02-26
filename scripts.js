@@ -20,3 +20,15 @@ function loadHTML(url, elementId) {
     loadHTML('footer.html', 'footer');
   });
   
+function toggleRow(rowIndex) {
+  var row = document.getElementById("row" + rowIndex);
+  var icon = document.getElementById("icon" + rowIndex);
+
+  if (row.style.display === "table-row") {
+      row.style.display = "none";
+      icon.textContent = "+";  // Change to "+" when the row is collapsed
+  } else {
+      row.style.display = "table-row";
+      icon.textContent = "-";  // Change to "-" when the row is expanded
+  }
+}
