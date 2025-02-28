@@ -146,16 +146,71 @@ footer {
 }
 /* Style the icons */
 .social-icons a {
-  color: #f5f5f5; /* Default monochrome color (black) */
-  font-size: 24px; /* Adjust icon size */
-  margin: 0 10px; /* Add spacing between icons */
-  text-decoration: none; /* Remove underline for links */
+  color: #64D5D2;
+  /* Default monochrome color (black) */
+  font-size: 24px;
+  /* Adjust icon size */
+  margin: 0 10px;
+  /* Add spacing between icons */
+  text-decoration: none;
+  /* Remove underline for links */
   display: inline-block;
-  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  transition: color 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 /* Hover effect */
 .social-icons a:hover {
-  color: #555; /* Change to a lighter monochrome shade on hover */
+  color: #2E4C5B;
+  /* Change to a lighter monochrome shade on hover */
+}
+table {
+  width: 100%;
+  border: 2px;
+  margin: 10px;
+  border-collapse: collapse;
+  text-align: left;
+  background-color: #2A2F32;
+}
+tr {
+  border: 0.5px solid white;
+  padding: 5px;
+}
+.clickable-row:hover {
+  background-color: #2E4C5B;  /* Slightly darker gray for clickable rows */
+}
+.clickable-row ul {
+  list-style-type: none; /* Remove bullets */
+  padding: 0px;
+}
+th {
+  color: #64D5D2;
+  padding: 10px;
+}
+td {
+  padding: 10px;
+  line-height: 1.8;
 }
 
+.collapsible-content {
+  display: none;
+  text-align: left;
+  padding: 10px;
+  background-color: #2E4C5B;
+}
+.icon-link {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007BFF;
+  
+}
+
+.icon-link:hover {
+  text-decoration: underline;
+}
+
+.toggle-icon {
+  font-weight: bold;
+  cursor: pointer;
+  margin-right: 6px;
+}
