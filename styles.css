@@ -15,10 +15,11 @@ nav {
   /* background-color: #38444d; */
   border-top: 1px solid #EFF4F1;
   border-bottom: 1px solid #EFF4F1;
-  justify-content: space-evenly;
 
-  
+  position: sticky;
+  top: 0pt; 
 }
+
 nav ul {
   list-style-type: none;
   margin: 0;
@@ -51,7 +52,6 @@ nav li a:hover, .dropdown:hover .dropbtn {
 
 nav li .dropdown {
   display: inline-block;
-
 }
 
 .dropdown-content {
@@ -88,6 +88,7 @@ nav li .dropdown {
   width: 100%;
   justify-content: center;
 }
+
 /* Other existing styles */
 #main {
   width: 80%;

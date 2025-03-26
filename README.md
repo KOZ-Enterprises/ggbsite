@@ -9,6 +9,7 @@ Welcome to my personal website, where I showcase my projects and academic work a
 - [Future Enhancements](#future-enhancements)
 - [Technologies Used](#technologies-used)
 - [License](#license)
+- [Local Development](#local-development)
 
 ## About Me
 
@@ -44,6 +45,38 @@ Here are some of the projects I'm currently working on:
 - CSS
 - JavaScript (future plans)
 - Any other relevant technologies or libraries used in your projects.
+
+## Local Development
+
+For local development, consider the following:
+
+- `Chocolatey` Package Manager ([Windows install directions](https://phoenixnap.com/kb/chocolatey-windows))
+
+- `Node.js` and `NPM` ([Install via Chocolatey](https://phoenixnap.com/kb/install-node-js-npm-on-windows#ftoc-heading-5:~:text=Step%201%3A%20Install%20Node.js%20and%20NPM))
+
+- `CORS` security proceedures can prevent `JavaScript` from executing on the page, resulting in the website failing to load some elements when tested via localhost. `Serve`([source](https://github.com/vercel/serve)) helps you serve a static site and provides an interface for listing a directory's contents (i.e. the HTML pages of this website).
+
+```bash
+> npm install --global serve
+```
+
+Once that's done, you can run this command inside your project's directory...
+
+```bash
+> serve
+```
+
+...or specify which folder you want to serve:
+
+```bash
+> serve folder-name/
+```
+
+Finally, run this command to see a list of all available options:
+
+```bash
+> serve --help
+```
 
 ## License
 
