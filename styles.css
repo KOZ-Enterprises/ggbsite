@@ -37,7 +37,7 @@ nav li a, .dropbtn, a:visited{
   text-align: center; /* Centers text inside each list item */
   color: #64D5D2;  
   display: inline-block;  
-  padding: 12px 25px;
+  padding: 12px 20px;
   text-decoration: none;
   font-weight: bold;
   text-transform: uppercase;
@@ -95,6 +95,7 @@ nav li .dropdown {
   width: 80%;
   padding: 40px;
   min-height: 600px;
+  margin: 0 auto;
   /* margin: 20px auto; Center the main content with margin */
 }
 
