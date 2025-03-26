@@ -12,10 +12,10 @@ body {
 nav {
   display: flex;
   align-items: center;
-  /* background-color: #38444d; */
+  background-color: #141818; 
   border-top: 1px solid #EFF4F1;
   border-bottom: 1px solid #EFF4F1;
-
+  justify-content: center;
   position: sticky;
   top: 0pt; 
 }
@@ -43,6 +43,7 @@ nav li a, .dropbtn, a:visited{
   text-transform: uppercase;
   font-size: 18px;
   margin: 0px;
+  align-items: center;
  
 }
 
