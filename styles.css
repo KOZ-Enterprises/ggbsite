@@ -19,12 +19,12 @@ body {
 nav {
   display: flex;
   align-items: center;
-  background-color: #141818; 
+  background-color: #141818;
   border-top: 1px solid #EFF4F1;
   border-bottom: 1px solid #EFF4F1;
   justify-content: center;
   position: sticky;
-  top: 0pt; 
+  top: 0pt;
 }
 
 nav ul {
@@ -34,30 +34,34 @@ nav ul {
   /* overflow: hidden; */
   /* background-color: #38444d;   */
   display: flex;
-  align-items: center;  
+  align-items: center;
   justify-content: space-around;
-  
+
 
 }
 
 
 
-nav li a, .dropbtn, a:visited{
-  text-align: center; /* Centers text inside each list item */
-  color: #64D5D2;  
-  display: inline-block;  
-  padding:  10px 20px;
+nav li a,
+.dropbtn,
+a:visited {
+  text-align: center;
+  /* Centers text inside each list item */
+  color: #64D5D2;
+  display: inline-block;
+  padding: 10px 20px;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 800;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 20px;
   margin: 0px;
   align-items: center;
-  
- 
+
+
 }
 
-nav li a:hover, .dropdown:hover .dropbtn {
+nav li a:hover,
+.dropdown:hover .dropbtn {
   background-color: #2E4C5B;
 }
 
@@ -70,7 +74,7 @@ nav li .dropdown {
   position: absolute;
   background-color: #2A2F32;
   min-width: 150px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -110,13 +114,15 @@ nav li .dropdown {
 }
 
 #main h3 {
-  margin-bottom: 15px; /* Add margin below the heading */
+  margin-bottom: 15px;
+  /* Add margin below the heading */
   color: #64D5D2;
 }
 
 /* Adding margin to paragraphs */
 #main p {
-  margin-bottom: 20px; /* Add margin below the paragraph */
+  margin-bottom: 20px;
+  /* Add margin below the paragraph */
   color: #EFF4F1;
   line-height: 1.6;
 }
@@ -124,17 +130,21 @@ nav li .dropdown {
 #main ul {
   margin-top: 20px;
   margin-bottom: 20px;
-  padding-left: 30px; /* Adds padding to indent the list items */
+  padding-left: 30px;
+  /* Adds padding to indent the list items */
 }
 
 #main ul li {
-  margin-bottom: 10px; /* Adds space between list items */
+  margin-bottom: 10px;
+  /* Adds space between list items */
 }
 
-#main a, a:visited {
+#main a,
+a:visited {
   color: #64D5D2;
   text-decoration: none;
 }
+
 #main a:hover {
   color: #64D5D2;
   text-decoration: underline;
@@ -142,7 +152,8 @@ nav li .dropdown {
 
 /* Footer styles */
 footer {
-  font-size: 0.8em; /* Adjust the size as needed */
+  font-size: 0.8em;
+  /* Adjust the size as needed */
   color: #EFF4F1;
   text-align: center;
   padding: 10px;
@@ -151,35 +162,48 @@ footer {
 
 /* Styles for existing project links */
 .existing {
-  color: #64D5D2; /* Link color */
-  text-decoration: none; /* No underline */
+  color: #64D5D2;
+  /* Link color */
+  text-decoration: none;
+  /* No underline */
 }
 
 /* Styles for non-existing project titles */
 .non-existing {
-  font-weight: bold; /* Bold text */
-  color: #64D5D2; /* Change color */
-  cursor: default; /* Show default cursor */
+  font-weight: bold;
+  /* Bold text */
+  color: #64D5D2;
+  /* Change color */
+  cursor: default;
+  /* Show default cursor */
 }
+
 /* Style the icons */
 .social-icons a {
-  color: #f5f5f5; /* Default monochrome color (black) */
-  font-size: 24px; /* Adjust icon size */
-  margin: 0 10px; /* Add spacing between icons */
-  text-decoration: none; /* Remove underline for links */
+  color: #f5f5f5;
+  /* Default monochrome color (black) */
+  font-size: 24px;
+  /* Adjust icon size */
+  margin: 0 10px;
+  /* Add spacing between icons */
+  text-decoration: none;
+  /* Remove underline for links */
   display: inline-block;
-  transition: color 0.3s ease; /* Smooth transition for hover effect */
+  transition: color 0.3s ease;
+  /* Smooth transition for hover effect */
 }
 
 /* Hover effect */
 .social-icons a:hover {
-  color: #555; /* Change to a lighter monochrome shade on hover */
+  color: #555;
+  /* Change to a lighter monochrome shade on hover */
 }
 
 /* Add a media query for small screens */
 @media screen and (max-width: 600px) {
   nav ul {
-    flex-direction: column; /* Change the direction of the list items */
+    flex-direction: column;
+    /* Change the direction of the list items */
   }
 
   nav li {
@@ -187,17 +211,21 @@ footer {
   }
 
   nav li a {
-    padding: 10px; /* Smaller padding */
+    padding: 10px;
+    /* Smaller padding */
   }
 
   nav li .dropdown {
-    display: block; /* Display the dropdown */
+    display: block;
+    /* Display the dropdown */
   }
 
   .dropdown-content {
-    display: none; /* Hide the dropdown content */
+    display: none;
+    /* Hide the dropdown content */
   }
 }
+
 .post {
   border-left: 4px solid #64D5D2;
   padding-left: 20px;
@@ -207,7 +235,7 @@ footer {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  
+
 }
 
 .post:hover {
@@ -233,15 +261,59 @@ footer {
   line-height: 1.6;
   font-size: 1.05em;
 }
+
 .project i {
-	color: #64D5D2;
-	margin-right: 8px;
-	font-size: 1.1em;
-	vertical-align: middle;
+  color: #64D5D2;
+  margin-right: 8px;
+  font-size: 1.1em;
+  vertical-align: middle;
 }
 
 .project a {
-	display: inline-flex;
-	align-items: center;
-	gap: 0px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
+}
+
+.headshot {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 0px solid #64D5D2;
+  margin-bottom: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.project {
+  background-color: #1A1E1E;
+  border-left: 4px solid #64D5D2;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.project h4 {
+  
+  margin-top: 0;
+}
+
+.project ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.project ul ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-left: 20px;
+}
+
+.project:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }

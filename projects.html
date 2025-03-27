@@ -1,6 +1,6 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
-	"http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,48 +11,47 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet" />
 	<script src="scripts.js" defer="defer"></script>
 </head>
+
 <body>
 	<div id="header"></div>
 	<nav id="nav"></nav>
 	<div id="main">
-		<h3>Projects</h3>
-		<p>I've been working on several projects over the years but I haven't done a good job of documenting my progress! I aim to change that with this website and showcase some of the stuff I've been doing. Below you can check out my latest and previous projects:</p>
-		<ul> 
-			<li>
-				<span class="non-existing">Rover</span> - <em>in-progress</em>
-				<ul>
-					<li>Objective: Develop a smart RC car with semi-autonomous and ultimately autonomous features</li>
-					<li>Requirements:</li>
-					<ul>
-						<li>The rover should be controlled using a PS4 controller with extended range since Bluetooth range is fairly short.</li>
-						<li>The rover should be able to drive in a straight line or any other basic patterns.</li>
-						<li><a href="https://github.com/users/garykuepper/projects/2/">Github Project Page</a></li>
-					</ul>
-				</ul>
-			</li>
-			<li>
-				<span class="non-existing">Drone</span> - <em>on-hold</em>
-				<ul>
-					<li>Objective: Develop a small-medium sized drone with swarm technology.</li>
-					<li>On hold since I'll be learning the foundations of good software design and hardware design with the Rover project first.</li>
-				</ul>
-			</li>
-			<li>
-				<span class="non-existing">Gary Gigabytes Website</span> - <em>in-progress</em>
-				<ul>
-					<li>Objective: Showcase my personal and academic projects! Oh, and by the way, welcome!</li>
-				</ul>
-			</li>
-			
-			<li>
-				<span class="non-existing">Smart Mirror</span> - <em>completed</em>
-				<ul>
-					<li>Objective: Develop a smart mirror that displays useful information such as time, weather, and notifications.</li>
-				</ul>
-			</li>
-		</ul>
-		<p><em>Last updated: October 13, 2024</em></p>
+		<h3 class="course-title">Projects</h3>
+		<p class="course-description">
+			Over the years, I’ve worked on a variety of personal and academic projects — but I haven’t always done the
+			best job documenting them. That changes here. This site is my attempt to track, showcase, and share the
+			things I’m building and learning.
+		</p>
+		<hr>
+		<br>
+
+		<div class="project">
+			<h4><a href="ggbytes.html">Gary Gigabytes Website</a> <span style="color: gray;">(in progress)</span>
+			</h4>
+			<p>A personal website created to document and showcase my academic and hobby projects — you're looking at
+				it!</p>
+		</div>
+
+		<div class="project">
+			<h4><a href="rover.html">Rover</a> <span style="color: gray;">(in progress)</span></h4>
+			<p>A smart RC car with the goal of adding semi-autonomous and autonomous driving using embedded systems and
+				wireless control.</p>
+		</div>
+
+		<div class="project">
+			<h4><a href="drone.html">Drone</a> <span style="color: gray;">(on hold)</span></h4>
+			<p>A medium-sized drone project focused on swarm behavior — paused while I build experience through the
+				Rover project.</p>
+		</div>
+
+		<div class="project">
+			<h4><a href="smartmirror.html">Smart Mirror</a> <span style="color: gray;">(completed)</span></h4>
+			<p>A custom smart mirror that displays helpful widgets like time, weather, and notifications — completed and
+				functional.</p>
+		</div>
 	</div>
-	<div id="footer"></div>  
+
+	<div id="footer"></div>
 </body>
+
 </html>
