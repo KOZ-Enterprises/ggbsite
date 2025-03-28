@@ -53,6 +53,7 @@ a:visited {
 nav li a:hover,
 .dropdown:hover .dropbtn {
   background-color: #2e4c5b;
+  transition: 0.4s;
 }
 
 nav li .dropdown {
@@ -114,6 +115,7 @@ a:visited {
 #main a:hover {
   color: #64d5d2;
   text-decoration: underline;
+  transition: 0.5s;
 }
 
 .description {
