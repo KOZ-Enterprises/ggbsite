@@ -90,9 +90,16 @@ nav li .dropdown {
   color: #64d5d2;
   font-size: 1.1em;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 550;
 }
 
+#main h3 {
+  margin-top: 0;
+  color: #64d5d2;
+  font-size: 1.05em;
+  font-style: italic;
+  font-weight: 600;
+}
 #main p {
   line-height: 1.6;
   margin-bottom: 15px;
