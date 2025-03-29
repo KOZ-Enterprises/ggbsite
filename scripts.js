@@ -23,11 +23,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function highlightActiveLink() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  console.log("Current page:", currentPage);
+  
   const navLinks = document.querySelectorAll('nav a');
 
   navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPage) {
+    const linkPage = link.pathname.split('/').pop();
+    if (linkPage === currentPage) {
       link.classList.add('active');
     }
   });
