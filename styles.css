@@ -123,7 +123,7 @@ nav li .dropdown {
 #main p {
   margin-bottom: 20px;
   /* Add margin below the paragraph */
-  color: #EFF4F1;
+
   line-height: 1.6;
 }
 
@@ -316,4 +316,25 @@ footer {
 .project:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+.image-container{  
+  max-width: 600px; /* adjust as needed */
+  text-align: center;
+  margin: 0 auto; /* center the image */
+  padding: 20px;
+}
+
+.project-image {
+  width: 90%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  
+}
+
+.caption {
+  font-size: 0.95em;
+  color: #136179;
+  margin-top: 8px;
+  font-style: italic;
 }
