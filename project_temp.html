@@ -21,26 +21,31 @@
     <div id="header"></div>
     <nav id="nav"></nav>
     <div id="main">
-        <h1>[Project Name]</h1>
-        <p>
-            [Short summary of what the project is and why you built it — just a few
-            sentences to hook the reader.]
-        </p>
-        <hr />
-        <br />
+
+
+
         <div class="post">
-            <h2>Project Overview</h2>
+            <h1>Project Overview</h1>
+            <div class="image-container">
+                <img src="imgs/stock/projectImage.png" alt="Project Image" class="project-image">
+                <p class="caption">Final Build Concept</p>
+            </div>
+            <p class="description">[Briefly describe the project. What is it? What does it do?]</p>
+
             <ul>
-                <li><strong>Status:</strong> [in progress / completed / on hold]</li>
                 <li>
                     <strong>Objective:</strong> [Describe the goal of the project — what
                     you're trying to build or solve.]
                 </li>
+                <li><strong>Status:</strong> [in progress / completed / on hold]</li>
+
                 <li>
                     <strong>Technologies Used:</strong> [List key tools, frameworks,
                     languages, hardware, etc.]
                 </li>
             </ul>
+
+
 
             <h2>Reflection</h2>
             <p class="content">
@@ -63,36 +68,48 @@
                     <a href="[PDF_LINK]"> Project Report </a>
                 </li>
             </ul>
+            <h2>Updates</h2>
+            <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
+                <li>
+                    <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+                    [2025-01-01] <a href="#update1">[Update Title 1]</a>
+                </li>
+                <li>
+                    <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+                    [2024-12-02] <a href="#update2">[Update Title 2]</a>
+                </li>
+                <!-- Add more links as needed -->
+            </ul>
         </div>
 
-        <!-- Add Stock Image -->
-        <div class="image-container">
-            <h2>Project Image</h2>
-            <img src="https://via.placeholder.com/800x400" alt="Project Image" style="width:100%; height:auto;" />
-        </div>
+        <hr>
+        <br>
 
         <!-- Post Updates Section -->
         <div class="updates">
-            <h2>Project Updates</h2>
-            <div class="post">
-                <h1>[Update Title]</h1>
-                <p class="date">[Date]</p>
+
+            <div class="post" id="update1">
+                <h1>[Update Title 1]</h1>
+                <p class="date">[Date 1]</p>
                 <p class="content">
                     [Details about the update, progress made, challenges faced, or new ideas.]
                 </p>
-                <!-- Add Stock Image for Update -->
-                <img src="https://via.placeholder.com/600x300" alt="Update Image" style="width:100%; height:auto;" />
+                <div class="image-container">
+                    <img src="imgs/stock/projectImage2.png" alt="Update Image 1" class="project-image" />
+                    <p class="caption">Figure 1. Updates</p>
+                </div>
             </div>
-            <div class="post">
-                <h1>[Update Title]</h1>
-                <p class="date">[Date]</p>
+            <div class="post" id="update2">
+                <h1>[Update Title 2]</h1>
+                <p class="date">[Date 2]</p>
                 <p class="content">
                     [Details about the update, progress made, challenges faced, or new ideas.]
                 </p>
-                <!-- Add Stock Image for Update -->
-                <img src="https://via.placeholder.com/600x300" alt="Update Image" style="width:100%; height:auto;" />
+                <div class="image-container">
+                    <img src="imgs/stock/projectImage3.png" alt="Update Image 2" class="project-image" />
+                    <p class="caption">Figure X</p>
+                </div>
             </div>
-            <!-- Add more posts as needed -->
         </div>
     </div>
 
