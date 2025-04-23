@@ -69,7 +69,7 @@ nav {
   top: 0;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 700px) {
   .navbar {
     flex-direction: column;
     align-items: stretch;
@@ -95,6 +95,13 @@ nav {
   /* Show all links when menu is toggled */
   .navbar.responsive .nav-links a {
     display: block;
+  }
+  .column {
+    width: 100%;
+    
+  }
+  .row {
+    flex-direction: column;
   }
 }
 
@@ -340,13 +347,7 @@ footer {
 }
 
 @media screen and (max-width: 600px) {
-  .column {
-    width: 100%;
-    
-  }
-  .row {
-    flex-direction: column;
-  }
+  
 }
 /* Style for image captions */
 /* No longer needed as it is already defined above */
