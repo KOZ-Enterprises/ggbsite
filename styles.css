@@ -1,6 +1,5 @@
 body {
-  width: 95%;
-  max-width: 1000px;
+
   margin-left: auto;
   margin-right: auto;
   background-color: #141818;
@@ -11,57 +10,94 @@ body {
   font-size: 18px;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+  justify-content: center;
 }
-
 nav {
-  display: flex;
-  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar {
   background-color: #141818;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
   border-top: 1px solid #eff4f1;
   border-bottom: 1px solid #eff4f1;
-  justify-content: center;
-  position: sticky;
-  top: 0pt;
-  z-index: 1000; /* Higher than other elements */
-  margin-bottom: 20px;
+  
+
+
 }
 
-nav ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.navbar .nav-links {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  justify-content: space-around;
-  color: #EFF4F1;
 }
 
-nav li a,
-.dropbtn,
-a:visited {
-  text-align: center;
-  /* Centers text inside each list item */
+.navbar a {
   color: #64d5d2;
-  display: inline-block;
-  padding: 10px 20px;
+  padding: 14px 20px;
   text-decoration: none;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 1.2em;
-  margin: 0px;
-  align-items: center;
+  font-size: 1.1em;
+  text-align: center;
 }
-nav li a.active {
+
+.navbar a.active {
   background-color: #2e4c5b;
+  color: white;
 }
-nav li a:hover{
+
+.navbar a:hover {
   background-color: #2e4c5b;
+  color: white;
   transition: 0.4s;
 }
 
-nav li .dropdown {
-  display: inline-block;
+.navbar .icon {
+  display: none;
+  color: #64d5d2;
+  font-size: 24px;
+  padding: 14px 20px;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
+
+@media screen and (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .navbar .icon {
+    display: block;
+    width: 100%;
+    text-align: right;
+    padding: 14px 16px;
+  }
+
+  .navbar .nav-links {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  /* Hide all nav links except the first (Home) */
+  .navbar .nav-links a:not(:first-child) {
+    display: none;
+  }
+
+  /* Show all links when menu is toggled */
+  .navbar.responsive .nav-links a {
+    display: block;
+  }
+}
+
 
 .logo img {
   max-width: 500px;
@@ -75,10 +111,15 @@ nav li .dropdown {
 
 /* Other existing styles */
 #main {
-  padding-top: 10px;
+  padding-top: 20px;
   width: 90%;
   min-height: 600px;
   margin: 0 auto;
+  max-width: 900px;
+  justify-content: center;
+  margin-top:20px;
+  margin-bottom: 40px;
+  padding-top: 10px;
   /* margin: 20px auto; Center the main content with margin */
 }
 
@@ -103,6 +144,7 @@ nav li .dropdown {
   font-style: italic;
   font-weight: 600;
 }
+
 #main p {
   line-height: 1.6;
   margin-bottom: 15px;
@@ -118,8 +160,8 @@ nav li .dropdown {
   margin-bottom: 10px;
 }
 
-#main a, #main
-a:visited {
+#main a,
+#main a:visited {
   color: #64d5d2;
   text-decoration: none;
 }
@@ -142,6 +184,7 @@ a:visited {
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
 }
 
 .post:hover {
@@ -152,7 +195,7 @@ a:visited {
 .post h1 {
   margin-top: 0;
   font-size: 1.2em;
-  color: #64d5d2;  
+  color: #64d5d2;
   margin-bottom: 0.2em;
 }
 
@@ -175,6 +218,7 @@ a:visited {
 .post .content {
   padding-left: 20px;
   line-height: 1.6;
+  text-align: left;
 }
 
 .post .content ul {
@@ -185,23 +229,27 @@ a:visited {
 
 /* Center images in posts */
 .post img {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%; /* Ensure the image is responsive */
-    height: auto;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+  /* Ensure the image is responsive */
+  height: auto;
 }
 
 /* Optional: Center the caption as well */
-.post .caption, .caption {
+.post .caption,
+.caption {
   text-align: center;
   font-size: 0.9em;
-  color: #5bc0de; /* Lighter cyan color */
+  color: #5bc0de;
+  /* Lighter cyan color */
   font-style: italic;
   margin-top: 5px;
   padding: 5px 10px;
   border-radius: 5px;
-  display: inline-block; /* Keeps the caption compact */
- 
+  display: inline-block;
+  /* Keeps the caption compact */
+
 }
 
 /* Footer styles */
@@ -213,7 +261,7 @@ footer {
 
 /* Style the icons */
 .social-icons a {
-  color: #f5f5f5;  
+  color: #f5f5f5;
   margin: 0 10px;
   text-decoration: none;
   font-size: 1.5em;
@@ -224,35 +272,10 @@ footer {
 /* Hover effect */
 .social-icons a:hover {
   color: #64d5d2;
-  
+
 }
 
-/* Add a media query for small screens */
-@media screen and (max-width: 600px) {
-  nav ul {
-    flex-direction: column;
-    /* Change the direction of the list items */
-  }
 
-  nav li {
-    width: 100%;
-  }
-
-  nav li a {
-    padding: 10px;
-    /* Smaller padding */
-  }
-
-  nav li .dropdown {
-    display: block;
-    /* Display the dropdown */
-  }
-
-  .dropdown-content {
-    display: none;
-    /* Hide the dropdown content */
-  }
-}
 
 .headshot {
   width: 150px;
@@ -266,20 +289,56 @@ footer {
   margin-right: auto;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
-.image-container{  
-  max-width: 600px; /* adjust as needed */
+
+.image-container {
+  max-width: 600px;
+  /* adjust as needed */
   text-align: center;
-  margin: 0 auto; /* center the image */
+  margin: 0 auto;
+  /* center the image */
   padding: 20px;
 }
 
 .project-image {
-  width: 90%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.project-summary {
+  max-width: 600px;
+  border-left: 4px solid #64d5d2;
+  margin: 0 auto;
+  margin-bottom: 40px;
+  background-color: #1a1e1e;
+  padding: 0px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  
   
 }
+.project-content {
+  align-content: center;
+  padding: 10px;
+}
+.project-content h2 {
+  text-align: center;
+}
+.row {
+  display: flex;
+  height: 500px;
+}
+
+/* Create two equal columns that sits next to each other */
+.column {
+  flex: 50%;
+  padding: 10px;
+}
+
 
 /* Style for image captions */
 /* No longer needed as it is already defined above */
