@@ -1,123 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: Gary Gigabytes
+---
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="imgs/ggbytes-transparent-g.png" type="image/png">
-    <!-- External Link to our CSS file -->
-    <link rel="stylesheet" href="styles.css">
-    <title>Gary Gigabytes</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
-    <script src="scripts.js" defer></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto+Flex:opsz,wght@8..144,100..1000&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-</head>
+<div id="main">
+    <!-- Description -->
+    <p class="description">
+        <em>Part study, part sandbox — from <a href="csumb.html">academic projects</a> in computer science to
+            <a href="projects.html">weekend experiments</a> involving wires, code, and occasional smoke.</em>
+    </p>
 
-<body>
-    <div id="header"></div>
-    <nav id="nav"></nav>
-    <div id="main">
-        <!-- Description -->
+    <!-- Update List -->
+    <h2>Recent Updates</h2>
+    <ul class="fa-ul update-links" style="--fa-li-margin: 15px;">
+        {% for post in site.posts limit:4 %}
+        <li>
+            <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+            [{{ post.date | date: "%Y-%m-%d" }}] <a href="#{{ post.id }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
 
-        <p class="description">
-            <em>Part study, part sandbox — from <a href="csumb.html">academic projects</a> in computer science to
-                <a href="projects.html">weekend experiments</a> involving wires, code, and occasional smoke.</em>
-        </p>
+    <hr>
+    <br>
 
-
-        <!-- Update List -->
-        <h2>Recent Updates</h2>
-        <ul class="fa-ul update-links" style="--fa-li-margin: 15px;">
-            <li>
-                <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-                [2025-04-23] <a href="#post4">Jekyll</a>
-            </li>
-            <li>
-                <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-                [2025-04-09] <a href="#post3">Project Template</a>
-            </li>
-            <li>
-                <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-                [2025-03-26] <a href="#post2">Tweaking Styles</a>
-            </li>
-            <li>
-                <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-                [2024-11-21] <a href="#post1">First!</a>
-            </li>
-        </ul>
-
-        <hr>
-        <br>
-
-        <!-- Posts -->
-        <div class="post" id="post4">
-            <h1>Jekyll</h1>
-            <p class="date">April 23th, 2025</p>
-            <p class="content">
-                I'll be moving to using Jekyll to display my static pages and organize my posts. I was thinking of Node.js with express but Jekyll will do all that I need.
-
-                <h2>Roadmap V3</h2>
-            <ul class="fa-ul" style="--fa-li-margin: 15px;">                
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>Display pages using Jekyll</li>
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>All posts displayed on main page, and tagged with category, csumb, project name etc. </li>
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>Project related posts will show on main page and on the project itself.</li>
-            </ul>
-            </p>
-
-        </div>
-        <div class="post" id="post3">
-            <h1>Project Template</h1>
-            <p class="date">April 9th, 2025</p>
-            <p class="content">
-                So finally got around to creating a <a href="project_temp.html">project template page.</a> I think it
-                looks pretty good!
-                Check it out here.
-            </p>
-
-        </div>
-        <div class="post" id="post2">
-            <h1>Tweaking Styles</h1>
-            <p class="date">March 26, 2025</p>
-            <p class="content">
-                Hope yall enjoy the website refresh! I've been messing with CSS styles and figuring out ways of styling
-                this blog. I'm glad I was able to finish my little roadmap below. I think the next steps to improve the
-                site will be:
-            </p>
-            <h2>Roadmap V2</h2>
-            <ul class="fa-ul" style="--fa-li-margin: 15px;">
-                <li><span class="fa-li"><i class="fa-regular fa-check-square"></i></span><a
-                        href="project_temp.html">Create a project template page</a></li>
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>Create a project roadmap template
-                    (HTML/Markdown format page of some sort)</li>
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>Decide if I really want to use
-                    Node.js to create a blog, or stick with hard coding</li>
-                <li><span class="fa-li"><i class="fa-regular fa-square"></i></span>...and whatever comes to mind.</li>
-            </ul>
-        </div>
-
-        <div class="post" id="post1">
-            <h1>First!</h1>
-            <p class="date">November 21, 2024</p>
-            <p class="content">
-                Website is currently under development. I hope to showcase my personal and school projects.
-            </p>
-            <h2>Roadmap</h2>
-            <ul class="fa-ul" style="--fa-li-margin: 15px;">
-                <li><span class="fa-li"><i class="fa-regular fa-check-square"></i></span>Refresh the Gary Gigabytes logo
-                </li>
-                <li><span class="fa-li"><i class="fa-regular fa-check-square"></i></span>Create clean design with pages
-                    for my CSUMB courses.</li>
-                <li><span class="fa-li"><i class="fa-regular fa-check-square"></i></span>Create a blog post feed on
-                    homepage.</li>
-            </ul>
-        </div>
+    <!-- Posts -->
+    {% for post in site.posts %}
+    <div class="post" id="{{ post.id }}">
+        <h1>{{ post.title }}</h1>
+        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="content">{{ post.content }}</p>
     </div>
-
-    <div id="footer"></div>
-</body>
-
-</html>
+    {% endfor %}
+</div>

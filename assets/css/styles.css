@@ -234,6 +234,37 @@ nav {
   padding-left: 20px;
 }
 
+/* Style unordered lists in posts to use Font Awesome checkmark boxes */
+.post ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+    margin: 0;
+}
+
+/* Default list items (unchecked box) */
+.post ul li {
+    position: relative;
+    padding-left: 25px; /* Add space for the icon */
+    margin-bottom: 10px; /* Add spacing between list items */
+}
+
+.post ul li::before {
+    content: "\f096"; /* Font Awesome empty box (fa-square) */
+    font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is used */
+    font-weight: 900; /* Use the solid version of the icon */
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #5bc0de; /* Customize the color of the icon */
+    font-size: 1.2em; /* Adjust the size of the icon */
+}
+
+/* List items with a checkmark */
+.post ul li.checked::before {
+    content: "\f14a"; /* Font Awesome check square (fa-check-square) */
+    color: #5bc0de; /* Customize the color of the checkmark */
+}
+
 /* Center images in posts */
 .post img {
   display: block;
@@ -312,6 +343,9 @@ footer {
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .project-summary {
@@ -326,7 +360,6 @@ footer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   height: 100%;
   
-  
 }
 .project-content {
   align-content: center;
@@ -334,16 +367,21 @@ footer {
 }
 .project-content h2 {
   text-align: center;
-}
-.row {
-  display: flex;
-
+  font-size: 1.5em;
+  margin: 10px 0;
 }
 
-/* Create two equal columns that sits next to each other */
-.column {
-  flex: 50%;
-  padding: 10px;
+.project-content p {
+  font-size: 1em;
+  color: #555;
+}
+
+/* Grid container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between grid items */
+  margin: 20px;
 }
 
 @media screen and (max-width: 600px) {
@@ -351,3 +389,11 @@ footer {
 }
 /* Style for image captions */
 /* No longer needed as it is already defined above */
+
+/* Grid container */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  gap: 20px; /* Space between grid items */
+  margin-top: 20px;
+}

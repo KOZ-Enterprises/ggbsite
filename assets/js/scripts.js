@@ -14,12 +14,12 @@ function loadHTML(url, elementId) {
     .catch(error => console.error(`Error loading ${url}:`, error));
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-  loadHTML('header.html', 'header');
-  loadHTML('nav.html', 'nav', highlightActiveLink);
-  loadHTML('footer.html', 'footer');
+// document.addEventListener('DOMContentLoaded', function () {
+//   loadHTML('header.html', 'header');
+//   loadHTML('nav.html', 'nav', highlightActiveLink);
+//   loadHTML('footer.html', 'footer');
 
-});
+// });
 
 function highlightActiveLink() {
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
