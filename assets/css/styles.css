@@ -96,13 +96,7 @@ nav {
   .navbar.responsive .nav-links a {
     display: block;
   }
-  .column {
-    width: 100%;
-    
-  }
-  .row {
-    flex-direction: column;
-  }
+  
 }
 
 
