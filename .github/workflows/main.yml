@@ -13,12 +13,12 @@ jobs:
         uses: actions/checkout@master
 
       - name: Build Site
-        uses: sosedoff/actions/publisher@master
+        uses: KOZ-Enterprises/ggbsite/actions/publisher@main
         with:
           entrypoint: /build.sh
 
       - name: Publish Site
-        uses: sosedoff/actions/publisher@master
+        uses:  KOZ-Enterprises/ggbsite/actions/publisher@master
         env:
           JEKYLL_DEPLOY_KEY: ${{ secrets.JEKYLL_DEPLOY_KEY }}
           DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -28,10 +28,4 @@ jobs:
         with:
           entrypoint: /publish.sh
 
-      - name: Send Notification
-        uses: sosedoff/actions/publisher@master
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-        with:
-          entrypoint: /notify.sh
-          args: Blog has been deployed
+     
