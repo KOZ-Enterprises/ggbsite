@@ -5,7 +5,6 @@ Welcome to my personal website, where I showcase my projects and academic work a
 ## Table of Contents
 
 - [About Me](#about-me)
-- [Projects](#projects)
 - [Future Enhancements](#future-enhancements)
 - [Technologies Used](#technologies-used)
 - [License](#license)
@@ -14,26 +13,6 @@ Welcome to my personal website, where I showcase my projects and academic work a
 ## About Me
 
 I hold a Bachelor's degree in Mechanical Engineering and am currently pursuing a Bachelor's degree in Computer Science at California State University, Monterey Bay (CSUMB). My passion for technology and innovation drives me to explore the exciting world of artificial intelligence and machine learning.
-
-## Projects
-
-Here are some of the projects I'm currently working on:
-
-1. **Rover** - *in-progress*
-   - **Objective**: Develop a smart RC car with semi-autonomous and ultimately autonomous features.
-   - **Requirements**:
-     - The rover should be controlled using a PS4 controller with extended range since Bluetooth range is fairly short.
-     - The rover should be able to drive in a straight line or any other basic patterns.
-
-2. **Drone** - *on-hold*
-   - **Objective**: Develop a small-medium sized drone with swarm technology.
-   - **Note**: On hold as I will be learning the foundations of good software design and hardware design with the Rover project first.
-
-3. **Gary Gigabytes Website** - *in-progress*
-   - **Objective**: Showcase my personal and academic projects! Oh, and by the way, welcome!
-
-4. **Smart Mirror** - *completed*
-   - **Objective**: Develop a smart mirror that displays useful information such as time, weather, and notifications.
 
 ## Future Enhancements
 
