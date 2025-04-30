@@ -1,7 +1,6 @@
 /* General Styles */
 body {
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
   background-color: #141818;
   color: #fafafa;
   font-family: "Open Sans", sans-serif;
@@ -275,7 +274,6 @@ nav {
   transition: transform 0.3s ease;
 }
 
-
 .project-content:hover .project-image {
   transform: scale(1.05);
 }
@@ -319,10 +317,6 @@ nav {
 
 .project-content:hover .overlay-description {
   opacity: 1;
-}
-
-.project-content:hover .project-image {
-  transform: scale(1.05);
 }
 
 /* Footer Styles */
