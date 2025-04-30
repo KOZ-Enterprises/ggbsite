@@ -1,6 +1,6 @@
 ---
 layout: project
-title: "Gary Gigabytes Website"
+title: "Gary Gigabytes"
 image: "/assets/imgs/ggbytes-page.png"
 image_caption: "Gary Gigabytes Logo"
 description: "This site is my personal hub — a place to showcase my academic projects, personal builds, and experiments with web tech."

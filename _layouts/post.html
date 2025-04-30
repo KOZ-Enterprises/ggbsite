@@ -24,11 +24,11 @@ layout: default
         {% if page.tags %}
         <div class="post-tags">
             <h3>Tags:</h3>
-            <ul>
+            <p>
                 {% for tag in page.tags %}
-                <li><a href="/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+                <a href="/tags/{{ tag | slugify }}/">{{ tag }}</a>{% if forloop.last == false %}, {% endif %}
                 {% endfor %}
-            </ul>
+            </p>
         </div>
         {% endif %}
     </article>
