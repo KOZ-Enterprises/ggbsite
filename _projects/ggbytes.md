@@ -12,4 +12,5 @@ resources:
   - name: "GitHub Page"
     link: "https://github.com/KOZ-Enterprises/ggbsite"
     icon: "fas fa-code"
+order: 0
 ---

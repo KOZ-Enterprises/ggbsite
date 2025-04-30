@@ -3,88 +3,44 @@ layout: default
 title: Projects
 ---
 
-
-  <p>
-    Over the years, I’ve worked on a variety of personal and academic projects —
-    but I haven’t always done the best job documenting them. That changes here.
-    This site is my attempt to track, showcase, and share the things I’m
-    building and learning.
-  </p>
-  <hr />
-  <br />
-  <div class="grid-container">
-    <div class="project-summary">
-      <a href="/projects/ggbytes.html"  rel="noopener noreferrer">
-        <div class="project-content">
-          <img
-            src="/assets/imgs/ggbytes-page.png"
-            alt="Preview"
-            class="project-image"
-          />
-          <div class="overlay-title">
-            <h2>Gary Gigabytes Website</h2>
-          </div>
-          <div class="overlay-description">
-            <p>A personal website created to document and showcase my academic and hobby projects — you're looking at it!</p>
-          </div>
+<p>
+  Over the years, I’ve worked on a variety of personal and academic projects —
+  but I haven’t always done the best job documenting them. That changes here.
+  This site is my attempt to track, showcase, and share the things I’m
+  building and learning.
+</p>
+<hr />
+<br />
+<div class="grid-container">
+  {% assign sorted_projects = site.projects | sort: "order" %}
+  {% for project in sorted_projects %}
+  <div class="project-summary">
+    <a href="{{ project.url }}" rel="noopener noreferrer">
+      <div class="project-content">
+        {% if project.image %}
+        <img
+          src="{{ project.image }}"
+          alt="{{ project.title }} Preview"
+          class="project-image"
+        />
+        {% endif %}
+        <div class="overlay-title">
+          <h2>{{ project.title }}
+            {% if project.status %}
+            <span style="color: gray">({{ project.status }})</span>
+            {% endif %}
+          </h2>
         </div>
-      </a>
-    </div>
-
-    <div class="project-summary">
-      <a href="/projects/rover.html"  rel="noopener noreferrer">
-        <div class="project-content">
-          <img
-            src="/assets/imgs/genericproject2.png"
-            alt="Rover Project Preview"
-            class="project-image"
-          />
-          <div class="overlay-title">
-            <h2>Rover <span style="color: gray">(in progress)</span></h2>
-          </div>
-          <div class="overlay-description">
-            <p>A smart RC car with the goal of adding semi-autonomous and autonomous driving using embedded systems and wireless control.</p>
-          </div>
+        {% if project.description %}
+        <div class="overlay-description">
+          <p>{{ project.description }}</p>
         </div>
-      </a>
-    </div>
-
-    <div class="project-summary">
-      <a href="/projects/drone.html"  rel="noopener noreferrer">
-        <div class="project-content">
-          <img
-            src="/assets/imgs/genericproject2.png"
-            alt="Drone Project Preview"
-            class="project-image"
-          />
-          <div class="overlay-title">
-            <h2>Drone <span style="color: gray">(on hold)</span></h2>
-          </div>
-          <div class="overlay-description">
-            <p>A medium-sized drone project focused on swarm behavior — paused while I build experience through the Rover project.</p>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="project-summary">
-      <a href="/projects/smartmirror.html"  rel="noopener noreferrer">
-        <div class="project-content">
-          <img
-            src="/assets/imgs/genericproject2.png"
-            alt="Smart Mirror Project Preview"
-            class="project-image"
-          />
-          <div class="overlay-title">
-            <h2>Smart Mirror <span style="color: gray">(completed)</span></h2>
-          </div>
-          <div class="overlay-description">
-            <p>A custom smart mirror that displays helpful widgets like time, weather, and notifications — completed and functional.</p>
-          </div>
-        </div>
-      </a>
-    </div>
+        {% endif %}
+      </div>
+    </a>
   </div>
-    
+  {% endfor %}
+</div>
+
 
 

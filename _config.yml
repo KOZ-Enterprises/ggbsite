@@ -2,3 +2,7 @@ collections:
   csumb:
     output: true
     permalink: /csumb/:name/
+    
+  projects:
+    output: true
+    permalink: /projects/:name/
