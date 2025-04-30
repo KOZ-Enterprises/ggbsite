@@ -1,4 +1,5 @@
 ---
+layout: post
 title: Tweaking Styles
 date: 2025-03-26
 ---

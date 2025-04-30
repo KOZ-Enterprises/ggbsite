@@ -16,7 +16,7 @@ title: Gary Gigabytes
         {% for post in site.posts limit:4 %}
         <li>
             <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-            [{{ post.date | date: "%Y-%m-%d" }}] <a href="#{{ post.id }}">{{ post.title }}</a>
+            [{{ post.date | date: "%Y-%m-%d" }}] <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
         {% endfor %}
     </ul>
@@ -26,10 +26,11 @@ title: Gary Gigabytes
 
     <!-- Posts -->
     {% for post in site.posts %}
-    <div class="post" id="{{ post.id }}">
-        <h1>{{ post.title }}</h1>
+    <div class="post">
+        <h1><a href="{{ post.url }}">{{ post.title }}</a></h1>
         <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p class="content">{{ post.content }}</p>
+        <p class="excerpt">{{ post.excerpt }}</p>
+        <a href="{{ post.url }}" class="read-more">Read More</a>
     </div>
     {% endfor %}
 </div>

@@ -1,0 +1,35 @@
+---
+layout: default
+---
+
+<div id="main">
+    <article class="post">
+        <!-- Post Title -->
+        <h1 class="post-title">{{ page.title }}</h1>
+
+        <!-- Post Metadata -->
+        <p class="post-meta">
+            Published on {{ page.date | date: "%B %d, %Y" }}
+            {% if page.author %}
+            by {{ page.author }}
+            {% endif %}
+        </p>
+
+        <!-- Post Content -->
+        <div class="post-content">
+            {{ content }}
+        </div>
+
+        <!-- Post Tags -->
+        {% if page.tags %}
+        <div class="post-tags">
+            <h3>Tags:</h3>
+            <ul>
+                {% for tag in page.tags %}
+                <li><a href="/tags/{{ tag | slugify }}/">{{ tag }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </article>
+</div>

@@ -19,13 +19,14 @@ layout: default
     {% endif %}
 
     <!-- Updates Section -->
-    {% if page.updates %}
+    {% assign project_posts = site.posts | where: "tags", page.title %}
+    {% if project_posts.size > 0 %}
     <h2>Updates</h2>
     <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
-        {% for update in page.updates %}
+        {% for post in project_posts %}
         <li>
             <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-            [{{ update.date }}] <a href="#{{ update.id }}">{{ update.title }}</a>
+            [{{ post.date | date: "%Y-%m-%d" }}] <a href="{{ post.url }}">{{ post.title }}</a>
         </li>
         {% endfor %}
     </ul>
@@ -56,26 +57,5 @@ layout: default
         </li>
         {% endfor %}
     </ul>
-    {% endif %}
-
-    <!-- Post Updates Section -->
-    {% if page.updates %}
-    <hr>
-    <br>
-    <div class="updates">
-        {% for update in page.updates %}
-        <div class="post" id="{{ update.id }}">
-            <h1>{{ update.title }}</h1>
-            <p class="date">{{ update.date }}</p>
-            <p class="content">{{ update.content }}</p>
-            {% if update.image %}
-            <div class="image-container">
-                <img src="{{ update.image }}" alt="Update Image" class="project-image">
-                <p class="caption">{{ update.caption | default: "Update Image" }}</p>
-            </div>
-            {% endif %}
-        </div>
-        {% endfor %}
-    </div>
     {% endif %}
 </div>
