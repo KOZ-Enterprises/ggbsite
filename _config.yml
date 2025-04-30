@@ -1,0 +1,4 @@
+collections:
+  csumb:
+    output: true
+    permalink: /csumb/:name/

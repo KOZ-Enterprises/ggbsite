@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Projects
+title: CSUMB
 ---
 
 <div id="main">
@@ -26,56 +26,25 @@ title: Projects
     Below is a list of courses I have completed, am currently taking, or plan to
     take as part of my Computer Science program at CSUMB:
   </p>
+
   <ul class="fa-ul" style="--fa-li-margin: 15px">
+    {% for course in site.csumb %}
     <li>
-      <span class="fa-li"><i class="fa-regular fa-check-square"></i></span
-      ><a href="cst300.html">CST300: Major ProSeminar</a>
+      <span class="fa-li">
+        {% if course.status == "completed" %}
+        <i class="fa-regular fa-check-square"></i>
+        {% elsif course.status == "in-progress" %}
+        <i class="fa-solid fa-spinner fa-pulse"></i>
+        {% else %}
+        <i class="fa-regular fa-square"></i>
+        {% endif %}
+      </span>
+      <a href="{{ course.url }}">{{ course.title }}</a>
     </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-check-square"></i></span
-      ><a href="cst338.html">CST338: Software Design</a>
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-check-square"></i></span
-      ><a href="cst363.html">CST363: Database Management</a>
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-check-square"></i></span
-      ><a href="cst334.html">CST334: Operating Systems</a>
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-check-square"></i></span
-      ><a href="cst311.html">CST311: Introduction to Computer Networking</a>
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-solid fa-spinner fa-pulse"></i></span
-      ><a href="cst336.html">CST336: Internet Programming</a>
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST370:
-      Algorithms
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST462S:
-      Race, Gender, Class in the Digital World
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST383:
-      Introduction to Data Science
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST438:
-      Software Engineering
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST489:
-      Capstone Project Planning
-    </li>
-    <li>
-      <span class="fa-li"><i class="fa-regular fa-square"></i></span>CST499:
-      Directed Group Capstone
-    </li>
+    {% endfor %}
   </ul>
+
+ 
 
   <br />
 </div>

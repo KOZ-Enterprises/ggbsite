@@ -6,8 +6,8 @@ body {
   color: #fafafa;
   font-family: "Open Sans", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 500;
-  font-size: 18px;
+  font-weight: 400;
+  font-size: 1em;
   font-style: normal;
   font-variation-settings: "wdth" 100;
   justify-content: center;
@@ -112,15 +112,15 @@ nav {
 
 /* Other existing styles */
 #main {
-  padding-top: 20px;
+  padding-top: 10px;
   width: 90%;
   min-height: 600px;
   margin: 0 auto;
   max-width: 900px;
   justify-content: center;
-  margin-top:20px;
+  margin-top: 5px;
   margin-bottom: 40px;
-  padding-top: 10px;
+
   /* margin: 20px auto; Center the main content with margin */
 }
 
@@ -231,32 +231,25 @@ nav {
 /* Style unordered lists in posts to use Font Awesome checkmark boxes */
 .post ul {
     list-style: none; /* Remove default bullets */
-    padding: 0;
+    padding: 10px;
     margin: 0;
 }
 
 /* Default list items (unchecked box) */
 .post ul li {
-    position: relative;
-    padding-left: 25px; /* Add space for the icon */
-    margin-bottom: 10px; /* Add spacing between list items */
+    padding-left: 0px;
 }
 
 .post ul li::before {
-    content: "\f096"; /* Font Awesome empty box (fa-square) */
+    content: "\f0c8"; /* Font Awesome empty box (fa-regular fa-square) */
     font-family: "Font Awesome 5 Free"; /* Ensure Font Awesome is used */
-    font-weight: 900; /* Use the solid version of the icon */
-    position: absolute;
-    left: 0;
-    top: 0;
-    color: #5bc0de; /* Customize the color of the icon */
-    font-size: 1.2em; /* Adjust the size of the icon */
+    color: #5bc0de; /* Customize the color of the checkmark */
+    padding-right: 10px;
 }
 
 /* List items with a checkmark */
 .post ul li.checked::before {
     content: "\f14a"; /* Font Awesome check square (fa-check-square) */
-    color: #5bc0de; /* Customize the color of the checkmark */
 }
 
 /* Center images in posts */
@@ -354,6 +347,11 @@ footer {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
   height: 100%;
   
+}
+.project-summary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
 }
 .project-content {
   align-content: center;
