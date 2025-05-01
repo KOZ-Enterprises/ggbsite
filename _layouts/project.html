@@ -2,60 +2,39 @@
 layout: default
 ---
 
-<div id="main">
-    <h1>{{ page.title }}</h1>
+<h1>Project: {{ page.title }}</h1>
 
-    <!-- Project Image -->
-    {% if page.image %}
-    <div class="image-container">
-        <img src="{{ page.image }}" alt="Project Image" class="project-image">
-        <p class="caption">{{ page.image_caption | default: "Project Image" }}</p>
-    </div>
-    {% endif %}
-
-    <!-- Project Description -->
-    {% if page.description %}
-    <p class="description">{{ page.description }}</p>
-    {% endif %}
-
-    <!-- Updates Section -->
-    {% assign project_posts = site.posts | where: "tags", page.title %}
-    {% if project_posts.size > 0 %}
-    <h2>Updates</h2>
-    <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
-        {% for post in project_posts %}
-        <li>
-            <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-            [{{ post.date | date: "%Y-%m-%d" }}] <a href="{{ post.url }}">{{ post.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-
-    <!-- Project Overview -->
-    <h2>Project Overview</h2>
-    <ul style="list-style-type: none">
-        <li><strong>Objective:</strong> {{ page.objective | default: "Not specified" }}</li>
-        <li><strong>Status:</strong> {{ page.status | default: "Not specified" }}</li>
-        <li><strong>Technologies Used:</strong> {{ page.technologies | default: "Not specified" }}</li>
-    </ul>
-
-    <!-- Reflection Section -->
-    {% if page.reflection %}
-    <h2>Reflection</h2>
-    <p class="content">{{ page.reflection }}</p>
-    {% endif %}
-
-    <!-- Resources Section -->
-    {% if page.resources %}
-    <h2>Resources</h2>
-    <ul class="fa-ul" style="--fa-li-margin: 10px">
-        {% for resource in page.resources %}
-        <li>
-            <i class="{{ resource.icon }}"></i>
-            <a href="{{ resource.link }}">{{ resource.name }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+<!-- Project Image -->
+{% if page.image %}
+<div class="image-container">
+    <img src="{{ page.image }}" alt="Project Image" class="project-image" />
 </div>
+{% endif %}
+
+
+
+<!-- Project Overview -->
+
+<ul style="list-style-type: none">
+    <li>
+        <strong>Status:</strong> {{ page.status | default: "Not specified" }}
+    </li>
+    <li>
+        <strong>Objective</strong> {{ page.objective | default: "Not specified" }}
+    </li>
+</ul>
+
+<!-- Updates Section -->
+{% assign project_posts = site.posts | where: "tags", page.title %} {% if
+project_posts.size > 0 %}
+<h2>Updates</h2>
+<ul class="fa-ul update-links" style="--fa-li-margin: 30px">
+    {% for post in project_posts %}
+    <li>
+        <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+        [{{ post.date | date: "%Y-%m-%d" }}]
+        <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}

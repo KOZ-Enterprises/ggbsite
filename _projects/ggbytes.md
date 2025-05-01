@@ -2,15 +2,8 @@
 layout: project
 title: "Gary Gigabytes"
 image: "/assets/imgs/ggbytes-page.png"
-image_caption: "Gary Gigabytes Logo"
-description: "This site is my personal hub — a place to showcase my academic projects, personal builds, and experiments with web tech."
 objective: "Create a clean, responsive website to document and organize my CS journey and personal projects."
 status: "In Progress"
-technologies: "HTML, CSS, JavaScript, GitHub Pages"
-reflection: "This project has helped me improve my front-end skills and build something I can be proud of. It’s a work in progress and a constant sandbox for ideas."
-resources:
-  - name: "GitHub Page"
-    link: "https://github.com/KOZ-Enterprises/ggbsite"
-    icon: "fas fa-code"
+
 order: 0
 ---

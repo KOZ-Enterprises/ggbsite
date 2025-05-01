@@ -6,3 +6,4 @@ source "https://rubygems.org"
 
 
 gem "jekyll", "~> 4.3"
+gem "public_suffix", "6.0.2"
