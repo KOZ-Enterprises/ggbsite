@@ -1,7 +1,5 @@
 ---
 layout: post
-title: "Initial Setup"
-date: 2025-04-01
 tags: ["Test Project"]
 ---
 

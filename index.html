@@ -18,7 +18,7 @@ title: Gary Gigabytes
     <li>
         <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
         [{{ post.date | date: "%Y-%m-%d" }}]
-        <a href="#post-{{ post.date | date: "%Y-%m-%d" }}">{{ post.title }}</a>
+        <a href="#{{ post.id }}">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>
@@ -27,7 +27,7 @@ title: Gary Gigabytes
 
 <!-- Posts -->
 {% for post in site.posts %}
-<div class="post" id="post-{{ post.date | date: "%Y-%m-%d" }}">
+<div class="post" id="{{ post.id }}">
     <h1>{{ post.title }}</h1>
     <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
     <!-- <p class="excerpt">{{ post.excerpt }}</p>

@@ -13,5 +13,5 @@ resources:
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
 order: 2
-project-tag: "Rover"
+project-tag: "rover"
 ---
