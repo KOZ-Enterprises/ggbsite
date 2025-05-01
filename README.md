@@ -5,7 +5,6 @@ Welcome to my personal website, where I showcase my projects and academic work a
 ## Table of Contents
 
 - [About Me](#about-me)
-- [Projects](#projects)
 - [Future Enhancements](#future-enhancements)
 - [Technologies Used](#technologies-used)
 - [License](#license)
@@ -14,26 +13,6 @@ Welcome to my personal website, where I showcase my projects and academic work a
 ## About Me
 
 I hold a Bachelor's degree in Mechanical Engineering and am currently pursuing a Bachelor's degree in Computer Science at California State University, Monterey Bay (CSUMB). My passion for technology and innovation drives me to explore the exciting world of artificial intelligence and machine learning.
-
-## Projects
-
-Here are some of the projects I'm currently working on:
-
-1. **Rover** - *in-progress*
-   - **Objective**: Develop a smart RC car with semi-autonomous and ultimately autonomous features.
-   - **Requirements**:
-     - The rover should be controlled using a PS4 controller with extended range since Bluetooth range is fairly short.
-     - The rover should be able to drive in a straight line or any other basic patterns.
-
-2. **Drone** - *on-hold*
-   - **Objective**: Develop a small-medium sized drone with swarm technology.
-   - **Note**: On hold as I will be learning the foundations of good software design and hardware design with the Rover project first.
-
-3. **Gary Gigabytes Website** - *in-progress*
-   - **Objective**: Showcase my personal and academic projects! Oh, and by the way, welcome!
-
-4. **Smart Mirror** - *completed*
-   - **Objective**: Develop a smart mirror that displays useful information such as time, weather, and notifications.
 
 ## Future Enhancements
 
@@ -45,38 +24,51 @@ Here are some of the projects I'm currently working on:
 - CSS
 - JavaScript (future plans)
 - Any other relevant technologies or libraries used in your projects.
-
 ## Local Development
 
-For local development, consider the following:
+For local development with Jekyll, follow these steps:
 
-- `Chocolatey` Package Manager ([Windows install directions](https://phoenixnap.com/kb/chocolatey-windows))
+1. **Install Ruby**: Jekyll requires Ruby to run. Install Ruby using a package manager like `Chocolatey` ([Windows install directions](https://phoenixnap.com/kb/chocolatey-windows)) or download it directly from [Ruby's official website](https://www.ruby-lang.org/en/downloads/).
 
-- `Node.js` and `NPM` ([Install via Chocolatey](https://phoenixnap.com/kb/install-node-js-npm-on-windows#ftoc-heading-5:~:text=Step%201%3A%20Install%20Node.js%20and%20NPM))
+2. **Install Bundler and Jekyll**: Once Ruby is installed, use the following commands to install Bundler and Jekyll:
 
-- `CORS` security proceedures can prevent `JavaScript` from executing on the page, resulting in the website failing to load some elements when tested via localhost. `Serve`([source](https://github.com/vercel/serve)) helps you serve a static site and provides an interface for listing a directory's contents (i.e. the HTML pages of this website).
+    ```bash
+    > gem install bundler jekyll
+    ```
 
-```bash
-> npm install --global serve
-```
+3. **Create a New Jekyll Site**: If you don't already have a Jekyll site, you can create one using:
 
-Once that's done, you can run this command inside your project's directory...
+    ```bash
+    > jekyll new my-site
+    ```
 
-```bash
-> serve
-```
+    Replace `my-site` with the desired folder name for your project.
 
-...or specify which folder you want to serve:
+4. **Navigate to Your Project Directory**: Move into your Jekyll project directory:
 
-```bash
-> serve folder-name/
-```
+    ```bash
+    > cd my-site
+    ```
 
-Finally, run this command to see a list of all available options:
+5. **Install Dependencies**: Run Bundler to install the required dependencies:
 
-```bash
-> serve --help
-```
+    ```bash
+    > bundle install
+    ```
+
+6. **Serve the Site Locally**: Use the following command to serve your Jekyll site locally:
+
+    ```bash
+    > bundle exec jekyll serve
+    ```
+
+    By default, the site will be available at `http://localhost:4000`.
+
+7. **Customizing Your Site**: Edit the files in your project directory (e.g., `_config.yml`, `_posts`, etc.) to customize your site.
+
+8. **Stop the Server**: To stop the local server, press `Ctrl+C` in the terminal.
+
+For more details, refer to the [Jekyll documentation](https://jekyllrb.com/docs/).
 
 ## License
 

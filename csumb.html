@@ -1,0 +1,46 @@
+---
+layout: default
+title: CSUMB
+---
+
+<h1>CSUMB: Post-Baccalaureate Computer Science Program</h1>
+<div style="display: flex; justify-content: center">
+  <img
+    src="/assets/imgs/CSU_Monterey_Bay_seal.png"
+    width="300"
+    alt="CSU Monterey Bay Seal"
+  />
+</div>
+<p>
+  After earning my first degree in Mechanical Engineering, I spent years
+  building a career rooted in systems, problem-solving, and design. But I always
+  had a curiosity for computer science — an itch I never really scratched. Now,
+  through CSUMB's post-baccalaureate program, I’m finally diving in. This second
+  bachelor’s is my way of exploring where that curiosity can take me, especially
+  at the intersection of engineering and emerging technologies like AI and
+  machine learning.
+</p>
+
+<p>
+  Below is a list of courses I have completed, am currently taking, or plan to
+  take as part of my Computer Science program at CSUMB:
+</p>
+
+<ul class="fa-ul" style="--fa-li-margin: 15px">
+  {% for course in site.csumb %}
+  <li>
+    <span class="fa-li">
+      {% if course.status == "completed" %}
+      <i class="fa-regular fa-check-square"></i>
+      {% elsif course.status == "in-progress" %}
+      <i class="fa-solid fa-spinner fa-pulse"></i>
+      {% else %}
+      <i class="fa-regular fa-square"></i>
+      {% endif %}
+    </span>
+    <a href="{{ course.url }}">{{ course.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+
+<br />

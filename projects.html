@@ -1,0 +1,46 @@
+---
+layout: default
+title: Projects
+---
+
+<p>
+  Over the years, I’ve worked on a variety of personal and academic projects —
+  but I haven’t always done the best job documenting them. That changes here.
+  This site is my attempt to track, showcase, and share the things I’m
+  building and learning.
+</p>
+<hr />
+<br />
+<div class="grid-container">
+  {% assign sorted_projects = site.projects | sort: "order" %}
+  {% for project in sorted_projects %}
+  <div class="project-summary">
+    <a href="{{ project.url }}" rel="noopener noreferrer">
+      <div class="project-content">
+        {% if project.image %}
+        <img
+          src="{{ project.image }}"
+          alt="{{ project.title }} Preview"
+          class="project-image"
+        />
+        {% endif %}
+        <div class="overlay-title">
+          <h2>{{ project.title }}
+            {% if project.status %}
+            <span style="color: gray">({{ project.status }})</span>
+            {% endif %}
+          </h2>
+        </div>
+        {% if project.description %}
+        <div class="overlay-description">
+          <p>{{ project.description }}</p>
+        </div>
+        {% endif %}
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
+
+
+
