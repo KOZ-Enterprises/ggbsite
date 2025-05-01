@@ -2,6 +2,7 @@
 layout: post
 title: Tweaking Styles
 date: 2025-03-26
+tags: ["Gary Gigabytes"]
 ---
 
 Hope y'all enjoy the website refresh! I've been messing with CSS styles and figuring out ways of styling this blog. I'm glad I was able to finish my little roadmap below. I think the next steps to improve the site will be:

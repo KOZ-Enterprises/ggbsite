@@ -36,8 +36,23 @@ project_posts.size > 0 %}
     <li>
         <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
         [{{ post.date | date: "%Y-%m-%d" }}]
-        <a href="{{ post.url }}">{{ post.title }}</a>
+        <a href="#post-{{ post.date | date: "%Y-%m-%d" }}">{{ post.title }}</a>
     </li>
     {% endfor %}
 </ul>
+{% endif %}
+<hr>
+<!-- Posts -->
+{% assign filtered_posts = site.posts | where: "tags", page.project-tag %}
+{% if filtered_posts.size > 0 %}
+    {% for post in filtered_posts %}
+    <div class="post" id="post-{{ post.date | date: "%Y-%m-%d" }}">
+        <h1>{{ post.title }}</h1>
+        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="content">{{ post.content }}</p>
+        <p><a href="#top" class="back-to-top">Back to Top</a></p>
+    </div>
+    {% endfor %}
+{% else %}
+    <p> No posts...</p>
 {% endif %}

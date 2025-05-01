@@ -13,4 +13,5 @@ resources:
     link: "https://magicmirror.builders/"
     icon: "fas fa-link"
 order: 3
+project-tag: "Smart Mirror"
 ---

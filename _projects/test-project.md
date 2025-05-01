@@ -14,4 +14,5 @@ resources:
     icon: "fas fa-link"
 
 order: 5
+project-tag: "Test Project"
 ---

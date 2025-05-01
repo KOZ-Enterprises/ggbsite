@@ -3,9 +3,9 @@
     <i class="fa fa-bars"></i>
   </div>
   <div class="nav-links">
-    <a href="/index.html">Home</a>
-    <a href="/projects.html">Projects</a>
-    <a href="/csumb.html">CSUMB</a>
-    <a href="/about.html">About</a>
+    <a href="/index.html" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+    <a href="/projects.html" class="{% if page.url == '/projects.html' %}active{% endif %}">Hobby</a>
+    <a href="/csumb.html" class="{% if page.url == '/csumb.html' %}active{% endif %}">Academics</a>
+    <a href="/about.html" class="{% if page.url == '/about.html' %}active{% endif %}">About</a>
   </div>
 </div>

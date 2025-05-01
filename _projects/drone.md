@@ -6,4 +6,5 @@ description: "The Drone project focuses on designing a quadcopter platform with 
 objective: "Build a simple drone n stuff yo"
 status: "On Hold"
 order: 4
+project-tag: "Drone"
 ---
