@@ -122,6 +122,7 @@ nav {
   }
   .navbar a{
     width: 100%;
+    text-align: center;
   }
   .navbar .icon {
     display: block;    
