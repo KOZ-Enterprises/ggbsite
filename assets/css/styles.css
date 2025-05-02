@@ -49,7 +49,7 @@ ul li {
 .heading {
   text-align: center;
   border-bottom: 2px dashed #555;
-  padding: 10px;
+  padding-bottom: 2px;
 }
 
 a, a:visited {
