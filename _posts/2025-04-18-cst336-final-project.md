@@ -2,6 +2,9 @@
 layout: post
 tags: ["cst336", "final project"]
 title: "Culinary Otter: A Recipe Web Application"
+description: "Culinary Otter is a user-friendly web application designed for students and home cooks seeking culinary inspiration."
+project-title: "Culinary Otter"
+project-url: "https://culinaryotter.garygigabytes.com/"
 ---
 
 <div style="text-align: center;" class="image-container">
