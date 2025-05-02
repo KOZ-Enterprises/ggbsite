@@ -1,12 +1,15 @@
 ---
 layout: post
 tags: ["cst336", "final project"]
-title: "CST336 Final Project: Culinary Otter"
+title: "Culinary Otter: A Recipe Web Application"
 ---
 
-![Culinary Otter Web Application](/assets/imgs/culinaryotter.png "Culinary Otter Web Application")
+<div style="text-align: center;" class="image-container">
+<a href="https://culinaryotter.garygigabytes.com/" target="_blank" rel="noopener noreferrer">
+<img src="/assets/imgs/culinaryotter-square.png" alt="Culinary Otter Web Application"  style="width: 300px" ></a>
+</div>
 
-[Culinary Otter](https://culinaryotter.garygigabytes.com/) is a user-friendly web application designed for students and home cooks seeking culinary inspiration. It allows users to:
+<a href="https://culinaryotter.garygigabytes.com/" target="_blank" rel="noopener noreferrer">Culinary Otter</a> is a user-friendly web application designed for students and home cooks seeking culinary inspiration. It allows users to:
 
 - **Search for recipes** using an external database.
 - **View recipe details**, including ingredients and instructions.
@@ -17,5 +20,3 @@ title: "CST336 Final Project: Culinary Otter"
 - **Enjoy food images** provided via an external API.
 
 The project combines a robust backend, external APIs, and a polished front end to deliver a seamless culinary experience.
-
-[Visit Culinary Otter](https://culinaryotter.garygigabytes.com/)
