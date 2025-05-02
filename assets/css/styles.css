@@ -95,7 +95,7 @@ nav {
   /* text-transform: uppercase; */
   font-size: 1.1em;
   text-align: center;
-  min-width: 90px;
+  min-width: 100px;
 }
 
 .navbar a.active, .navbar a:hover {
