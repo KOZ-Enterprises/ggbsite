@@ -12,6 +12,6 @@ resources:
   - name: "GitHub Project Page"
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
-order: 2
+order: 3
 project-tag: "rover"
 ---
