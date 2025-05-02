@@ -89,13 +89,13 @@ nav {
 
 .navbar a {
   color: #64d5d2;
-  padding: 14px 20px;
+  padding: 14px 30px;
   text-decoration: none;
   font-weight: 600;
   /* text-transform: uppercase; */
   font-size: 1.1em;
   text-align: center;
-  min-width: 100px;
+  
 }
 
 .navbar a.active, .navbar a:hover {
