@@ -7,10 +7,49 @@ body {
   margin: 0 auto;
   background-color: #141818;
   color: #fafafa;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1em;
   justify-content: center;
+}
+h1,  h2,  h3 {
+  color: #64d5d2;
+}
+
+h1 {
+  font-size: 1.75em;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5em;  
+  font-weight: 550;
+}
+
+h3 {
+  font-size: 1.25em;
+  font-style: italic;
+  font-weight: 500;
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+ul {
+  margin: 20px 0;
+  padding-left: 30px;
+}
+
+ul li {
+  margin-bottom: 10px;
+}
+
+.heading {
+  text-align: center;
+  border-bottom: 2px dashed #555;
+  padding: 10px;
 }
 
 a, a:visited {
@@ -56,6 +95,7 @@ nav {
   /* text-transform: uppercase; */
   font-size: 1.1em;
   text-align: center;
+  min-width: 90px;
 }
 
 .navbar a.active, .navbar a:hover {
@@ -80,10 +120,11 @@ nav {
     flex-direction: column;
     align-items: stretch;
   }
-
+  .navbar a{
+    width: 100%;
+  }
   .navbar .icon {
-    display: block;
-    
+    display: block;    
     text-align: right;
     padding: 14px 16px;
   }
@@ -119,40 +160,6 @@ nav {
   max-width: 900px;
 }
 
-#main h1, #main h2, #main h3 {
-  color: #64d5d2;
-}
-
-#main h1 {
-  font-size: 1.2em;
-  font-weight: 650;
-}
-
-#main h2 {
-  font-size: 1.1em;
-  font-style: italic;
-  font-weight: 550;
-}
-
-#main h3 {
-  font-size: 1.05em;
-  font-style: italic;
-  font-weight: 600;
-}
-
-#main p {
-  line-height: 1.6;
-  margin-bottom: 15px;
-}
-
-#main ul {
-  margin: 20px 0;
-  padding-left: 30px;
-}
-
-#main ul li {
-  margin-bottom: 10px;
-}
 
 /* Post Styles */
 .post {
@@ -175,12 +182,16 @@ nav {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
-
+.post h2 {  
+  margin-bottom: 5px;
+  
+}
 .post .date {
   color: #aaa;
   font-size: 0.9em;
   margin-bottom: 0.2em;
   font-style: italic;
+  margin-top: 0px;
 }
 
 .post .content {
@@ -200,7 +211,7 @@ nav {
 }
 
 .post ul li::before {
-  content: "\f0c8"; /* Font Awesome empty box */
+  content: "\f192"; /* Font Awesome empty box */
   font-family: "Font Awesome 5 Free";
   color: #5bc0de;
   padding-right: 10px;
@@ -209,10 +220,10 @@ nav {
 .post ul li.checked::before {
   content: "\f14a"; /* Font Awesome check square */
 }
-
-.post ul li.bullet::before {
-  content: "\f192"; /* Font Awesome check square */
+.post ul li.unchecked::before {
+  content: "\f0c8"; /* Font Awesome check square */
 }
+
 .post img {
   display: block;
   margin: 0 auto;
@@ -293,8 +304,7 @@ nav {
   background: rgba(20, 24, 24, 0.85);
   color: #64d5d2;
   text-align: center;
-  font-size: 1.2em;
-  font-weight: bold;
+  
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;
   z-index: 2;
@@ -361,6 +371,10 @@ footer {
 .image-container {
   max-width: 600px;
   text-align: center;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 0 auto;    
+  
+}
+.image-container img {
+  border: 2px solid #555;
+  border-radius: 8px;
 }

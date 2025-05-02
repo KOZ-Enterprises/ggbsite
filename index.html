@@ -6,8 +6,8 @@ title: Gary Gigabytes
 <!-- Description -->
 <p class="description">
     <em>Part study, part sandbox — from
-        <a href="csumb.html">academic projects</a> in computer science to
-        <a href="projects.html">weekend experiments</a> involving wires, code, and
+        <a href="/csumb/">academic projects</a> in computer science to
+        <a href="/projects/">weekend experiments</a> involving wires, code, and
         occasional smoke...</em>
 </p>
 
@@ -28,7 +28,7 @@ title: Gary Gigabytes
 <!-- Posts -->
 {% for post in site.posts %}
 <div class="post" id="{{ post.id }}">
-    <h1>{{ post.title }}</h1>
+    <h2>{{ post.title }}</h2>
     <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
     <!-- <p class="excerpt">{{ post.excerpt }}</p>
     <a href="{{ post.url }}" class="read-more">Read More</a> -->
