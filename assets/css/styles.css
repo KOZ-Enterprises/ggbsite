@@ -123,6 +123,7 @@ nav {
   .navbar a{
     width: 100%;
     text-align: center;
+    min-width: 60px;
   }
   .navbar .icon {
     display: block;    
