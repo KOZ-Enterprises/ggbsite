@@ -47,7 +47,7 @@ project_posts.size > 0 %}
 {% if filtered_posts.size > 0 %}
     {% for post in filtered_posts %}
     <div class="post" id="{{ post.id }}">
-        <h1>{{ post.title }}</h1>
+        <h2>{{ post.title }}</h2>
         <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
         <p class="content">{{ post.content }}</p>
         <p><a href="#top" class="back-to-top">Back to Top</a></p>

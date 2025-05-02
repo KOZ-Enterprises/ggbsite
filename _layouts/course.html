@@ -7,3 +7,19 @@ layout: default
 <h1 class="heading">{{ page.title }}</h1>
     
     {{ content }}
+
+
+<!-- Posts -->
+{% assign filtered_posts = site.posts | where: "tags", page.slug %}
+{% if filtered_posts.size > 0 %}
+    {% for post in filtered_posts %}
+    <div class="post" id="{{ post.id }}">
+        <h2>{{ post.title }}</h2>
+        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+        <p class="content">{{ post.content }}</p>
+        <p><a href="#top" class="back-to-top">Back to Top</a></p>
+    </div>
+    {% endfor %}
+{% else %}
+    <p> No posts...</p>
+{% endif %}
