@@ -2,10 +2,13 @@
 layout: post
 tags: ["Smart Mirror"]
 ---
+<div class="image-container">
+<a href="/assets/imgs/magicmirror_final_cropped.jpg" target="_blank">
+    <img src="/assets/imgs/magicmirror_final_cropped.jpg" alt="Smart Mirror" class="project-image" style="width: 600px">
+</a>
+</div>
 
-<img src="/assets/imgs/magicmirror_final_cropped.jpg" alt="Smart Mirror" class="project-image">
-
-I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The project was inspired by the MagicMirror² platform, which provides a customizable interface for displaying information like time, weather, news, and more.
+I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The project is uses MagicMirror² software, which provides a customizable interface for displaying information like time, weather, news. 
 
 ## Components
 - [MagicMirror² software](https://magicmirror.builders/)
@@ -17,7 +20,8 @@ I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The
 
 ### MagicMirror² Modules
 - [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
-
+- [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
+- [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
 
 ## Steps to Build
 1. **Install MagicMirror²**: Follow the [installation guide](https://docs.magicmirror.builders/getting-started/installation.html) to set up the software on your Raspberry Pi.
