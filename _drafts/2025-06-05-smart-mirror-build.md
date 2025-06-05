@@ -7,12 +7,17 @@ tags: ["Smart Mirror"]
 
 I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The project was inspired by the MagicMirror² platform, which provides a customizable interface for displaying information like time, weather, news, and more.
 
-## Components Used
+## Components
 - [MagicMirror² software](https://magicmirror.builders/)
-- Raspberry Pi 4
-- Two-way mirror
-- Monitor
-- Frame
+- [Raspberry Pi 4 1GB](https://www.pishop.us/product/raspberry-pi-4-model-b-1gb/)
+- [Two-way Acrylic mirror](https://a.co/d/21ZsVwt)
+- [18.5" 1920x1080 Portable Monitor](https://www.newegg.com/p/2NY-0094-00021?item=9SIBMMWK9P5965&utm_source=transactional&utm_medium=email&cm_mmc=TEMC-Shipping-Notice-USA-_-101929&utm_campaign=TEMC-Shipping-Notice-USA-_-101929)
+- [11x17 Frame](https://a.co/d/7LMuKS5)
+- [HDMI to Micro HDMI Cable](https://a.co/d/aOiFJnA)
+
+### MagicMirror² Modules
+- [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
+
 
 ## Steps to Build
 1. **Install MagicMirror²**: Follow the [installation guide](https://docs.magicmirror.builders/getting-started/installation.html) to set up the software on your Raspberry Pi.

@@ -37,7 +37,7 @@ p {
   margin-bottom: 15px;
 }
 
-ul {
+ul, ol {
   margin: 20px 0;
   padding-left: 30px;
 }
@@ -46,6 +46,9 @@ ul li {
   margin-bottom: 10px;
 }
 
+ol li {
+  margin-bottom: 10px;
+}
 .heading {
   text-align: center;
   border-bottom: 2px dashed #555;
