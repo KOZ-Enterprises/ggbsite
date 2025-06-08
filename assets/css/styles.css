@@ -37,7 +37,7 @@ p {
   margin-bottom: 15px;
 }
 
-ul {
+ul, ol {
   margin: 20px 0;
   padding-left: 30px;
 }
@@ -46,6 +46,9 @@ ul li {
   margin-bottom: 10px;
 }
 
+ol li {
+  margin-bottom: 10px;
+}
 .heading {
   text-align: center;
   border-bottom: 2px dashed #555;
@@ -263,11 +266,12 @@ nav {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3); /* Optional: Shadow for grid items */
   overflow: hidden; /* Ensures content stays within the bounds */
   aspect-ratio: 4 / 3; /* Maintains a 4:3 aspect ratio */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: flex;  
+  
   border-left: 4px solid #64d5d2; /* Keeps the border style */
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  
+  
 }
 
 .project-summary:hover {
@@ -280,6 +284,9 @@ nav {
   overflow: hidden;
   border-radius: 8px;
   padding: 0;
+  width: 100%;
+  height: 100%;
+
 }
 
 .project-content h2 {
@@ -291,7 +298,8 @@ nav {
 .project-image {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Ensures the image fills the container without distortion */
+  object-fit: cover; 
+ 
 }
 
 .project-content:hover .project-image {
