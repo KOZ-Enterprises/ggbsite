@@ -124,7 +124,7 @@ nav {
     align-items: stretch;
   }
   .navbar a{
-    width: 100%;
+    width: 90%;
     text-align: center;
     min-width: 60px;
   }
