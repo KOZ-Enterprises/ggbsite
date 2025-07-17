@@ -1,6 +1,6 @@
 ---
 layout: project
-title: "Algorithmic Trading Bot"
+title: "Trading Bot"
 image: "/assets/imgs/tradingbot.png"
 image_caption: "Modular Python trading framework with backtesting and live trading"
 description: "A comprehensive algorithmic trading platform that uses technical analysis strategies to automate trading decisions. Supports backtesting, parameter optimization, and live paper trading with Alpaca’s API."
