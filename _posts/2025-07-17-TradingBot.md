@@ -1,3 +1,4 @@
+---
 layout: post
 title: "Introducing My Algorithmic Trading Bot"
 tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
