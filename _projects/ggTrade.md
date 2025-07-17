@@ -12,9 +12,7 @@ resources:
   - name: "Alpaca Trading API"
     link: "https://alpaca.markets/docs/api-references/trading-api/"
     icon: "fas fa-link"
-  - name: "GitHub Repo"
-    link: "https://github.com/garykuepper/trading-bot" # (Update to your repo if needed)
-    icon: "fab fa-github"
+
 order: 8
 project-tag: "Trading Bot"
 ---
