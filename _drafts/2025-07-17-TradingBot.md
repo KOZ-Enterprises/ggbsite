@@ -4,9 +4,9 @@ title: "Introducing My Trading Bot"
 tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
 ---
 
-<div style="text-align: center;" class="image-container">
-<a href="/projects/ggTrade/" >
-<img src="/assets/imgs/tradingbot.png" alt="TradingBot"  style="width: 300px" ></a>
+<div  class="image-container">
+<a href="/assets/imgs/tradingbot.png" >
+<img src="/assets/imgs/tradingbot.png" alt="TradingBot"   ></a>
 </div>
 
 I'm excited to share my latest project: a [trading bot](/projects/ggtrade/) built with Python! This comprehensive platform combines technical analysis with automated trading to make data-driven investment decisions.
