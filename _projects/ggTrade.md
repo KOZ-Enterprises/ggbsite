@@ -3,7 +3,7 @@ layout: project
 title: "Trading Bot"
 image: "/assets/imgs/tradingbot.png"
 image_caption: "Modular Python trading framework with backtesting and live trading"
-description: "A comprehensive algorithmic trading platform that uses technical analysis strategies to automate trading decisions. Supports backtesting, parameter optimization, and live paper trading with Alpaca’s API."
+description: "A comprehensive algorithmic trading platform that uses technical analysis strategies to automate trading decisions. Supports backtesting, parameter optimization, and live paper trading with Alpaca's API."
 objective: "Develop a modular, research-friendly trading framework for strategy development, historical analysis, and real-time trading automation."
 status: "In Progress"
 technologies: "Python, Alpaca API, Pandas, NumPy, Matrix"
@@ -15,11 +15,9 @@ resources:
   - name: "Yahoo Finance API"
     link: "https://pypi.org/project/yfinance/"
     icon: "fas fa-link"
-  - name: "Matrix Synapse
+  - name: "Matrix Synapse"
     link: "https://matrix.org/docs/projects/server/synapse/"
-    icon: "fas fa-link""
-
+    icon: "fas fa-link"
 order: 4
 project-tag: "Trading Bot"
 ---
-
