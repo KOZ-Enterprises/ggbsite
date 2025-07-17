@@ -29,24 +29,6 @@ layout: default
     {% endif %}
 </ul>
 
-<!-- Resources Section -->
-{% if page.resources %}
-<h2>Resources</h2>
-<ul class="fa-ul" style="--fa-li-margin: 30px">
-    {% for resource in page.resources %}
-    <li>
-        <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-link' }}"></i></span>
-        <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.name }}</a>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
-
-<!-- Reflection Section -->
-{% if page.reflection %}
-<h2>Reflection</h2>
-<p>{{ page.reflection }}</p>
-{% endif %}
 
 <!-- Updates Section -->
 {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
@@ -75,5 +57,5 @@ project_posts.size > 0 %}
     </div>
     {% endfor %}
 {% else %}
-    <p> ...</p>
+    <p></p>
 {% endif %}
