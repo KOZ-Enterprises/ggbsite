@@ -12,8 +12,14 @@ resources:
   - name: "Alpaca Trading API"
     link: "https://alpaca.markets/docs/api-references/trading-api/"
     icon: "fas fa-link"
+  - name: "Yahoo Finance API"
+    link: "https://pypi.org/project/yfinance/"
+    icon: "fas fa-link"
+  - name: "Matrix Synapse
+    link: "https://matrix.org/docs/projects/server/synapse/"
+    icon: "fas fa-link""
 
-order: 8
+order: 4
 project-tag: "Trading Bot"
 ---
 
