@@ -13,7 +13,7 @@ resources:
     link: "https://alpaca.markets/docs/api-references/trading-api/"
     icon: "fas fa-link"
 
-order: 8
+order: 4
 project-tag: "Trading Bot"
 ---
 
