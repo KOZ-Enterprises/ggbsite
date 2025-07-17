@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Final Smart Mirror Build"
+title: "Improved Smart Mirror Build"
 tags: ["Smart Mirror"]
 ---
 <div class="image-container">
