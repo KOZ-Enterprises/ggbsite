@@ -1,46 +1,20 @@
-layout: post
-title: "Introducing My Algorithmic Trading Bot"
-tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
 ---
-
-I'm excited to share my latest project: an algorithmic trading bot built with Python! This comprehensive platform combines technical analysis with automated trading to make data-driven investment decisions.
-
-## What It Does
-
-The bot is designed as a modular framework that:
-- **Backtests strategies** against historical market data
-- **Optimizes parameters** to find the best configurations
-- **Paper trades live** using Alpaca's API for real-time testing
-- **Analyzes performance** with detailed metrics and reporting
-
-## The Tech Stack
-
-I built this using Python with Alpaca's API for market data, plus Pandas and NumPy for data processing. I'm planning to add Docker containerization in the future for easier deployment and scaling.
-
-## Why This Project Matters
-
-This bot represents the perfect intersection of my engineering problem-solving approach and my growing interest in financial technology. It's teaching me about market dynamics, risk management, and building robust systems that can handle real-time data.
-
-## Resources Used
-
-Here are the key resources that made this project possible:
-
-- **[Alpaca Trading API](https://alpaca.markets/docs/api-references/trading-api/)** - Commission-free trading API with paper trading support
-- **[GitHub Repository](https://github.com/garykuepper/trading-bot)** - Project source code and documentation
-- **[Pandas Documentation](https://pandas.pydata.org/docs/)** - Data manipulation and analysis library
-- **[NumPy Documentation](https://numpy.org/doc/)** - Numerical computing library
-- **[Matrix Documentation](https://matrix.org/docs/)** - Advanced mathematical computations
-
-## What's Next
-
-I'm planning a series of follow-up posts diving deeper into:
-- The backtesting framework and how to avoid common pitfalls
-- Technical analysis strategies that actually work
-- Risk management in automated trading systems
-- Performance optimization for real-time trading
-
-You can check out more details on the [project page](/projects/) or follow along as I continue developing this system. The intersection of engineering and finance is fascinating, and I'm excited to share what I'm learning!
-
+layout: project
+title: "Algorithmic Trading Bot"
+image: "/assets/imgs/tradingbot.png"
+image_caption: "Modular Python trading framework with backtesting and live trading"
+description: "A comprehensive algorithmic trading platform that uses technical analysis strategies to automate trading decisions. Supports backtesting, parameter optimization, and live paper trading with Alpaca’s API."
+objective: "Develop a modular, research-friendly trading framework for strategy development, historical analysis, and real-time trading automation."
+status: "In Progress"
+technologies: "Python, Alpaca API, Pandas, NumPy, Matrix"
+reflection: "Building this bot has helped me deeply understand financial algorithms, backtesting methodologies, and robust API integration. The modular design also makes it easy to experiment with new strategies and optimizations."
+resources:
+  - name: "Alpaca Trading API"
+    link: "https://alpaca.markets/docs/api-references/trading-api/"
+    icon: "fas fa-link"
+  - name: "GitHub Repo"
+    link: "https://github.com/garykuepper/trading-bot" # (Update to your repo if needed)
+    icon: "fab fa-github"
+order: 8
+project-tag: "Trading Bot"
 ---
-
-*Questions about the project? Feel free to reach out via [LinkedIn](https://www.linkedin.com/in/garykuepper/).*
