@@ -7,7 +7,7 @@ layout: default
 <!-- Project Image -->
 {% if page.image %}
 <div class="image-container">
-    <img src="{{ page.image }}" alt="Project Image" class="project-image" />
+    <img src="{{ page.image }}" alt="Project Image" class="project-image"/>
 </div>
 {% endif %}
 
@@ -27,13 +27,30 @@ layout: default
         <strong>Technologies:</strong> {{ page.technologies }}
     </li>
     {% endif %}
+    <!-- Resources Section -->
+    {% if page.resources %}
+    <li><strong>Resources:</strong>
+        <ul class="fa-ul" style="--fa-li-margin: 30px">
+            {% for resource in page.resources %}
+            <li>
+                <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-link' }}"></i></span>
+                <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.name }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+
+    </li>
+
+    {% endif %}
 </ul>
+
+
 
 
 <!-- Updates Section -->
 {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
 project_posts.size > 0 %}
-<h2>Updates</h2>
+<h3>Updates</h3>
 <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
     {% for post in project_posts %}
     <li>
@@ -48,14 +65,14 @@ project_posts.size > 0 %}
 <!-- Posts -->
 {% assign filtered_posts = site.posts | where: "tags", page.project-tag %}
 {% if filtered_posts.size > 0 %}
-    {% for post in filtered_posts %}
-    <div class="post" id="{{ post.id }}">
-        <h2>{{ post.title }}</h2>
-        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p class="content">{{ post.content }}</p>
-        <p><a href="#top" class="back-to-top">Back to Top</a></p>
-    </div>
-    {% endfor %}
+{% for post in filtered_posts %}
+<div class="post" id="{{ post.id }}">
+    <h2>{{ post.title }}</h2>
+    <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+    <p class="content">{{ post.content }}</p>
+    <p><a href="#top" class="back-to-top">Back to Top</a></p>
+</div>
+{% endfor %}
 {% else %}
-    <p></p>
+<p> ...</p>
 {% endif %}
