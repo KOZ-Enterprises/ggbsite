@@ -1,4 +1,3 @@
----
 layout: post
 title: "Introducing My Algorithmic Trading Bot"
 tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
@@ -16,7 +15,7 @@ The bot is designed as a modular framework that:
 
 ## The Tech Stack
 
-I built this using Python with Alpaca's API for market data, plus Pandas and NumPy for data processing. I'm planning to add Docker containerization in the future for easier deployment and scaling.
+I built this using Python with Alpaca's API for market data, plus Pandas and NumPy for data processing. I'm also using Matrix for sending daily notifications and reports. I'm planning to add Docker containerization in the future for easier deployment and scaling.
 
 ## Why This Project Matters
 
@@ -27,10 +26,9 @@ This bot represents the perfect intersection of my engineering problem-solving a
 Here are the key resources that made this project possible:
 
 - **[Alpaca Trading API](https://alpaca.markets/docs/api-references/trading-api/)** - Commission-free trading API with paper trading support
-- **[GitHub Repository](https://github.com/garykuepper/trading-bot)** - Project source code and documentation
 - **[Pandas Documentation](https://pandas.pydata.org/docs/)** - Data manipulation and analysis library
 - **[NumPy Documentation](https://numpy.org/doc/)** - Numerical computing library
-- **[Matrix Documentation](https://matrix.org/docs/)** - Advanced mathematical computations
+- **[Matrix Protocol](https://matrix.org/docs/)** - For sending daily notifications and reports
 
 ## What's Next
 
