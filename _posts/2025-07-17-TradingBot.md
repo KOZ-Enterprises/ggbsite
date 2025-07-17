@@ -1,9 +1,10 @@
+---
 layout: post
 title: "Introducing My Algorithmic Trading Bot"
 tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
 ---
 
-I'm excited to share my latest project: an algorithmic trading bot built with Python! This comprehensive platform combines technical analysis with automated trading to make data-driven investment decisions.
+I'm excited to share my latest project: an [algorithmic trading bot](https://www.garygigabytes.com/projects/ggtrade/) built with Python! This comprehensive platform combines technical analysis with automated trading to make data-driven investment decisions.
 
 ## What It Does
 
