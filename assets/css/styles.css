@@ -162,7 +162,7 @@ nav {
   width: 90%;
   min-height: 600px;
   margin: 5px auto 40px;
-  max-width: 900px;
+  max-width: 1000px;
 }
 
 
@@ -389,7 +389,7 @@ footer {
   border-radius: 8px;
 }
 .image-grid {
-  display: flex;
+  display: grid;
   gap: 16px;
   flex-wrap: wrap; /* optional for responsiveness */
 }
