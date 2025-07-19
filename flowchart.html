@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Journey to Drone Swarm Light Shows</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background: #191c1d;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .roadmap-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 16px;
+    }
+    .roadmap-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      border: 2px solid #27e3ff;
+      border-radius: 12px;
+      
+      margin-bottom: 40px;
+      color: #fff;
+      background: #23282a;
+      padding: 8px 24px;
+      letter-spacing: 1px;
+      margin: 0 auto 40px auto;  /* <- Center horizontally */
+    }
+    .phases-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 32px;
+      margin-bottom: 32px;
+    }
+    .phase-box {
+      background: #23282a;
+      border: 2px solid #27e3ff;
+      border-radius: 18px;
+      padding: 20px 18px;
+      width: 320px;
+      min-width: 220px;
+      box-shadow: 0 2px 10px rgba(39,227,255,0.09);
+      margin-bottom: 12px;
+      transition: transform 0.2s;
+    }
+    .phase-box:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(39,227,255,0.17);
+    }
+    .phase-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #27e3ff;
+      justify-content: center;
+    }
+    .phase-list {
+      margin-left: 0;
+      padding-left: 18px;
+    }
+    .arrow-row {
+      text-align: center;
+      margin: 10px 0 24px 0;
+      font-size: 1.4em;
+      color: #27e3ff;
+      user-select: none;
+    }
+    /* Responsive: Stack phases on mobile */
+    @media (max-width: 900px) {
+      .phases-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+      .phase-box {
+        width: 98vw;
+        max-width: 340px;
+      }
+    }
+    /* Extra: Phase 7 bigger box */
+    .phase-final {
+      width: 670px;
+      max-width: 98vw;
+      margin: 0 auto;
+      background: #23282a;
+      border: 2px solid #27e3ff;
+      border-radius: 18px;
+      padding: 22px 22px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 700px) {
+      .phase-final {
+        width: 98vw;
+        padding: 14px 8px;
+      }
+      .roadmap-title {
+        font-size: 1.15rem;
+        padding: 4px 7px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="roadmap-container">
+    <div class="roadmap-title">Journey to Drone Swarm Light Shows</div>
+
+    <div class="phases-row">
+      <div class="phase-box">
+        <div class="phase-title">Phase 1: Prototype Remote Control System</div>
+        <ul class="phase-list">
+          <li>Build a wireless controller using PS4 controller, Arduino, XBee radio, and OLED screen.</li>
+          <li>Establish a standard protocol for sending commands and receiving telemetry.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 2: Rover Teleoperation (PS4)</div>
+        <ul class="phase-list">
+          <li>Test remote control on a simple rover using the new wireless system.</li>
+          <li>Verify reliable two-way communication and refine command handling.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 3: Mesh Networking &amp; Range Testing</div>
+        <ul class="phase-list">
+          <li>Experiment with XBee mesh networking to extend control range.</li>
+          <li>Assess communication reliability with multiple nodes in real-world conditions.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="arrow-row">&#x2193;</div>
+    <div class="phases-row">
+      <div class="phase-box">
+        <div class="phase-title">Phase 4: Swarm Controller Development</div>
+        <ul class="phase-list">
+          <li>Expand system to support controlling multiple drones or vehicles.</li>
+          <li>Add synchronized command features and group coordination logic.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 5: Integration with Flight Controllers (ArduPilot)</div>
+        <ul class="phase-list">
+          <li>Upgrade to professional-grade flight controllers for advanced features.</li>
+          <li>Integrate command and telemetry protocols with ArduPilot systems.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 6: Drone Swarm Simulation</div>
+        <ul class="phase-list">
+          <li>Simulate swarm coordination and light show choreography in software.</li>
+          <li>Test and refine group commands and synchronization logic before live tests.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="arrow-row">&#x2193;</div>
+    <div class="phase-final">
+      <div class="phase-title">Phase 7: Live Swarm Light Show</div>
+      <ul class="phase-list">
+        <li>Deploy multiple drones for a live, synchronized light show.</li>
+        <li>Showcase complete system integration with real-world choreography.</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
