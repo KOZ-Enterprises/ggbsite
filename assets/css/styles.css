@@ -247,7 +247,7 @@ nav {
 /* Grid Container */
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); /* Responsive columns */
   gap: 20px; /* Spacing between grid items */
   margin: 20px;
 }
