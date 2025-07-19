@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Journey to Drone Swarm Light Shows</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      background: #191c1d;
+      color: #fff;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    .roadmap-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 16px;
+    }
+    .roadmap-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: bold;
+      border: 2px solid #27e3ff;
+      border-radius: 12px;
+      color: #fff;
+      background: #23282a;
+      padding: 8px 24px;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .current-phase-banner {
+      text-align: center;
+      background-color: #ffd70022;
+      color: #ffd700;
+      padding: 6px;
+      border-radius: 8px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    .timeline-banner {
+      text-align: center;
+      color: #27e3ff;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    .capstone-banner {
+      text-align: center;
+      color: #87cefa;
+      font-style: italic;
+      margin-bottom: 30px;
+    }
+    .phases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .phase-box {
+      background: #23282a;
+      border: 2px solid #27e3ff;
+      border-radius: 18px;
+      padding: 20px 18px;
+      box-shadow: 0 2px 10px rgba(39, 227, 255, 0.09);
+      transition: transform 0.2s;
+    }
+    .phase-box:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 6px 16px rgba(39, 227, 255, 0.17);
+    }
+    .phase-title {
+      font-size: 1.15rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #27e3ff;
+      text-align: center;
+    }
+    .phase-date {
+      font-size: 0.85rem;
+      color: #bbb;
+      margin-top: 4px;
+      margin-bottom: 8px;
+      display: block;
+      font-style: italic;
+      text-align: center;
+    }
+    .phase-list {
+      padding-left: 18px;
+    }
+    .current-phase {
+      border: 2px solid #ffd700 !important;
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.45);
+    }
+    @media (max-width: 900px) {
+      .phases-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="roadmap-container">
+    <div class="roadmap-title">Journey to Drone Swarm Light Shows</div>
+    <div class="current-phase-banner">📍 Current Phase: 1 of 9 – In Progress</div>
+    <div class="timeline-banner"><strong>Timeline:</strong> July 2025 → June 2026</div>
+    <div class="capstone-banner">🎓 Phases 7–8 will be executed as part of my CSUMB Capstone Project (proof-of-concept swarm)</div>
+
+    <div class="phases-grid">
+      <div class="phase-box current-phase">
+        <div class="phase-title">Phase 1: Prototype Remote Control System</div>
+        <span class="phase-date">ECD July 2025</span>
+        <ul class="phase-list">
+          <li>Build a wireless controller using DualShock4, Arduino, XBee radio, and OLED screen.</li>
+          <li>Establish a standard protocol for sending commands and receiving telemetry.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 2: Rover Teleoperation (DualShock4)</div>
+        <span class="phase-date">ECD August 2025</span>
+        <ul class="phase-list">
+          <li>Test remote control on a simple rover using the new wireless system.</li>
+          <li>Verify reliable two-way communication and refine command handling.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 3: Mesh Networking & Range Testing</div>
+        <span class="phase-date">ECD September 2025</span>
+        <ul class="phase-list">
+          <li>Experiment with XBee mesh networking to extend control range.</li>
+          <li>Assess communication reliability with multiple nodes in real-world conditions.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 4: Swarm Controller Development</div>
+        <span class="phase-date">ECD October 2025</span>
+        <ul class="phase-list">
+          <li>Expand system to support controlling multiple vehicles.</li>
+          <li>Add synchronized command features and basic group coordination.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 5: Replace BlackPill with ArduPilot Board</div>
+        <span class="phase-date">ECD Mid-October 2025</span>
+        <ul class="phase-list">
+          <li>Swap out the STM32 BlackPill for an ArduPilot-compatible flight controller on the rover.</li>
+          <li>Ensure compatibility with future drone and ROS2-based architecture.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 6: Single Drone Integration (DS4 + ArduPilot)</div>
+        <span class="phase-date">ECD December 2025</span>
+        <ul class="phase-list">
+          <li>Control a single quadcopter with ArduPilot using the existing DualShock4 input system.</li>
+          <li>Prepare ROS2-compatible pipeline for swarm expansion.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 7: Drone Swarm Simulation</div>
+        <span class="phase-date">ECD January–March 2026</span>
+        <ul class="phase-list">
+          <li>Simulate swarm coordination and light show choreography in software.</li>
+          <li>Develop synchronization, choreography, and ROS2 control logic for multiple drones.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 8: Proof-of-Concept Swarm Light Show (3 drones)</div>
+        <span class="phase-date">ECD April–May 2026</span>
+        <ul class="phase-list">
+          <li>Deploy a minimum 3-drone light show to demonstrate end-to-end functionality.</li>
+          <li>Serve as the core deliverable for the CSUMB Capstone Project.</li>
+        </ul>
+      </div>
+      <div class="phase-box">
+        <div class="phase-title">Phase 9: Full Swarm Show (Post-Capstone)</div>
+        <span class="phase-date">Target: June 2026+</span>
+        <ul class="phase-list">
+          <li>Scale up to more drones for a larger, synchronized light show performance.</li>
+          <li>Focus on polish, safety, and visual quality for a real audience experience.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
