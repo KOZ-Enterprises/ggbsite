@@ -252,7 +252,7 @@ nav {
   margin: 20px;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 500px) {
   .grid-container {
     grid-template-columns: 1fr;
   }

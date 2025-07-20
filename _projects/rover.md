@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Rover"
-image: "/assets/imgs/rover.png"
+image: "/assets/imgs/rover-transparent.png"
 image_caption: "Rover Prototype"
 description: "Rover is a smart RC car built from scratch with the goal of adding autonomy using sensors and embedded hardware."
 objective: "Develop a rover with wireless control and eventually autonomous navigation."
