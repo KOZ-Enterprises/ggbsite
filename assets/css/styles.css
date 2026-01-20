@@ -406,12 +406,13 @@ footer {
   border: 1px solid #64d5d2; /* Teal border to match your headings */
   transition: 0.3s;
 }
-
+/*
 .tag:hover {
   background-color: #64d5d2;
   color: #141818;
   text-decoration: none; /* Removes the default link underline */
 }
+*/
 .image-grid {
   display: grid;
   gap: 16px;
