@@ -388,6 +388,30 @@ footer {
   border: 2px solid #555;
   border-radius: 8px;
 }
+/* Tag Styles */
+.post-tags {
+  margin-left: 0px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #2e4c5b; /* Matches your navbar hover color */
+  color: #fafafa;
+  padding: 4px ;
+  border-radius: 4px;
+  font-size: 0.75em;
+  font-weight: 500;
+  margin-right: 5px;
+  text-transform: lowercase;
+  border: 1px solid #64d5d2; /* Teal border to match your headings */
+  transition: 0.3s;
+}
+
+.tag:hover {
+  background-color: #64d5d2;
+  color: #141818;
+  text-decoration: none; /* Removes the default link underline */
+}
 .image-grid {
   display: grid;
   gap: 16px;

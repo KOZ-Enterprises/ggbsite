@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst300", "final project" ]
+tags: [ "cst300", "Final Project",'csumb', "bscs" ]
 title: "TerraBit Solutions - Quantum Computing in Cryptography"
 description: "A research project exploring the impact of quantum computing on modern encryption and the future of quantum-safe cryptography."
 project-title: "Quantum Computing Research"
