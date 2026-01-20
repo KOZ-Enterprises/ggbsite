@@ -1,18 +1,15 @@
 ---
 layout: post
-tags: ["cst338", "final project"]
+tags: [ "cst338", "final project" ]
 title: "Pill Hub: Medication Management Application"
 description: "A comprehensive mobile application designed to assist users in managing their medications, schedules, and health safety effectively."
 project-title: "Pill Hub App"
 project-url: "https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph"
 ---
 
-<div style="text-align: center;" class="image-container">
-<a href="https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph" target="_blank" rel="noopener noreferrer">
-<img src="/assets/imgs/CSU_Monterey_Bay_seal.png" alt="Pill Hub App" style="width: 200px"></a>
-</div>
-
-The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph) is a user-centric mobile application designed to simplify medication adherence and health management. It provides a robust set of tools for users to stay organized and informed about their prescriptions. It allows users to:
+The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph) is a user-centric mobile application
+designed to simplify medication adherence and health management. It provides a robust set of tools for users to stay
+organized and informed about their prescriptions. It allows users to:
 
 - **Schedule Reminders**: Set automated notifications for medication dosages to ensure consistency.
 - **Track Inventory**: Monitor remaining pill counts and receive alerts for upcoming refills.
@@ -20,7 +17,8 @@ The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph
 - **Manage User Profiles**: Store personal health data and medication history securely within the application.
 - **Interface with APIs**: Leverage external health databases to provide accurate and up-to-date medication information.
 
-The project combines an intuitive mobile interface with a reliable backend to help users manage their health journeys with confidence.
+The project combines an intuitive mobile interface with a reliable backend to help users manage their health journeys
+with confidence.
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

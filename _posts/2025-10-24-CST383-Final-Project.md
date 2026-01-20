@@ -7,10 +7,6 @@ project-title: "Satellite Identifier"
 project-url: "https://github.com/CST383-Group7/CST383-30_2254_Satellite_Identity"
 ---
 
-<div style="text-align: center;" class="image-container">
-<a href="https://github.com/CST383-Group7/CST383-30_2254_Satellite_Identity" target="_blank" rel="noopener noreferrer">
-<img src="/assets/imgs/CSU_Monterey_Bay_seal.png" alt="Satellite Research" style="width: 200px"></a>
-</div>
 
 This [data science project](https://github.com/CST383-Group7/CST383-30_2254_Satellite_Identity) investigates the relationship between a satellite’s physical characteristics and its intended mission. By developing a predictive model to categorize satellites into six primary classes, the study demonstrated that specific mission types are strongly tied to distinct orbital patterns. Key achievements include:
 

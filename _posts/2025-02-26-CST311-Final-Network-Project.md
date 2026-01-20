@@ -1,23 +1,23 @@
 ---
 layout: post
-tags: ["cst311", "final project"]
+tags: [ "cst311", "final project" ]
 title: "Multi-Router Virtual Network and Group Chat Application"
 description: "A comprehensive networking project involving a virtualized multi-router topology and a custom socket-based group chat service."
 project-title: "Virtual Network & Chat App"
 project-url: "https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8"
 ---
 
-<div style="text-align: center;" class="image-container">
-<a href="https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8" target="_blank" rel="noopener noreferrer">
-<img src="/assets/imgs/CSU_Monterey_Bay_seal.png" alt="Networking Project" style="width: 200px"></a>
-</div>
+This [networking project](https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8) involved the design and
+implementation of a virtualized network environment and a distributed chat application. It demonstrates proficiency in
+low-level networking, routing protocols, and socket programming. Key features include:
 
-This [networking project](https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8) involved the design and implementation of a virtualized network environment and a distributed chat application. It demonstrates proficiency in low-level networking, routing protocols, and socket programming. Key features include:
-
-- **Network Topology**: Built a legacy-style multi-router network using Mininet, featuring multiple subnets and static routing.
-- **Connectivity Verification**: Asssigned IP addresses and configured static routes to ensure full end-to-end connectivity across all hosts.
+- **Network Topology**: Built a legacy-style multi-router network using Mininet, featuring multiple subnets and static
+  routing.
+- **Connectivity Verification**: Asssigned IP addresses and configured static routes to ensure full end-to-end
+  connectivity across all hosts.
 - **Socket Programming**: Extended a custom Python socket-based system into a three-client group chat application.
-- **Automated Deployment**: Programmatically launched the server and clients across different network hosts within the Mininet environment.
+- **Automated Deployment**: Programmatically launched the server and clients across different network hosts within the
+  Mininet environment.
 
 The project showcases the integration of virtualized infrastructure with real-time distributed application development.
 
