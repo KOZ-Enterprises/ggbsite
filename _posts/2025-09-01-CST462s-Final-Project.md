@@ -1,7 +1,7 @@
 ---
 layout: post
-tags: ["cst462s", "final project"]
-title: "Impact of GPS Tools on Spatial Awareness"
+tags: ["cst462s", "final project",'csumb', "bscs"]
+title: "CST462s - Impact of GPS Tools on Spatial Awareness"
 description: "A research paper exploring the effects of GPS technology on the cognitive mapping abilities and spatial orientation of younger generations."
 project-title: "GPS & Cognitive Mapping"
 project-url: "/assets/docs/gps_paper.pdf"

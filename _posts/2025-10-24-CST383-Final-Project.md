@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: ["cst383", "final project"]
+tags: ["cst383", "final project",'csumb', "bscs"]
 title: "Satellite Identifier: Predictive Modeling"
 description: "A machine learning project investigating the relationship between a satellite’s physical characteristics and its intended orbital mission."
 project-title: "Satellite Identifier"

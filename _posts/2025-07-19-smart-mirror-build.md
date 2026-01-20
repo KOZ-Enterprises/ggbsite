@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Improved Smart Mirror Build"
-tags: ["Smart Mirror"]
+tags: ["Smart Mirror","hobby projects"]
 ---
 <div class="image-container">
 <a href="/assets/imgs/magicmirror_final_cropped.jpg" target="_blank">

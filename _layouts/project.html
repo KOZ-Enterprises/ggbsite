@@ -45,8 +45,6 @@ layout: default
 </ul>
 
 
-
-
 <!-- Updates Section -->
 {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
 project_posts.size > 0 %}
@@ -69,6 +67,15 @@ project_posts.size > 0 %}
 <div class="post" id="{{ post.id }}">
     <h2>{{ post.title }}</h2>
     <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
+    {% if post.tags %}
+    <div class="post-tags">
+        {% for tag in post.tags %}
+        <span class="tag">
+            #{{ tag }}
+        </span>
+        {% endfor %}
+    </div>
+    {% endif %}
     <p class="content">{{ post.content }}</p>
     <p><a href="#top" class="back-to-top">Back to Top</a></p>
 </div>
