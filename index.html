@@ -14,7 +14,7 @@ title: Gary Gigabytes
 <!-- Update List -->
 <h3>Recent Updates</h3>
 <ul class="fa-ul update-links" style="--fa-li-margin: 15px">
-    {% for post in site.posts limit:4 %}
+    {% for post in site.posts limit:10 %}
     <li>
         <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
         [{{ post.date | date: "%Y-%m-%d" }}]
