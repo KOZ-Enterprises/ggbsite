@@ -5,7 +5,7 @@ title: "TerraBit Solutions - Quantum Computing in Cryptography"
 description: "A research project exploring the impact of quantum computing on modern encryption and the future of quantum-safe cryptography."
 project-title: "Quantum Computing Research"
 project-url: "https://www.youtube.com/embed/Ps1hElV-MJs?si=GipEdbDwQyS1A-RX"
-image: "/assets/imgs/stock/underconstruction.png"
+image: "/assets/imgs/ggbytes-square.png"
 ---
 
 

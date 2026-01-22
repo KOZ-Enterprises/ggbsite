@@ -6,7 +6,7 @@ description: "Culinary Otter is a user-friendly web application designed for stu
 project-title: "Culinary Otter"
 project-url: "https://culinaryotter.garygigabytes.com/"
 
-image: "/assets/imgs/stock/underconstruction.png"
+image: "/assets/imgs/ggbytes-square.png
 ---
 
 <div style="text-align: center;" class="image-container">

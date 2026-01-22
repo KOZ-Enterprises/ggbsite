@@ -5,7 +5,7 @@ title: "Multi-Router Virtual Network and Group Chat Application"
 description: "A comprehensive networking project involving a virtualized multi-router topology and a custom socket-based group chat service."
 project-title: "Virtual Network & Chat App"
 project-url: "https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8"
-image: "/assets/imgs/stock/underconstruction.png"
+image: "/assets/imgs/ggbytes-square.png"
 ---
 
 This [networking project](https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8) involved the design and
