@@ -19,7 +19,7 @@ permalink: /csumb/
 <hr>
 <h2 style="text-align:center">Project Showcase</h2>
 <div class="grid-container">
-  {% assign sorted_projects = site.posts | where: "tags", "csumb" %}
+  {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
 
   {% for project in sorted_projects %}
     {% include project-card.html project=project  %}
