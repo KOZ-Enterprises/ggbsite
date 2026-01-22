@@ -5,7 +5,7 @@ title: "TerraBit Solutions - Quantum Computing in Cryptography"
 description: "A research project exploring the impact of quantum computing on modern encryption and the future of quantum-safe cryptography."
 project-title: "Quantum Computing Research"
 project-url: "https://www.youtube.com/embed/Ps1hElV-MJs?si=GipEdbDwQyS1A-RX"
-image: "/assets/imgs/ggbytes-square.png"
+image: "/assets/imgs/project/quantum.png"
 ---
 
 
@@ -13,13 +13,13 @@ This research project explores the impact of quantum computing on cryptography a
 overview of quantum computing, its potential applications in cryptography, and the challenges it poses to traditional
 encryption methods. This project covers:
 
-<!--more-->
+
 
 - **Quantum Basics**: Explained the foundational principles of quantum computing and its computational power.
 - **Cryptographic Threats**: Highlighted the specific threats quantum processors pose to current RSA and ECC encryption.
 - **Quantum-Safe Solutions**: Discussed emerging post-quantum cryptographic algorithms and standards.
 - **Cybersecurity Adaptation**: Emphasized the urgency of transitioning to quantum-resistant communication protocols.
-
+<!--more-->
 The project highlights the critical need for secure communication in the quantum era and evaluates the current state of
 quantum-safe technology.
 

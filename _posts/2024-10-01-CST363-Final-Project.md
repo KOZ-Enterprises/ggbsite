@@ -5,7 +5,7 @@ title: "Pharmacy Database System"
 description: "A relational database design for managing patient prescriptions, medical providers, and pharmacy inventories."
 project-title: "Pharmacy Database"
 project-url: "/assets/docs/Lab 19 Web App JDBC.pdf"
-image: "/assets/imgs/ggbytes-square.png"
+image: "/assets/imgs/project/database.png"
 ---
 
 This [database project](/assets/docs/Lab 19 Web App JDBC.pdf) focuses on the design and implementation of a relational

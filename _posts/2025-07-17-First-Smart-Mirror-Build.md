@@ -7,8 +7,8 @@ tags: ["smart-mirror", "hobby-projects"]
 I built my first [smart mirror](/projects/smartmirror/) using a Raspberry Pi 3+ and an old monitor I have lying around a year ago.  After the PI stopped working I opened it back up to figure out why it stopped working.  In process of doing so I accidentally shorted the 110V circuit and the circuit breaker in my apartment tripped.  So I basically fried the monitor and PI so opted to start over with a newer monitor.
 
 <div class="image-container">
-<a href="/assets/imgs/magicmirrorbuildfinal_cropped.jpg" target="_blank">
-    <img src="/assets/imgs/magicmirrorbuildfinal_cropped.jpg" alt="Smart Mirror" class="project-image" style="width: 600px">
+<a href="/assets/imgs/smartmirror/magicmirrorbuildfinal_cropped.jpg" target="_blank">
+    <img src="/assets/imgs/smartmirror/magicmirrorbuildfinal_cropped.jpg" alt="Smart Mirror" class="project-image" style="width: 600px">
 </a> <p class="caption"> The original build using an old 720p monitor, which fit perfectly in the frame!</p>
 </div>
 
@@ -16,8 +16,8 @@ I built my first [smart mirror](/projects/smartmirror/) using a Raspberry Pi 3+ 
 I'll be posting the new monitor build soon, but wanted to share my original build for funsies.  I do miss how the old monitor fit perfectly in the frame I had, but the viewing angle was terrible.  
 <!--more-->
 <div class="image-container">
-<a href="/assets/imgs/magicmirror_annotated.png" target="_blank">
-    <img src="/assets/imgs/magicmirror_annotated.png" alt="Smart Mirror" class="project-image" style="width: 600px">
+<a href="/assets/imgs/smartmirror/magicmirror_annotated.png" target="_blank">
+    <img src="/assets/imgs/smartmirror/magicmirror_annotated.png" alt="Smart Mirror" class="project-image" style="width: 600px">
 </a>
 <p class="caption">The 3 monitor PCBs are visible.  I was able to find where the AC power gets convert to ~18VDC, where I soldered in the 5V DC-DC converter to power the pi.  Also note a PI Zero is shown which DOES NOT WORK btw.  From experience it's best to use a PI4 and above. </p>
 </div>
