@@ -1,25 +1,25 @@
 <div class="project-summary">
     <a href="{{ project.url }}" rel="noopener noreferrer">
-      <div class="project-content">
-        {% if project.image %}
-        <img
-          src="{{ project.image }}"
-          alt="{{ project.title }} Preview"
-          class="project-image"
-        />
-        {% endif %}
-        <div class="overlay-title">
-          <h2>{{ project.title }}
-            {% if project.status %}
-            <span style="color: gray">({{ project.status }})</span>
+        <div class="project-content">
+            {% if project.image %}
+            <img
+                    src="{{ project.image }}"
+                    alt="{{ project.title }} Preview"
+                    class="project-image"
+            />
             {% endif %}
-          </h2>
+            <div class="overlay-title">
+                <h2>{{ project.title }}
+                    {% if project.status %}
+                    <span style="color: gray">({{ project.status }})</span>
+                    {% endif %}
+                </h2>
+            </div>
+            {% if project.description %}
+            <div class="overlay-description">
+                <p>{{ project.description }}</p>
+            </div>
+            {% endif %}
         </div>
-        {% if project.description %}
-        <div class="overlay-description">
-          <p>{{ project.description }}</p>
-        </div>
-        {% endif %}
-      </div>
     </a>
-  </div>
+</div>

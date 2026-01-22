@@ -14,7 +14,7 @@ I built my first [smart mirror](/projects/smartmirror/) using a Raspberry Pi 3+ 
 
 
 I'll be posting the new monitor build soon, but wanted to share my original build for funsies.  I do miss how the old monitor fit perfectly in the frame I had, but the viewing angle was terrible.  
-
+<!--more-->
 <div class="image-container">
 <a href="/assets/imgs/magicmirror_annotated.png" target="_blank">
     <img src="/assets/imgs/magicmirror_annotated.png" alt="Smart Mirror" class="project-image" style="width: 600px">

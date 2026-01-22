@@ -13,6 +13,8 @@ This research project explores the impact of quantum computing on cryptography a
 overview of quantum computing, its potential applications in cryptography, and the challenges it poses to traditional
 encryption methods. This project covers:
 
+<!--more-->
+
 - **Quantum Basics**: Explained the foundational principles of quantum computing and its computational power.
 - **Cryptographic Threats**: Highlighted the specific threats quantum processors pose to current RSA and ECC encryption.
 - **Quantum-Safe Solutions**: Discussed emerging post-quantum cryptographic algorithms and standards.

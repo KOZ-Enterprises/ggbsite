@@ -1,22 +1,25 @@
 ---
 layout: default
 ---
-
+<div class ="post-page">
 <!-- Post Title -->
-<h1 class="post-title">{{ page.title }}</h1>
+<h2 class="post-title">{{ page.title }}</h2>
 
 <!-- Post Metadata -->
-<p class="post-meta">
+<p class="post-date">
     Published on {{ page.date | date: "%B %d, %Y" }}
     
 </p>
 
-{% if post.tags %}
+{% if page.tags %}
 <div class="post-tags">
-    {% for tag in post.tags %}
-    <span class="tag">
-        #{{ tag }}
-    </span>
+    {% for tag in page.tags %}
+        {% assign custom_url = site.data.tag_links[tag] %}
+        {% if custom_url %}
+            <a class="tag" href="{{ custom_url }}">#{{ tag }}</a>
+        {% else %}
+            <a class="tag" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+        {% endif %}
     {% endfor %}
 </div>
 {% endif %}
@@ -26,3 +29,4 @@ layout: default
     {{ content }}
 </div>
 
+</div>

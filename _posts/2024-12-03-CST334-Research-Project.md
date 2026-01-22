@@ -12,6 +12,8 @@ This [research presentation](https://www.youtube.com/embed/93KtbAT6_Tg?si=ubwsZc
 the diverse landscape of undergraduate research. The project focuses on identifying high-impact opportunities for
 students to engage with emerging technologies and academic inquiry. This presentation covers:
 
+<!--more-->
+
 - **Program Identification**: Explored various local and national research programs available to undergraduate students.
 - **Application Process**: Outlined the essential steps for successfully securing research positions and internships.
 - **Academic Benefits**: Highlighted how early research experience contributes to long-term career success and graduate

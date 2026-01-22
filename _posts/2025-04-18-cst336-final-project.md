@@ -25,3 +25,4 @@ image: "/assets/imgs/stock/underconstruction.png"
 - **Enjoy food images** provided via an external API.
 
 The project combines a robust backend, external APIs, and a polished front end to deliver a seamless culinary experience.
+<!--more-->

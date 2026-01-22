@@ -12,6 +12,8 @@ The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph
 designed to simplify medication adherence and health management. It provides a robust set of tools for users to stay
 organized and informed about their prescriptions. It allows users to:
 
+<!--more-->
+
 - **Schedule Reminders**: Set automated notifications for medication dosages to ensure consistency.
 - **Track Inventory**: Monitor remaining pill counts and receive alerts for upcoming refills.
 - **Access Safety Info**: View critical information regarding side effects and potential drug-to-drug interactions.

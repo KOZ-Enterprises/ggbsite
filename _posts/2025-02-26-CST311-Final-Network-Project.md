@@ -12,6 +12,8 @@ This [networking project](https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9
 implementation of a virtualized network environment and a distributed chat application. It demonstrates proficiency in
 low-level networking, routing protocols, and socket programming. Key features include:
 
+<!--more-->
+
 - **Network Topology**: Built a legacy-style multi-router network using Mininet, featuring multiple subnets and static
   routing.
 - **Connectivity Verification**: Asssigned IP addresses and configured static routes to ensure full end-to-end

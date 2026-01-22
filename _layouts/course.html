@@ -13,7 +13,7 @@ layout: default
 {% assign filtered_posts = site.posts | where: "tags", page.slug %}
 {% if filtered_posts.size > 0 %}
 {% for post in filtered_posts %}
-{% include post.html post=post  %}
+{% include post.html post=post type="excerpt"  %}
 {% endfor %}
 {% else %}
 <p>...</p>

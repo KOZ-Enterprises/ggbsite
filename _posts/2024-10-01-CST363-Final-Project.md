@@ -12,6 +12,8 @@ This [database project](/assets/docs/Lab 19 Web App JDBC.pdf) focuses on the des
 system tailored for pharmacy operations. It supports the tracking of patient health records, medication distribution,
 and financial costs. This project includes:
 
+<!--more-->
+
 - **Entity Modeling**: Architected a schema around five core entities: Doctor, Patient, Drug, Pharmacy, and
   Prescription.
 - **Relational Integrity**: Implemented junction tables such as `prescription_refill` to track medication history and

@@ -5,7 +5,12 @@
     {% if include.post.tags %}
     <div class="post-tags">
         {% for tag in include.post.tags %}
-        <span class="tag">#{{ tag }}</span>
+            {% assign custom_url = site.data.tag_links[tag] %}
+            {% if custom_url %}
+                <a class="tag" href="{{ custom_url }}">#{{ tag }}</a>
+            {% else %}
+                <a class="tag" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+            {% endif %}
         {% endfor %}
     </div>
     {% endif %}

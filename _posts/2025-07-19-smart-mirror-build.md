@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Improved Smart Mirror Build"
-tags: ["Smart Mirror","hobby projects"]
+tags: ["smart-mirror","hobby-projects"]
 ---
 <div class="image-container">
 <a href="/assets/imgs/magicmirror_final_cropped.jpg" target="_blank">
@@ -10,7 +10,7 @@ tags: ["Smart Mirror","hobby projects"]
 </div>
 
 I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The project is uses MagicMirror² software, which provides a customizable interface for displaying information like time, weather, news. 
-
+<!--more-->
 ### Components
 - [MagicMirror² software](https://magicmirror.builders/)
 - [Raspberry Pi 4 1GB](https://www.pishop.us/product/raspberry-pi-4-model-b-1gb/)

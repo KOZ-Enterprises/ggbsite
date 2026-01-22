@@ -1,11 +1,12 @@
 <div class="navbar" id="myNavbar">
-  <div class="icon" onclick="toggleNavbar()">
-    <i class="fa fa-bars"></i>
-  </div>
-  <div class="nav-links">
-    <a href="/index.html" class="{% if page.url == '/' %}active{% endif %}">Home</a>
-    <a href="/projects/" class="{% if page.url == '/projects/' %}active{% endif %}">Hobby Projects</a>
-    <a href="/csumb/" class="{% if page.url == '/csumb/' %}active{% endif %}">CS Portfolio</a>
-    <a href="/about/" class="{% if page.url == '/about/' %}active{% endif %}">About</a>
-  </div>
+    <div class="icon" onclick="toggleNavbar()">
+        <i class="fa fa-bars"></i>
+    </div>
+    <div class="nav-links">
+        <a href="/index.html" class="{% if page.url == '/' %}active{% endif %}">Home</a>
+        <a href="/csumb/" class="{% if page.url == '/csumb/' %}active{% endif %}">CS Portfolio</a>
+
+        <a href="/projects/" class="{% if page.url == '/projects/' %}active{% endif %}">Hobby Projects</a>
+        <a href="/about/" class="{% if page.url == '/about/' %}active{% endif %}">About</a>
+    </div>
 </div>
