@@ -5,6 +5,7 @@ title: "SuperUber: Software Requirements Specification"
 description: "A comprehensive requirements and design document for a mobile-based ride-sharing application."
 project-title: "SuperUber SRS"
 project-url: "/assets/docs/2025Fall_SRS_gary_kuepper.pdf"
+image: "/assets/imgs/stock/underconstruction.png"
 ---
 
 SuperUber is a mobile-based ride-sharing platform designed to streamline on-demand transportation by connecting customers and drivers through a robust, cloud-hosted backend. The system manages the entire ride lifecycle—from initial request and real-time price estimation to arrival, pickup, and completion. Key features include:

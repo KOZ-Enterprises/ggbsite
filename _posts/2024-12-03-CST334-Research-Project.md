@@ -5,6 +5,7 @@ title: "Undergraduate Research Project"
 description: "A research presentation exploring various undergraduate research opportunities and academic pathways within the field of computer science."
 project-title: "Research Opportunities"
 project-url: "https://www.youtube.com/embed/93KtbAT6_Tg?si=ubwsZc2qj2xicml7"
+image: "/assets/imgs/stock/underconstruction.png"
 ---
 
 This [research presentation](https://www.youtube.com/embed/93KtbAT6_Tg?si=ubwsZc2qj2xicml7) provides an in-depth look at

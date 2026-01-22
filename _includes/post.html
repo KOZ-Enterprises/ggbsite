@@ -1,0 +1,23 @@
+<div class="post" id="{{ include.post.id }}">
+    <h2><a href="{{ include.post.url }}">{{ include.post.title }}</a></h2>
+    <p class="date">{{ include.post.date | date: "%B %d, %Y" }}</p>
+
+    {% if include.post.tags %}
+    <div class="post-tags">
+        {% for tag in include.post.tags %}
+        <span class="tag">#{{ tag }}</span>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <div class="post-content">
+        {% if include.type == "excerpt" %}
+            {{ include.post.excerpt }}
+            <p><a href="{{ include.post.url }}">Read More...</a></p>
+        {% else %}
+            {{ include.post.content }}
+        {% endif %}
+    </div>
+
+    <p><a href="#top" class="back-to-top">Back to Top</a></p>
+</div>

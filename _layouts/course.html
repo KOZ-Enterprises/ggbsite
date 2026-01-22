@@ -13,21 +13,7 @@ layout: default
 {% assign filtered_posts = site.posts | where: "tags", page.slug %}
 {% if filtered_posts.size > 0 %}
 {% for post in filtered_posts %}
-<div class="post" id="{{ post.id }}">
-    <h2>{{ post.title }}</h2>
-    <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-    {% if post.tags %}
-    <div class="post-tags">
-        {% for tag in post.tags %}
-        <span class="tag">
-            #{{ tag }}
-        </span>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <p class="content">{{ post.content }}</p>
-    <p><a href="#top" class="back-to-top">Back to Top</a></p>
-</div>
+{% include post.html post=post  %}
 {% endfor %}
 {% else %}
 <p>...</p>

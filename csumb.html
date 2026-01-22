@@ -4,7 +4,6 @@ title: CSUMB
 permalink: /csumb/
 ---
 
-<h1 class="heading">BS Computer Science Portfolio</h1>
 <div style="display: flex; justify-content: center">
   <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal" />
 </div>
@@ -20,25 +19,12 @@ permalink: /csumb/
 <hr>
 <h2 style="text-align:center">Project Showcase</h2>
 <div class="grid-container">
-  
-  <div class="project-summary" style="width: 400px; margin: 0 auto;">
-    <a href="https://culinaryotter.garygigabytes.com/" target="_blank"="noopener noreferrer">
-      <div class="project-content">
-        <img src="/assets/imgs/culinaryotter-square.png" alt="Culinary Otter" class="project-image">
+  {% assign sorted_projects = site.posts | where: "tags", "csumb" %}
 
-        <div class="overlay-title">
-          <h2>Culinary Otter</h2>
-        </div>
-
-        <div class="overlay-description">
-          <p>Culinary Otter is a user-friendly web application designed for students and home cooks seeking culinary inspiration.</p>
-        </div>
-
-      </div>
-    </a>
-  </div>
+  {% for project in sorted_projects %}
+    {% include project-card.html project=project  %}
+  {% endfor %}
 </div>
-
 <strong>Course List:</strong>
 
 <div style="margin-left: 20px">

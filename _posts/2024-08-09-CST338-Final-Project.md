@@ -5,6 +5,7 @@ title: "Pill Hub: Medication Management Application"
 description: "A comprehensive mobile application designed to assist users in managing their medications, schedules, and health safety effectively."
 project-title: "Pill Hub App"
 project-url: "https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph"
+image: "/assets/imgs/stock/underconstruction.png"
 ---
 
 The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph) is a user-centric mobile application
