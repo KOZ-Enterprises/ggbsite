@@ -2,63 +2,71 @@
 layout: default
 ---
 
-<h1 class="heading">{{ page.title }}</h1>
 
-<!-- Project Image -->
-{% if page.image %}
-<div class="image-container">
-    <img src="{{ page.image }}" alt="Project Image" class="project-image"/>
-</div>
-{% endif %}
 
-<!-- Project Overview -->
-<ul style="list-style-type: none">
-    <li>
-        <strong>Overview:</strong> {{ page.description }}
-    </li>
-    <li>
-        <strong>Status:</strong> {{ page.status | default: "Not specified" }}
-    </li>
-    <li>
-        <strong>Objective:</strong> {{ page.objective | default: "Not specified" }}
-    </li>
-    {% if page.technologies %}
-    <li>
-        <strong>Technologies:</strong> {{ page.technologies }}
-    </li>
-    {% endif %}
-    <!-- Resources Section -->
-    {% if page.resources %}
-    <li><strong>Resources:</strong>
-        <ul class="fa-ul" style="--fa-li-margin: 30px">
-            {% for resource in page.resources %}
+<div class="grid-container" >
+
+
+    <div class="project-overview">
+        <h1 class="heading">{{ page.title }}</h1>
+        <!-- Project Overview -->
+        <ul style="list-style-type: none">
             <li>
-                <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-link' }}"></i></span>
-                <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.name }}</a>
+                <strong>Overview:</strong> {{ page.description }}
             </li>
-            {% endfor %}
+            <li>
+                <strong>Status:</strong> {{ page.status | default: "Not specified" }}
+            </li>
+            <li>
+                <strong>Objective:</strong> {{ page.objective | default: "Not specified" }}
+            </li>
+
+            <li>
+                <strong>Tools:</strong> {{ page.tools | default: "Not specified"}}
+            </li>
+
+            <!-- Resources Section -->
+            {% if page.resources %}
+            <li><strong>Resources:</strong>
+                <ul class="fa-ul" style="--fa-li-margin: 30px">
+                    {% for resource in page.resources %}
+                    <li>
+                        <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-link' }}"></i></span>
+                        <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+
+            </li>
+
+            {% endif %}
         </ul>
-
-    </li>
-
+        <!-- Updates Section -->
+<div class="updates-section">
+    {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
+    project_posts.size > 0 %}
+    <h3>Updates</h3>
+    <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
+        {% for post in project_posts %}
+        <li>
+            <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+            [{{ post.date | date: "%Y-%m-%d" }}]
+            <a href="#{{ post.id }}">{{ post.title }}</a>
+        </li>
+        {% endfor %}
+    </ul>
     {% endif %}
-</ul>
+</div>
+    </div>
+    <!-- Project Image -->
+    {% if page.image %}
+    <div class="image-container">
+        <img src="{{ page.image }}" alt="Project Image" class="project-image"/>
+    </div>
+    {% endif %}
+</div>
 
 
-<!-- Updates Section -->
-{% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
-project_posts.size > 0 %}
-<h3>Updates</h3>
-<ul class="fa-ul update-links" style="--fa-li-margin: 30px">
-    {% for post in project_posts %}
-    <li>
-        <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-        [{{ post.date | date: "%Y-%m-%d" }}]
-        <a href="#{{ post.id }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-</ul>
-{% endif %}
 <hr>
 <!-- Posts -->
 {% assign filtered_posts = site.posts | where: "tags", page.project-tag %}

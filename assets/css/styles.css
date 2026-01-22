@@ -13,7 +13,7 @@ body {
     justify-content: center;
 }
 
-h1, h2, h3 {
+h1, h2 {
     color: #64d5d2;
 }
 
@@ -31,6 +31,7 @@ h3 {
     font-size: 1.25em;
     font-style: italic;
     font-weight: 500;
+
 }
 
 p {
@@ -39,7 +40,7 @@ p {
 }
 
 ul, ol {
-    margin: 20px 0;
+    margin: 5px 0;
     padding-left: 30px;
 }
 
@@ -53,8 +54,22 @@ ol li {
 
 .heading {
     text-align: center;
-    border-bottom: 2px dashed #555;
+    /*border-bottom: 2px dashed #555;*/
     padding-bottom: 2px;
+}
+
+.updates-section h3 {
+    text-align: center;
+    margin-bottom: 5px;
+}
+
+.updates-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.updates-section ul {
+    align-self: center;
 }
 
 a, a:visited {
@@ -192,7 +207,7 @@ nav {
 }
 
 .post h2,
-.post-page h2{
+.post-page h2 {
     margin-bottom: 5px;
 
 }
@@ -203,7 +218,7 @@ nav {
     font-size: 0.9em;
     margin-bottom: 0.2em;
     font-style: italic;
-    margin-top: 0px;
+    margin-top: 0;
 }
 
 .post .content {
@@ -407,7 +422,7 @@ footer {
 
 /* Tag Styles */
 .post-tags {
-    margin-left: 0px;
+    margin-left: 0;
     margin-bottom: 10px;
 }
 

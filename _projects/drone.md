@@ -7,4 +7,5 @@ objective: "Build a simple drone n stuff yo"
 status: "On Hold"
 order: 6
 project-tag: "Drone"
+tools: "Solidworks, Onshape, Arduino, C++, Clion, PlatformIO"
 ---

@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: ["cst462s", "final project",'csumb', "bscs"]
+tags: ["cst462s", 'csumb']
 title: "Impact of GPS Tools on Spatial Awareness"
 description: "A research paper exploring the effects of GPS technology on the cognitive mapping abilities and spatial orientation of younger generations."
 project-title: "GPS & Cognitive Mapping"
@@ -8,7 +8,7 @@ project-url: "/assets/docs/gps_paper.pdf"
 image: "/assets/imgs/stock/underconstruction.png"
 ---
 
-This research paper for [CST462S](/csumb/cst462s) explores the effects of GPS technology on the spatial awareness and cognitive mapping abilities of younger individuals, particularly in the context of their everyday navigation and understanding of the environment. Key areas of investigation include:
+This research paper for [CST462S](/csumb/cst462s/) explores the effects of GPS technology on the spatial awareness and cognitive mapping abilities of younger individuals, particularly in the context of their everyday navigation and understanding of the environment. Key areas of investigation include:
 <!--more-->
 - **Navigation Reliance**: Examined the shift from traditional map-reading skills to a heavy reliance on GPS for daily navigation.
 - **Mental Mapping**: Investigated how automated turn-by-turn directions impact the development of mental maps and spatial orientation.
