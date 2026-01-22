@@ -314,6 +314,7 @@ nav {
   background: rgba(20, 24, 24, 0.85);
   color: #64d5d2;
   text-align: center;
+  font-style: italic;
   
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;

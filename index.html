@@ -10,23 +10,33 @@ title: Gary Gigabytes
         <a href="/projects/">weekend experiments</a> involving wires, code, and
         occasional smoke...</em>
 </p>
+<div class="grid-container">
+    <!-- Update List -->
+    <div>
+        <h3>Recent Updates</h3>
+        <ul class="fa-ul update-links" style="--fa-li-margin: 15px">
+            {% for post in site.posts limit:10 %}
+            <li>
+                <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+                [{{ post.date | date: "%Y-%m-%d" }}]
+                <a href="#{{ post.id }}">{{ post.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+               <h3>Project Highlight</h3>
 
-<!-- Update List -->
-<h3>Recent Updates</h3>
-<ul class="fa-ul update-links" style="--fa-li-margin: 15px">
-    {% for post in site.posts limit:10 %}
-    <li>
-        <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-        [{{ post.date | date: "%Y-%m-%d" }}]
-        <a href="#{{ post.id }}">{{ post.title }}</a>
-    </li>
-    {% endfor %}
-</ul>
-
+        {% assign sorted_projects = site.posts | where: "tags", "cst383" %}
+        {% for project in sorted_projects %}
+        {% include project-card.html project=project %}
+        {% endfor %}
+    </div>
+</div>
 <hr/>
 
 <!-- Posts -->
 {% for post in site.posts %}
-  {% include post.html post=post  %}
+{% include post.html post=post  %}
 {% endfor %}
 

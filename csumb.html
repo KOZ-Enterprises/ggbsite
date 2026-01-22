@@ -3,35 +3,34 @@ layout: default
 title: CSUMB
 permalink: /csumb/
 ---
-
-<div style="display: flex; justify-content: center">
-  <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal" />
-</div>
-<p>
-  After earning my first degree in Mechanical Engineering, I spent years
-  building a career rooted in systems, problem-solving, and design. But I always
-  had a curiosity for computer science — an itch I never really scratched. Now,
-  through CSUMB's post-baccalaureate program, I’m finally diving in. This second
-  bachelor’s is my way of exploring where that curiosity can take me, especially
-  at the intersection of engineering and emerging technologies like AI and
-  machine learning.
-</p>
-<hr>
-<h2 style="text-align:center">Project Showcase</h2>
+        <p>
+            After earning my first degree in Mechanical Engineering, I spent years
+            building a career rooted in systems, problem-solving, and design. But I always
+            had a curiosity for computer science — an itch I never really scratched. Now,
+            through CSUMB's post-baccalaureate program, I’m finally diving in. This second
+            bachelor’s is my way of exploring where that curiosity can take me, especially
+            at the intersection of engineering and emerging technologies like AI and
+            machine learning.
+        </p>
 <div class="grid-container">
-  {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
 
-  {% for project in sorted_projects %}
-    {% include project-card.html project=project  %}
-  {% endfor %}
-</div>
-<strong>Course List:</strong>
+    <div style="text-align: center">
+        <div style="display: flex; justify-content: center">
+            <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal"/>
+        </div>
+            <p><i>California State University, Monterey Bay</i></p>
 
-<div style="margin-left: 20px">
+    </div>
+    <div style="
+  margin-left: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+"><strong>List of Completed Courses and In-Progress Courses:</strong>
 
-  <ul class="fa-ul" style="--fa-li-margin: 15px">
-    {% for course in site.csumb %}
-    <li>
+        <ul class="fa-ul" style="--fa-li-margin: 15px">
+            {% for course in site.csumb %}
+            <li>
       <span class="fa-li">
         {% if course.status == "completed" %}
         <i class="fa-regular fa-check-square"></i>
@@ -41,9 +40,21 @@ permalink: /csumb/
         <i class="fa-regular fa-square"></i>
         {% endif %}
       </span>
-      <a href="{{ course.url }}">{{ course.title }}</a>
-    </li>
-    {% endfor %}
-  </ul>
+                <a href="{{ course.url }}">{{ course.title }}</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </div>
-<br />
+<hr>
+<h2 style="text-align:center">Project Showcase</h2>
+<div class="grid-container">
+    {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
+
+    {% for project in sorted_projects %}
+    {% include project-card.html project=project %}
+    {% endfor %}
+</div>
+
+
+<br/>
