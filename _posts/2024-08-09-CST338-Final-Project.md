@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst338", "final project" ,'csumb', "bscs"]
+tags: [ "cst338", 'csumb']
 title: "Pill Hub: Medication Management Application"
 description: "A comprehensive mobile application designed to assist users in managing their medications, schedules, and health safety effectively."
 project-title: "Pill Hub App"

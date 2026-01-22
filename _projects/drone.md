@@ -6,6 +6,12 @@ description: "The Drone project focuses on designing a quadcopter platform with 
 objective: "Build a simple drone n stuff yo"
 status: "On Hold"
 order: 6
-project-tag: "Drone"
-tools: "Solidworks, Onshape, Arduino, C++, Clion, PlatformIO"
+project-tag: "drone"
+tools: 
+  - name: "Solidworks"
+  - name: "Onshape"
+  - name: "Arduino"
+  - name: "C++"
+  - name: "Clion"
+  - name: "PlatformIO"
 ---

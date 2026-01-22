@@ -1,8 +1,25 @@
-# _data/tag_links.yml
-cst462s: /csumb/cst462s/
+# CSUMB course tags -> course pages
+csumb: /csumb/
+cst300: /csumb/cst300/
+cst311: /csumb/cst311/
+cst334: /csumb/cst334/
+cst336: /csumb/cst336/
+cst338: /csumb/cst338/
+cst363: /csumb/cst363/
+cst370: /csumb/cst370/
 cst383: /csumb/cst383/
 cst438: /csumb/cst438/
-csumb: /csumb/
-smart-mirror: /projects/smartmirror/
-hobby-projects: /projects/
+cst462s: /csumb/cst462s/
+cst489: /csumb/cst489/
+cst499: /csumb/cst499/
+
+# Project tags -> project pages
+drone: /projects/drone/
+ggbytes: /projects/ggbytes/
 gary-gigabytes: /projects/ggbytes/
+rover: /projects/rover/
+smartmirror: /projects/smartmirror/
+smart-mirror: /projects/smartmirror/
+
+# Optional category tags -> hub pages
+hobby-projects: /projects/

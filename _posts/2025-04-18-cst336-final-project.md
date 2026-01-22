@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: ["cst336", "final project",'csumb', "bscs"]
+tags: ["cst336", 'csumb']
 title: "Culinary Otter: A Recipe Web Application"
 description: "Culinary Otter is a user-friendly web application designed for students and home cooks seeking culinary inspiration."
 project-title: "Culinary Otter"

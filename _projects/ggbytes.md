@@ -7,5 +7,12 @@ objective: "Create a clean, responsive website to document and organize my CS jo
 status: "In Progress"
 project-tag: "gary-gigabytes"
 order: 0
-tools: "HTML, CSS, Jekyll, Webstorm IDE, Docker, nginx"
+tools: 
+  - name: "HTML"
+  - name: "CSS"
+  - name: "Jekyll"
+  - name: "Webstorm IDE"
+  - name: "Docker"
+  - name: "nginx"
+  
 ---

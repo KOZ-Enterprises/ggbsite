@@ -3,8 +3,7 @@ layout: default
 ---
 
 
-
-<div class="grid-container" >
+<div class="grid-container">
 
 
     <div class="project-overview">
@@ -20,11 +19,20 @@ layout: default
             <li>
                 <strong>Objective:</strong> {{ page.objective | default: "Not specified" }}
             </li>
-
+            <!--Tools Section -->
+            {% if page.tools %}
             <li>
-                <strong>Tools:</strong> {{ page.tools | default: "Not specified"}}
-            </li>
+                <strong>Tools:</strong>
 
+                    {% for tool in page.tools %}
+
+                    {{ tool.name}}{% if forloop.last == false %}, {% endif %}
+
+                    {% endfor %}
+
+
+            </li>
+            {% endif %}
             <!-- Resources Section -->
             {% if page.resources %}
             <li><strong>Resources:</strong>
@@ -42,28 +50,30 @@ layout: default
             {% endif %}
         </ul>
         <!-- Updates Section -->
-<div class="updates-section">
-    {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
-    project_posts.size > 0 %}
-    <h3>Updates</h3>
-    <ul class="fa-ul update-links" style="--fa-li-margin: 30px">
-        {% for post in project_posts %}
-        <li>
-            <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-            [{{ post.date | date: "%Y-%m-%d" }}]
-            <a href="#{{ post.id }}">{{ post.title }}</a>
-        </li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</div>
+        <div class="updates-section">
+            {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
+            project_posts.size > 0 %}
+            <h3>Updates</h3>
+            <ul class="fa-ul update-links">
+                {% for post in project_posts %}
+                <li>
+                    <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
+                    [{{ post.date | date: "%Y-%m-%d" }}]
+                    <a href="#{{ post.id }}">{{ post.title }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
     </div>
     <!-- Project Image -->
+    <div style="align-content: center">
     {% if page.image %}
     <div class="image-container">
         <img src="{{ page.image }}" alt="Project Image" class="project-image"/>
     </div>
     {% endif %}
+        </div>
 </div>
 
 

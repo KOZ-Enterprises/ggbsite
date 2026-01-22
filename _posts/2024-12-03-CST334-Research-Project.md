@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst334", "final project" ,'csumb', "bscs"]
+tags: [ "cst334", 'csumb']
 title: "Undergraduate Research Project"
 description: "A research presentation exploring various undergraduate research opportunities and academic pathways within the field of computer science."
 project-title: "Research Opportunities"

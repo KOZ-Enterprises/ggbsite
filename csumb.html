@@ -12,7 +12,7 @@ permalink: /csumb/
     at the intersection of engineering and emerging technologies like AI and
     machine learning.
 </p>
-<div class="grid-container">
+<div class="grid-container" style="align-items: center">
 
     <div style="text-align: center">
         <div style="display: flex; justify-content: center">
@@ -48,7 +48,7 @@ permalink: /csumb/
 </div>
 <hr>
 <h2 style="text-align:center">Project Showcase</h2>
-<div class="grid-container">
+<div class="grid-container" style="justify-items: center">
     {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
 
     {% for project in sorted_projects %}

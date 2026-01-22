@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst300", "Final Project",'csumb', "bscs" ]
+tags: [ "cst300", 'csumb']
 title: "TerraBit Solutions - Quantum Computing in Cryptography"
 description: "A research project exploring the impact of quantum computing on modern encryption and the future of quantum-safe cryptography."
 project-title: "Quantum Computing Research"
@@ -28,3 +28,4 @@ quantum-safe technology.
 <iframe width="560" height="315" style="margin-bottom: 10px" src="https://www.youtube.com/embed/Ps1hElV-MJs?si=GipEdbDwQyS1A-RX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <br>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ocg25-n4EtM?si=-7EdYTvzL25Fsvac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>  

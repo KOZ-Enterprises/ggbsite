@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst363", "final project" ,'csumb', "bscs"]
+tags: [ "cst363", 'csumb']
 title: "Pharmacy Database System"
 description: "A relational database design for managing patient prescriptions, medical providers, and pharmacy inventories."
 project-title: "Pharmacy Database"

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "First Smart Mirror Build"
-tags: ["Smart Mirror"]
+tags: ["smart-mirror", "hobby-projects"]
 ---
 
 I built my first [smart mirror](/projects/smartmirror/) using a Raspberry Pi 3+ and an old monitor I have lying around a year ago.  After the PI stopped working I opened it back up to figure out why it stopped working.  In process of doing so I accidentally shorted the 110V circuit and the circuit breaker in my apartment tripped.  So I basically fried the monitor and PI so opted to start over with a newer monitor.
