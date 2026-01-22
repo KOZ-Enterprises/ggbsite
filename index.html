@@ -20,12 +20,23 @@ title: Gary Gigabytes
                 <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
                 [{{ post.date | date: "%Y-%m-%d" }}]
                 <a href="#{{ post.id }}">{{ post.title }}</a>
+
+
+<!--                {% if post.tags %}-->
+<!--                <div class="post-tags">-->
+<!--                    {% for tag in post.tags %}-->
+<!--                    <span class="tag">#{{ tag }}</span>-->
+<!--                    {% endfor %}-->
+<!--                </div>-->
+<!--                {% endif %}-->
+
+
             </li>
             {% endfor %}
         </ul>
     </div>
     <div>
-               <h3>Project Highlight</h3>
+        <h3>Project Highlight</h3>
 
         {% assign sorted_projects = site.posts | where: "tags", "cst383" %}
         {% for project in sorted_projects %}
@@ -37,6 +48,6 @@ title: Gary Gigabytes
 
 <!-- Posts -->
 {% for post in site.posts %}
-{% include post.html post=post  %}
+{% include post.html post=post type="excerpt" %}
 {% endfor %}
 
