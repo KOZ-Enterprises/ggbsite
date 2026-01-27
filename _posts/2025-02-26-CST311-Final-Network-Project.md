@@ -7,9 +7,7 @@ project-title: "Virtual Network & Chat App"
 project-url: "https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8"
 image: "/assets/imgs/project/network.png"
 ---
-<div class="project-image">
-<img src="/assets/imgs/project/network.png">
-</div>
+
 This [networking project](https://www.youtube.com/embed/PUWoW95q6X0?si=s6d-Dp0B9fVkxVA8) involved the design and
 implementation of a virtualized network environment and a distributed chat application. It demonstrates proficiency in
 low-level networking, routing protocols, and socket programming. Key features include:
