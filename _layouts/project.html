@@ -2,102 +2,171 @@
 layout: default
 ---
 
+<div class="project-container">
+    <div class="project-header-section">
+        <h1 class="heading" style="text-align: left; margin-bottom: 0.5rem;">{{ page.title }}</h1>
+        <p class="project-intro" style="font-size: 1.2rem; color: #ccc; margin-top: 0;">{{ page.description }}</p>
+    </div>
 
-<div class="grid-container">
+    <!-- Main Grid: Sidebar (Info) + Main Content (Feed) ?? Or Info+Timeline vs Feed? -->
+    <!-- Let's do: Left=Main Content (Overview, Feed), Right=Sidebar (Meta, Timeline) -->
+    <div class="project-grid">
 
-
-    <div class="project-overview">
-        <h1 class="heading">{{ page.title }}</h1>
-        <!-- Project Overview -->
-        <ul style="list-style-type: none">
-            <li>
-                <strong>Overview:</strong> {{ page.description }}
-            </li>
-            <li>
-                <strong>Status:</strong> {{ page.status | default: "Not specified" }}
-            </li>
-            <li>
-                <strong>Objective:</strong> {{ page.objective | default: "Not specified" }}
-            </li>
-            <!--Tools Section -->
-            {% if page.tools %}
-            <li>
-                <strong>Tools:</strong>
-
-                    {% for tool in page.tools %}
-
-                    {{ tool.name}}{% if forloop.last == false %}, {% endif %}
-
-                    {% endfor %}
-
-
-            </li>
+        <!-- Main Content Area -->
+        <div class="project-main">
+            {% if page.image %}
+            <div class="image-container" style="margin-bottom: 30px; border: 1px solid #2e4c5b;">
+                <img src="{{ page.image }}" alt="{{ page.title }} Hero" style="width: 100%; display: block;" />
+            </div>
             {% endif %}
-            <!-- Resources Section -->
-            {% if page.resources %}
-            <li><strong>Resources:</strong>
-                <ul class="fa-ul" style="--fa-li-margin: 30px">
-                    {% for resource in page.resources %}
-                    <li>
-                        <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-link' }}"></i></span>
-                        <a href="{{ resource.link }}" target="_blank" rel="noopener noreferrer">{{ resource.name }}</a>
+
+            <div class="project-objective">
+                <h2><i class="fa-solid fa-bullseye" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
+                    Mission Objective</h2>
+                <div
+                    style="background: rgba(46, 76, 91, 0.2); border-left: 4px solid #64d5d2; padding: 15px; margin-bottom: 30px;">
+                    <p>{{ page.objective | default: "No objective defined." }}</p>
+                </div>
+            </div>
+
+            <!-- Related Updates Feed -->
+            <div class="updates-feed">
+                <h2 class="pop-heading" style="border-bottom: 1px solid #2e4c5b; padding-bottom: 10px;"><i
+                        class="fa-solid fa-satellite-dish"
+                        style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i> Project Log</h2>
+
+                {% assign updates_found = false %}
+                {% assign all_posts = site.posts %}
+
+                <ul class="update-feed">
+                    {% for post in all_posts %}
+                    {% assign is_related = false %}
+
+                    <!-- Check Tags -->
+                    {% if post.tags contains page.project-tag %}
+                    {% assign is_related = true %}
+                    {% endif %}
+
+                    <!-- Check Title (Basic Keyword Match) -->
+                    {% if post.title contains page.title %}
+                    {% assign is_related = true %}
+                    {% endif %}
+
+                    {% if is_related %}
+                    {% assign updates_found = true %}
+                    <li class="update-item">
+                        <div class="update-icon">
+                            <i class="fas fa-terminal"></i>
+                        </div>
+                        <div class="update-content">
+                            <span class="update-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                            <a href="{{ post.url }}" class="update-link">{{ post.title }}</a>
+                            <p style="font-size: 0.85em; color: #aaa; margin: 3px 0 0;">{{ post.excerpt | strip_html |
+                                truncate: 100 }}</p>
+                        </div>
                     </li>
+                    {% endif %}
                     {% endfor %}
                 </ul>
 
-            </li>
+                {% unless updates_found %}
+                <p style="color: #666; font-style: italic;">No log entries found for this project.</p>
+                {% endunless %}
+            </div>
+        </div>
 
+        <!-- Sidebar Area -->
+        <div class="project-sidebar">
+
+            <!-- Tech Stack -->
+            <div class="sidebar-module">
+                <h3><i class="fa-solid fa-microchip" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
+                    Tech Stack</h3>
+                <div class="tech-stack-chips">
+                    {% assign tech_list = page.tech_stack | default: page.tools %}
+                    {% for tech in tech_list %}
+                    <span class="tech-chip">{{ tech.name | default: tech }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Deployment/Resources -->
+            {% if page.resources %}
+            <div class="sidebar-module">
+                <h3><i class="fa-solid fa-link" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
+                    Deployment</h3>
+                <ul class="fa-ul" style="--fa-li-margin: 25px;">
+                    {% for resource in page.resources %}
+                    <li>
+                        <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-external-link-alt' }}"
+                                style="color: #64d5d2;"></i></span>
+                        <a href="{{ resource.link }}" target="_blank">{{ resource.name }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endif %}
-        </ul>
-        <!-- Updates Section -->
-        <div class="updates-section">
-            {% assign project_posts = site.posts | where: "tags", page.project-tag %} {% if
-            project_posts.size > 0 %}
-            <h3>Updates</h3>
-            <ul class="fa-ul update-links">
-                {% for post in project_posts %}
-                <li>
-                    <span class="fa-li"><i class="fas fa-arrow-right"></i></span>
-                    [{{ post.date | date: "%Y-%m-%d" }}]
-                    <a href="#{{ post.id }}">{{ post.title }}</a>
-                </li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+
+            <!-- Timeline -->
+            <div class="sidebar-module">
+                <h3><i class="fa-solid fa-timeline" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
+                    Timeline</h3>
+
+                <div class="timeline-container">
+                    {% if page.timeline %}
+                    {% for item in page.timeline %}
+                    {% assign status_class = "" %}
+                    {% if item.completed %}
+                    {% assign status_class = "completed" %}
+                    {% endif %}
+                    <div class="timeline-item">
+                        <div class="timeline-marker {{ status_class }}"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">{{ item.date }}</span>
+                            <h4 class="timeline-title" {% if item.completed %}style="color: #64d5d2;" {% endif %}>{{
+                                item.phase }}</h4>
+                            <p class="timeline-details">{{ item.details }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <!-- Default Generic Timeline (Research -> Design -> Build -> Test) -->
+                    <div class="timeline-item">
+                        <div class="timeline-marker completed"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" style="color: #64d5d2;">Research</h4>
+                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Concept & Requirements
+                            </p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker completed"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title" style="color: #64d5d2;">Design</h4>
+                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Architecture &
+                                Prototyping</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Build</h4>
+                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Implementation &
+                                Refinement</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <h4 class="timeline-title">Test</h4>
+                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Verification &
+                                Validation</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
         </div>
     </div>
-    <!-- Project Image -->
-    <div style="align-content: center">
-    {% if page.image %}
-    <div class="image-container">
-        <img src="{{ page.image }}" alt="Project Image" class="project-image"/>
-    </div>
-    {% endif %}
-        </div>
 </div>
-
-
-<hr>
-<!-- Posts -->
-{% assign filtered_posts = site.posts | where: "tags", page.project-tag %}
-{% if filtered_posts.size > 0 %}
-{% for post in filtered_posts %}
-<div class="post" id="{{ post.id }}">
-    <h2>{{ post.title }}</h2>
-    <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-    {% if post.tags %}
-    <div class="post-tags">
-        {% for tag in post.tags %}
-        <span class="tag">
-            #{{ tag }}
-        </span>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <p class="content">{{ post.content }}</p>
-    <p><a href="#top" class="back-to-top">Back to Top</a></p>
-</div>
-{% endfor %}
-{% else %}
-<p> ...</p>
-{% endif %}

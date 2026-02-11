@@ -5,7 +5,15 @@ title: "Satellite Identifier: Predictive Modeling"
 description: "A machine learning project investigating the relationship between a satellite’s physical characteristics and its intended orbital mission."
 project-title: "Satellite Identifier"
 project-url: "https://github.com/CST383-Group7/CST383-30_2254_Satellite_Identity"
-image: "/assets/imgs/project/rocket spacecraft realistic.jpg"
+image: "/assets/imgs/project/rocket-spacecraft-realistic.jpg"
+project-tag: "cst383"
+status: "Completed"
+tools:
+  - name: "Python"
+  - name: "Pandas"
+  - name: "Scikit-learn"
+  - name: "Matplotlib"
+
 ---
 
 
@@ -26,13 +34,12 @@ The research illustrates a scalable method for rapid cataloging and provides sig
 deployment of orbital assets.
 
 <div style="text-align:center">
-<iframe 
-  src="https://nbviewer.org/github/CST383-Group7/CST383-30_2254_Satellite_Identity/blob/main/satellite_project.ipynb" 
-  width="100%" 
-  height="800px" 
+<iframe
+  src="https://nbviewer.org/github/CST383-Group7/CST383-30_2254_Satellite_Identity/blob/main/satellite_project.ipynb"
+  width="100%"
+  height="800px"
   style="border:none;">
 </iframe>
-
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KzVvEeuzbCY?si=neDMlO8tIxXXr5Bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>

@@ -3,20 +3,19 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
-<p>
-  Over the years, I’ve worked on a variety of personal and academic projects —
-  but I haven’t always done the best job documenting them. That changes here.
-  This site is my attempt to track, showcase, and share the things I’m
-  building and learning.
-</p>
+<div class="pop-description">
+  <p style="margin: 0; color: #ddd;">
+    Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best job
+    documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm building
+    and
+    learning.
+  </p>
+</div>
 <hr />
 <br />
 <div class="grid-container">
   {% assign sorted_projects = site.projects | sort: "order" %}
   {% for project in sorted_projects %}
-    {% include project-card.html project=project  %}
+  {% include project-card.html project=project %}
   {% endfor %}
 </div>
-
-
-

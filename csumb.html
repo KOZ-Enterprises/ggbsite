@@ -3,78 +3,104 @@ layout: default
 title: CSUMB
 permalink: /csumb/
 ---
-<h3>Welcome!</h3>
-<p>
-    Welcome to my running portfolio for my Computer Science journey at California State University, Monterey
-    Bay (CSUMB). I’m using it to keep track of the classes I’ve taken, show off bigger projects, and document how my
-    skills
-    evolve as I work through the post-baccalaureate program.
-</p>
 
-<div class="grid-container" style="align-items: center">
+<div class="grid-container" style="align-items: start; gap: 40px; margin-bottom: 60px;">
 
-    <div style="text-align: center">
-        <div style="display: flex; justify-content: center">
-            <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="300" alt="CSU Monterey Bay Seal"/>
+    <!-- Mission (Left) -->
+    <div style="grid-column: span 1;">
+        <div class="hero-card" style="margin: 0;">
+            <h3 style="margin-top: 0; color: #64d5d2; text-transform: uppercase; letter-spacing: 1px;"> <i
+                    class="fa-solid fa-rocket"></i> Program Mission</h3>
+            <p style="font-size: 1.1em; line-height: 1.6; color: #fafafa;">
+                I am not just "transitioning" to tech—I am <strong>combining</strong> my years of experience in
+                Mechanical Engineering with advanced Computer Science concepts.
+                My goal is to develop tangible products, build intelligent autonomy, and apply AI/ML to solve real-world
+                physical problems.
+            </p>
         </div>
-        <p><i>California State University, Monterey Bay</i></p>
-
     </div>
-    <div style="
-  margin-left: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-"><strong>List of Completed Courses and In-Progress Courses:</strong>
 
-        <ul class="fa-ul" style="--fa-li-margin: 15px">
-            {% for course in site.csumb %}
-            <li>
-      <span class="fa-li">
-        {% if course.status == "completed" %}
-        <i class="fa-regular fa-check-square"></i>
-        {% elsif course.status == "in-progress" %}
-        <i class="fa-solid fa-spinner fa-pulse"></i>
-        {% else %}
-        <i class="fa-regular fa-square"></i>
-        {% endif %}
-      </span>
-                <a href="{{ course.url }}">{{ course.title }}</a>
-            </li>
-            {% endfor %}
-        </ul>
+    <!-- Degrees (Right) -->
+    <div
+        style="grid-column: span 1; text-align: left; background: #1a1e1e; padding: 25px; border-radius: 4px; border-top: 2px solid #2e4c5b; display: flex; flex-direction: column; justify-content: center; border: 1px solid #2e4c5b; box-shadow: 0 4px 6px rgba(0,0,0,0.3);">
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="50" style="margin-right: 15px; opacity: 0.8;">
+            <div>
+                <strong style="color: #64d5d2; display: block;">BS, Computer Science</strong>
+                <span style="font-size: 0.9em; color: #ccc;">CSU Monterey Bay (Current)</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center; margin-bottom: 15px;">
+            <i class="fas fa-graduation-cap"
+                style="font-size: 1.5em; color: #555; width: 50px; text-align: center; margin-right: 15px;"></i>
+            <div>
+                <strong style="color: #fafafa; display: block;">MS, Mechanical Engineering</strong>
+                <span style="font-size: 0.9em; color: #ccc;">CSU Long Beach</span>
+            </div>
+        </div>
+
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-university"
+                style="font-size: 1.5em; color: #555; width: 50px; text-align: center; margin-right: 15px;"></i>
+            <div>
+                <strong style="color: #fafafa; display: block;">BS, Mechanical Engineering</strong>
+                <span style="font-size: 0.9em; color: #ccc;">Cal Poly SLO</span>
+            </div>
+        </div>
     </div>
 </div>
-<div>
-    <h3>About the Program</h3>
-    <p>
-        The CSUMB Computer Science program is all about building a solid foundation in things like programming, software
-        design, algorithms, databases, operating systems, networking, and modern web development, with a big focus on
-        problem-solving and real-world applications. It’s meant to produce graduates who can design and build real
-        software
-        systems, work effectively on teams, and think critically about how technology is applied in practice.
-    </p>
-    <h3>Why I'm Here</h3>
-    <p>
-        For me, this program is my way of finally scratching that long-standing computer science itch after spending
-        years
-        in
-        mechanical engineering and industry. My goal isn’t just to get another degree — it’s to turn coursework into
-        real,
-        portfolio-worthy projects, level up my software skills, and pivot toward more software- and AI-driven
-        engineering
-        work (especially in areas like autonomy and robotics).
-    </p>
+
+<div style="margin-top: 20px;">
+    <h3 class="pop-heading" style="border-bottom: 1px solid #2e4c5b; padding-bottom: 10px; margin-top: 0;">Course
+        Registry</h3>
+
+    <div style="margin-bottom: 20px; font-size: 1.1em; color: #ccc;">
+        <p>
+            The CSUMB Computer Science program builds a solid foundation in programming, software
+            design, algorithms, databases, operating systems, networking, and modern web development.
+            It focuses on problem-solving and real-world applications to produce graduates who can
+            design and build real software systems.
+        </p>
+    </div>
+
+    <div class="course-grid">
+        {% assign sorted_courses = site.csumb | sort: "order" | reverse %}
+        {% for course in sorted_courses %}
+        <div class="course-item {{ course.status }}">
+            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px;">
+                <span style="font-family: 'Roboto Mono', monospace; color: #64d5d2; font-size: 0.9em;">[{{
+                    course.course_code
+                    }}]</span>
+                <span style="font-size: 1.2em;">
+                    {% if course.status == "completed" %}
+                    <i class="fa-regular fa-circle-check" style="color: #64d5d2;" title="Verified"></i>
+                    {% elsif course.status == "in-progress" %}
+                    <i class="fa-solid fa-spinner fa-spin" style="color: #fafafa;" title="Optimizing"></i>
+                    {% else %}
+                    <i class="fa-regular fa-circle" style="color: #555;" title="Planned"></i>
+                    {% endif %}
+                </span>
+            </div>
+
+            <a href="{{ course.url }}"
+                style="font-weight: bold; color: #fafafa; text-decoration: none; display: block; margin-bottom: 5px;">{{
+                course.title }}</a>
+            <div style="font-size: 0.85em; color: #aaa; line-height: 1.4;">{{ course.content | strip_html | truncate: 80
+                }}</div>
+        </div>
+        {% endfor %}
+    </div>
 </div>
+
 <hr>
-<h2 style="text-align:center">Project Showcase</h2>
+
+<h3 class="pop-heading">Project Showcase</h3>
 <div class="grid-container" style="justify-items: center">
     {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
-
     {% for project in sorted_projects %}
     {% include project-card.html project=project %}
     {% endfor %}
 </div>
 
-
-<br/>
+<br />

@@ -1,25 +1,44 @@
+{% assign project = include.project %}
 <div class="project-summary">
     <a href="{{ project.url }}" rel="noopener noreferrer">
         <div class="project-content">
             {% if project.image %}
-            <img
-                    src="{{ project.image }}"
-                    alt="{{ project.title }} Preview"
-                    class="project-image"
-            />
+            <img src="{{ project.image | relative_url }}" alt="{{ project.title }} Preview" class="project-image" />
             {% endif %}
-            <div class="overlay-title">
-                <h2>{{ project.title }}
+
+            <div class="overlay-details">
+                <div class="project-header">
+                    <h3 class="project-title">{{ project.title }}</h3>
                     {% if project.status %}
-                    <span style="color: gray">({{ project.status }})</span>
+                    <span class="status-badge" data-status="{{ project.status | downcase }}">{{ project.status }}</span>
                     {% endif %}
-                </h2>
+                </div>
+
+                <p class="description">{{ project.description | truncate: 80 }}</p>
+
+                {% if project.tech_stack or project.tools %}
+                <div class="tech-stack-chips">
+                    {% assign tech_list = project.tech_stack | default: project.tools %}
+                    {% for tech in tech_list limit:3 %}
+                    {% assign tech_name = tech.name | default: tech %}
+                    {% assign tech_slug = tech_name | downcase | slugify %}
+
+                    {% if tech_slug == 'csumb' or tech_slug contains 'cst' %}
+                    <a href="/csumb/" class="tech-chip" style="text-decoration: none; cursor: pointer;">{{ tech_name
+                        }}</a>
+                    {% elsif tech_slug == 'drone-swarm' %}
+                    <a href="/projects/autonomous-drone-swarm/" class="tech-chip"
+                        style="text-decoration: none; cursor: pointer;">{{ tech_name }}</a>
+                    {% else %}
+                    <span class="tech-chip">{{ tech_name }}</span>
+                    {% endif %}
+                    {% endfor %}
+                    {% if tech_list.size > 3 %}
+                    <span class="tech-chip">+{{ tech_list.size | minus: 3 }}</span>
+                    {% endif %}
+                </div>
+                {% endif %}
             </div>
-            {% if project.description %}
-            <div class="overlay-description">
-                <p>{{ project.description }}</p>
-            </div>
-            {% endif %}
         </div>
     </a>
 </div>
