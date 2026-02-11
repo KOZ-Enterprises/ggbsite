@@ -10,4 +10,9 @@ gem "public_suffix", "6.0.2"
 gem 'wdm', '>= 0.1.0' if Gem.win_platform?
 gem 'rubocop', group: 'development', require: false
 gem "logger"
+gem "fiddle"
 gem "jekyll-redirect-from"
+
+group :development do
+  gem "html-proofer", "~> 3.19"
+end

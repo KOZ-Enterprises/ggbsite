@@ -1,5 +1,9 @@
 # Gary Gigabytes Website
 
+![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?style=flat&logo=jekyll)
+![Ruby](https://img.shields.io/badge/Ruby-3.1+-CC342D?style=flat&logo=ruby)
+![License](https://img.shields.io/github/license/GICodeWarrior/ggbsite?style=flat)
+
 Welcome to my personal website, where I showcase my projects and academic work as I bridge the gap between engineering and computer science. This Jekyll-powered website serves as a portfolio for my work, a platform to document my journey in technology, and features an integrated blog.
 
 ## Table of Contents
@@ -8,6 +12,7 @@ Welcome to my personal website, where I showcase my projects and academic work a
 - [Features](#features)
 - [Website Structure](#website-structure)
 - [Technologies Used](#technologies-used)
+- [Code Quality](#code-quality)
 - [Local Development](#local-development)
 - [License](#license)
 - [Contact](#contact)
@@ -51,6 +56,23 @@ The site uses Jekyll collections to organize content:
 - **Ruby** - Development environment
 - **Git** - Version control
 
+## Code Quality
+
+To ensure the quality of the codebase, we use the following tools:
+
+- **RuboCop**: A Ruby static code analyzer and formatter.
+
+  ```bash
+  bundle exec rubocop
+  ```
+
+- **HTMLProofer**: A set of tests to validate your HTML output.
+
+  ```bash
+  bundle exec jekyll build
+  bundle exec htmlproofer ./_site
+  ```
+
 ## Local Development
 
 For local development with Jekyll, follow these steps:
@@ -68,6 +90,7 @@ For local development with Jekyll, follow these steps:
 ### Setup
 
 1. **Clone the repository**:
+
     ```bash
     git clone <repository-url>
     cd ggbsite
