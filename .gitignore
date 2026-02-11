@@ -9,7 +9,8 @@
 .idea/**/usage.statistics.xml
 .idea/**/dictionaries
 .idea/**/shelf
-
+.ruby-lsp/
+.vscode/
 # AWS User-specific
 .idea/**/aws.xml
 

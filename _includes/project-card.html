@@ -24,11 +24,10 @@
                     {% assign tech_slug = tech_name | downcase | slugify %}
 
                     {% if tech_slug == 'csumb' or tech_slug contains 'cst' %}
-                    <a href="/csumb/" class="tech-chip" style="text-decoration: none; cursor: pointer;">{{ tech_name
-                        }}</a>
+                    <a href="/csumb/" class="tech-chip tech-chip-interactive">{{ tech_name }}</a>
                     {% elsif tech_slug == 'drone-swarm' %}
-                    <a href="/projects/autonomous-drone-swarm/" class="tech-chip"
-                        style="text-decoration: none; cursor: pointer;">{{ tech_name }}</a>
+                    <a href="/projects/autonomous-drone-swarm/" class="tech-chip tech-chip-interactive">{{ tech_name
+                        }}</a>
                     {% else %}
                     <span class="tech-chip">{{ tech_name }}</span>
                     {% endif %}

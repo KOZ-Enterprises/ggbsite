@@ -3,19 +3,22 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
-<div class="pop-description">
-  <p style="margin: 0; color: #ddd;">
-    Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best job
-    documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm building
-    and
-    learning.
+<div class="hero-card">
+  <h3 class="pop-heading section-header text-left">
+    <i class="fa-solid fa-flask heading-icon"></i> Hobby Projects
+  </h3>
+  <p class="m-0 color-ddd" style="font-size: 1.1em; line-height: 1.6;">
+    Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best
+    job documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm
+    building and learning.
   </p>
 </div>
-<hr />
-<br />
-<div class="grid-container">
-  {% assign sorted_projects = site.projects | sort: "order" %}
-  {% for project in sorted_projects %}
-  {% include project-card.html project=project %}
-  {% endfor %}
+
+<div class="blueprint-grid">
+  <div class="grid-container" style="justify-items: center;">
+    {% assign sorted_projects = site.projects | sort: "order" %}
+    {% for project in sorted_projects %}
+    {% include project-card.html project=project %}
+    {% endfor %}
+  </div>
 </div>

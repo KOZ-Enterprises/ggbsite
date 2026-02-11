@@ -6,20 +6,20 @@ title: Gary Gigabytes
 <!-- Hero Card -->
 <div class="hero-card">
     <p class="hero-quote">
-        <i class="fas fa-quote-left" style="color: #64d5d2; opacity: 0.5;"></i>
+        <i class="fas fa-quote-left quote-icon"></i>
         Bridging the physical and digital worlds—combining my <strong>Mechanical Engineering</strong> background with
         <strong>Computer Science</strong> to build tangible products, intelligent systems, and explore practical AI
         applications.
-        <i class="fas fa-quote-right" style="color: #64d5d2; opacity: 0.5;"></i>
+        <i class="fas fa-quote-right quote-icon"></i>
     </p>
 </div>
 
-<div class="grid-container" style="align-items: flex-start;">
+<div class="grid-container grid-start">
     <!-- Update List -->
     <div>
-        <h3 class="pop-heading"
-            style="text-align: left; border-bottom: 1px solid #2e4c5b; padding-bottom: 10px; margin-top: 0;"><i
-                class="fas fa-history"></i> Recent Log Entries</h3>
+        <h3 class="pop-heading section-header text-left">
+            <i class="fas fa-history"></i> Recent Log Entries
+        </h3>
         <ul class="update-feed">
             {% for post in site.posts limit:6 %}
             <li class="update-item">
@@ -33,18 +33,15 @@ title: Gary Gigabytes
             </li>
             {% endfor %}
         </ul>
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="/projects/"
-                style="font-size: 0.9em; font-style: italic; color: #64d5d2; text-decoration: none; border: 1px solid #2e4c5b; padding: 8px 15px; border-radius: 4px;">View
+        <div class="text-center" style="margin-top: 20px;">
+            <a href="/projects/" class="archive-btn">View
                 all archives <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 
     <!-- Project Highlight -->
-    <div
-        style="background: #1a1e1e; border: 1px solid #64d5d2; border-radius: 4px; padding: 20px; box-shadow: 0 0 15px rgba(100, 213, 210, 0.15);">
-        <h3 class="pop-heading"
-            style="margin-top: 0; text-align: center; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px;">
+    <div class="featured-box">
+        <h3 class="pop-heading featured-header">
             <i class="fa-solid fa-star"></i> Featured Project
         </h3>
 
@@ -59,8 +56,8 @@ title: Gary Gigabytes
 
         {% if featured_project %}
         {% include project-card.html project=featured_project %}
-        <div style="margin-top: 20px; text-align: center;">
-            <p style="font-size: 0.9em; color: #ccc;">
+        <div class="featured-caption">
+            <p>
                 <em>"{{ featured_project.description | truncate: 100 }}"</em>
             </p>
         </div>

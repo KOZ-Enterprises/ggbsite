@@ -4,8 +4,8 @@ layout: default
 
 <div class="project-container">
     <div class="project-header-section">
-        <h1 class="heading" style="text-align: left; margin-bottom: 0.5rem;">{{ page.title }}</h1>
-        <p class="project-intro" style="font-size: 1.2rem; color: #ccc; margin-top: 0;">{{ page.description }}</p>
+        <h1 class="heading section-header text-left">{{ page.title }}</h1>
+        <p class="project-intro text-lg color-ccc m-10">{{ page.description }}</p>
     </div>
 
     <!-- Main Grid: Sidebar (Info) + Main Content (Feed) ?? Or Info+Timeline vs Feed? -->
@@ -15,25 +15,24 @@ layout: default
         <!-- Main Content Area -->
         <div class="project-main">
             {% if page.image %}
-            <div class="image-container" style="margin-bottom: 30px; border: 1px solid #2e4c5b;">
+            <div class="image-container mb-30 border-secondary">
                 <img src="{{ page.image }}" alt="{{ page.title }} Hero" style="width: 100%; display: block;" />
             </div>
             {% endif %}
 
             <div class="project-objective">
-                <h2><i class="fa-solid fa-bullseye" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
-                    Mission Objective</h2>
-                <div
-                    style="background: rgba(46, 76, 91, 0.2); border-left: 4px solid #64d5d2; padding: 15px; margin-bottom: 30px;">
+                <h2 class="pop-heading section-header"><i class="fa-solid fa-bullseye heading-icon"></i> Mission
+                    Objective</h2>
+                <div class="objective-box">
                     <p>{{ page.objective | default: "No objective defined." }}</p>
                 </div>
             </div>
 
             <!-- Related Updates Feed -->
             <div class="updates-feed">
-                <h2 class="pop-heading" style="border-bottom: 1px solid #2e4c5b; padding-bottom: 10px;"><i
-                        class="fa-solid fa-satellite-dish"
-                        style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i> Project Log</h2>
+                <h2 class="pop-heading section-header">
+                    <i class="fa-solid fa-satellite-dish heading-icon"></i> Project Log
+                </h2>
 
                 {% assign updates_found = false %}
                 {% assign all_posts = site.posts %}
@@ -61,8 +60,7 @@ layout: default
                         <div class="update-content">
                             <span class="update-date">{{ post.date | date: "%Y-%m-%d" }}</span>
                             <a href="{{ post.url }}" class="update-link">{{ post.title }}</a>
-                            <p style="font-size: 0.85em; color: #aaa; margin: 3px 0 0;">{{ post.excerpt | strip_html |
-                                truncate: 100 }}</p>
+                            <p class="update-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
                         </div>
                     </li>
                     {% endif %}
@@ -93,13 +91,12 @@ layout: default
             <!-- Deployment/Resources -->
             {% if page.resources %}
             <div class="sidebar-module">
-                <h3><i class="fa-solid fa-link" style="color: #64d5d2; font-size: 0.8em; margin-right: 10px;"></i>
-                    Deployment</h3>
-                <ul class="fa-ul" style="--fa-li-margin: 25px;">
+                <h3><i class="fa-solid fa-link heading-icon"></i> Deployment</h3>
+                <ul class="fa-ul resource-list">
                     {% for resource in page.resources %}
                     <li>
-                        <span class="fa-li"><i class="{{ resource.icon | default: 'fas fa-external-link-alt' }}"
-                                style="color: #64d5d2;"></i></span>
+                        <span class="fa-li"><i
+                                class="{{ resource.icon | default: 'fas fa-external-link-alt' }} course-status-icon completed"></i></span>
                         <a href="{{ resource.link }}" target="_blank">{{ resource.name }}</a>
                     </li>
                     {% endfor %}
@@ -123,46 +120,82 @@ layout: default
                         <div class="timeline-marker {{ status_class }}"></div>
                         <div class="timeline-content">
                             <span class="timeline-date">{{ item.date }}</span>
-                            <h4 class="timeline-title" {% if item.completed %}style="color: #64d5d2;" {% endif %}>{{
-                                item.phase }}</h4>
+                            <h4 class="timeline-title {% if item.completed %}highlight{% endif %}">{{ item.phase }}</h4>
                             <p class="timeline-details">{{ item.details }}</p>
                         </div>
                     </div>
                     {% endfor %}
                     {% else %}
-                    <!-- Default Generic Timeline (Research -> Design -> Build -> Test) -->
+                    <!-- Programmatic Default Timeline based on page.status -->
+                    {% assign status = page.status | downcase %}
+                    {% assign progress = 0 %}
+
+                    {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
+                    status == "done" or status == "archived" or status == "maintenance" %}
+                    {% assign progress = 4 %}
+                    {% elsif status == "testing" or status == "validation" or status == "refinement" or status ==
+                    "polish" or status == "beta" %}
+                    {% assign progress = 3.5 %}
+                    {% elsif status == "in progress" or status == "building" or status == "implementation" or status ==
+                    "development" or status == "active" %}
+                    {% assign progress = 2.5 %}
+                    {% elsif status == "design" or status == "prototyping" or status == "mvp" or status ==
+                    "architecture" %}
+                    {% assign progress = 1.5 %}
+                    {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
+                    "ideation" or status == "planning" %}
+                    {% assign progress = 0.5 %}
+                    {% elsif status == "on hold" or status == "paused" %}
+                    {% assign progress = 2.0 %} <!-- Middle state for paused projects -->
+                    {% endif %}
+
+                    {% comment %} Dynamic Labels and Descriptions {% endcomment %}
+                    {% assign step1_name = page.step1_name | default: "Research" %}
+                    {% assign step1_desc = page.step1_desc | default: "Concept & Requirements" %}
+
+                    {% assign step2_name = page.step2_name | default: "Design" %}
+                    {% assign step2_desc = page.step2_desc | default: "Architecture & Prototyping" %}
+
+                    {% assign step3_name = page.step3_name | default: "Build" %}
+                    {% assign step3_desc = page.step3_desc | default: "Implementation & Refinement" %}
+
+                    {% assign step4_name = page.step4_name | default: "Test" %}
+                    {% assign step4_desc = page.step4_desc | default: "Verification & Validation" %}
+
+                    {% if status == "live" or status == "production" %}
+                    {% assign step4_name = "Deployed" %}
+                    {% assign step4_desc = "Production Release" %}
+                    {% elsif status == "completed" or status == "finished" or status == "done" %}
+                    {% assign step4_name = "Completed" %}
+                    {% assign step4_desc = "Project Finalized" %}
+                    {% elsif status == "maintenance" %}
+                    {% assign step4_name = "Maintenance" %}
+                    {% assign step4_desc = "Ongoing Support" %}
+                    {% endif %}
+
+                    {% capture steps_string %}{{ step1_name }}|{{ step1_desc }},{{ step2_name }}|{{ step2_desc }},{{
+                    step3_name }}|{{ step3_desc }},{{ step4_name }}|{{ step4_desc }}{% endcapture %}
+                    {% assign steps = steps_string | split: "," %}
+
+                    {% for step_data in steps %}
+                    {% assign parts = step_data | split: "|" %}
+                    {% assign step_name = parts[0] %}
+                    {% assign step_details = parts[1] %}
+                    {% assign step_index = forloop.index %}
+
+                    {% assign is_completed = false %}
+                    {% if progress >= step_index %}
+                    {% assign is_completed = true %}
+                    {% endif %}
+
                     <div class="timeline-item">
-                        <div class="timeline-marker completed"></div>
+                        <div class="timeline-marker {% if is_completed %}completed{% endif %}"></div>
                         <div class="timeline-content">
-                            <h4 class="timeline-title" style="color: #64d5d2;">Research</h4>
-                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Concept & Requirements
-                            </p>
+                            <h4 class="timeline-title {% if is_completed %}highlight{% endif %}">{{ step_name }}</h4>
+                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">{{ step_details }}</p>
                         </div>
                     </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker completed"></div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title" style="color: #64d5d2;">Design</h4>
-                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Architecture &
-                                Prototyping</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">Build</h4>
-                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Implementation &
-                                Refinement</p>
-                        </div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-marker"></div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title">Test</h4>
-                            <p class="timeline-details" style="font-size: 0.8rem; color: #888;">Verification &
-                                Validation</p>
-                        </div>
-                    </div>
+                    {% endfor %}
                     {% endif %}
                 </div>
             </div>
