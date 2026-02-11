@@ -52,9 +52,9 @@ title: Gary Gigabytes
     <!-- Project Highlight -->
     <div class="featured-box">
 
-        {% assign featured_project = site.projects | where: "project-tag", "cst383" | first %}
+        {% assign featured_project = site.projects | where: "project-tag", "hexmaster" | first %}
         {% unless featured_project %}
-        {% assign featured_project = site.posts | where: "project-tag", "cst383" | first %}
+        {% assign featured_project = site.posts | where: "project-tag", "hexmaster" | first %}
         {% endunless %}
 
         {% unless featured_project %}
