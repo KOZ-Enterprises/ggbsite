@@ -17,6 +17,8 @@ This research paper for [CST462S](/csumb/cst462s/) explores the effects of GPS t
 
 The study highlights the critical intersection of technology and cognitive development, emphasizing the need for continued geographic education in the digital age.
 
+### Project Research Paper
+
 <div style="text-align: center">
   <iframe src="/assets/docs/gps_paper.pdf" width="90%" height="500px">
     This browser does not support PDFs. Please download the PDF to view it:

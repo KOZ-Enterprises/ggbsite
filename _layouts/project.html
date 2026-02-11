@@ -37,7 +37,7 @@ layout: default
                 {% assign updates_found = false %}
                 {% assign all_posts = site.posts %}
 
-                <ul class="update-feed">
+                <ul class="update-feed post-list">
                     {% for post in all_posts %}
                     {% assign is_related = false %}
 
@@ -53,16 +53,7 @@ layout: default
 
                     {% if is_related %}
                     {% assign updates_found = true %}
-                    <li class="update-item">
-                        <div class="update-icon">
-                            <i class="fas fa-terminal"></i>
-                        </div>
-                        <div class="update-content">
-                            <span class="update-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                            <a href="{{ post.url }}" class="update-link">{{ post.title }}</a>
-                            <p class="update-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</p>
-                        </div>
-                    </li>
+                    {% include post.html post=post type="excerpt" %}
                     {% endif %}
                     {% endfor %}
                 </ul>

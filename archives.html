@@ -1,0 +1,43 @@
+---
+layout: default
+title: "Archives - Gary Gigabytes"
+permalink: /archives/
+---
+
+<div class="mt-20">
+    <h1 class="pop-heading section-header text-left">Project Archives</h1>
+</div>
+
+<div class="post-page">
+    <div class="post-content">
+        {% assign posts_by_year = site.posts | group_by_exp: "post", "post.date | date: '%Y'" %}
+        {% for year in posts_by_year %}
+        <h2 class="mt-40 mb-20">{{ year.name }}</h2>
+        <ul class="fa-ul" style="--fa-li-margin: 30px;">
+            {% for post in year.items %}
+            <li class="mb-10">
+                <span class="fa-li"><i class="fas fa-terminal color-accent"></i></span>
+                <span class="color-ddd"
+                    style="font-family: 'Roboto Mono', monospace; font-size: 0.85em; margin-right: 15px;">
+                    {{ post.date | date: "%Y-%m-%d" }}
+                </span>
+                <a href="{{ post.url }}" style="color: #fafafa; font-weight: bold; text-decoration: none;">
+                    {{ post.title }}
+                </a>
+                {% if post.tags %}
+                <span style="font-size: 0.8em; margin-left: 10px;">
+                    {% for tag in post.tags %}
+                    <span class="color-accent">#{{ tag }}</span>
+                    {% endfor %}
+                </span>
+                {% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="text-center mt-40 mb-40">
+    <a href="/" class="archive-btn"><i class="fas fa-arrow-left"></i> Back to Homepage</a>
+</div>

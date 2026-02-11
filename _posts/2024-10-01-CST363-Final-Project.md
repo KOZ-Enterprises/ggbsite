@@ -28,6 +28,8 @@ and financial costs. This project includes:
 The project demonstrates a deep understanding of relational database design, normalization, and the practical
 application of SQL in a healthcare context.
 
+### Project Report
+
 <div style="text-align:center">
 <iframe
     src="/assets/docs/Lab 19 Web App JDBC.pdf"

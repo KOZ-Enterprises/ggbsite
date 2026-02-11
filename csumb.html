@@ -4,53 +4,22 @@ title: CSUMB
 permalink: /csumb/
 ---
 
-<div class="grid-container grid-start gap-40 mb-60">
+<h1 class="pop-heading section-header text-left">
+    <i class="fa-solid fa-flask color-amber"></i> Program Goal
+</h1>
 
-    <!-- Mission (Left) -->
-    <div>
-        <div class="hero-card mission-card">
-            <h3 class="pop-heading section-header text-left">
-                <i class="fa-solid fa-rocket"></i> Program Mission
-            </h3>
-            <p style="font-size: 1.1em; line-height: 1.6; color: #fafafa;">
-                I am not just "transitioning" to tech—I am <strong>combining</strong> my years of experience in
-                Mechanical Engineering with advanced Computer Science concepts.
-                My goal is to develop tangible products, build intelligent autonomy, and apply AI/ML to solve real-world
-                physical problems.
-            </p>
-        </div>
-    </div>
-
-    <!-- Degrees (Right) -->
-    <div class="content-card">
-        <div class="degree-item">
-            <img src="/assets/imgs/CSU_Monterey_Bay_seal.png" width="50" style="margin-right: 15px; opacity: 0.8;">
-            <div>
-                <strong style="color: #64d5d2; display: block;">BS, Computer Science</strong>
-                <span style="font-size: 0.9em; color: #ccc;">CSU Monterey Bay (Current)</span>
-            </div>
-        </div>
-
-        <div class="degree-item">
-            <i class="fas fa-graduation-cap degree-icon"></i>
-            <div>
-                <strong style="color: #fafafa; display: block;">MS, Mechanical Engineering</strong>
-                <span style="font-size: 0.9em; color: #ccc;">CSU Long Beach</span>
-            </div>
-        </div>
-
-        <div class="degree-item" style="margin-bottom: 0;">
-            <i class="fas fa-university degree-icon"></i>
-            <div>
-                <strong style="color: #fafafa; display: block;">BS, Mechanical Engineering</strong>
-                <span style="font-size: 0.9em; color: #ccc;">Cal Poly SLO</span>
-            </div>
-        </div>
-    </div>
+<div class="hero-card">
+    <p class="m-0 color-ddd" style="font-size: 1.1em; line-height: 1.6;">
+        I am not just "transitioning" to tech—I am <strong>combining</strong> my years of experience in
+        Mechanical Engineering with advanced Computer Science concepts.
+        My goal is to develop tangible products, build intelligent autonomy, and apply AI/ML to solve real-world
+        physical problems.
+    </p>
 </div>
 
-<div class="mt-20">
-    <h3 class="pop-heading section-header">Course Registry</h3>
+
+<div class="mt-40">
+    <h2 class="pop-heading section-header">Course Registry</h2>
 
     <div class="mb-20" style="font-size: 1.1em; color: #ccc;">
         <p>
@@ -88,8 +57,8 @@ permalink: /csumb/
     </div>
 </div>
 
-<div class="mt-20">
-    <h3 class="pop-heading section-header">Project Showcase</h3>
+<div class="mt-40">
+    <h2 class="pop-heading section-header">Project Showcase</h2>
     <div class="blueprint-grid">
         <div class="grid-container" style="justify-items: center;">
             {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
@@ -98,5 +67,4 @@ permalink: /csumb/
             {% endfor %}
         </div>
     </div>
-
-    <br />
+</div>

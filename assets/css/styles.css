@@ -548,6 +548,7 @@ footer {
     border-left: 4px solid #64d5d2;
     padding: 30px;
     margin: 40px auto;
+    margin-bottom: 20px;
     max-width: 800px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
@@ -556,7 +557,7 @@ footer {
 }
 
 .hero-quote {
-    font-size: 1.4em;
+    font-size: 1.3em;
     font-weight: 300;
     color: #fafafa;
     line-height: 1.6;
@@ -871,9 +872,10 @@ footer {
 
 .featured-box {
     background: #1a1e1e;
-    border: 1px solid #64d5d2;
+    margin-top: 20px;
+    /* border: 1px solid #64d5d2; */
     border-radius: 4px;
-    padding: 20px;
+    /* padding: 20px; */
     box-shadow: 0 0 15px rgba(100, 213, 210, 0.15);
 }
 
@@ -910,14 +912,12 @@ footer {
 .degree-icon {
     font-size: 1.5em;
     color: #555;
-    width: 50px;
+    width: 60px;
     text-align: center;
     margin-right: 15px;
 }
 
-.degree-icon.small {
-    width: 40px;
-}
+
 
 .tech-chip-interactive {
     text-decoration: none !important;
@@ -999,6 +999,11 @@ footer {
     grid-column: span 2;
 }
 
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
 @media screen and (max-width: 800px) {
     .span-2 {
         grid-column: span 1;
@@ -1025,6 +1030,14 @@ footer {
 
 .color-ccc {
     color: #ccc;
+}
+
+.color-accent {
+    color: #64d5d2;
+}
+
+.color-amber {
+    color: #ffb300;
 }
 
 .text-lg {
@@ -1103,6 +1116,167 @@ footer {
     color: rgba(100, 213, 210, 0.2);
     letter-spacing: 2px;
     pointer-events: none;
+}
+
+/* Individual Post Layout */
+.post-page {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.post-header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.post-title {
+    font-size: 2.5em;
+    margin-bottom: 15px;
+}
+
+.post-meta {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.post-tags {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-start;
+    /* Align left for excerpts */
+    margin-bottom: 0;
+}
+
+/* Centering tags for full post pages */
+.post-page .post-tags {
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.post-tags .tag {
+    background: rgba(100, 213, 210, 0.1);
+    border: 1px solid rgba(100, 213, 210, 0.3);
+    color: #64d5d2;
+    padding: 3px 12px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.post-tags .tag:hover {
+    background: #64d5d2;
+    color: #141818;
+}
+
+.post-content {
+    background: #1a1e1e;
+    border: 1px solid #2e4c5b;
+    border-radius: 4px;
+    padding: 40px;
+    line-height: 1.8;
+    color: #ddd;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Excerpt Specific Refinements */
+.post-list .post-content {
+    padding: 0;
+    /* Removing the extra card-like padding for list style */
+    border: none;
+    background: transparent;
+    box-shadow: none;
+    margin-top: 8px;
+}
+
+.post-list .post-content img {
+    display: none;
+    /* Hide images in excerpts as requested */
+}
+
+.post-list .post-content p:last-child {
+    margin-bottom: 0;
+}
+
+.post-content h1,
+.post-content h2,
+.post-content h3 {
+    color: #fafafa;
+    margin-top: 1.5em;
+    margin-bottom: 0.8em;
+}
+
+.post-content h2,
+.post-content h3 {
+    border-bottom: 1px solid #2e4c5b;
+    padding-bottom: 8px;
+}
+
+.post-content p {
+    margin-bottom: 1.5em;
+}
+
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    margin: 20px 0;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Global Heading Standardization */
+.section-header {
+    border-bottom: 2px solid #64d5d2;
+    /* Thicker accent line */
+    padding-bottom: 12px;
+    margin-top: 40px;
+    margin-bottom: 10px;
+    /* Reduced from 15px */
+    display: block;
+    width: 100%;
+    clear: both;
+}
+
+.section-header i {
+    margin-right: 12px;
+}
+
+/* Layout Spacing Utilities */
+.no-top-margin {
+    margin-top: 0 !important;
+}
+
+.no-bottom-margin {
+    margin-bottom: 0 !important;
+}
+
+.no-top-padding {
+    padding-top: 0 !important;
+}
+
+.no-bottom-padding {
+    padding-bottom: 0 !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+
+/* Filter to turn black logos white */
+.invert-white {
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
 }
 
 .blueprint-grid::after {

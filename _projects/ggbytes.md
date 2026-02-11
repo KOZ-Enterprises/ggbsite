@@ -2,17 +2,18 @@
 layout: project
 title: "Gary Gigabytes"
 image: "/assets/imgs/ggbytes/ggbytes-page.png"
-description: "A personal collection of my projects and computer science projects and the site you're on right now!"
-objective: "Create a clean, responsive website to document and organize my CS journey and personal projects."
-status: "In Progress"
+description: "A technical portfolio documenting my engineering journey, redesigned for structural consistency and a 'Blueprint' aesthetic."
+objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
+status: "Maintenance"
 project-tag: "gary-gigabytes"
 order: 0
 tools: 
-  - name: "HTML"
-  - name: "CSS"
   - name: "Jekyll"
-  - name: "Webstorm IDE"
+  - name: "CSS (Vanilla)"
+  - name: "HTML5"
+  - name: "Font Awesome"
+  - name: "Google Fonts"
+  - name: "Jekyll Paginate"
   - name: "Docker"
-  - name: "nginx"
-  
+  - name: "Nginx"
 ---

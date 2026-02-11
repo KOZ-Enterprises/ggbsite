@@ -12,6 +12,7 @@ gem 'rubocop', group: 'development', require: false
 gem "logger"
 gem "fiddle"
 gem "jekyll-redirect-from"
+gem "jekyll-paginate"
 
 group :development do
   gem "html-proofer", "~> 3.19"
