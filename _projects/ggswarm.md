@@ -16,14 +16,19 @@ tools:
   - name: "GPU Physics"
 
 timeline:
+
+  - date: "Phase 0"
+    phase: "The Setup"
+    details: "Setting up the development environment on Google Cloud."
+    completed: false
   - date: "Phase 1"
     phase: "Research & Architecture"
     details: "Developing the decentralized coordination framework and spatial reasoning strategy."
-    completed: true
+    completed: false
   - date: "Phase 2"
     phase: "Brain (GAT) Implementation"
     details: "Training Graph Attention Networks for permutation-invariant local message passing."
-    completed: true
+    completed: false
   - date: "Phase 3"
     phase: "Muscles & Nerves"
     details: "Integrating Minimum Control optimization and SwarmRaft decentralized consensus."

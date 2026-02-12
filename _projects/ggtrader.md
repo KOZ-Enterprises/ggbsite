@@ -4,7 +4,7 @@ title: "ggTrader"
 image: "/assets/imgs/project/tradingbot.png"
 description: "A professional algorithmic trading bot built with a modular design, featuring Walk-Forward Optimization (WFO), sensitivity analysis, and high-performance Kraken data adapters."
 objective: "Create a reproducible and scalable trading research and execution framework for professional traders."
-status: "Completed"
+status: "Optimization of Core Code"
 order: 3
 project-tag: "ggtrader"
 tools: 
@@ -20,18 +20,37 @@ timeline:
     phase: "Core Engine"
     details: "Built the modular trading engine and simulation logic with a focus on reproducibility."
     completed: true
+
   - date: "Phase 2: Data & Connectivity"
     phase: "Exchanges & Adapters"
-    details: "Implemented Kraken exchange adapters and structured data management for raw/parquet formats."
+    details: "Implemented Kraken exchange adapters and structured data management for raw/parquet formats"
     completed: true
+
   - date: "Phase 3: Intelligence"
     phase: "Optimization Suite"
     details: "Developed Walk-Forward Optimization (WFO) and sensitivity analysis scripts for strategy validation."
     completed: true
+
   - date: "Phase 4: Analytics"
     phase: "Professional Insights"
     details: "Integrated Jupyter Notebooks and ResultsManager for deep-dive visualization and parameter tracking."
-    completed: true
+    completed: false
+
+  - date: "Phase 5: Bot Architecture"
+    phase: "Bot Architecture"
+    details: "Developed a modular architecture for the trading bot with a focus on reproducibility."
+    completed: false
+
+  - date: "Phase 6: Bot Live Testing"
+    phase: "Bot Live Testing"
+    details: "Deployed the trading bot to a production environment."
+    completed: false
+
+  - date: "Phase 7: Bot Deployment"
+    phase: "Bot Deployment"
+    details: "Deployed the trading bot to a production environment."
+    completed: false
+
 
 reflection: "ggTrader turns individual trading scripts into a professional research lab, ensuring every trade is backed by rigorous statistical validation."
 ---

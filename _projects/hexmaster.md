@@ -4,7 +4,7 @@ title: "HexMaster"
 image: "/assets/imgs/project/HexMaster-cropped.png"
 description: "A powerful Discord bot for Foxhole logistics groups featuring snapshot-based stockpile management, OCR-driven intelligence reporting, and automated requisition gap analysis."
 objective: "Enable seamless stockpile management and intelligent supply chain coordination for large-scale logistics operations."
-status: "Completed"
+status: "Testing"
 order: 2
 project-tag: "hexmaster"
 tools: 
@@ -20,15 +20,28 @@ timeline:
     phase: "Core Architecture"
     details: "Implemented snapshot-based storage model using PostgreSQL and SQLAlchemy for historical data tracking."
     completed: true
+    
   - date: "Phase 2: Intelligence"
     phase: "OCR & Reporting"
     details: "Integrated OCR services to transcribe stockpile screenshots into structured data via /report commands."
     completed: true
+
   - date: "Phase 3: Logistics"
     phase: "Supply Chain Logic"
     details: "Developed requisition algorithms with 4x hub multipliers and Cartesian-Staggered hex math for distance sorting."
     completed: true
-  - date: "Phase 4: Future"
+
+  - date: "Phase 4: Testing"
+    phase: "Bot Testing"
+    details: "Deployed the trading bot to a production environment."
+    completed: false
+
+  - date: "Phase 5: Deployment"
+    phase: "Bot Deployment"
+    details: "Deployed the trading bot to a production environment."
+    completed: false
+
+  - date: "Phase 6: Future"
     phase: "Threat Mapping"
     details: "Planned integration with live WarAPI map data to overlay logistics threat levels and automated alerts."
     completed: false

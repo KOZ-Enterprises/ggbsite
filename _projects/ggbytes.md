@@ -9,11 +9,46 @@ project-tag: "gary-gigabytes"
 order: 0
 tools: 
   - name: "Jekyll"
-  - name: "CSS (Vanilla)"
+  - name: "CSS"
   - name: "HTML5"
   - name: "Font Awesome"
   - name: "Google Fonts"
   - name: "Jekyll Paginate"
   - name: "Docker"
   - name: "Nginx"
+  - name: "DigitalOcean"
+
+timeline:
+
+  - date: "Phase 1: Initial Bare HTML/CSS Design"
+    phase: "Design"
+    details: "Create a basic HTML/CSS design for the portfolio."
+    completed: true
+
+  - date: "Phase 1.1: Nginx Setup"
+    phase: "Implementation"
+    details: "Set up Nginx on DigitalOcean."
+    completed: true
+
+  - date: "Phase 2: Jekyll Integration"
+    phase: "Implementation"
+    details: "Integrate Jekyll into the portfolio."
+    completed: true
+
+  - date: "Phase 3: Responsive Design"
+    phase: "Implementation"
+    details: "Make the portfolio responsive."
+    completed: true
+
+  - date: "Phase 4: Polish Design"
+    phase: "Implementation"
+    details: "Polish the portfolio design."
+    completed: true
+
+
+
+  - date: "Phase 6: Maintenance"
+    phase: "Maintenance"
+    details: "Maintain the portfolio."
+    completed: false
 ---
