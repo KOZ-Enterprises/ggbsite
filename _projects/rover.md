@@ -11,7 +11,7 @@ resources:
   - name: "GitHub Project Page"
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
-order: 3
+order: 9
 project-tag: "rover"
 tools: 
   - name: "Arduino"
