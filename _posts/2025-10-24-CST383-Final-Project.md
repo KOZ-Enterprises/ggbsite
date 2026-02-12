@@ -5,7 +5,7 @@ title: "Satellite Identifier: Predictive Modeling"
 description: "A machine learning project investigating the relationship between a satellite’s physical characteristics and its intended orbital mission."
 project-title: "Satellite Identifier"
 project-url: "https://github.com/CST383-Group7/CST383-30_2254_Satellite_Identity"
-image: "/assets/imgs/project/rocket-spacecraft-realistic.jpg"
+image: "/assets/imgs/project/satellite.png"
 project-tag: "cst383"
 status: "Completed"
 tools:

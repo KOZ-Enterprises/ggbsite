@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Rover"
-image: "/assets/imgs/project/rover-transparent.png"
+image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
 description: "Rover is a smart RC car built from scratch with the goal of adding autonomy using sensors and embedded hardware."
 objective: "Develop a rover with wireless control and eventually autonomous navigation."
@@ -11,6 +11,9 @@ resources:
   - name: "GitHub Project Page"
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
+  - name: "ggRover Repository"
+    link: "https://github.com/garykuepper/ggRover-Controller"
+    icon: "fa-brands fa-github"
 order: 9
 project-tag: "rover"
 tools: 

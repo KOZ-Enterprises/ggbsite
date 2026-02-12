@@ -33,24 +33,27 @@ permalink: /csumb/
     <div class="course-grid">
         {% assign sorted_courses = site.csumb | sort: "order" | reverse %}
         {% for course in sorted_courses %}
-        <div class="course-item {{ course.status }}">
-            <div class="flex-between-start mb-10">
-                <span class="course-code-tag">[{{ course.course_code }}]</span>
-                <span class="course-status-icon">
-                    {% if course.status == "completed" %}
-                    <i class="fa-regular fa-circle-check completed" title="Verified"></i>
-                    {% elsif course.status == "in-progress" %}
-                    <i class="fa-solid fa-spinner fa-spin in-progress" title="Optimizing"></i>
-                    {% else %}
-                    <i class="fa-regular fa-circle planned" title="Planned"></i>
-                    {% endif %}
-                </span>
-            </div>
+        <a href="{{ course.url }}" class="no-underline">
+            <div class=" course-item {{ course.status }}">
+                <div class="flex-between-start mb-10">
+                    <span class="course-code-tag">[{{ course.course_code }}]</span>
+                    <span class="course-status-icon">
+                        {% if course.status == "completed" %}
+                        <i class="fa-regular fa-circle-check completed" title="Verified"></i>
+                        {% elsif course.status == "in-progress" %}
+                        <i class="fa-solid fa-spinner fa-spin in-progress" title="Optimizing"></i>
+                        {% else %}
+                        <i class="fa-regular fa-circle planned" title="Planned"></i>
+                        {% endif %}
+                    </span>
+                </div>
 
-            <a href="{{ course.url }}" class="font-bold d-block mb-10 color-fafafa no-underline">{{ course.title }}</a>
-            <div class="mono-text-sm color-muted" style="line-height: 1.4;">{{ course.content | strip_html | truncate:
-                80 }}</div>
-        </div>
+                <span class="font-bold d-block mb-10 color-fafafa no-underline">{{ course.title }}</span>
+                <div class="mono-text-sm color-muted" style="line-height: 1.4;">{{ course.content | strip_html |
+                    truncate:
+                    80 }}</div>
+            </div>
+        </a>
         {% endfor %}
     </div>
 </div>

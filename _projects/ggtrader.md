@@ -14,6 +14,10 @@ tools:
   - name: "Jupyter"
   - name: "SQLAlchemy"
   - name: "VectorBT"
+resources:
+  - name: "ggTrader Repository"
+    link: "https://github.com/garykuepper/ggTrader"
+    icon: "fa-brands fa-github"
 
 timeline:
   - date: "Phase 1: Foundation"

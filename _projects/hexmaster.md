@@ -14,6 +14,10 @@ tools:
   - name: "SQLAlchemy"
   - name: "OCR"
   - name: "WarAPI"
+resources:
+  - name: "HexMaster Repository"
+    link: "https://github.com/garykuepper/HexMaster"
+    icon: "fa-brands fa-github"
 
 timeline:
   - date: "Phase 1: Foundation"

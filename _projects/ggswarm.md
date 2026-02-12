@@ -1,10 +1,10 @@
 ---
 layout: project
 title: "GG Swarm"
-image: "/assets/imgs/project/ggswarm-2.png"
+image: "/assets/imgs/project/ggswarm-3.png"
 description: "A fully decentralized coordination framework for UAV swarms where global behavior emerges from local agent interactions using Graph Neural Networks and Minimum Control trajectory optimization."
 objective: "Address bottlenecks in centralized drone control by implementing a scalable, fault-tolerant coordination framework using GATs and decentralized consensus logic."
-status: "In Progress"
+status: "Research"
 order: 1
 project-tag: "ggswarm"
 tools: 

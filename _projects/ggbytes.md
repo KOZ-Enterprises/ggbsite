@@ -1,10 +1,10 @@
 ---
 layout: project
-title: "Gary Gigabytes"
+title: "Gary Gigabytes Website"
 image: "/assets/imgs/ggbytes/ggbytes-page.png"
 description: "A technical portfolio documenting my engineering journey, redesigned for structural consistency and a 'Blueprint' aesthetic."
 objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
-status: "Maintenance"
+status: "On-going"
 project-tag: "gary-gigabytes"
 order: 0
 tools: 
@@ -17,6 +17,10 @@ tools:
   - name: "Docker"
   - name: "Nginx"
   - name: "DigitalOcean"
+resources:
+  - name: "GaryGigabytes Repository"
+    link: "https://github.com/KOZ-Enterprises/ggbsite"
+    icon: "fa-brands fa-github"
 
 timeline:
 
