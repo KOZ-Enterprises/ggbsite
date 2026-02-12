@@ -476,6 +476,14 @@ footer {
     padding: 10px;
 }
 
+.ai-disclaimer {
+    font-size: 0.85em;
+    color: #888;
+    margin-top: 5px;
+    font-style: italic;
+    opacity: 0.7;
+}
+
 .social-icons a {
     color: #f5f5f5;
     margin: 0 10px;
