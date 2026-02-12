@@ -45,7 +45,10 @@ timeline:
     details: "Polish the portfolio design."
     completed: true
 
-
+  - date: "Phase 5: Docker Setup"
+    phase: "Implementation"
+    details: "Set up Docker for the portfolio."
+    completed: false
 
   - date: "Phase 6: Maintenance"
     phase: "Maintenance"

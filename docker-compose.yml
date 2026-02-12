@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    restart: always
+    container_name: ggbsite
+
+#   networks:
+#     - proxy_network # If you have a global nginx proxy
+
+# networks:
+#   proxy_network:
+#     external: true
