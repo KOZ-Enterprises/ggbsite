@@ -14,22 +14,14 @@ title: Gary Gigabytes
     </p>
 </div>
 
-<div class="grid-container grid-start gap-40 no-bottom-padding mb-10 no-top-margin">
-    <div>
-        <h2 class="pop-heading section-header text-left">
-            <i class="fas fa-history color-amber"></i> Recent Log Entries
-        </h2>
-    </div>
-    <div>
-        <h2 class="pop-heading section-header text-left">
-            <i class="fa-solid fa-star color-amber"></i> Featured Project
-        </h2>
-    </div>
-</div>
+
 
 <div class="grid-container grid-start no-top-padding no-top-margin">
     <!-- Update List -->
     <div>
+        <h2 class="pop-heading section-header text-left">
+            <i class="fas fa-history color-amber"></i> Recent Log Entries
+        </h2>
         <ul class="update-feed">
             {% for post in site.posts limit:6 %}
             <li class="update-item">
@@ -43,35 +35,39 @@ title: Gary Gigabytes
             </li>
             {% endfor %}
         </ul>
-        <div class="text-center" style="margin-top: 20px;">
+        <div class="text-center mt-20">
             <a href="/archives/" class="archive-btn">View
                 all archives <i class="fas fa-arrow-right"></i></a>
         </div>
     </div>
 
     <!-- Project Highlight -->
-    <div class="featured-box">
+    <div>
+        <h2 class="pop-heading section-header text-left">
+            <i class="fa-solid fa-star color-amber"></i> Featured Project
+        </h2>
+        <div class="featured-box">
 
-        {% assign featured_project = site.projects | where: "project-tag", "hexmaster" | first %}
-        {% unless featured_project %}
-        {% assign featured_project = site.posts | where: "project-tag", "hexmaster" | first %}
-        {% endunless %}
+            {% assign featured_project = site.projects | where: "project-tag", "hexmaster" | first %}
+            {% unless featured_project %}
+            {% assign featured_project = site.posts | where: "project-tag", "hexmaster" | first %}
+            {% endunless %}
 
-        {% unless featured_project %}
-        {% assign featured_project = site.projects | first %}
-        {% endunless %}
+            {% unless featured_project %}
+            {% assign featured_project = site.projects | first %}
+            {% endunless %}
 
-        {% if featured_project %}
-        {% include project-card.html project=featured_project %}
+            {% if featured_project %}
+            {% include project-card.html project=featured_project %}
 
-        {% else %}
-        <div style="padding: 20px; text-align: center; color: #aaa;">
-            <p>No projects found. Add markdown files to _projects/</p>
+            {% else %}
+            <div class="p-20 text-center color-muted">
+                <p>No projects found. Add markdown files to _projects/</p>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
 </div>
-
 <div class="mt-40">
     <h2 class="pop-heading section-header">
         <i class="fa-solid fa-journal-whills color-amber"></i> Project Logs & Updates
@@ -87,17 +83,17 @@ title: Gary Gigabytes
 {% if paginator.total_pages > 1 %}
 <div class="pagination mt-40 mb-40 text-center">
     {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="archive-btn" style="margin: 0 10px;">
+    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="archive-btn m-10">
         <i class="fas fa-arrow-left"></i> Newer Logs
     </a>
     {% endif %}
 
-    <span class="page-number color-ddd" font-family="'Roboto Mono', monospace;">
+    <span class="page-number color-ddd mono-text-sm">
         Page {{ paginator.page }} of {{ paginator.total_pages }}
     </span>
 
     {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="archive-btn" style="margin: 0 10px;">
+    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="archive-btn m-10">
         Older Logs <i class="fas fa-arrow-right"></i>
     </a>
     {% endif %}

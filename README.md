@@ -1,8 +1,11 @@
 # Gary Gigabytes Website
 
-![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?style=flat&logo=jekyll)
-![Ruby](https://img.shields.io/badge/Ruby-3.1+-CC342D?style=flat&logo=ruby)
-![License](https://img.shields.io/github/license/GICodeWarrior/ggbsite?style=flat)
+[![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?style=flat-square&logo=jekyll)](https://jekyllrb.com/)
+[![Ruby](https://img.shields.io/badge/Ruby-3.1+-CC342D?style=flat-square&logo=ruby)](https://www.ruby-lang.org/)
+[![License](https://img.shields.io/github/license/KOZ-Enterprises/ggbsite?style=flat-square)](LICENSE)
+[![Commit](https://img.shields.io/github/last-commit/KOZ-Enterprises/ggbsite?style=flat-square)](https://github.com/KOZ-Enterprises/ggbsite/commits/main)
+[![Size](https://img.shields.io/github/repo-size/KOZ-Enterprises/ggbsite?style=flat-square)](https://github.com/KOZ-Enterprises/ggbsite)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/garykuepper/)
 
 Welcome to my personal website, where I showcase my projects and academic work as I bridge the gap between engineering and computer science. This Jekyll-powered website serves as a portfolio for my work, a platform to document my journey in technology, and features an integrated blog.
 
@@ -13,7 +16,6 @@ Welcome to my personal website, where I showcase my projects and academic work a
 - [Website Structure](#website-structure)
 - [Technologies Used](#technologies-used)
 - [Code Quality](#code-quality)
-- [Local Development](#local-development)
 - [License](#license)
 - [Contact](#contact)
 
@@ -72,59 +74,6 @@ To ensure the quality of the codebase, we use the following tools:
   bundle exec jekyll build
   bundle exec htmlproofer ./_site
   ```
-
-## Local Development
-
-For local development with Jekyll, follow these steps:
-
-### Prerequisites
-
-1. **Install Ruby**: Jekyll requires Ruby to run. Install Ruby using a package manager like `Chocolatey` ([Windows install directions](https://phoenixnap.com/kb/chocolatey-windows)) or download it directly from [Ruby's official website](https://www.ruby-lang.org/en/downloads/).
-
-2. **Install Bundler**: Once Ruby is installed, install Bundler:
-
-    ```bash
-    gem install bundler
-    ```
-
-### Setup
-
-1. **Clone the repository**:
-
-    ```bash
-    git clone <repository-url>
-    cd ggbsite
-    ```
-
-2. **Install Dependencies**: Run Bundler to install the required gems:
-
-    ```bash
-    bundle install
-    ```
-
-3. **Serve the Site Locally**: Use the following command to serve your Jekyll site locally:
-
-    ```bash
-    bundle exec jekyll serve
-    ```
-
-    By default, the site will be available at `http://localhost:4000`.
-
-4. **For Windows Users**: The site includes the `wdm` gem for improved file watching performance on Windows systems.
-
-### Development Workflow
-
-- **Adding Blog Posts**: Create new Markdown files in the `_posts/` directory with the naming convention `YYYY-MM-DD-title.md`
-- **Adding Projects**: Create new files in the `_projects/` collection directory
-- **Adding Academic Work**: Create new files in the `_csumb/` collection directory
-- **Customizing Layouts**: Edit files in the `_layouts/` directory
-- **Modifying Styles**: Update CSS files in the `assets/` directory
-
-### Stop the Server
-
-To stop the local server, press `Ctrl+C` in the terminal.
-
-For more details, refer to the [Jekyll documentation](https://jekyllrb.com/docs/).
 
 ## License
 

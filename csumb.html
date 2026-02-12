@@ -9,7 +9,7 @@ permalink: /csumb/
 </h1>
 
 <div class="hero-card">
-    <p class="m-0 color-ddd" style="font-size: 1.1em; line-height: 1.6;">
+    <p>
         I am not just "transitioning" to tech—I am <strong>combining</strong> my years of experience in
         Mechanical Engineering with advanced Computer Science concepts.
         My goal is to develop tangible products, build intelligent autonomy, and apply AI/ML to solve real-world
@@ -21,7 +21,7 @@ permalink: /csumb/
 <div class="mt-40">
     <h2 class="pop-heading section-header">Course Registry</h2>
 
-    <div class="mb-20" style="font-size: 1.1em; color: #ccc;">
+    <div class="mb-20 text-lg color-ccc">
         <p>
             The CSUMB Computer Science program builds a solid foundation in programming, software
             design, algorithms, databases, operating systems, networking, and modern web development.
@@ -34,7 +34,7 @@ permalink: /csumb/
         {% assign sorted_courses = site.csumb | sort: "order" | reverse %}
         {% for course in sorted_courses %}
         <div class="course-item {{ course.status }}">
-            <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 5px;">
+            <div class="flex-between-start mb-10">
                 <span class="course-code-tag">[{{ course.course_code }}]</span>
                 <span class="course-status-icon">
                     {% if course.status == "completed" %}
@@ -47,11 +47,9 @@ permalink: /csumb/
                 </span>
             </div>
 
-            <a href="{{ course.url }}"
-                style="font-weight: bold; color: #fafafa; text-decoration: none; display: block; margin-bottom: 5px;">{{
-                course.title }}</a>
-            <div style="font-size: 0.85em; color: #aaa; line-height: 1.4;">{{ course.content | strip_html | truncate: 80
-                }}</div>
+            <a href="{{ course.url }}" class="font-bold d-block mb-10 color-fafafa no-underline">{{ course.title }}</a>
+            <div class="mono-text-sm color-muted" style="line-height: 1.4;">{{ course.content | strip_html | truncate:
+                80 }}</div>
         </div>
         {% endfor %}
     </div>

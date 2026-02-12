@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "HexMaster"
-image: "/assets/imgs/project/HexMaster.png"
+image: "/assets/imgs/project/HexMaster-cropped.png"
 description: "A powerful Discord bot for Foxhole logistics groups featuring snapshot-based stockpile management, OCR-driven intelligence reporting, and automated requisition gap analysis."
 objective: "Enable seamless stockpile management and intelligent supply chain coordination for large-scale logistics operations."
 status: "Completed"

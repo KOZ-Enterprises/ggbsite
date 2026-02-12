@@ -17,17 +17,16 @@ permalink: /archives/
             {% for post in year.items %}
             <li class="mb-10">
                 <span class="fa-li"><i class="fas fa-terminal color-accent"></i></span>
-                <span class="color-ddd"
-                    style="font-family: 'Roboto Mono', monospace; font-size: 0.85em; margin-right: 15px;">
+                <span class="color-ddd mono-text-sm" style="margin-right: 15px;">
                     {{ post.date | date: "%Y-%m-%d" }}
                 </span>
-                <a href="{{ post.url }}" style="color: #fafafa; font-weight: bold; text-decoration: none;">
+                <a href="{{ post.url }}" class="color-fafafa font-bold no-underline">
                     {{ post.title }}
                 </a>
                 {% if post.tags %}
-                <span style="font-size: 0.8em; margin-left: 10px;">
+                <span class="mono-text-sm" style="margin-left: 10px;">
                     {% for tag in post.tags %}
-                    <span class="color-accent">#{{ tag }}</span>
+                    <a href="/tags/{{ tag | slugify }}/" class="color-accent no-underline">#{{ tag }}</a>
                     {% endfor %}
                 </span>
                 {% endif %}

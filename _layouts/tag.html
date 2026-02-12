@@ -2,15 +2,20 @@
 layout: default
 ---
 
-<h1>Posts Tagged: "{{ page.tag }}"</h1>
-<ul class="post-list">
-    {% for post in site.posts %}
-    {% if post.tags contains page.tag %}
-    <li>
-        <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-        <p class="date">{{ post.date | date: "%B %d, %Y" }}</p>
-        <p class="excerpt">{{ post.excerpt }}</p>
-    </li>
-    {% endif %}
-    {% endfor %}
-</ul>
+<div class="mt-20">
+    <h1 class="pop-heading section-header text-left">Posts Tagged: #{{ page.tag }}</h1>
+</div>
+
+<div class="post-page">
+    <div class="post-content">
+        <ul class="update-feed post-list">
+            {% for post in site.tags[page.tag] %}
+            {% include post.html post=post type="excerpt" %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+
+<div class="text-center mt-40 mb-40">
+    <a href="/archives/" class="archive-btn"><i class="fas fa-arrow-left"></i> Back to Archives</a>
+</div>
