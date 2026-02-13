@@ -1,8 +1,8 @@
 ---
 layout: post
-tags: ["ggswarm", "capstone", "csumb"]
+tags: ["ggswarm", "capstone", "csumb","cst489","cst499"]
 title: "Project Launch: GG Swarm - Decentralized UAV Coordination"
-description: "An introduction to the GG Swarm capstone project, exploring decentralized coordination for UAV swarms using GNNs and Isaac Lab."
+description: "A research overview and a project launch for decentralized UAV coordination."
 project-title: "GG Swarm"
 project-url: "/projects/ggswarm/"
 image: "/assets/imgs/project/ggswarm-3.png"
@@ -15,7 +15,7 @@ tools:
   - name: "Google Cloud"
 ---
 
-This post introduces the **GG Swarm** capstone project, a decentralized coordination framework designed to overcome the single point of failure and high latency of centralized control in large UAV swarms. By integrating Graph Neural Networks (GNNs) for spatial reasoning with advanced Minimum Control (MINCO) trajectory optimization, the system achieves robust, fault-tolerant behavior for high-stakes applications.
+This post introduces the [**GG Swarm**]({{ page.project-url }}) capstone project, a decentralized coordination framework designed to overcome the single point of failure and high latency of centralized control in large UAV swarms. By integrating Graph Neural Networks (GNNs) for spatial reasoning with advanced Minimum Control (MINCO) trajectory optimization, the system achieves robust, fault-tolerant behavior for high-stakes applications.
 
 <!--more-->
 
@@ -55,6 +55,7 @@ The project employs a **"Centralized Training, Decentralized Execution" (CTDE)**
 
 | Phase | Activity | Weeks |
 | :--- | :--- | :--- |
+| **Proposal & Plan** | Defining project scope, requirements, and research foundation. | 1–4 |
 | **Foundation** | Install Isaac Lab; configure assets; finalize connectivity logic. | 5–6 |
 | **Brain Development** | Train GATv2 policy using PPO; test basic formation keeping. | 7–8 |
 | **Muscle Refinement** | Integrate MINCO optimization; implement SwarmRaft consensus. | 9–10 |

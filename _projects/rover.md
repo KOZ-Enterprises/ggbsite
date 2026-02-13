@@ -3,7 +3,7 @@ layout: project
 title: "Rover"
 image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
-description: "Rover is a smart RC car built from scratch with the goal of adding autonomy using sensors and embedded hardware."
+description: "A smart RC car and a foundational platform for autonomous navigation experiments."
 objective: "Develop a rover with wireless control and eventually autonomous navigation."
 status: "Conceptualization"
 reflection: "Rover has taught me about wireless communication, embedded motor control, and practical hardware debugging. It's also helping lay the foundation for future robotics projects."

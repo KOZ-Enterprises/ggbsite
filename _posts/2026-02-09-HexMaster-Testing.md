@@ -2,7 +2,7 @@
 layout: post
 tags: ["hexmaster", "foxhole", "logistics"]
 title: "HexMaster: Entering the Testing Phase"
-description: "A brief introduction to HexMaster, a powerful Discord bot for Foxhole logistics, now moving into active testing."
+description: "A powerful Discord bot and a logistics tool for Foxhole groups moving into testing."
 project-title: "HexMaster"
 project-url: "/projects/hexmaster/"
 image: "/assets/imgs/project/HexMaster-cropped.png"

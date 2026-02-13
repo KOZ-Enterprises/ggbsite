@@ -2,28 +2,28 @@
 layout: post
 tags: [ "cst338", 'csumb']
 title: "Pill Hub: Medication Management Application"
-description: "A comprehensive mobile application designed to assist users in managing their medications, schedules, and health safety effectively."
+description: "A mobile application and an intuitive health management tool for medication tracking."
 project-title: "Pill Hub App"
 project-url: "https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph"
 image: "/assets/imgs/project/pillhub.png"
+status: completed
+tools: [Java, Android, SQLite]
 ---
 
-The [Pill Hub App](https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph) is a user-centric mobile application
-designed to simplify medication adherence and health management. It provides a robust set of tools for users to stay
-organized and informed about their prescriptions. It allows users to:
 
+Pill Hub is a mobile health application I developed for [CST338: Software Design](/csumb/cst338/) to help users manage medications safely and efficiently. I focused on creating an intuitive interface for tracking schedules and preventing dangerous drug-to-drug interactions.
 <!--more-->
+The application includes several key safety and management features:
 
-- **Schedule Reminders**: Set automated notifications for medication dosages to ensure consistency.
-- **Track Inventory**: Monitor remaining pill counts and receive alerts for upcoming refills.
-- **Access Safety Info**: View critical information regarding side effects and potential drug-to-drug interactions.
-- **Manage User Profiles**: Store personal health data and medication history securely within the application.
-- **Interface with APIs**: Leverage external health databases to provide accurate and up-to-date medication information.
+- **Medication Scheduling**: Designed a flexible system for users to input and track complex medication routines.
+- **Interaction Checking**: Integrated a robust validation system to cross-reference medications and flag potential health
+  risks.
+- **Visual Pill Identification**: Implemented a visual library to help users verify their medications at a glance.
+- **Health Log**: Developed a centralized hub for users to monitor their adherence and overall medication history.
 
-The project combines an intuitive mobile interface with a reliable backend to help users manage their health journeys
-with confidence.
+The project emphasizes a user-centric design approach, bridging technical software architecture with practical health safety requirements. Technical complexity must always be balanced with user-centric design to create truly effective health management tools.
 
-### Project Presentation
+### Project Deliverables
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

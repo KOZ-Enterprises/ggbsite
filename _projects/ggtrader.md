@@ -2,7 +2,7 @@
 layout: project
 title: "ggTrader"
 image: "/assets/imgs/project/tradingbot.png"
-description: "A professional algorithmic trading bot built with a modular design, featuring Walk-Forward Optimization (WFO), sensitivity analysis, and high-performance Kraken data adapters."
+description: "An algorithmic trading bot and a research framework for professional strategy development."
 objective: "Create a reproducible and scalable trading research and execution framework for professional traders."
 status: "Optimization of Core Code"
 order: 3

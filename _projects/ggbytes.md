@@ -2,7 +2,7 @@
 layout: project
 title: "Gary Gigabytes Website"
 image: "/assets/imgs/ggbytes/ggbytes-page.png"
-description: "A technical portfolio documenting my engineering journey, redesigned for structural consistency and a 'Blueprint' aesthetic."
+description: "A technical portfolio and a central hub for documenting my engineering journey."
 objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
 status: "On-going"
 project-tag: "gary-gigabytes"
