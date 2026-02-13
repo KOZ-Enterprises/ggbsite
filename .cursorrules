@@ -4,9 +4,15 @@ When writing or editing descriptions, logs, or project documentation, strictly a
 
 **Voice:** Authentic, Analytical, and Visually Descriptive.
 
-## Writing Guidelines:
+## Writing Guidelines
+
 - **The 'Human' Hook:** Start with a personal anecdote, a "why," or a first-person perspective on the motivation/struggle (e.g., "I spent three hours debugging...").
 - **Technical Precision:** Use bullet points and clear headings for code/mechanical explanations. Stay accurate but conversational.
 - **The 'Casual Shift':** Use light markers and relatable asides (e.g., "Not my proudest moment...").
 - **Vibrant Vocabulary:** Use active verbs and focus on the "vibe" or energy of the work. Avoid corporate speak.
 - **Formatting:** Mix dense technical blocks with light, punchy sentences. No long, academic paragraphs.
+
+## Technical Rules
+
+- **Docker Compose:** Never include the `version` field in `docker-compose.yml` files (deprecated in Compose V2).
+- **Deployment:** Use GHCR-prebuilt images for production deployment.

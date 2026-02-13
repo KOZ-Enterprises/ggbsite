@@ -1,16 +1,13 @@
-version: '3.8'
-
 services:
   web:
-    build: .
-    ports:
-      - "8080:80"
-    restart: always
+    image: ghcr.io/koz-enterprises/ggbsite:latest
     container_name: ggbsite
+    restart: always
+    networks:
+      - proxy_network
+    # ports:
+    #   - "8080:80" # Uncomment for local testing if not using proxy
 
-#   networks:
-#     - proxy_network # If you have a global nginx proxy
-
-# networks:
-#   proxy_network:
-#     external: true
+networks:
+  proxy_network:
+    external: true
