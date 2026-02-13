@@ -5,6 +5,10 @@ FROM ruby:3.2-slim AS builder
 RUN apt-get update && apt-get install -y \
     build-essential \
     git \
+    libffi-dev \
+    zlib1g-dev \
+    libxml2-dev \
+    libxslt-dev \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
