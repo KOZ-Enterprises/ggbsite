@@ -83,7 +83,7 @@ services:
     restart: always
 
   culinaryotter:
-    image: ghcr.io/koz-enterprises/culinaryotter:latest 
+    image: ghcr.io/terrabit-apex-solutions/culinaryotter:latest
     container_name: culinaryotter
     networks:
       - web-network
