@@ -1,10 +1,10 @@
 ---
 layout: project
 title: "GG Swarm"
-image: "/assets/imgs/project/ggswarm-2.png"
-description: "A fully decentralized coordination framework for UAV swarms where global behavior emerges from local agent interactions using Graph Neural Networks and Minimum Control trajectory optimization."
+image: "/assets/imgs/project/ggswarm-3.png"
+description: "A decentralized coordination framework and an emergent behavior engine for UAV swarms."
 objective: "Address bottlenecks in centralized drone control by implementing a scalable, fault-tolerant coordination framework using GATs and decentralized consensus logic."
-status: "In Progress"
+status: "Research"
 order: 1
 project-tag: "ggswarm"
 tools: 
@@ -16,38 +16,45 @@ tools:
   - name: "GPU Physics"
 
 timeline:
-
-  - date: "Phase 0"
-    phase: "The Setup"
-    details: "Setting up the development environment on Google Cloud."
+  - date: "Weeks 1–4"
+    phase: "Proposal and Plan"
+    details: "Defining project scope, requirements, and theoretical research foundation."
+    completed: true
+  - date: "Weeks 5–6"
+    phase: "Foundation & Setup"
+    details: "Finalizing connectivity logic and setting up the development environment on Google Cloud."
     completed: false
-  - date: "Phase 1"
-    phase: "Research & Architecture"
-    details: "Developing the decentralized coordination framework and spatial reasoning strategy."
-    completed: false
-  - date: "Phase 2"
+  - date: "Weeks 7–8"
     phase: "Brain (GAT) Implementation"
     details: "Training Graph Attention Networks for permutation-invariant local message passing."
     completed: false
-  - date: "Phase 3"
+  - date: "Weeks 9–10"
     phase: "Muscles & Nerves"
     details: "Integrating Minimum Control optimization and SwarmRaft decentralized consensus."
     completed: false
-  - date: "Phase 4"
+  - date: "Weeks 11–12"
     phase: "Simulation & Training"
     details: "GPU-accelerated training in Isaac Lab across thousands of parallel environments."
+    completed: false
+  - date: "Weeks 13–15"
+    phase: "Showcase Prep"
+    details: "Finalizing RTX Tiled Rendering and recording a high-definition demonstration."
+    completed: false
+  - date: "Week 16"
+    phase: "Delivery"
+    details: "Presenting at the Capstone Festival and final portfolio submission."
     completed: false
 
 reflection: "This project pushes the boundaries of swarm intelligence by moving away from brittle husband-and-spoke models toward resilient, emergent behaviors."
 ---
 
-### Project Overview
+## Project Overview
 
 This capstone project addresses a critical bottleneck in the deployment of unmanned aerial vehicle swarms by tackling the inherent vulnerabilities found in centralized control architectures. Traditional hub and spoke models often suffer from single points of failure and prohibitive communication latencies as swarm sizes scale, making them a liability for high-stakes applications in disaster response, reconnaissance, and agriculture.
 
 To solve this, the project proposes a fully decentralized coordination framework where global formation behavior emerges naturally from local agent interactions. By combining **Graph Neural Networks** for spatial reasoning with advanced **trajectory optimization** for flight dynamics, the system achieves a robust and fault-tolerant solution for complex aerial maneuvers.
 
-### Technical Architecture
+## Technical Architecture
 
 The technical architecture is split into two primary functional components described as the **brain** and the **muscles**:
 
@@ -55,7 +62,7 @@ The technical architecture is split into two primary functional components descr
 * **The Muscles**: To translate neural network outputs into smooth flight, the project integrates **Minimum Control** trajectory optimization. This ensures that all maneuvers are dynamically feasible and significantly reduces the velocity jitter commonly found in raw reinforcement learning controllers.
 * **The Heart/Nerves**: Incorporates **SwarmRaft**, a decentralized consensus logic that allows the swarm to automatically re-synchronize and fill gaps left by failing agents without human intervention.
 
-### Simulation & Performance
+## Simulation & Performance
 
 The implementation leverages **NVIDIA Isaac Lab**, utilizing GPU-accelerated physics and high-fidelity rendering. This allows agents to learn complex behaviors in parallel across thousands of simulated environments before being tested in challenging scenarios such as cluttered forests and urban canyons.
 

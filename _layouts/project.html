@@ -4,7 +4,8 @@ layout: default
 
 <div class="project-container">
     <div class="project-header-section">
-        <h1 class="heading section-header text-left">{{ page.title }}</h1>
+        <h1 class="heading section-header text-left"><i class="fa-solid fa-rocket color-amber"></i> {{ page.title }}
+        </h1>
         <p class="project-intro text-lg color-ccc m-10">{{ page.description }}</p>
     </div>
 
@@ -21,8 +22,10 @@ layout: default
             {% endif %}
 
             <div class="project-objective">
-                <h2 class="pop-heading section-header"><i class="fa-solid fa-bullseye heading-icon"></i> Mission
+                <h2 class="pop-heading section-header"><i class="fa-solid fa-bullseye heading-icon color-amber"></i>
+                    Mission
                     Objective</h2>
+
                 <div class="objective-box">
                     <p>{{ page.objective | default: "No objective defined." }}</p>
                 </div>
@@ -74,7 +77,16 @@ layout: default
                 <div class="tech-stack-chips">
                     {% assign tech_list = page.tech_stack | default: page.tools %}
                     {% for tech in tech_list %}
-                    <span class="tech-chip">{{ tech.name | default: tech }}</span>
+                    {% assign tech_name = tech.name | default: tech %}
+                    {% assign tech_slug = tech_name | downcase | slugify %}
+
+                    {% assign custom_url = site.data.tag_links[tech_slug] %}
+                    {% if custom_url %}
+                    <a href="{{ custom_url }}" class="tech-chip tech-chip-interactive">{{ tech_name }}</a>
+                    {% else %}
+                    <a href="/tags/{{ tech_slug | slugify }}/" class="tech-chip tech-chip-interactive">{{ tech_name
+                        }}</a>
+                    {% endif %}
                     {% endfor %}
                 </div>
             </div>

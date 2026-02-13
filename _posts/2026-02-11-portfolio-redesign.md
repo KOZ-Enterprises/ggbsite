@@ -3,10 +3,12 @@ layout: post
 title: "Portfolio Overhaul: Engineering Aesthetic & Structural Integrity"
 date: 2026-02-10
 tags: ["gary-gigabytes", "hobby-projects"]
-excerpt: "A deep dive into the recent redesign of this portfolio, focusing on CSS refactoring, the new 'Blueprint' aesthetic, and structural alignment."
+
 ---
 
 It was time for a structural evaluation. While this site has always served its purpose as a digital lab notebook, the underlying "codebase" (the CSS and HTML) had become a bit of a patchwork. Over the last few days, I've performed a complete overhaul of the site's architecture and visual language.
+
+<!--more-->
 
 ### Core Objectives
 

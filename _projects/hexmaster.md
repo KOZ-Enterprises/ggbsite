@@ -2,7 +2,7 @@
 layout: project
 title: "HexMaster"
 image: "/assets/imgs/project/HexMaster-cropped.png"
-description: "A powerful Discord bot for Foxhole logistics groups featuring snapshot-based stockpile management, OCR-driven intelligence reporting, and automated requisition gap analysis."
+description: "A powerful Discord bot and an intelligent logistics coordinator for Foxhole groups."
 objective: "Enable seamless stockpile management and intelligent supply chain coordination for large-scale logistics operations."
 status: "Testing"
 order: 2
@@ -14,6 +14,10 @@ tools:
   - name: "SQLAlchemy"
   - name: "OCR"
   - name: "WarAPI"
+resources:
+  - name: "HexMaster Repository"
+    link: "https://github.com/garykuepper/HexMaster"
+    icon: "fa-brands fa-github"
 
 timeline:
   - date: "Phase 1: Foundation"

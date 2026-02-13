@@ -13,7 +13,7 @@
 .vscode/
 # AWS User-specific
 .idea/**/aws.xml
-
+STYLE_GUIDE.md
 # Generated files
 .idea/**/contentModel.xml
 

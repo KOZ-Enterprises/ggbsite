@@ -2,10 +2,10 @@
 layout: project
 title: "Drone"
 image: "/assets/imgs/project/drone2.png"
-description: "The Drone project focuses on designing a quadcopter platform with the potential for swarm collaboration and custom control logic."
+description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
 objective: "Build a simple drone n stuff yo"
 status: "Conceptualization"
-order: 6
+order: 10
 project-tag: "drone"
 tools: 
   - name: "Solidworks"

@@ -1,10 +1,10 @@
 ---
 layout: project
-title: "Gary Gigabytes"
+title: "Gary Gigabytes Website"
 image: "/assets/imgs/ggbytes/ggbytes-page.png"
-description: "A technical portfolio documenting my engineering journey, redesigned for structural consistency and a 'Blueprint' aesthetic."
+description: "A technical portfolio and a central hub for documenting my engineering journey."
 objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
-status: "Maintenance"
+status: "On-going"
 project-tag: "gary-gigabytes"
 order: 0
 tools: 
@@ -17,31 +17,35 @@ tools:
   - name: "Docker"
   - name: "Nginx"
   - name: "DigitalOcean"
+resources:
+  - name: "GaryGigabytes Repository"
+    link: "https://github.com/KOZ-Enterprises/ggbsite"
+    icon: "fa-brands fa-github"
 
 timeline:
 
   - date: "Phase 1: Initial Bare HTML/CSS Design"
-    phase: "Design"
+    phase: "Initial Design"
     details: "Create a basic HTML/CSS design for the portfolio."
     completed: true
 
   - date: "Phase 1.1: Nginx Setup"
-    phase: "Implementation"
+    phase: "Initial Implementation"
     details: "Set up Nginx on DigitalOcean."
     completed: true
 
   - date: "Phase 2: Jekyll Integration"
-    phase: "Implementation"
+    phase: "Blog Development"
     details: "Integrate Jekyll into the portfolio."
     completed: true
 
   - date: "Phase 3: Responsive Design"
-    phase: "Implementation"
+    phase: "Design Improvement"
     details: "Make the portfolio responsive."
     completed: true
 
   - date: "Phase 4: Polish Design"
-    phase: "Implementation"
+    phase: "Final Design Improvement"
     details: "Polish the portfolio design."
     completed: true
 

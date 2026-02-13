@@ -1,88 +1,47 @@
-# Gary Gigabytes Website
+# Gary Gigabytes: Engineering with a Side of Algorithmic Obsession
 
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.3-CC0000?style=flat-square&logo=jekyll)](https://jekyllrb.com/)
 [![Ruby](https://img.shields.io/badge/Ruby-3.1+-CC342D?style=flat-square&logo=ruby)](https://www.ruby-lang.org/)
-[![License](https://img.shields.io/github/license/KOZ-Enterprises/ggbsite?style=flat-square)](LICENSE)
-[![Commit](https://img.shields.io/github/last-commit/KOZ-Enterprises/ggbsite?style=flat-square)](https://github.com/KOZ-Enterprises/ggbsite/commits/main)
-[![Size](https://img.shields.io/github/repo-size/KOZ-Enterprises/ggbsite?style=flat-square)](https://github.com/KOZ-Enterprises/ggbsite)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-0077B5?style=flat-square&logo=linkedin)](https://www.linkedin.com/in/garykuepper/)
 
-Welcome to my personal website, where I showcase my projects and academic work as I bridge the gap between engineering and computer science. This Jekyll-powered website serves as a portfolio for my work, a platform to document my journey in technology, and features an integrated blog.
+Welcome to my public lab notebook. This is where the clank of gears meets the click of keys.
 
-## Table of Contents
+I've spent over a decade in the aerospace industry—currently at Boeing working on environmental control systems—but I’ve always been obsessed with the "why" behind the automation. I didn't just want to build the bodies of these machines; I wanted to understand their brains. That curiosity drove me back for a second degree in Computer Science at CSUMB, bridging the gap between mechanical hardware and software digits.
 
-- [About Me](#about-me)
-- [Features](#features)
-- [Website Structure](#website-structure)
-- [Technologies Used](#technologies-used)
-- [Code Quality](#code-quality)
-- [License](#license)
-- [Contact](#contact)
+This site documents that journey: the builds, the breakages, and the occasional 2 AM breakthroughs in decentralized swarms and autonomous rovers.
 
-## About Me
+## The Mission
 
-I hold a Bachelor's degree in Mechanical Engineering and am currently pursuing a Bachelor's degree in Computer Science at California State University, Monterey Bay (CSUMB). My passion for technology and innovation drives me to explore the exciting world of artificial intelligence and machine learning.
+- **Field Logs (Blog)**: Jekyll-powered updates on what I'm building and what I'm breaking.
+- **The Workshop (Projects)**: A portfolio of autonomous rovers, Raspberry Pi clusters, and swarm simulations. If it moves and thinks, it’s probably in here.
+- **Academic Annex**: A dedicated section for my CS coursework and projects from CSUMB.
+- **Responsive Roots**: A modern layout that works as well in the field as it does on your desktop.
 
-## Features
+## Where to Explore
 
-- **Portfolio Showcase**: Displays my hobby and academic projects including autonomous Arduino rovers, Raspberry Pi clusters, quantum computing simulations, and full-stack web apps
-- **Academic Work**: Dedicated section for my Computer Science coursework and projects from CSUMB
-- **Integrated Blog**: Jekyll-powered blog to document my projects, insights, and experiences
-- **Responsive Design**: Clean, modern layout that works across devices
-- **Tag System**: Organized content categorization for easy navigation
+- **Home** (`index.html`) - The bird's-eye view.
+- **About** (`about.html`) - The backstory: from bomb ejection mechanisms to aircraft ECS.
+- **Projects** (`projects.html`) - The deep dives into the workshop.
+- **CSUMB** (`csumb.html`) - The academic front lines.
 
-## Website Structure
+## The Tech Stack
 
-The site is organized into several key sections:
+- **Jekyll 4.3** - My favorite static site generator for documenting logs.
+- **Liquid & Markdown** - Keeping the content authoring precise but approachable.
+- **HTML5 & Vanilla CSS** - Building from the ground up without the bloat.
+- **Ruby & Git** - The reliable foundation of the development environment.
 
-- **Home** (`index.html`) - Introduction and overview
-- **About** (`about.html`) - Detailed background information
-- **Projects** (`projects.html`) - Portfolio of personal and hobby projects
-- **CSUMB** (`csumb.html`) - Academic coursework and university projects
-- **Blog Posts** - Regular updates and project documentation
+## The Quality Check
 
-### Collections
+I like my code as rigorous as my mechanical designs. To keep things clean, I use:
 
-The site uses Jekyll collections to organize content:
+- **RuboCop**: Because even a lab notebook needs standard formatting.
+- **HTMLProofer**: Ensuring that every link in the vault actually leads somewhere.
 
-- **`_projects/`** - Personal and hobby projects
-- **`_csumb/`** - Academic work from California State University, Monterey Bay
-- **`_posts/`** - Blog posts and project updates
+## Reach Out
 
-## Technologies Used
-
-- **Jekyll 4.3** - Static site generator
-- **HTML5 & CSS3** - Frontend markup and styling
-- **Liquid** - Templating language
-- **Markdown** - Content authoring
-- **Ruby** - Development environment
-- **Git** - Version control
-
-## Code Quality
-
-To ensure the quality of the codebase, we use the following tools:
-
-- **RuboCop**: A Ruby static code analyzer and formatter.
-
-  ```bash
-  bundle exec rubocop
-  ```
-
-- **HTMLProofer**: A set of tests to validate your HTML output.
-
-  ```bash
-  bundle exec jekyll build
-  bundle exec htmlproofer ./_site
-  ```
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Contact
-
-Feel free to reach out if you have any questions or would like to collaborate!
+If you're into robotics, AI, or the intersection of hardware and software, let's talk shop.
 
 - [LinkedIn Profile](https://www.linkedin.com/in/garykuepper/)
 
-Thank you for visiting my page!
+Thanks for stopping by the lab!
