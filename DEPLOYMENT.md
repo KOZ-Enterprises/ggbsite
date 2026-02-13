@@ -1,88 +1,95 @@
-# Deployment & Setup
+# Fresh Droplet Deployment Guide
 
-This document outlines the technical configuration and deployment workflow for the `ggbsite` project.
+Since you're starting fresh, we're using a **Unified Proxy** setup. This means one master orchestration file manages your main Nginx entry point and all your sites.
 
-## Workflow Overview
+## 1. Initial Server Setup
 
-The site follows a registry-based deployment strategy. Images are built and pushed to GitHub Container Registry (GHCR) automatically, then pulled to the production server.
-
-1. **Local Dev**: Build/test the container.
-2. **Push**: Commit and push to the `publish` branch.
-3. **CI/CD**: GitHub Actions builds the image and pushes to `ghcr.io/koz-enterprises/ggbsite:latest`.
-4. **Deploy**: Production server pulls the new image and restarts the container.
-
----
-
-## Prerequisites
-
-- **Docker & Docker Compose** (V2 recommended)
-- **GitHub Container Registry Access**
-- **Production Server with Nginx Proxy Network**
-
-## Local Development
-
-If you're testing locally, you can use the internal Docker setup to simulate the production environment.
-
-1. **Configure Networking**: If not running behind a proxy locally, uncomment the `ports` mapping in `docker-compose.yml`:
-
-    ```yaml
-    ports:
-      - "8080:80"
-    ```
-
-2. **Build and Run**:
-
-    ```bash
-    docker compose up --build
-    ```
-
-3. **Access**: Visit `http://localhost:8080`.
-
-## Production Deployment
-
-### 1. GitHub Actions Setup
-
-The workflow is defined in `.github/workflows/deploy.yml`. It triggers specifically on pushes to the `publish` branch. It uses `GITHUB_TOKEN` for permissions, so no extra secrets are required for GHCR authentication.
-
-### 2. Server-Side Setup
-
-On your DigitalOcean server, ensure the shared network exists:
+SSH into your fresh droplet and prepare the directory structure:
 
 ```bash
-docker network create proxy_network
+mkdir -p ~/server/nginx/conf.d
+mkdir -p ~/server/nginx/certs
 ```
 
-Ensure your `docker-compose.yml` points to the GHCR image:
+## 2. SSL Certificates (Cloudflare Origin Certs)
 
-```yaml
-services:
-  web:
-    image: ghcr.io/koz-enterprises/ggbsite:latest
-```
+Since you're using Cloudflare, you can use their free **Origin Certificates**. These are valid for 15 years and encrypt traffic between Cloudflare and your server.
 
-### 3. Execution
+1. **Generate Certificates**:
+    - In Cloudflare, go to **SSL/TLS** -> **Origin Server**.
+    - Click **Create Certificate**.
+    - Keep default settings (List your domains: `garygigabytes.com`, `*.garygigabytes.com`, etc.).
+    - Cloudflare will show you a **Private Key** and an **Origin Certificate**.
+2. **Save Locally**:
+    - Save the **Origin Certificate** as `server/nginx/certs/garygigabytes.pem`.
+    - Save the **Private Key** as `server/nginx/certs/garygigabytes.key`.
+    - (Repeat for `culinaryotter` or use one cert that covers both if they are on the same Cloudflare account).
 
-To update the live site after the GitHub Action completes:
+## 3. Copy Configuration and Certs
+
+Navigate to your server directory and start the orchestration:
 
 ```bash
-docker compose pull
+cd ~/server
 docker compose up -d
 ```
 
-## Reverse Proxy Configuration
+## 4. Site Updates (CI/CD)
 
-The main Nginx container on the server must be on the `proxy_network`. Use the following server block to route traffic to the `ggbsite` container:
+Your workflow for updating the sites remains automated:
 
-```nginx
-server {
-    server_name garygigabytes.com;
+1. **Develop Locally**: Make changes to `ggbsite` or `culinaryotter`.
+2. **Push to Publish**: Push the `publish` branch to trigger the GitHub Action.
+3. **Redeploy**: Once the Action finishes, run this on your server:
 
-    location / {
-        proxy_pass http://ggsite:80;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-    }
-}
+    ```bash
+    cd ~/server
+    docker compose pull
+    docker compose up -d
+    ```
+
+## 5. Cloudflare Settings
+
+In your Cloudflare Dashboard:
+
+1. **DNS**: Ensure both domains point to your new Droplet IP (with the Orange Cloud "Proxied" enabled).
+2. **SSL/TLS**: Set the mode to **"Full"** or **"Full (Strict)"**. Cloudflare handles the visitor-facing certificates, and Nginx handles the internal routing.
+
+---
+
+### Master Server Configuration Snippet
+
+**`server/docker-compose.yml`**:
+
+```yaml
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: main-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+    networks:
+      - web-network
+    restart: always
+
+  ggbsite:
+    image: ghcr.io/koz-enterprises/ggbsite:latest
+    container_name: ggbsite
+    networks:
+      - web-network
+    restart: always
+
+  culinaryotter:
+    image: ghcr.io/koz-enterprises/culinaryotter:latest 
+    container_name: culinaryotter
+    networks:
+      - web-network
+    restart: always
+
+networks:
+  web-network:
+    driver: bridge
 ```

@@ -1,0 +1,31 @@
+services:
+  nginx-proxy:
+    image: nginx:alpine
+    container_name: main-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    networks:
+      - web-network
+    restart: always
+
+  ggbsite:
+    image: ghcr.io/koz-enterprises/ggbsite:latest
+    container_name: ggbsite
+    networks:
+      - web-network
+    restart: always
+
+  culinaryotter:
+    image: ghcr.io/koz-enterprises/culinaryotter:latest
+    container_name: culinaryotter
+    networks:
+      - web-network
+    restart: always
+
+networks:
+  web-network:
+    driver: bridge
