@@ -17,10 +17,7 @@ tools:
   - name: "Docker"
   - name: "Nginx"
   - name: "DigitalOcean"
-resources:
-  - name: "GaryGigabytes Repository"
-    link: "https://github.com/KOZ-Enterprises/ggbsite"
-    icon: "fa-brands fa-github"
+
 
 timeline:
 
