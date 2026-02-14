@@ -168,16 +168,13 @@ nav {
     }
 
     .navbar .nav-links {
+        display: none;
         flex-direction: column;
         width: 100%;
     }
 
-    .navbar .nav-links a:not(:first-child) {
-        display: none;
-    }
-
-    .navbar.responsive .nav-links a {
-        display: block;
+    .navbar.responsive .nav-links {
+        display: flex;
     }
 }
 
