@@ -992,6 +992,42 @@ footer {
     border-radius: 4px;
 }
 
+/* Table Styles */
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95em;
+    border: 1px solid #2e4c5b;
+    background-color: rgba(26, 30, 30, 0.5);
+}
+
+.post-content th {
+    background-color: #2e4c5b;
+    color: #64d5d2;
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #2e4c5b;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.post-content td {
+    padding: 12px 15px;
+    border: 1px solid #2e4c5b;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.post-content tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.post-content tr:hover {
+    background-color: rgba(100, 213, 210, 0.05);
+}
+
 /* Blueprint Backdrop Utility */
 .blueprint-grid {
     background-color: #1a1e1e;
