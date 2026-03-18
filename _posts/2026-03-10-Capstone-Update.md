@@ -17,7 +17,7 @@ This week was focused on setting up the development environment, such as the fol
 
 * Installed NVIDIA Isaac Sim and Isaac Lab on my local machine making sure my hardware can run it okay for development phase.  For more than a handful of drones I'll use Google Cloud in order to perform simulations.
 * I was able to run the example drone model which represents an actual Crazyflie drone, in Isaac Sim.  Though I did try tweaking it to fly in a straight line and it just crashed.  Welp the learning starts!
-
+<!--more-->
 ## 2. What is your plan for next week?
 
 Need to quickly get more familiar with Isaac Lab API to understand how to control the drone model.  Then I can move on to the Brain Development milestone, where I'll start training the GATv2 coordination policy using PPO.
