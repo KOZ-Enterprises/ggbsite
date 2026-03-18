@@ -20,29 +20,29 @@ timeline:
     phase: "Proposal and Plan"
     details: "Defining project scope, requirements, and theoretical research foundation."
     completed: true
-  - date: "Weeks 5–6"
-    phase: "Foundation & Setup"
-    details: "Finalizing connectivity logic and setting up the development environment on Google Cloud."
+  - date: "Weeks 5–6 (Feb 5 – Feb 17)"
+    phase: "Foundation"
+    details: "Install NVIDIA Isaac Lab; configure simulated multirotor assets; finalize graph connectivity logic."
     completed: true
-  - date: "Weeks 7–8"
-    phase: "Brain (GAT) Implementation"
-    details: "Training Graph Attention Networks for permutation-invariant local message passing."
+  - date: "Weeks 7–8 (Feb 18 – Mar 3)"
+    phase: "Brain Development"
+    details: "Train the GATv2 policy using Multi-Agent PPO (MAPPO); test basic formation keeping in empty space. Milestone: M1 (Week 8): GNN policy training"
+    completed: true
+  - date: "Weeks 9–11 (Mar 4 – Mar 24)"
+    phase: "Muscle Refinement"
+    details: "Integrate MINCO trajectory optimization as a post-processing layer; implement SwarmRaft consensus logic. Milestone: M2 (Week 11, by 3/24): Logic integration"
     completed: false
-  - date: "Weeks 9–10"
-    phase: "Muscles & Nerves"
-    details: "Integrating Minimum Control optimization and SwarmRaft decentralized consensus."
+  - date: "Weeks 12–13 (Mar 25 – Apr 7)"
+    phase: "Stress Testing"
+    details: "Conduct simulated agent loss tests; benchmark swarm navigation in high-density obstacle environments."
     completed: false
-  - date: "Weeks 11–12"
-    phase: "Simulation & Training"
-    details: "GPU-accelerated training in Isaac Lab across thousands of parallel environments."
-    completed: false
-  - date: "Weeks 13–15"
+  - date: "Weeks 14–15 (Apr 8 – Apr 21)"
     phase: "Showcase Prep"
-    details: "Finalizing RTX Tiled Rendering and recording a high-definition demonstration."
+    details: "Finalize RTX Tiled Rendering; record HD demonstration; compile results into the final Testing Report. Milestone: M3 (Week 14, by 4/14): Mission success validation; M4 (Week 15, by 4/21): HD showcase + Testing Report + Presentation Draft"
     completed: false
-  - date: "Week 16"
+  - date: "Week 16 (Apr 22 – Apr 24)"
     phase: "Delivery"
-    details: "Presenting at the Capstone Festival and final portfolio submission."
+    details: "Present at Capstone Festival; submit Portfolio and Learning Journals. Milestone: Final Presentation due"
     completed: false
 
 reflection: "This project pushes the boundaries of swarm intelligence by moving away from brittle husband-and-spoke models toward resilient, emergent behaviors."
