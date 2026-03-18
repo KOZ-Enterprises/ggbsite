@@ -23,7 +23,7 @@ timeline:
   - date: "Weeks 5–6"
     phase: "Foundation & Setup"
     details: "Finalizing connectivity logic and setting up the development environment on Google Cloud."
-    completed: false
+    completed: true
   - date: "Weeks 7–8"
     phase: "Brain (GAT) Implementation"
     details: "Training Graph Attention Networks for permutation-invariant local message passing."

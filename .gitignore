@@ -10,7 +10,8 @@
 .idea/**/dictionaries
 .idea/**/shelf
 .ruby-lsp/
-.vscode/
+.vscode/*
+!.vscode/settings.json
 # AWS User-specific
 .idea/**/aws.xml
 STYLE_GUIDE.md
