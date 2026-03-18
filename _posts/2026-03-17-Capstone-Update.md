@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: ["ggswarm", "capstone", "isaac-lab", "marl", "skrl"]
+tags: ["ggswarm", "capstone", "isaac-lab", "marl", "skrl", "csumb", "cst489", "cst499"]
 title: "Capstone Update: MAPPO Training Pipeline and Environment Finalization"
 description: "Progress update on finalizing the Isaac Lab MARL environment, MAPPO training pipeline in SKRL, and replanning Phase 2."
 project-title: "GG Swarm"

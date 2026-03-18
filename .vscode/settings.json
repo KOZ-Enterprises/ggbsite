@@ -2,24 +2,5 @@
     "python.autoComplete.extraPaths": [
         "c:\\Users\\gkuep\\.antigravity\\extensions\\continue.continue-0.0.412-win32-x64"
     ],
-    "cSpell.enabled": false,
-    "cSpell.words": [
-        "Crazyflie",
-        "ggswarm",
-        "imgs",
-        "isaac",
-        "png",
-        "Py",
-        "skrl",
-        "url"
-    ],
-    "spellright.language": [
-        "en"
-    ],
-    "spellright.documentTypes": [
-        "markdown",
-        "latex",
-        "plaintext",
-        "css"
-    ]
+    "cSpell.enabled": true
 }
