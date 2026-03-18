@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "GG Swarm"
-image: "/assets/imgs/project/ggswarm-3.png"
+image: "/assets/imgs/project/ggswarm-3-cropped.png"
 description: "A decentralized coordination framework and an emergent behavior engine for UAV swarms."
 objective: "Address bottlenecks in centralized drone control by implementing a scalable, fault-tolerant coordination framework using GATs and decentralized consensus logic."
 status: "Research"
