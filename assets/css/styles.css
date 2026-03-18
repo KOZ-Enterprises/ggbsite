@@ -564,7 +564,7 @@ footer {
     padding: 30px;
     margin: 40px auto;
     margin-bottom: 20px;
-    max-width: 800px;
+    max-width: 890px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     position: relative;
@@ -1070,7 +1070,7 @@ footer {
 
 .project-grid {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 340px;
     gap: 40px;
     align-items: start;
 }
