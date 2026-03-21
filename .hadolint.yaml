@@ -1,0 +1,3 @@
+failure-threshold: warning
+ignored:
+  - DL3008 # pin apt packages (not needed for this repo)

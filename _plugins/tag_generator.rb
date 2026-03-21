@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Jekyll
   class TagPageGenerator < Generator
     safe true
@@ -21,15 +23,15 @@ module Jekyll
 
   class TagPage < Page
     def initialize(site, base, slug, tag)
-      @site = site
-      @base = base
       @dir  = File.join('tags', slug)
       @name = 'index.html'
 
-      self.process(@name)
-      self.read_yaml(File.join(base, '_layouts'), 'tag.html')
-      self.data['tag'] = tag
-      self.data['title'] = "Posts Tagged: \"#{tag}\""
+      super(site, base, @dir, @name)
+
+      process(@name)
+      read_yaml(File.join(base, '_layouts'), 'tag.html')
+      data['tag'] = tag
+      data['title'] = "Posts Tagged: \"#{tag}\""
     end
   end
 end

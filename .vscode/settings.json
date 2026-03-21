@@ -2,5 +2,8 @@
     "python.autoComplete.extraPaths": [
         "c:\\Users\\gkuep\\.antigravity\\extensions\\continue.continue-0.0.412-win32-x64"
     ],
-    "cSpell.enabled": true
+    "cSpell.enabled": true,
+    "ruby.rubocop.useBundler": true,
+    "ruby.rubocop.executePath": "bundle",
+    "ruby.rubocop.onSave": true
 }
