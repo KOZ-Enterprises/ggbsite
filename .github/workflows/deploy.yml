@@ -33,7 +33,7 @@ jobs:
 
       - name: Build and push image to GCR via Cloud Build
         run: |
-          gcloud auth configure-docker gcr.io
+          cat $GOOGLE_APPLICATION_CREDENTIALS | docker login -u _json_key --password-stdin https://gcr.io
           docker build -t ${{ env.GCR_IMAGE }}:latest .
           docker push ${{ env.GCR_IMAGE }}:latest
 
