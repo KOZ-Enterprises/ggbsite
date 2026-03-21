@@ -27,7 +27,7 @@ jobs:
         run: bundle exec rubocop
 
       - name: Build site (Jekyll)
-        run: bundle exec jekyll build
+        run: JEKYLL_ENV=production bundle exec jekyll build --quiet
 
       - name: HTMLProofer (internal links)
         run: >
@@ -35,7 +35,6 @@ jobs:
           --disable-external
           --allow-hash-href
           --assume-extension
-          --ignore_urls="/tags/.*/"
 
       - name: yamllint (YAML)
         run: >
