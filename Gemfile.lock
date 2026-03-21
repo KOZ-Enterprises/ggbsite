@@ -121,7 +121,6 @@ GEM
     typhoeus (1.5.0)
       ethon (>= 0.9.0, < 0.16.0)
     unicode-display_width (2.6.0)
-    wdm (0.2.0)
     webrick (1.9.1)
     yell (2.2.2)
 
@@ -138,7 +137,6 @@ DEPENDENCIES
   logger
   public_suffix (= 6.0.2)
   rubocop
-  wdm (>= 0.1.0)
 
 BUNDLED WITH
    2.7.2
