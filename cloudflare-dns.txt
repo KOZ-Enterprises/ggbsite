@@ -1,44 +1,30 @@
 ;;
 ;; Domain:     garygigabytes.com.
-;; Exported:   2026-03-21
-;; Updated for GCP Cloud Run migration
-;; 
-;; This file is intended for use for informational and archival
-;; purposes ONLY and MUST be edited before use on a production
-;; DNS server.  In particular, you must:
-;;   -- update the SOA record with the correct authoritative name server
-;;   -- update the SOA record with the contact e-mail address information
-;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;; Updated:    2026-03-21
+;; Purpose:    GCP Cloud Run migration — DNS import to Cloudflare
 ;;
-;; For further information, please consult the BIND documentation
-;; located on the following website:
+;; IMPORTANT: NS and SOA records are omitted intentionally.
+;; Cloudflare manages its own nameservers and SOA records.
+;; Only import A records and TXT records via this file.
 ;;
-;; http://www.isc.org/
+;; Import Instructions:
+;; 1. Cloudflare Dashboard → garygigabytes.com → DNS
+;; 2. Click "Import DNS records"
+;; 3. Select this file and upload
+;; 4. Cloudflare will automatically skip NS/SOA records
 ;;
-;; And RFC 1035:
+;; Expected Result:
+;; - 4 A records updated (garygigabytes.com, *, culinaryotter, hexmaster)
+;; - 3 TXT records preserved (ACME challenges, domain verification)
 ;;
-;; http://www.ietf.org/rfc/rfc1035.txt
-;;
-;; Please note that we do NOT offer technical support for any use
-;; of this zone data, the BIND name server, or any other third-party
-;; DNS software.
-;;
-;; Use at your own risk.
 
-;; SOA Record
-garygigabytes.com	3600	IN	SOA	brett.ns.cloudflare.com. dns.cloudflare.com. 2052571980 10000 2400 604800 3600
-
-;; NS Records
-garygigabytes.com.	86400	IN	NS	brett.ns.cloudflare.com.
-garygigabytes.com.	86400	IN	NS	elaine.ns.cloudflare.com.
-
-;; A Records — IP updated to GCP static IP
+;; A Records — IP updated to GCP static IP (34.36.126.59)
 garygigabytes.com.                  1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
 *.garygigabytes.com.                1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
 culinaryotter.garygigabytes.com.    1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
 hexmaster.garygigabytes.com.        1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
 
-;; TXT Records (unchanged)
+;; TXT Records (preserved from original export)
 _acme-challenge.garygigabytes.com.  1  IN  TXT  "vcZlFWjcpMpUKyMe8vwJL5fSkUFY_dTqLV9nOnH7ExM"
 _acme-challenge.garygigabytes.com.  1  IN  TXT  "jYNtJcxbfH89UjgB00riwcCRtd0DIBvfa2hC6Yr7nfU"
 garygigabytes.com.                  1  IN  TXT  "openai-domain-verification=dv-yeKfYB5K3OxERecfLCa56iVj"
