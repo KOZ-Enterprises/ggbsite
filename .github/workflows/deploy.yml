@@ -33,9 +33,9 @@ jobs:
 
       - name: Build and push image to GCR via Cloud Build
         run: |
-          gcloud builds submit . \
-            --tag ${{ env.GCR_IMAGE }}:latest \
-            --project ${{ env.GCP_PROJECT_ID }}
+          gcloud auth configure-docker gcr.io
+          docker build -t ${{ env.GCR_IMAGE }}:latest .
+          docker push ${{ env.GCR_IMAGE }}:latest
 
       - name: Deploy ggbsite to Cloud Run
         run: |
