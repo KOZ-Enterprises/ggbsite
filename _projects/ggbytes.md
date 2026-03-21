@@ -16,7 +16,9 @@ tools:
   - name: "Jekyll Paginate"
   - name: "Docker"
   - name: "Nginx"
-  - name: "DigitalOcean"
+  - name: "Google Cloud Run"
+  - name: "GitHub Actions"
+  - name: "Cloudflare"
 
 
 timeline:
@@ -49,9 +51,14 @@ timeline:
   - date: "Phase 5: Docker Setup"
     phase: "Implementation"
     details: "Set up Docker for the portfolio."
-    completed: false
+    completed: true
 
-  - date: "Phase 6: Maintenance"
+  - date: "Phase 6: Cloud Migration (DigitalOcean → GCP)"
+    phase: "Infrastructure Upgrade"
+    details: "Migrate from DigitalOcean droplet to Google Cloud Run with Global Load Balancer and CI/CD automation."
+    completed: true
+
+  - date: "Phase 7: Maintenance"
     phase: "Maintenance"
     details: "Maintain the portfolio."
     completed: false
