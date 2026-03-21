@@ -564,6 +564,7 @@ footer {
     padding: 30px;
     margin: 40px auto;
     margin-bottom: 20px;
+    width: 90%;
     max-width: 890px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
