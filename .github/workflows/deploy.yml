@@ -1,4 +1,4 @@
-name: Build and Push Docker Image
+name: Build, Push, and Deploy
 
 on:
   push:
@@ -9,6 +9,8 @@ env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  GCP_PROJECT_ID: gary-gigabytes
+  GCP_REGION: us-central1
 
 jobs:
   build-and-push:
@@ -44,3 +46,36 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+  deploy-to-cloud-run:
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.WIF_PROVIDER }}
+          service_account: ${{ secrets.WIF_SERVICE_ACCOUNT }}
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+
+      - name: Deploy ggbsite to Cloud Run
+        run: |
+          gcloud run deploy ggbsite \
+            --image ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest \
+            --platform managed \
+            --region ${{ env.GCP_REGION }} \
+            --allow-unauthenticated \
+            --port 80 \
+            --project ${{ env.GCP_PROJECT_ID }}
+
+  # Note: culinaryotter deployment would be separate or in a separate repo
+  # since it's a different image. For now, this focuses on ggbsite.

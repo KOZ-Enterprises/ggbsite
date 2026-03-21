@@ -1,6 +1,34 @@
 ---
 layout: default
 ---
+<!--
+BLOG POST LAYOUT
+
+Used for rendering individual blog posts from `_posts/` collection.
+
+EXPECTED FRONT-MATTER (in `_posts/YYYY-MM-DD-title.md`):
+---
+layout: post
+title: "Post Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2, tag3]
+excerpt: |
+  Brief summary (appears in blog archive).
+  Use <!--more--> to mark where the archive cutoff occurs.
+---
+
+OPTIONAL FRONT-MATTER:
+- updated: YYYY-MM-DD (if post was updated)
+- featured: true (to feature on homepage)
+- author: "Name" (if multi-author)
+
+RENDERING:
+- Title, date, and tags displayed at top
+- Tags linked to tag pages via _data/tag_links.yml
+- Content rendered from Markdown after front-matter
+- Tags are automatically linked to their archive pages
+-->
+
 <div class="post-page">
     <header class="post-header">
         <h1 class="post-title pop-heading section-header">{{ page.title }}</h1>
