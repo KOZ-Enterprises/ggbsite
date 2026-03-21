@@ -4,7 +4,6 @@ source "https://rubygems.org"
 
 # gem "rails"
 
-
 gem "jekyll", "~> 4.3"
 gem "public_suffix", "6.0.2"
 gem 'rubocop', group: 'development', require: false
