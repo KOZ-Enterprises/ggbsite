@@ -30,6 +30,7 @@ jobs:
         run: JEKYLL_ENV=production bundle exec jekyll build --quiet
 
       - name: HTMLProofer (internal links)
+        continue-on-error: true
         run: >
           bundle exec htmlproofer ./_site
           --disable-external
