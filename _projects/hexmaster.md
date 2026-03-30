@@ -53,41 +53,27 @@ timeline:
 reflection: "HexMaster bridges the gap between raw game data and strategic logistics, turning chaotic stockpiles into a searchable, actionable intelligence network."
 ---
 
+## Project Overview
+
 HexMaster is a powerful Discord bot designed for **Foxhole** logistics groups. It enables seamless stockpile management, cross-map item discovery, and intelligent supply chain comparison using OCR and real-time game data.
 
 The bot follows a **snapshot-based storage** model, preserving full historical data of every stockpile update without ever overwriting.
 
-### Core Features (MVP)
+## Core Features
 
-#### 1. Intelligence Reporting
+- **Intelligence Reporting**: Users file reports by uploading stockpile screenshots via `/report`. The bot uses OCR to transcribe item codes, quantities, and crate statuses. Every import creates a time-stamped record for trend analysis.
+- **Requisition Orders**: Compare a Shipping Hub against a Receiving Town with automatic Seaport/Warehouse detection (4x multiplier), crate-standardized units, and priority sorting by mission-critical importance.
+- **Strategic Reconnaissance**: Global item search across the entire World Conquest map using custom **Cartesian-Staggered** hex math for accurate distance sorting. Syncs 918+ town locations from WarAPI.
 
-- **Filing Reports**: Users file intelligence reports by uploading screenshots of stockpiles via the `/report` slash command.
-- **Deep Processing**: The bot uses an OCR service to transcribe item codes, names, total quantities, and crate statuses.
-- **Historical snapshots**: Every import creates a new time-stamped record for trend analysis.
+## Technical Architecture
 
-#### 2. Requisition Orders
+- **Discord Bot**: Built with `discord.py` and `SQLAlchemy`
+- **Database**: **PostgreSQL** with `asyncpg` for high-performance async queries
+- **Sync Logic**: Standalone Python scripts for seeding regions and syncing with **WarAPI**
+- **Deployment**: Fully **Dockerized** for consistent execution across environments
 
-- **Supply Chain Decisioning**: Compare a "Shipping Hub" (e.g., Seaport/Warehouse) against a "Receiving Town/Base".
-- **Hub Detection**: Automatically detects Seaports and Storage Warehouses to apply a **4x requirement multiplier**.
-- **Crate-First Units**: All quantities are standardized to "Crates" for easy logistics math.
-- **Priority Logic**: Sorts items by mission-critical importance and highlights shortages.
+## Future Roadmap
 
-#### 3. Strategic Reconnaissance
-
-- **Global Search**: Find which stockpiles currently hold a specific item across the entire World Conquest map.
-- **Accurate Hex Math**: Uses a custom **Cartesian-Staggered** coordinate system to calculate distances in physical hex units.
-- **Proximity Sorting**: Results are sorted by distance from your reference town.
-- **Sync with WarAPI**: Automatically fetches 918+ town locations and marker types (Major/Minor) from the official Foxhole servers.
-
-### Architecture & Tech Stack
-
-- **Discord Bot**: Built with `discord.py` and `SQLAlchemy`.
-- **Database**: **PostgreSQL** with `asyncpg` for high-performance async queries.
-- **Sync Logic**: Standalone Python scripts for seeding regions and syncing with **WarAPI**.
-- **Deployment**: Fully **Dockerized** for consistent execution across environments.
-
-### Future Roadmap
-
-- **Logistics Threat Mapping**: Overlay current "Front Line" map data to warn logistics drivers if a `/locate` result requires driving through contested or enemy-held territory.
-- **Supply Drop Alerts**: Automated pings when a critical frontline base is low on Soldier Supplies or AT weapons.
-- **Trend Charts**: Visual graphs of stockpile changes over time for strategic planning.
+- **Logistics Threat Mapping**: Overlay "Front Line" map data to warn drivers about contested territory
+- **Supply Drop Alerts**: Automated pings when frontline bases run low on critical supplies
+- **Trend Charts**: Visual graphs of stockpile changes over time for strategic planning

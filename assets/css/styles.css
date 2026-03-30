@@ -1486,3 +1486,16 @@ footer {
     color: rgba(100, 213, 210, 0.15);
     pointer-events: none;
 }
+
+/* Project Body Content */
+.project-body {
+    margin: 30px 0;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* Mermaid Diagrams */
+.mermaid {
+    text-align: center;
+    margin: 20px 0;
+}

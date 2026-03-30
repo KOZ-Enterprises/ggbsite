@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: [ "cst438",'csumb' ]
+tags: [ "cst438",'csumb','finalproject' ]
 title: "SuperUber: Software Requirements Specification"
 description: "A software specification and a comprehensive design document for a ride-sharing service."
 project-title: "SuperUber SRS"

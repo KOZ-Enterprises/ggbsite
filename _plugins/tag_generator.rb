@@ -23,10 +23,10 @@ module Jekyll
 
   class TagPage < Page
     def initialize(site, base, slug, tag)
+      @site = site
+      @base = base
       @dir  = File.join('tags', slug)
       @name = 'index.html'
-
-      super(site, base, @dir, @name)
 
       process(@name)
       read_yaml(File.join(base, '_layouts'), 'tag.html')

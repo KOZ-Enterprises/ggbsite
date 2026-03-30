@@ -63,3 +63,32 @@ timeline:
     details: "Maintain the portfolio."
     completed: false
 ---
+
+## Project Overview
+
+This portfolio site serves as a central hub for documenting
+my engineering journey — from CS coursework at CSUMB to
+personal robotics and trading projects. Built with Jekyll
+and deployed on Google Cloud Run.
+
+## Technical Architecture
+
+- **Static Site Generator**: Jekyll with custom layouts
+  for projects, posts, and course pages
+- **Styling**: Custom CSS with a "blueprint grid" aesthetic
+  and Engineering Amber accent palette
+- **Deployment**: Dockerized Jekyll build, served via
+  Google Cloud Run with a Global Load Balancer
+- **CI/CD**: GitHub Actions triggers Cloud Build on push
+- **DNS/CDN**: Cloudflare for caching and SSL
+
+## Key Milestones
+
+- **DigitalOcean → GCP Migration**: Moved from a $6/month
+  always-on droplet to serverless Cloud Run, paying only
+  for actual requests
+- **Portfolio Overhaul**: Complete visual redesign with
+  blueprint grid backgrounds, consistent spacing, and
+  modular layout system
+- **Project Showcase System**: Custom collections for
+  projects and courses with auto-linked post feeds
