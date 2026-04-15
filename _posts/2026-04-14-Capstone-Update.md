@@ -17,9 +17,9 @@ to YouTube early in the week. The back half shifted to documentation
 and framing — making the research question explicit: **coordination,
 not stabilization**. 10 days remain to the Apr 24 deadline. No
 training is planned; only editing, rehearsal, and submission remain.
-
+<div align="center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/toPCBIbLLLM?si=Oy1DaxqxORCvJR57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+</div>
 <!--more-->
 
 ## Milestones
