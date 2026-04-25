@@ -6,4 +6,3 @@
 
 - [ ] is this smart?
 - [ ] is this good?
- 
