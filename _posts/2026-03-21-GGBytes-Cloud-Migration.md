@@ -19,6 +19,7 @@ The DigitalOcean droplet, while reliable, was running 24/7 even during periods o
 ## What Changed
 
 ### Before: DigitalOcean Droplet
+
 - Single $4–$6/month droplet (Ubuntu 20.04)
 - Nginx reverse proxy + Jekyll-built static content
 - Manual deployments (git pull + rebuild)

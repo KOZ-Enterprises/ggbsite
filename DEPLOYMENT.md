@@ -4,7 +4,7 @@ This site (and related subdomains) are hosted on Google Cloud Run with a Global 
 
 ## Architecture Overview
 
-```
+```text
 User Request (HTTPS)
     ↓
 Cloudflare (DNS + SSL termination)
@@ -34,13 +34,16 @@ Cloud Run Services (us-central1)
 All DNS records live in a single Cloudflare zone: `garygigabytes.com`
 
 ### Current DNS Records
+
 - `garygigabytes.com` → `<STATIC_IP>` (proxied)
 - `*.garygigabytes.com` → `<STATIC_IP>` (proxied - covers all subdomains)
 - `culinaryotter.garygigabytes.com` → `<STATIC_IP>` (proxied)
 - `hexmaster.garygigabytes.com` → `<STATIC_IP>` (proxied)
 
 ### Updating DNS
+
 A template zone file is available in `cloudflare-dns.txt`. To update Cloudflare:
+
 1. Edit the IP placeholder if needed
 2. Cloudflare Dashboard → `garygigabytes.com` → DNS → **Import DNS records**
 3. Upload the `cloudflare-dns.txt` file
@@ -66,6 +69,7 @@ gcloud run deploy ggbsite \
 ### CI/CD Deploy (GitHub Actions - Future)
 
 Planned: GitHub Actions workflow will automatically:
+
 1. Build on push to `publish` branch
 2. Push to GHCR (GitHub Container Registry)
 3. Deploy to Cloud Run
@@ -83,6 +87,7 @@ gcloud compute ssl-certificates describe garygigabytes-cert --global
 ```
 
 Expected statuses:
+
 - `PROVISIONING` - Certificate is being validated (wait up to 15 minutes)
 - `ACTIVE` - Certificate is ready and in use
 

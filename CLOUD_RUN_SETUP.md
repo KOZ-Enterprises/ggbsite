@@ -150,7 +150,7 @@ gcloud compute ssl-certificates describe garygigabytes-cert --global
 
 Wait until status shows `ACTIVE` (typically 5-15 minutes after DNS update).
 
-7. Set Cloudflare SSL/TLS mode to **Full** (not Full Strict):
+1. Set Cloudflare SSL/TLS mode to **Full** (not Full Strict):
    - Cloudflare Dashboard → SSL/TLS → Overview → Full
 
 ## 5. Verify Deployment
@@ -171,6 +171,7 @@ gcloud compute backend-services get-health ggbsite-backend --global
 See `.github/workflows/deploy.yml` and [DEPLOYMENT.md](DEPLOYMENT.md) for GitHub Actions setup.
 
 This requires:
+
 - GCP service account with Cloud Run permissions
 - GitHub secrets: `WIF_PROVIDER`, `WIF_SERVICE_ACCOUNT`, `GCP_PROJECT_ID`
 

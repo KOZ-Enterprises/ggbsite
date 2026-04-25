@@ -51,7 +51,7 @@ which provides a customizable interface for displaying information like time, we
 5. **Final Adjustments**: Adjust the settings in the `config.js` file to customize the appearance and functionality of
    your smart mirror.
 
-<div class="image-grid"> 
+<div class="image-grid">
     <div class="image-container">
         <a href="/assets/imgs/smartmirror/mm-final-overview.jpg">
             <img src="/assets/imgs/smartmirror/mm-final-overview.jpg" alt="Smart Mirror Overview" class="project-image" >
@@ -59,7 +59,7 @@ which provides a customizable interface for displaying information like time, we
         <p class="caption">The insides</p>
 </div>
     <div class="image-container">
-      <a href="/assets/imgs/smartmirror/mm-final-usb-fail.jpg"> 
+      <a href="/assets/imgs/smartmirror/mm-final-usb-fail.jpg">
         <img src="/assets/imgs/smartmirror/mm-final-usb-fail.jpg" alt="Mirror fail" class="project-image">
        </a> <p class="caption">Soo... was hoping to use these right angle usb connectors to keep all the cables inside but that didn't go as planned. </p>
 </div>
@@ -69,12 +69,12 @@ which provides a customizable interface for displaying information like time, we
        </a> <p class="caption">Did not realize the micro hdmi was in the opposite orientation as on the RPI4... whoops. </p>
 </div>
     <div class="image-container">
-      <a href="/assets/imgs/smartmirror/mm-final-mirror-border.jpg"> 
+      <a href="/assets/imgs/smartmirror/mm-final-mirror-border.jpg">
         <img src="/assets/imgs/smartmirror/mm-final-mirror-border.jpg" alt="Mirror fail" class="project-image">
        </a> <p class="caption">Mirror Border to fill the empty space and add support for the 2 way mirror.</p>
 </div>
     <div class="image-container">
-      <a href="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg"> 
+      <a href="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg">
         <img src="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg" alt="Mirror fail" class="project-image">
        </a> <p class="caption">I put these white packing material around the monitor to help center it in the frame.</p>
 </div>
@@ -99,4 +99,3 @@ which provides a customizable interface for displaying information like time, we
   compared to older screens.
 - Using actual glass would have been better, since the acrylic has a slight clown mirror effect, but that would have
   been much more expensive.
-
