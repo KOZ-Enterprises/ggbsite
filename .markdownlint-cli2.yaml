@@ -4,8 +4,8 @@ config:
     line_length: 120
     code_blocks: false
     tables: false
-  MD033: false # inline HTML is common in Jekyll content
-  MD041: false # front-matter means files won't start with a heading
+  MD033: false  # inline HTML is common in Jekyll content
+  MD041: false  # front-matter means files won't start with a heading
 
 globs:
   - "**/*.md"
