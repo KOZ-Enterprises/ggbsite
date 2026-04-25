@@ -41,15 +41,15 @@ timeline:
   - date: "Weeks 12–13 (Mar 30 – Apr 13)"
     phase: "Stress Testing"
     details: "Agent loss simulations, obstacle benchmarks, and scale testing."
-    completed: false
+    completed: true
   - date: "Weeks 14–15 (Apr 14 – Apr 20)"
     phase: "Showcase Prep"
     details: "RTX tiled rendering, HD demo recording, and final Testing Report."
-    completed: false
+    completed: true
   - date: "Week 16 (Apr 22 – Apr 24)"
     phase: "Delivery"
     details: "Capstone Festival presentation and portfolio submission."
-    completed: false
+    completed: true
 
 reflection: "This project pushes the boundaries of swarm intelligence by moving away from brittle husband-and-spoke models toward resilient, emergent behaviors."
 ---
