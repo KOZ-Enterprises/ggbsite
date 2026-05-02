@@ -55,12 +55,14 @@ docker run --rm -v "$PWD:/work" -w /work hadolint/hadolint:latest hadolint -c .h
 ## Deployment & Infrastructure
 
 **Current Setup:**
+
 - Hosting: Google Cloud Run (us-central1)
 - Load Balancing: GCP Global Load Balancer with static IP
 - DNS: Cloudflare (garygigabytes.com)
 - SSL: Google-managed certificates + Cloudflare proxying
 
 **Documentation:**
+
 - [DEPLOYMENT.md](DEPLOYMENT.md) - Day-to-day operational guide
 - [CLOUD_RUN_SETUP.md](CLOUD_RUN_SETUP.md) - One-time GCP project bootstrap
 - [AGENTS.md](AGENTS.md) - AI agent context and project structure

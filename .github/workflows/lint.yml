@@ -47,12 +47,10 @@ jobs:
           .
 
       - name: markdownlint-cli2 (Markdown)
-        run: >
-          docker run --rm
-          -v "${{ github.workspace }}:/work"
-          -w /work
-          ghcr.io/davidanson/markdownlint-cli2:latest
-          -c .markdownlint-cli2.yaml
+        uses: DavidAnson/markdownlint-cli2-action@v19
+        with:
+          config: .markdownlint-cli2.yaml
+          globs: "**/*.md"
 
       - name: actionlint (GitHub Actions)
         run: >

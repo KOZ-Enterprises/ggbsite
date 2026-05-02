@@ -12,23 +12,27 @@ This file explains the project structure, conventions, and context for AI agents
 ## Site Purpose & Content Areas
 
 ### 1. Gary Gigabytes (Homepage)
+
 - **URL:** `/`
 - **Type:** Blog archive + featured projects
 - **Content Source:** `_posts/` (Jekyll posts, front-matter: title, date, tags, excerpt)
 - **Typical Posts:** Project updates, technical deep dives, research notes
 
 ### 2. About
+
 - **URL:** `/about/`
 - **Static Page:** `about.html`
 - **Purpose:** Background, career transition narrative, skills summary
 
 ### 3. Hobby Projects
+
 - **URL:** `/projects/`
 - **Type:** Project showcase (custom collection)
 - **Content Source:** `_projects/` (markdown files, one per project)
 - **Fields:** title, date, description, tags, images, links to GitHub repos
 
 ### 4. Academic Annex (CSUMB)
+
 - **URL:** `/csumb.html` or `/csumb/`
 - **Type:** Course documentation + class projects
 - **Content Source:** `_csumb/` (markdown per course, e.g., `cst300.md`, `cst499.md`)
@@ -36,7 +40,7 @@ This file explains the project structure, conventions, and context for AI agents
 
 ## Directory Structure
 
-```
+```text
 ggbsite/
 ├── _posts/              # Blog posts (Markdown)
 │   ├── YYYY-MM-DD-title.md
@@ -152,6 +156,7 @@ tags: [csumb, subject-matter]
 ### Tagging Guidelines
 
 **Common Tags:** See `_data/tag_links.yml` for full taxonomy
+
 - Course codes: `cst300`, `cst499`, `csumb`
 - Project categories: `hobby-projects`, `capstone`, `research`
 - Technical: `robotics`, `marl`, `autonomous-systems`, `ml`
@@ -159,7 +164,7 @@ tags: [csumb, subject-matter]
 
 ## Deployment Pipeline
 
-```
+```text
 1. Local Development
    └─> Write markdown, test locally with `bundle exec jekyll serve`
 
@@ -274,12 +279,12 @@ git push origin publish     # Trigger GitHub Actions workflow
 
 ## Resources & Links
 
-- **Jekyll Docs:** https://jekyllrb.com/
-- **Liquid Templates:** https://shopify.github.io/liquid/
-- **Markdown:** https://www.markdownguide.org/
-- **GitHub Actions:** https://docs.github.com/en/actions
-- **Google Cloud Run:** https://cloud.google.com/run/docs
-- **Cloudflare:** https://dash.cloudflare.com/
+- **Jekyll Docs:** <https://jekyllrb.com/>
+- **Liquid Templates:** <https://shopify.github.io/liquid/>
+- **Markdown:** <https://www.markdownguide.org/>
+- **GitHub Actions:** <https://docs.github.com/en/actions>
+- **Google Cloud Run:** <https://cloud.google.com/run/docs>
+- **Cloudflare:** <https://dash.cloudflare.com/>
 
 ## Contact & Support
 

@@ -22,7 +22,7 @@ module Jekyll
   end
 
   class TagPage < Page
-    def initialize(site, base, slug, tag)
+    def initialize(site, base, slug, tag) # rubocop:disable Lint/MissingSuper
       @site = site
       @base = base
       @dir  = File.join('tags', slug)
