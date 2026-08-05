@@ -22,7 +22,7 @@ This presentation covers:
 
 The project emphasizes the value of hands-on academic exploration and serves as a roadmap for students looking to bridge the gap between classroom learning and professional research. Hands-on research is a vital bridge between academic theory and professional innovation.
 
-### Project Deliverables
+## Project Deliverables
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/93KtbAT6_Tg?si=ubwsZc2qj2xicml7" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

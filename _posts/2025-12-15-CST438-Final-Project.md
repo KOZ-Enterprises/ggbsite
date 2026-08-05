@@ -22,7 +22,7 @@ The system manages everything from initial request and real-time price estimatio
 
 The project demonstrates a high-level understanding of software process, requirements analysis, and system architecture within a collaborative team environment. Robust software starts with rigorous requirements analysis and a clear architectural vision.
 
-### Project Deliverables
+## Project Deliverables
 
 <div style="text-align: center">
   <iframe src="/assets/docs/2025Fall_SRS_gary_kuepper.pdf" width="90%" height="500px">

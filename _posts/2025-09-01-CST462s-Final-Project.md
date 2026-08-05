@@ -22,7 +22,7 @@ Key areas of investigation include:
 
 The study highlights the critical intersection of technology and cognitive development, emphasizing the need for continued geographic education in the digital age. We must balance digital convenience with the active maintenance of our fundamental cognitive and spatial skills.
 
-### Project Deliverables
+## Project Deliverables
 
 <div style="text-align: center">
   <iframe src="/assets/docs/gps_paper.pdf" width="90%" height="500px">

@@ -16,13 +16,14 @@ During my capstone, I focused heavily on the "brains" of the operation—develop
 **GG Swarm Live** is a dedicated program to transition my research from the "digital twin" to real-world airframes. This isn't just about porting code; it's about handling the messy realities of physics, communication latencies, and sensor noise that simulation can only approximate.
 
 The technical stack for this phase is built on industry-standard foundations:
-*   **PX4 Autopilot**: The core flight stack for our physical airframes.
-*   **Skybrush**: We are integrating our RL-based execution layer with Skybrush to allow for expressive, choreographed drone light shows.
-*   **Crazyflie**: Initial sim-to-real baselining will take place on these micro-drones in a controlled indoor environment before scaling to larger outdoor platforms.
+
+* **PX4 Autopilot**: The core flight stack for our physical airframes.
+* **Skybrush**: We are integrating our RL-based execution layer with Skybrush to allow for expressive, choreographed drone light shows.
+* **Crazyflie**: Initial sim-to-real baselining will take place on these micro-drones in a controlled indoor environment before scaling to larger outdoor platforms.
 
 ## Beyond the Capstone
 
-The capstone gave us a v1.0.0 baseline. The roadmap for **GG Swarm Live** expands this into eight distinct phases, ranging from multi-drone shared-scene training to fully autonomous, obstacle-aware navigation in outdoor environments. 
+The capstone gave us a v1.0.0 baseline. The roadmap for **GG Swarm Live** expands this into eight distinct phases, ranging from multi-drone shared-scene training to fully autonomous, obstacle-aware navigation in outdoor environments.
 
 One of the most exciting commercial applications we're exploring is the "backyard light show" capability. By combining decentralized swarm logic with a user-friendly interface, we hope to make high-end aerial displays accessible for local events and creative displays. Crucially, the decentralized nature of the swarm adds a robust layer of safety; by removing single points of failure, we can ensure more reliable behavior around spectators and audience members.
 
@@ -32,4 +33,4 @@ I’ve updated the [GG Swarm Project Page](/projects/ggswarm/) to serve as the c
 
 This degree wasn't a transition to becoming an engineer—I've been one since 2012—but rather a significant upgrade to my toolkit. The build is just beginning. Stay tuned for more logs as we take these swarms to the sky.
 
-*Gary*
+<em>Gary</em>

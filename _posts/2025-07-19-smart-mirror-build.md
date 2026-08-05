@@ -14,7 +14,7 @@ I recently built a smart mirror using a Raspberry Pi 4 and a two-way mirror. The
 which provides a customizable interface for displaying information like time, weather, news.
 <!--more-->
 
-### Components
+## Components
 
 - [MagicMirror² software](https://magicmirror.builders/)
 - [Raspberry Pi 4 1GB](https://www.pishop.us/product/raspberry-pi-4-model-b-1gb/)
@@ -23,27 +23,27 @@ which provides a customizable interface for displaying information like time, we
 - [11x17 Frame](https://a.co/d/7LMuKS5)
 - [HDMI to Micro HDMI Cable](https://a.co/d/aOiFJnA)
 
-### MagicMirror² Modules
+## MagicMirror² Modules
 
-#### Core Modules
+### Core Modules
 
 - [Calendar](https://docs.magicmirror.builders/modules/calendar.html)
 - [Clock](https://docs.magicmirror.builders/modules/clock.html)
 - [Weather](https://docs.magicmirror.builders/modules/weather.html)
 
-#### Third-Party Modules
+### Third-Party Modules
 
 - [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
 - [MMM-MonthyCalendar](https://github.com/kolbyjack/MMM-MonthlyCalendar)
 - [MMM-CloneWarsQuotes](https://github.com/macd2point0/MMM-CloneWarsQuotes)
 
-### Steps to Build
+## Steps to Build
 
 1. **Install MagicMirror²**: Follow
    the [installation guide](https://docs.magicmirror.builders/getting-started/installation.html) to set up the software
    on your Raspberry Pi.
-2. **Configure Modules**: Customize the modules you want to display, such as weather, calendar, and news. You can find a
-   list of available modules [here](https://docs.magicmirror.builders/modules/).
+2. **Configure Modules**: Customize the modules you want to display, such as weather, calendar, and news. You can find the
+   [list of available modules](https://docs.magicmirror.builders/modules/) in the MagicMirror² docs.
 3. **Set Up the Hardware**: Assemble the two-way mirror with the monitor and frame. Ensure the monitor is positioned
    behind the mirror for optimal visibility.
 4. **Connect the Raspberry Pi**: Connect the Raspberry Pi to the monitor and power it on. Make sure it boots into the
@@ -92,7 +92,7 @@ which provides a customizable interface for displaying information like time, we
 </div>
 </div>
 
-### Key Takeaways
+## Key Takeaways
 
 - This was a fun project that uses a Raspberry PI to create a functional smart mirror that I use daily.
 - Using a modern Portable Monitor, I think is the way to go, since it's already low-voltage and excellent viewing angle

@@ -48,12 +48,15 @@ The project is currently progressing through the following hardware-focused road
 This section preserves the original research and simulation work completed for my Computer Science Capstone at CSUMB.
 
 ### Project Overview
+
 The capstone addressed a critical bottleneck in the deployment of unmanned aerial vehicle swarms by tackling the inherent vulnerabilities found in centralized control architectures. The project proposed a fully decentralized coordination framework where global formation behavior emerges naturally from local agent interactions.
 
 ### Technical Architecture
+
 The architecture was split into the **Brain** (GATv2 spatial reasoning) and the **Muscles** (MINCO trajectory optimization), unified by a GNSC 5-Layer model.
 
 #### GNSC 5-Layer Architecture
+
 ```mermaid
 flowchart BT
     L1["<b>Layer 1: Local Sensing</b><br/>12D body-frame + K×3 neighbor rel_pos"]
@@ -72,16 +75,18 @@ flowchart BT
 ```
 
 ### Capstone Timeline & Simulation Performance
+
 The simulation phase leveraged **NVIDIA Isaac Lab** for GPU-accelerated physics, achieving high-fidelity results in formation stability and obstacle avoidance.
 
-*   **Mean Formation Error**: < 0.1m during steady flight.
-*   **Success Rate**: > 95% across randomized obstacle-dense environments.
+* **Mean Formation Error**: < 0.1m during steady flight.
+* **Success Rate**: > 95% across randomized obstacle-dense environments.
 
 #### Capstone Timeline
-- **Weeks 1–4**: Proposal and Plan (Completed)
-- **Weeks 5–11**: Core Development (Brain/Muscles) (Completed)
-- **Weeks 12–15**: Stress Testing and Showcase Prep (Completed)
-- **Week 16**: Capstone Festival Delivery (Completed April 2026)
+
+* **Weeks 1–4**: Proposal and Plan (Completed)
+* **Weeks 5–11**: Core Development (Brain/Muscles) (Completed)
+* **Weeks 12–15**: Stress Testing and Showcase Prep (Completed)
+* **Week 16**: Capstone Festival Delivery (Completed April 2026)
 
 ### Original Simulation Demo
 <!-- markdownlint-disable MD033 -->

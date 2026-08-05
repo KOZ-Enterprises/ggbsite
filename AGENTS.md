@@ -190,7 +190,7 @@ tags: [csumb, subject-matter]
 ## Key Files for AI Agents
 
 | File | Purpose | When to Edit |
-|------|---------|--------------|
+| ------ | --------- | -------------- |
 | `_config.yml` | Jekyll config (collections, plugins) | Adding new collection type |
 | `_layouts/*.html` | HTML templates | Changing page structure |
 | `_includes/*.html` | Reusable components | Updating navigation, footers, cards |
