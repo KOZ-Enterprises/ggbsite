@@ -62,9 +62,20 @@ permalink: /csumb/
     <h2 class="pop-heading section-header"><i class="fa-solid fa-flask color-amber"></i> Project Showcase</h2>
     <div class="blueprint-grid">
         <div class="grid-container" style="justify-items: center;">
-            {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
-            {% for project in sorted_projects %}
-            {% include project-card.html project=project %}
+            {% comment %} Multi-post projects (like ggswarm) — show as single card from _projects collection {% endcomment %}
+            {% for proj in site.projects %}
+              {% assign related_posts = site.posts | where: "tags", "csumb" | where: "project-tag", proj.project-tag %}
+              {% if related_posts.size > 0 %}
+                {% include project-card.html project=proj %}
+              {% endif %}
+            {% endfor %}
+
+            {% comment %} Standalone final project posts (no project-tag) {% endcomment %}
+            {% assign csumb_posts = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
+            {% for project in csumb_posts %}
+              {% unless project.project-tag %}
+                {% include project-card.html project=project %}
+              {% endunless %}
             {% endfor %}
         </div>
     </div>

@@ -1,0 +1,69 @@
+name: Lint
+
+on:
+  pull_request:
+  push:
+    branches:
+      - publish
+
+env:
+  BUNDLE_WITHOUT: ""
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.2"
+          bundler-cache: true
+
+      - name: RuboCop (Ruby)
+        run: bundle exec rubocop
+
+      - name: Build site (Jekyll)
+        run: JEKYLL_ENV=production bundle exec jekyll build --quiet
+
+      - name: HTMLProofer (internal links)
+        continue-on-error: true
+        run: >
+          bundle exec htmlproofer ./_site
+          --disable-external
+          --allow-hash-href
+          --assume-extension
+
+      - name: yamllint (YAML)
+        run: >
+          docker run --rm
+          -v "${{ github.workspace }}:/work"
+          -w /work
+          cytopia/yamllint:latest
+          -c .yamllint.yml
+          .
+
+      - name: markdownlint-cli2 (Markdown)
+        uses: DavidAnson/markdownlint-cli2-action@v24
+        with:
+          config: .markdownlint-cli2.yaml
+          globs: "**/*.md"
+
+      - name: actionlint (GitHub Actions)
+        run: >
+          docker run --rm
+          -v "${{ github.workspace }}:/repo"
+          -w /repo
+          rhysd/actionlint:latest
+          -color
+
+      - name: hadolint (Dockerfile)
+        run: >
+          docker run --rm
+          -v "${{ github.workspace }}:/work"
+          -w /work
+          hadolint/hadolint:latest
+          hadolint -c .hadolint.yaml Dockerfile

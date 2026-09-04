@@ -206,7 +206,7 @@ nav {
     width: 90%;
     min-height: 600px;
     margin: 5px auto 40px;
-    max-width: 900px;
+    max-width: 1200px;
 }
 
 
@@ -564,7 +564,8 @@ footer {
     padding: 30px;
     margin: 40px auto;
     margin-bottom: 20px;
-    max-width: 800px;
+    width: 90%;
+    max-width: 890px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     border-radius: 3px;
     position: relative;
@@ -917,6 +918,23 @@ footer {
     }
 }
 
+.span-full {
+    grid-column: 1 / -1;
+}
+
+.split-2 {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+}
+
+@media screen and (max-width: 800px) {
+    .split-2 {
+        grid-template-columns: 1fr;
+    }
+}
+
 .heading-icon {
     color: #64d5d2;
     font-size: 0.8em;
@@ -992,6 +1010,42 @@ footer {
     border-radius: 4px;
 }
 
+/* Table Styles */
+.post-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 0.95em;
+    border: 1px solid #2e4c5b;
+    background-color: rgba(26, 30, 30, 0.5);
+}
+
+.post-content th {
+    background-color: #2e4c5b;
+    color: #64d5d2;
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #2e4c5b;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+.post-content td {
+    padding: 12px 15px;
+    border: 1px solid #2e4c5b;
+    vertical-align: top;
+    line-height: 1.5;
+}
+
+.post-content tr:nth-of-type(even) {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.post-content tr:hover {
+    background-color: rgba(100, 213, 210, 0.05);
+}
+
 /* Blueprint Backdrop Utility */
 .blueprint-grid {
     background-color: #1a1e1e;
@@ -1027,14 +1081,14 @@ footer {
 
 /* Project Layout Styles */
 .project-container {
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: 1fr 320px;
+    grid-template-columns: 1fr 340px;
     gap: 40px;
     align-items: start;
 }
@@ -1240,6 +1294,67 @@ footer {
     margin-bottom: 20px;
 }
 
+.post-meta-separator {
+    margin: 0 8px;
+    color: #555;
+}
+
+.post-project-link {
+    color: #64d5d2;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.post-project-link:hover {
+    color: #fafafa;
+}
+
+.post-description {
+    color: #aaa;
+    font-size: 1.1em;
+    font-style: italic;
+    margin-bottom: 20px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.post-hero-image {
+    margin-bottom: 30px;
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid #2e4c5b;
+}
+
+.post-hero-image img {
+    width: 100%;
+    display: block;
+}
+
+.post-footer {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.post-project-btn {
+    display: inline-block;
+    background: rgba(100, 213, 210, 0.1);
+    border: 1px solid rgba(100, 213, 210, 0.3);
+    color: #64d5d2;
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-family: 'Roboto Mono', monospace;
+    font-size: 0.9em;
+    transition: all 0.3s ease;
+}
+
+.post-project-btn:hover {
+    background: #64d5d2;
+    color: #141818;
+}
+
 .post-tags {
     display: flex;
     gap: 10px;
@@ -1387,4 +1502,17 @@ footer {
     font-size: 0.5em;
     color: rgba(100, 213, 210, 0.15);
     pointer-events: none;
+}
+
+/* Project Body Content */
+.project-body {
+    margin: 30px 0;
+    line-height: 1.7;
+    color: #ccc;
+}
+
+/* Mermaid Diagrams */
+.mermaid {
+    text-align: center;
+    margin: 20px 0;
 }

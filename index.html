@@ -48,9 +48,9 @@ title: Gary Gigabytes
         </h2>
         <div class="featured-box">
 
-            {% assign featured_project = site.projects | where: "project-tag", "hexmaster" | first %}
+            {% assign featured_project = site.projects | where: "project-tag", "ggswarm" | first %}
             {% unless featured_project %}
-            {% assign featured_project = site.posts | where: "project-tag", "hexmaster" | first %}
+            {% assign featured_project = site.posts | where: "project-tag", "ggswarm" | first %}
             {% endunless %}
 
             {% unless featured_project %}

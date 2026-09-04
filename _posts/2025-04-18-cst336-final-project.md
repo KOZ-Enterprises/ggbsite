@@ -31,6 +31,6 @@ The application allows users to:
 
 The project demonstrates a polished front end and reliable data persistence, delivering a professional-grade web experience. A seamless user experience relies on the tight integration of solid backend logic and dynamic external data.
 
-### Project Deliverables
+## Project Deliverables
 
 - **Live Application**: [Culinary Otter](https://culinaryotter.garygigabytes.com/)

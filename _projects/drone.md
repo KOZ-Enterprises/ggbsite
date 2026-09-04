@@ -77,3 +77,27 @@ timeline:
     completed: false
 
 ---
+
+## Project Overview
+
+A custom-built quadcopter designed as a testbed for control
+logic and eventually swarm collaboration. The goal is to go
+from bare hardware design through flight controller software
+to autonomous navigation — bridging the gap between the
+simulated drones in GG Swarm and real-world flight.
+
+## Technical Approach
+
+- **Frame**: Custom chassis designed in SolidWorks/Onshape
+- **Flight Controller**: Arduino-based with PlatformIO toolchain
+- **Control Software**: C++ firmware for motor control,
+  sensor fusion, and PID stabilization
+- **Remote Controller**: Separate custom-built controller
+  with its own hardware and software stack
+
+## Connection to GG Swarm
+
+This project is the physical counterpart to GG Swarm. Once
+the simulated swarm coordination policies are validated in
+Isaac Lab, the plan is to transfer those algorithms onto
+real hardware starting with this drone platform.

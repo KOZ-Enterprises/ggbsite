@@ -6,7 +6,7 @@
     <meta property="og:title" content="{{ page.title | default: 'Gary Gigabytes – Tech Projects & Portfolio' }}">
     <meta property="og:description"
         content="{{ page.description | default: 'Explore personal tech projects, CS coursework, and creative engineering from Gary Gigabytes.' }}">
-    <meta property="og:image" content="https://garygigabytes.com/assets/imgs/ggbytes-preview.png">
+    <meta property="og:image" content="https://garygigabytes.com/assets/imgs/ggbytes/ggbytes-preview.png">
     <meta property="og:url" content="https://garygigabytes.com{{ page.url }}">
     <meta property="og:type" content="website">
 
@@ -15,7 +15,7 @@
     <meta name="twitter:title" content="{{ page.title | default: 'Gary Gigabytes – Tech Projects & Portfolio' }}">
     <meta name="twitter:description"
         content="{{ page.description | default: 'Explore personal tech projects, CS coursework, and creative engineering from Gary Gigabytes.' }}">
-    <meta name="twitter:image" content="https://garygigabytes.com/assets/imgs/ggbytes-preview.png">
+    <meta name="twitter:image" content="https://garygigabytes.com/assets/imgs/ggbytes/ggbytes-preview.png">
 
     <!-- Stylesheets and Scripts -->
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}?v={{ site.time | date: '%Y%m%d%H%M' }}">
@@ -28,4 +28,17 @@
         rel="stylesheet">
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: false, theme: 'dark' });
+        document.querySelectorAll('code.language-mermaid').forEach(el => {
+            const pre = el.parentElement;
+            const div = document.createElement('div');
+            div.className = 'mermaid';
+            div.textContent = el.textContent;
+            pre.replaceWith(div);
+        });
+        await mermaid.run();
+    </script>
 </head>

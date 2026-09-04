@@ -23,7 +23,7 @@ The application includes several key safety and management features:
 
 The project emphasizes a user-centric design approach, bridging technical software architecture with practical health safety requirements. Technical complexity must always be balanced with user-centric design to create truly effective health management tools.
 
-### Project Deliverables
+## Project Deliverables
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xIz3Psvicts?si=-qJ0bIKKGhX2Dgph" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

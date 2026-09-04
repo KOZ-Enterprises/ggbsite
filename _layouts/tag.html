@@ -3,16 +3,33 @@ layout: default
 ---
 
 <div class="mt-20">
-    <h1 class="pop-heading section-header text-left">Posts Tagged: #{{ page.tag }}</h1>
+    <h1 class="pop-heading section-header text-left">Tagged: #{{ page.tag }}</h1>
 </div>
 
 <div class="post-page">
     <div class="post-content">
+        {% if page.tagged_docs and page.tagged_docs.size > 0 %}
+        <h2>Projects</h2>
         <ul class="update-feed post-list">
-            {% for post in site.tags[page.tag] %}
+            {% for doc in page.tagged_docs %}
+            <li>
+                <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                {% if doc.description %} — {{ doc.description | truncate: 160 }}{% endif %}
+            </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if page.tagged_posts and page.tagged_posts.size > 0 %}
+        {% if page.tagged_docs and page.tagged_docs.size > 0 %}
+        <h2>Posts</h2>
+        {% endif %}
+        <ul class="update-feed post-list">
+            {% for post in page.tagged_posts %}
             {% include post.html post=post type="excerpt" %}
             {% endfor %}
         </ul>
+        {% endif %}
     </div>
 </div>
 

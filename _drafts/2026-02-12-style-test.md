@@ -6,7 +6,7 @@ tags: [meta, documentation]
 ---
 
 I spent forty-five minutes re-reading my old project logs only to realize they sounded like they were written by a very polite robot. The technical details were there, but the *soul* of the late-night debugging sessions and the caffeine-fueled breakthroughs was missing. It was time for a change.
-
+<!--more-->
 ### The Objective: Humanizing the Tech
 
 The goal was simple: inject personality into the technical rigors of this site. I wanted a voice that feels like a conversation across a workbench, not a lecture in an auditorium.

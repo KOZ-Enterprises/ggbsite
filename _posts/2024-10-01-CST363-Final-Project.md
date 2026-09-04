@@ -28,7 +28,7 @@ The project includes:
 
 The project demonstrates a deep understanding of relational database design, normalization, and the practical application of SQL in a healthcare context. Relational integrity and normalization are the foundations of building reliable, scalable systems for sensitive healthcare data.
 
-### Project Deliverables
+## Project Deliverables
 
 <div style="text-align:center">
 <iframe

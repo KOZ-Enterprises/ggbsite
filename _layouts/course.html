@@ -2,6 +2,34 @@
 layout: default
 
 ---
+<!--
+COURSE LAYOUT
+
+Used for rendering CSUMB course documentation pages from `_csumb/` collection.
+
+EXPECTED FRONT-MATTER (in `_csumb/cstXXX.md`):
+---
+layout: course
+title: "Course Title (CST XXX)"
+course: "CSUMB CST XXX"
+semester: "Fall 2025"
+description: "Course summary and key learnings"
+tags: [csumb, subject-matter]
+slug: csumb-cst-xxx (auto-generated)
+---
+
+OPTIONAL FRONT-MATTER:
+- gpa: "4.0"                            (grade if relevant)
+- skills: [skill1, skill2]              (key competencies)
+- final_project: "Project Name"         (if a major project)
+
+RENDERING:
+- Course title and basic info in header
+- Course description from front-matter
+- Content (topics, reflections) rendered from Markdown
+- Automatically links related posts tagged with course slug
+- Shows associated class projects or updates
+-->
 
 <h1 class="pop-heading section-header text-left">
     <i class="fa-solid fa-book color-amber"></i> {{ page.title }}

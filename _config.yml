@@ -7,6 +7,13 @@ collections:
     output: true
     permalink: /projects/:name/
 
+# Scaffolding, not content. These still contain literal [GITHUB_LINK] /
+# [PDF_LINK] placeholders and relative asset paths that resolve nowhere, so
+# publishing them ships broken pages.
+exclude:
+  - template/
+  - test.html
+
 plugins:
   - jekyll-redirect-from
   - jekyll-paginate

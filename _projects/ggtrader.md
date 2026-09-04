@@ -59,31 +59,33 @@ timeline:
 reflection: "ggTrader turns individual trading scripts into a professional research lab, ensuring every trade is backed by rigorous statistical validation."
 ---
 
-### Project Overview
+## Project Overview
 
-**ggTrader** is a professional algorithmic trading framework designed for high-performance research and execution. It moves away from monolithic scripts toward a modular, scalable architecture that supports complex strategy validation and multi-exchange connectivity.
+**ggTrader** is a professional algorithmic trading framework designed
+for high-performance research and execution. It moves away from
+monolithic scripts toward a modular, scalable architecture that
+supports complex strategy validation and multi-exchange connectivity.
 
-### Key Features
+## Core Features
 
-* **Modular Architecture**: Clean separation between core engine logic, portfolio management, signal indicators, and exchange adapters (Kraken).
-* **Reproducible Research**: A dedicated `ResultsManager` and timestamped results folders ensure that every backtest and optimization run is tracked and auditable.
-* **Advanced Optimization**:
-  * **Walk-Forward Optimization (WFO)**: Finds stable parameters over sliding time windows to reduce overfitting.
-  * **Sensitivity Analysis**: Tests how strategy performance reacts to parameter drift, ensuring robustness in changing markets.
-* **Professional Analytics**: Deep integration with **Jupyter Notebooks** for interactive visualization and performance deep-dives.
+- **Modular Architecture**: Clean separation between core engine
+  logic, portfolio management, signal indicators, and exchange
+  adapters (Kraken).
+- **Reproducible Research**: A dedicated `ResultsManager` and
+  timestamped results folders ensure that every backtest and
+  optimization run is tracked and auditable.
+- **Walk-Forward Optimization (WFO)**: Finds stable parameters
+  over sliding time windows to reduce overfitting.
+- **Sensitivity Analysis**: Tests how strategy performance reacts
+  to parameter drift, ensuring robustness in changing markets.
+- **Professional Analytics**: Deep integration with **Jupyter
+  Notebooks** for interactive visualization and performance
+  deep-dives.
 
-### Directory Structure
+## Technical Architecture
 
-The project is organized into a professional package structure:
-
-* `src/ggTrader/`: Core logic including the engine, indicators, and data adapters.
-* `scripts/`: Operational runners for standard backtests, WFO, and sensitivity analysis.
-* `notebooks/`: For visualization and strategy research.
-* `results/`: Structured output storage for all experiments.
-
-### Technical Stack
-
-* **Core**: Python, NumPy, Pandas
-* **Backtesting**: High-performance simulation logic (integrated with VectorBT patterns).
-* **Data**: Parquet local storage, Kraken API adapters.
-* **Optimization**: Custom WFO and sensitivity analysis pipelines.
+- **Core**: Python, NumPy, Pandas
+- **Backtesting**: High-performance simulation logic
+  (integrated with VectorBT patterns)
+- **Data**: Parquet local storage, Kraken API adapters
+- **Optimization**: Custom WFO and sensitivity analysis pipelines

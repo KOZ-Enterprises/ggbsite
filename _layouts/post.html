@@ -1,12 +1,24 @@
 ---
 layout: default
 ---
+
 <div class="post-page">
     <header class="post-header">
         <h1 class="post-title pop-heading section-header">{{ page.title }}</h1>
+
         <div class="post-meta">
             <span><i class="fa-regular fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+            {% if page.project-title %}
+            <span class="post-meta-separator">|</span>
+            <span><i class="fa-solid fa-diagram-project"></i>
+                <a href="{{ page.project-url }}" class="post-project-link">{{ page.project-title }}</a>
+            </span>
+            {% endif %}
         </div>
+
+        {% if page.description %}
+        <p class="post-description">{{ page.description }}</p>
+        {% endif %}
 
         {% if page.tags %}
         <div class="post-tags">
@@ -22,7 +34,21 @@ layout: default
         {% endif %}
     </header>
 
+    {% if page.image %}
+    <div class="post-hero-image">
+        <img src="{{ page.image }}" alt="{{ page.title }}" />
+    </div>
+    {% endif %}
+
     <article class="post-content">
         {{ content }}
     </article>
+
+    {% if page.project-url %}
+    <div class="post-footer">
+        <a href="{{ page.project-url }}" class="post-project-btn">
+            <i class="fa-solid fa-arrow-right"></i> View {{ page.project-title | default: "Project" }}
+        </a>
+    </div>
+    {% endif %}
 </div>

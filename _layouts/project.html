@@ -1,6 +1,36 @@
 ---
 layout: default
 ---
+<!--
+PROJECT LAYOUT
+
+Used for rendering individual project showcase pages from `_projects/` collection.
+
+EXPECTED FRONT-MATTER (in `_projects/project-name.md`):
+---
+layout: project
+title: "Project Name"
+date: YYYY-MM-DD
+description: "One-line summary of the project"
+tags: [category, technology]
+image: /assets/imgs/project/project-name.png
+github: "https://github.com/org/repo"
+objective: "Clear statement of project goal"
+---
+
+OPTIONAL FRONT-MATTER:
+- demo: "https://live-demo.com"        (live instance link)
+- paper: "https://link-to-paper.pdf"   (research paper)
+- video: "https://youtube.com/watch?v=..." (demo video)
+- status: "completed" or "in progress" (project status)
+
+RENDERING:
+- Title and description displayed in header
+- Hero image (if provided) shown below header
+- Project objective, timeline, and details in main content
+- Resource links (GitHub, demo, paper) in sidebar
+- Tags linked to tag archive pages
+-->
 
 <div class="project-container">
     <div class="project-header-section">
@@ -29,6 +59,10 @@ layout: default
                 <div class="objective-box">
                     <p>{{ page.objective | default: "No objective defined." }}</p>
                 </div>
+            </div>
+
+            <div class="project-body">
+                {{ content }}
             </div>
 
             <!-- Related Updates Feed -->

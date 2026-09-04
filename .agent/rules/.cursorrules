@@ -1,0 +1,178 @@
+# Gary Gigabytes: Cursor AI Agent Rules
+
+## Project Identity
+
+**What It Is:**
+- Jekyll 4.3 static site + personal portfolio + technical blog
+- Hugo-like content collections: `_posts/` (blog), `_projects/` (projects), `_csumb/` (courses)
+- Hosted on Google Cloud Run (us-central1) with Global Load Balancer + Cloudflare DNS
+- Vanilla CSS (dark-mode-first, no frameworks), minimal JavaScript
+- Infrastructure: Docker, GitHub Actions CI/CD, Google Cloud Platform
+
+**Key Technologies:**
+- Frontend: Jekyll 4.3, Liquid templates, vanilla CSS
+- Backend: Docker (multi-stage build), Cloud Run (serverless)
+- CI/CD: GitHub Actions (lint + build + deploy)
+- Hosting: Google Cloud Run, Global Load Balancer, Cloudflare DNS
+- Owner Background: Aerospace ME → CSUMB CS (focus on robotics, autonomous systems, AI/ML)
+
+## Content Conventions
+
+### Collections & Front-Matter
+
+**Blog Posts** (`_posts/YYYY-MM-DD-title.md`):
+```yaml
+---
+layout: post
+title: "Title"
+date: YYYY-MM-DD
+tags: [tag1, tag2]
+excerpt: Brief summary <!--more--> (marks archive cutoff)
+---
+```
+
+**Projects** (`_projects/name.md`):
+```yaml
+---
+layout: project
+title: "Project Name"
+date: YYYY-MM-DD
+description: "One-line summary"
+tags: [category, tech]
+image: /assets/imgs/project/name.png
+github: "https://github.com/org/repo"
+demo: "https://url"
+---
+```
+
+**Courses** (`_csumb/cstXXX.md`):
+```yaml
+---
+layout: course
+title: "Course Title (CST XXX)"
+course: "CSUMB CST XXX"
+semester: "Fall 2025"
+description: "Summary and learnings"
+tags: [csumb, subject]
+---
+```
+
+### Tag Taxonomy
+
+Common tags (see `_data/tag_links.yml`):
+- Courses: `cst300`, `cst499`, `csumb`
+- Projects: `hobby-projects`, `capstone`, `research`
+- Tech: `robotics`, `marl`, `autonomous-systems`, `ml`, `isaac-lab`, `skrl`
+- Specific: `ggswarm`, `hexmaster`, `smart-mirror`, `gary-gigabytes`
+
+### Excerpt Separator
+
+Use `<!--more-->` to mark where the blog archive summary cuts off. Content after this is only shown on the full post page.
+
+## Directory Map
+
+```
+ggbsite/
+├── _posts/              # Blog posts (Markdown, Jekyll collection)
+├── _projects/           # Project showcases (custom collection)
+├── _csumb/              # Course documentation (custom collection)
+├── _layouts/            # HTML/Liquid templates (post, project, course, default)
+├── _includes/           # Reusable components (header, nav, footer, cards, etc.)
+├── assets/css/          # Vanilla CSS (dark-mode-first, no frameworks)
+├── assets/js/           # Minimal JavaScript
+├── assets/imgs/         # Images (organize by category: project/, smartmirror/, etc.)
+├── _data/               # YAML data (tag_links.yml for tag taxonomy)
+├── .github/workflows/   # GitHub Actions (deploy.yml, lint.yml)
+├── Dockerfile           # Multi-stage build: Jekyll build → nginx serve
+├── Gemfile              # Ruby dependencies (Jekyll, etc.)
+├── _config.yml          # Jekyll config (collections, plugins, excerpts)
+├── DEPLOYMENT.md        # GCP Cloud Run operations guide
+├── CLOUD_RUN_SETUP.md   # One-time infrastructure bootstrap
+├── AGENTS.md            # AI agent context (read first!)
+└── README.md            # Project overview + deployment links
+```
+
+## Deployment Pipeline
+
+1. **Local:** Write markdown in `_posts/`, `_projects/`, or `_csumb/`
+2. **Push:** Commit to `publish` branch
+3. **GitHub Actions:** Triggers `.github/workflows/deploy.yml`
+4. **Build:** `gcloud builds submit` → builds Dockerfile → pushes to GCR
+5. **Deploy:** `gcloud run deploy ggbsite` → Cloud Run (us-central1)
+6. **Route:** Global Load Balancer (34.36.126.59) → Cloudflare → User
+
+**Current GCP Details:**
+- Project: `gary-gigabytes`
+- Region: `us-central1`
+- Static IP: `34.36.126.59`
+- LB URL Map: `gary-gigabytes-urlmap`
+
+## Style Persona
+
+**Voice:** Authentic, Analytical, Visually Descriptive
+
+**Writing Guidelines:**
+- **Technical Precision:** Bullet points for mechanics, active language, stay conversational
+- **Casual Tone:** Use relatable asides ("Not my proudest moment...") and light markers
+- **Vibrant Language:** Active verbs, focus on the "vibe" and energy, avoid corporate speak
+- **Formatting:** Mix technical depth with punchy sentences; no long academic paragraphs
+
+## Technical Rules
+
+- **Docker Compose:** Never include `version` field (Compose V2 deprecated syntax)
+- **Deployment:** Use GCR-built images for production (Cloud Build from local source)
+- **Python (if used):** Strict PEP 8 (Black/Ruff, 88-100 char lines, snake_case filenames)
+- **Ruby:** RuboCop enforced (see `.rubocop.yml`)
+- **YAML:** yamllint enforced (see `.yamllint.yml`)
+- **Markdown:** markdownlint enforced (see `.markdownlint-cli2.yaml`)
+- **Dockerfile:** hadolint enforced (see `.hadolint.yaml`)
+- **CSS:** Vanilla only, dark-mode-first, no frameworks
+- **JavaScript:** Minimal, vanilla (no jQuery)
+
+## How to Add Content
+
+**New Blog Post:**
+1. Create `_posts/YYYY-MM-DD-slug.md`
+2. Add front-matter (layout: post, title, date, tags)
+3. Use `<!--more-->` to mark archive cutoff
+4. Push to `publish` → auto-deploys
+
+**New Project:**
+1. Create `_projects/slug.md`
+2. Add front-matter (description, tags, image, github link)
+3. Write Markdown content
+4. Push → auto-deploys
+
+**New Course:**
+1. Create `_csumb/cstXXX.md`
+2. Add front-matter (course, semester, description, tags)
+3. List learnings & links
+4. Push → auto-deploys
+
+## Key Files for AI Agents
+
+| File | Purpose | Edit When |
+|------|---------|-----------|
+| `_config.yml` | Jekyll config, collections, plugins | Adding collection type |
+| `_layouts/*.html` | HTML templates (post, project, course) | Changing page structure |
+| `_includes/*.html` | Reusable components (nav, footer, cards) | Updating UI elements |
+| `assets/css/styles.css` | Vanilla CSS (dark-mode) | Visual updates |
+| `.rubocop.yml` | Ruby linting rules | Adjusting code standards |
+| `.github/workflows/deploy.yml` | CI/CD pipeline | Changing build/deploy process |
+| `Dockerfile` | Container definition | Base image, build steps |
+| `_data/tag_links.yml` | Tag taxonomy | Adding new tags or categories |
+
+## Resources & Links
+
+- **Documentation:** [AGENTS.md](AGENTS.md) for comprehensive project context
+- **Deployment:** [DEPLOYMENT.md](DEPLOYMENT.md) for ops, [CLOUD_RUN_SETUP.md](CLOUD_RUN_SETUP.md) for bootstrap
+- **Jekyll:** https://jekyllrb.com/ (collections, Liquid, front-matter)
+- **Liquid:** https://shopify.github.io/liquid/
+- **GitHub Actions:** https://docs.github.com/en/actions
+- **Google Cloud Run:** https://cloud.google.com/run/docs
+
+## Contact
+
+- Primary: Gary Kuepper
+- LinkedIn: https://www.linkedin.com/in/garykuepper/
+- GitHub: https://github.com/koz-enterprises

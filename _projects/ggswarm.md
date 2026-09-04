@@ -1,74 +1,96 @@
 ---
 layout: project
 title: "GG Swarm"
-image: "/assets/imgs/project/ggswarm-3.png"
-description: "A decentralized coordination framework and an emergent behavior engine for UAV swarms."
-objective: "Address bottlenecks in centralized drone control by implementing a scalable, fault-tolerant coordination framework using GATs and decentralized consensus logic."
-status: "Research"
+image: "/assets/imgs/project/ggswarm-3-cropped.png"
+description: "A decentralized coordination framework transitioning from simulation to real-world drone light shows."
+objective: "Deploy an adaptive RL-based execution layer onto physical PX4-based drone swarms for commercial light shows and complex formation maneuvers."
+status: "Active - Hardware Deployment"
 order: 1
 project-tag: "ggswarm"
-tools: 
-  - name: "PyTorch"
-  - name: "NVIDIA Isaac Lab"
-  - name: "OpenUSD"
-  - name: "Graph Neural Networks"
+tools:
   - name: "Python"
-  - name: "GPU Physics"
-
-timeline:
-  - date: "Weeks 1–4"
-    phase: "Proposal and Plan"
-    details: "Defining project scope, requirements, and theoretical research foundation."
-    completed: true
-  - date: "Weeks 5–6"
-    phase: "Foundation & Setup"
-    details: "Finalizing connectivity logic and setting up the development environment on Google Cloud."
-    completed: false
-  - date: "Weeks 7–8"
-    phase: "Brain (GAT) Implementation"
-    details: "Training Graph Attention Networks for permutation-invariant local message passing."
-    completed: false
-  - date: "Weeks 9–10"
-    phase: "Muscles & Nerves"
-    details: "Integrating Minimum Control optimization and SwarmRaft decentralized consensus."
-    completed: false
-  - date: "Weeks 11–12"
-    phase: "Simulation & Training"
-    details: "GPU-accelerated training in Isaac Lab across thousands of parallel environments."
-    completed: false
-  - date: "Weeks 13–15"
-    phase: "Showcase Prep"
-    details: "Finalizing RTX Tiled Rendering and recording a high-definition demonstration."
-    completed: false
-  - date: "Week 16"
-    phase: "Delivery"
-    details: "Presenting at the Capstone Festival and final portfolio submission."
-    completed: false
-
-reflection: "This project pushes the boundaries of swarm intelligence by moving away from brittle husband-and-spoke models toward resilient, emergent behaviors."
+  - name: "PyTorch"
+  - name: "PX4 Autopilot"
+  - name: "Skybrush"
+  - name: "NVIDIA Isaac Lab"
+  - name: "GATv2"
+  - name: "PPO"
+  - name: "Crazyflie"
+resources:
+  - name: "GG Swarm Repository"
+    link: "https://github.com/garykuepper/ggSwarm"
+    icon: "fa-brands fa-github"
 ---
 
-## Project Overview
+## Current Phase: GG Swarm Live (Post-Capstone)
 
-This capstone project addresses a critical bottleneck in the deployment of unmanned aerial vehicle swarms by tackling the inherent vulnerabilities found in centralized control architectures. Traditional hub and spoke models often suffer from single points of failure and prohibitive communication latencies as swarm sizes scale, making them a liability for high-stakes applications in disaster response, reconnaissance, and agriculture.
+Following the successful completion of the academic capstone, the project has transitioned into **GG Swarm Live**, a real-hardware deployment program. The focus is now on taking the decentralized GATv2/PPO policies developed in simulation and deploying them onto physical PX4-based airframes. This creates an adaptive execution layer that can handle formation stability, obstacle avoidance, and decentralized coordination for commercial drone light shows.
 
-To solve this, the project proposes a fully decentralized coordination framework where global formation behavior emerges naturally from local agent interactions. By combining **Graph Neural Networks** for spatial reasoning with advanced **trajectory optimization** for flight dynamics, the system achieves a robust and fault-tolerant solution for complex aerial maneuvers.
+### Roadmap & Development Phases
 
-## Technical Architecture
+The project is currently progressing through the following hardware-focused roadmap:
 
-The technical architecture is split into two primary functional components described as the **brain** and the **muscles**:
+| Phase | Title | Status | Details |
+| :--- | :--- | :--- | :--- |
+| **0** | **Capstone Baseline** | ✅ Complete | v1.0.0-capstone simulation baseline. |
+| **1** | **Shared-Scene Training** | 🔨 Active | Multi-drone training in complex shared simulation scenes. |
+| **2** | **Sim-to-Real Baseline** | 📅 Planned | Initial deployment to Crazyflie drones with LPS. |
+| **3** | **Decentralized Assignment** | 📅 Planned | Transitioning to peer-to-peer ranging and consensus logic. |
+| **4** | **Drone Show Capability** | 📅 Planned | Integration with **Skybrush** for expressive shapes and light shows. |
+| **5** | **Outdoor Deployment** | 📅 Planned | Extended fault tolerance and RTK-GPS integration. |
+| **6** | **Onboard Compute** | 📅 Planned | Moving all inference and obstacle avoidance to onboard chips. |
+| **7** | **Hardware-Agnostic** | 🚀 Stretch | General-purpose adaptive swarm execution layer. |
 
-* **The Brain**: Utilizes a Graph Attention Network to establish permutation invariance, allowing an individual drone to process information from an arbitrary number of neighbors without the need for retraining. This establishes a scalable coordination policy where drones maintain spatial awareness through local message passing.
-* **The Muscles**: To translate neural network outputs into smooth flight, the project integrates **Minimum Control** trajectory optimization. This ensures that all maneuvers are dynamically feasible and significantly reduces the velocity jitter commonly found in raw reinforcement learning controllers.
-* **The Heart/Nerves**: Incorporates **SwarmRaft**, a decentralized consensus logic that allows the swarm to automatically re-synchronize and fill gaps left by failing agents without human intervention.
+---
 
-## Simulation & Performance
+## Archived Milestone: Academic Capstone (v1.0.0)
 
-The implementation leverages **NVIDIA Isaac Lab**, utilizing GPU-accelerated physics and high-fidelity rendering. This allows agents to learn complex behaviors in parallel across thousands of simulated environments before being tested in challenging scenarios such as cluttered forests and urban canyons.
+This section preserves the original research and simulation work completed for my Computer Science Capstone at CSUMB.
 
-**Performance Targets:**
+### Project Overview
+
+The capstone addressed a critical bottleneck in the deployment of unmanned aerial vehicle swarms by tackling the inherent vulnerabilities found in centralized control architectures. The project proposed a fully decentralized coordination framework where global formation behavior emerges naturally from local agent interactions.
+
+### Technical Architecture
+
+The architecture was split into the **Brain** (GATv2 spatial reasoning) and the **Muscles** (MINCO trajectory optimization), unified by a GNSC 5-Layer model.
+
+#### GNSC 5-Layer Architecture
+
+```mermaid
+flowchart BT
+    L1["<b>Layer 1: Local Sensing</b><br/>12D body-frame + K×3 neighbor rel_pos"]
+    L2["<b>Layer 2: GNN Message Passing</b><br/>2-layer GATv2, K=2 sparse edges, edge cache"]
+    L3["<b>Layer 3: Distributed Consensus</b><br/>MINCO min-jerk filter (T=0.04s) + SwarmRaft dropout"]
+    L4["<b>Layer 4: Runtime Safety Shields</b><br/>CBF barrier constraints, clamped corrections, MINCO sync"]
+    L5["<b>Layer 5: Mission Execution</b><br/>Thrust/moment mapping → physics"]
+
+    L1 --> L2 --> L3 --> L4 --> L5
+
+    style L1 fill:#3498db,color:#fff
+    style L2 fill:#2ecc71,color:#fff
+    style L3 fill:#f39c12,color:#fff
+    style L4 fill:#e74c3c,color:#fff
+    style L5 fill:#8e44ad,color:#fff
+```
+
+### Capstone Timeline & Simulation Performance
+
+The simulation phase leveraged **NVIDIA Isaac Lab** for GPU-accelerated physics, achieving high-fidelity results in formation stability and obstacle avoidance.
 
 * **Mean Formation Error**: < 0.1m during steady flight.
-* **Re-sync Latency**: Fill gaps within 2.0s of drone failure.
 * **Success Rate**: > 95% across randomized obstacle-dense environments.
-* **Decision Latency**: End-to-end latency under 90ms.
+
+#### Capstone Timeline
+
+* **Weeks 1–4**: Proposal and Plan (Completed)
+* **Weeks 5–11**: Core Development (Brain/Muscles) (Completed)
+* **Weeks 12–15**: Stress Testing and Showcase Prep (Completed)
+* **Week 16**: Capstone Festival Delivery (Completed April 2026)
+
+### Original Simulation Demo
+<!-- markdownlint-disable MD033 -->
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/toPCBIbLLLM?si=Oy1DaxqxORCvJR57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<!-- markdownlint-enable MD033 -->
