@@ -20,6 +20,8 @@ at 13: the kind of like that does not go away when you ignore it.
 
 <!--more-->
 
+## The second attempt
+
 So in 2023 I enrolled at CSU Monterey Bay for a BS in Computer Science, nights and
 weekends, while working full-time at Boeing. The high school failure stayed with me until I
 figured out the boring truth: it was never aptitude. It was timing, and a teenager's
@@ -35,6 +37,8 @@ changed how I do that in three ways: I can talk to data teams as a peer, I build
 keep an investigation honest instead of trusting a spreadsheet, and I have gotten genuinely
 good at keeping AI coding agents on task, which is the most fun thing I have learned to do
 with a computer since the cybercafe.
+
+## The fun part
 
 For fun I train simulated drone swarms to figure out formation flying with no central
 planner. NVIDIA Isaac Lab, shared-policy PPO, more math than any hobby needs. Real hardware
