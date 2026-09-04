@@ -38,10 +38,12 @@ keep an investigation honest instead of trusting a spreadsheet, and I have gotte
 good at keeping AI coding agents on task, which is the most fun thing I have learned to do
 with a computer since the cybercafe.
 
-## The fun part
+## The capstone that was also fun
 
-For fun I train simulated drone swarms to figure out formation flying with no central
-planner. NVIDIA Isaac Lab, shared-policy PPO, more math than any hobby needs. Real hardware
+GG Swarm started as my capstone project at CSUMB: training simulated drone swarms to
+figure out formation flying on their own, with no central planner micromanaging them.
+NVIDIA Isaac Lab, shared-policy PPO, and enough math to keep a graduate student busy. It
+was schoolwork that did not feel like it, and it has outlived the semester. Real hardware
 is next, assuming I do not break anything expensive.
 
 The degree did not turn me into a different kind of person. I still think like a mechanical
