@@ -918,6 +918,10 @@ footer {
     }
 }
 
+.span-full {
+    grid-column: 1 / -1;
+}
+
 .heading-icon {
     color: #64d5d2;
     font-size: 0.8em;
