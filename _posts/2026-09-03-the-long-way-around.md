@@ -40,11 +40,15 @@ For fun I train simulated drone swarms to figure out formation flying with no ce
 planner. NVIDIA Isaac Lab, shared-policy PPO, more math than any hobby needs. Real hardware
 is next, assuming I do not break anything expensive.
 
-The degree did not make me a different person. I still think like a mechanical engineer
-first, and I still have zero tolerance for BS when there is a real technical problem in
-front of me. And no, I am not enrolling in anything else. The arc can stop climbing for a
-minute.
+The degree did not turn me into a different kind of person. I still think like a mechanical
+engineer first, which means I trust empirical results over assertions, and I still have
+zero tolerance for BS once there is a real technical problem in front of me. The computer
+science training just gave that instinct better tools.
 
-The failed high school course is now a funny story I tell at the start of my bio. Took me
-two decades to get here, the long way around. Turns out the long way is where the good
-stuff happened.
+And yes, before you ask: I am not enrolling in anything else. The arc can stop climbing for
+a minute. I have three degrees, a day job investigating airplanes, a rover, and a drone
+swarm that is about to meet real hardware. That is plenty of problems to keep me busy.
+
+The failed high school course is now a funny story I tell at the start of my bio. It took
+me two decades to get here, but I got here the long way around, and it turns out the long
+way is where all the good stuff happened.
