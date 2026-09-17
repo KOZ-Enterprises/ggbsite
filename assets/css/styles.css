@@ -573,36 +573,6 @@ footer {
     margin-bottom: 15px;
 }
 
-/* Project Log Entries */
-.project-log-entry {
-    background: #0f1111;
-    border: 1px solid #333;
-    border-left: 3px solid #64d5d2;
-    padding: 15px;
-    margin-bottom: 15px;
-    font-family: 'Roboto Mono', monospace;
-    font-size: 0.9em;
-}
-
-.log-meta {
-    color: #64d5d2;
-    margin-bottom: 5px;
-    font-size: 0.8em;
-    text-transform: uppercase;
-}
-
-.log-title a {
-    color: #fafafa;
-    text-decoration: none;
-    font-weight: 700;
-    font-size: 1.1em;
-}
-
-.log-title a:hover {
-    text-decoration: underline;
-    color: #64d5d2;
-}
-
 /* Utility & Helper Classes */
 .quote-icon {
     color: #64d5d2;
