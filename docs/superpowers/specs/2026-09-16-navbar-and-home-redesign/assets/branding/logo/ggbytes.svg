@@ -1,0 +1,21 @@
+<?xml version="1.0"?><svg width="1920" height="1080" viewBox="0 0 1920 1080" version="1.1" id="svg1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  
+  <defs id="defs1">
+    <linearGradient id="swatch7">
+      <stop style="stop-color:#eff4f1;stop-opacity:1;" offset="0" id="stop7"></stop>
+    </linearGradient>
+    <linearGradient id="linearGradient3">
+      <stop style="stop-color:#eff4f1;stop-opacity:0;" offset="0" id="stop3"></stop>
+      <stop style="stop-color:#eff4f1;stop-opacity:1;" offset="0.5" id="stop5"></stop>
+      <stop style="stop-color:#eff4f1;stop-opacity:0;" offset="1" id="stop4"></stop>
+    </linearGradient>
+    <rect x="272.33917" y="218.2444" width="581.05243" height="278.86786" id="rect1"></rect>
+    <linearGradient xlink:href="#linearGradient3" id="linearGradient4" x1="207.79137" y1="155.52245" x2="434.03079" y2="155.52245" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.9848251,0,0,0.67053251,-314.64228,52.172258)"></linearGradient>
+  </defs>
+  <rect style="display:none;fill:#000000;stroke-width:1.52499" id="rect2" width="1922.2296" height="1081.8953" x="0" y="1.4210855e-14"></rect>
+  <g id="layer1" transform="translate(-55.333748,51.763092)">
+    <text xml:space="preserve" id="text1" style="font-size:85.3333px;text-align:start;writing-mode:lr-tb;direction:ltr;white-space:pre;shape-inside:url(#rect1);display:inline;fill:#000000;stroke-width:1.00157;stroke-dasharray:none" transform="matrix(4.0240951,0,0,4.0240951,-1028.6131,-616.42403)"><tspan x="272.33984" y="296.0963" id="tspan6"><tspan style="font-family:Audiowide;-inkscape-font-specification:Audiowide;fill:#64d5d2" id="tspan1">GG</tspan><tspan style="font-family:Audiowide;-inkscape-font-specification:Audiowide;fill:#eff4f1" id="tspan3">BYTES</tspan></tspan></text>
+    <circle style="fill:#000000;fill-opacity:1;stroke:#64d5d2;stroke-width:26.8442;stroke-dasharray:none;stroke-opacity:1" id="path3" cx="194.71814" cy="458.10834" r="31.514767"></circle>
+    <rect style="display:none;opacity:1;fill:#eff4f1;fill-opacity:1;stroke:url(#linearGradient4);stroke-width:1.15364" id="rect3" width="447.06085" height="0.31269222" x="98.779655" y="156.29877"></rect>
+  </g>
+</svg>

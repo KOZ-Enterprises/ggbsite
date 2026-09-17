@@ -239,6 +239,7 @@ The two changes everything else depends on. Fonts must load before any Chakra Pe
 - Modify: `_includes/head.html:26-28` (the Google Fonts `<link>`)
 - Modify: `_projects/drone.md:7`, `_projects/ggbytes.md:7`, `_projects/ggswarm.md:7`, `_projects/ggtrader.md:7`, `_projects/hexmaster.md:7`, `_projects/rover.md:8`, `_projects/smartmirror.md:8`
 - Modify: `assets/css/styles.css` — append status section, delete lines 466–478 then 399–408
+- Modify: `_layouts/project.html:167-206` — three `or`-chain additions only (see Step 6b)
 - Verify only (no edit): `_includes/project-card.html:16`
 
 **Interfaces:**
@@ -355,6 +356,50 @@ status: "active"
 
 Leave every other front-matter key untouched. Do not reorder keys.
 
+- [ ] **Step 6b: Teach the project-detail timeline the new vocabulary**
+
+*Added by the controller's pre-flight scan. Without this, Step 6 ships a visible regression.*
+
+`_layouts/project.html:167` drives a programmatic 4-step timeline off exact `status` string matches. `shipped`, `planned`, and `dormant` match none of its conditionals (`active` already does). Two projects use this path — the other five define explicit `timeline:` front matter and are unaffected:
+
+| Project | Before | After Step 6, unfixed | Effect |
+| --- | --- | --- | --- |
+| `smartmirror` | `Completed` → 4 steps lit | `shipped` → **0 steps lit** | regression |
+| `ggswarm` | `Active - Hardware…` → 0 lit | `active` → 2 lit | improvement |
+
+Make three additions inside the existing `or` chains. Change nothing else in this file — no markup, no new branches.
+
+Add `shipped` to the progress-4 branch:
+
+```liquid
+                    {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
+                    status == "done" or status == "archived" or status == "maintenance" or status == "shipped" %}
+                    {% assign progress = 4 %}
+```
+
+Add `planned` to the progress-0.5 branch:
+
+```liquid
+                    {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
+                    "ideation" or status == "planning" or status == "planned" %}
+                    {% assign progress = 0.5 %}
+```
+
+Add `dormant` to the progress-2.0 branch:
+
+```liquid
+                    {% elsif status == "on hold" or status == "paused" or status == "dormant" %}
+                    {% assign progress = 2.0 %} <!-- Middle state for paused projects -->
+```
+
+Also add `shipped` to the step-4 relabel chain further down, so a shipped project's final step reads "Completed" rather than the default "Test":
+
+```liquid
+                    {% elsif status == "completed" or status == "finished" or status == "done" or status == "shipped" %}
+                    {% assign step4_name = "Completed" %}
+                    {% assign step4_desc = "Project Finalized" %}
+```
+
 - [ ] **Step 7: Verify the migration**
 
 Run:
@@ -373,6 +418,30 @@ Run:
 grep -c "^status_detail:" _projects/*.md
 ```
 Expected: 5 files with a `status_detail` line (drone, ggswarm, ggtrader, hexmaster, rover), 2 without (ggbytes, smartmirror).
+
+- [ ] **Step 7b: Verify the timeline did not regress**
+
+Run:
+```bash
+bundle exec jekyll build >/dev/null 2>&1
+for f in _site/projects/*/index.html; do
+  printf "%s: %s\n" "$(basename "$(dirname "$f")")" \
+    "$(grep -o 'timeline-title highlight' "$f" | wc -l)"
+done
+```
+
+Expected exactly:
+```
+drone: 0
+ggbytes: 7
+ggswarm: 2
+ggtrader: 3
+hexmaster: 3
+rover: 0
+smartmirror: 4
+```
+
+`smartmirror: 4` is the regression guard — if it reads `0`, Step 6b did not land. `ggswarm: 2` is the intended improvement (was `0`; the vocabulary now actually matches). Every other value must be unchanged from baseline.
 
 - [ ] **Step 8: Append the status CSS section**
 

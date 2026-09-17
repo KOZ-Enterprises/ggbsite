@@ -1,0 +1,589 @@
+/* ============================================================
+   GGBytes redesign — navbar, home layout, status tags
+   Paste at the END of assets/css/styles.css.
+   Then DELETE the old blocks it replaces (see code/README.md).
+   Requires Chakra Petch (see README step 1).
+   ============================================================ */
+
+/* ---------- Navbar ---------- */
+.nav-shell {
+    background-color: #1a1e1e;
+    border-bottom: 1px solid #2e4c5b;
+    padding: 0 5%;
+    min-height: 86px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* teal→amber hairline under the bar */
+.nav-shell::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg,
+            rgba(100, 213, 210, 0) 0%,
+            rgba(100, 213, 210, 0.55) 35%,
+            rgba(255, 179, 0, 0.5) 70%,
+            rgba(100, 213, 210, 0) 100%);
+    pointer-events: none;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    text-decoration: none;
+}
+
+.nav-mark {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    border: 2px solid #64d5d2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 16px rgba(100, 213, 210, 0.25);
+}
+
+.nav-mark img {
+    height: 26px;
+    width: auto;
+    display: block;
+}
+
+.nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-name {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 4px;
+    color: #fafafa;
+    line-height: 1;
+}
+
+.nav-name em {
+    font-style: normal;
+    color: #64d5d2;
+}
+
+.nav-caption {
+    font-family: "Roboto Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 3.5px;
+    color: #8a9696;
+    line-height: 1;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    position: relative;
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8ba3a3;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-item:hover {
+    color: #64d5d2;
+    border-bottom-color: #2e4c5b;
+}
+
+/* active: glowing underline with bracket ticks — no filled block */
+.nav-item.active {
+    color: #fafafa;
+    border-bottom-color: transparent;
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 2px;
+    background: #64d5d2;
+    box-shadow: 0 0 10px rgba(100, 213, 210, 0.8);
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 7px;
+    border-left: 2px solid #64d5d2;
+    border-right: 2px solid #64d5d2;
+}
+
+.nav-icon {
+    display: none;
+    background: none;
+    border: 0;
+    color: #64d5d2;
+    font-size: 24px;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+    .nav-shell {
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .nav-icon {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 8px;
+    }
+
+    .nav-shell.responsive .nav-menu {
+        display: flex;
+    }
+
+    .nav-item {
+        min-height: 48px;
+        padding: 0 4px;
+        border-bottom: 1px solid rgba(46, 76, 91, 0.5);
+    }
+
+    .nav-item.active::before,
+    .nav-item.active::after {
+        left: 0;
+        right: auto;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        height: auto;
+        border: 0;
+        background: #64d5d2;
+    }
+}
+
+/* ---------- Home: intro band ---------- */
+.intro-band {
+    background-color: #141818;
+    background-image:
+        linear-gradient(rgba(100, 213, 210, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 213, 210, 0.045) 1px, transparent 1px);
+    background-size: 40px 40px;
+    border: 1px solid #2e4c5b;
+    border-radius: 4px;
+    padding: 52px 48px;
+    margin: 0 0 40px;
+}
+
+.intro-inner {
+    max-width: 780px;
+}
+
+.intro-kicker {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ffb300;
+    margin: 0 0 16px;
+}
+
+.intro-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 4.4vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    color: #fafafa;
+    margin: 0 0 18px;
+}
+
+.intro-body {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: #b9c4c4;
+    margin: 0 0 28px;
+}
+
+.intro-body strong {
+    color: #fafafa;
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn-primary,
+.btn-ghost {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background: #64d5d2;
+    color: #141818;
+    border: 1px solid #64d5d2;
+}
+
+.btn-primary:hover {
+    background: #7fe3e0;
+    border-color: #7fe3e0;
+    color: #141818;
+}
+
+.btn-ghost {
+    color: #64d5d2;
+    border: 1px solid #2e4c5b;
+}
+
+.btn-ghost:hover {
+    border-color: #64d5d2;
+    color: #fafafa;
+}
+
+/* ---------- Home: featured project hero ---------- */
+.feature-hero {
+    position: relative;
+    min-height: 430px;
+    border: 1px solid #2e4c5b;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.feature-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(20, 24, 24, 0.97) 0%,
+            rgba(20, 24, 24, 0.85) 42%,
+            rgba(20, 24, 24, 0.25) 100%);
+}
+
+.feature-hero-body {
+    position: relative;
+    z-index: 1;
+    padding: 44px 48px;
+    max-width: 660px;
+}
+
+.feature-hero-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.6vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: #fafafa;
+    margin: 16px 0;
+}
+
+.feature-hero-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #c3cece;
+    max-width: 560px;
+    margin: 0 0 24px;
+}
+
+@media screen and (max-width: 700px) {
+    .intro-band {
+        padding: 32px 22px;
+    }
+
+    .feature-hero-body {
+        padding: 32px 22px;
+    }
+}
+
+/* ---------- Status tag system ----------
+   Fixed vocabulary: active / planned / shipped / dormant.
+   Set `status:` in project front matter to one of those. */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 3px;
+    border: 1px solid #2e4c5b;
+    color: #8ba3a3;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.status-tag[data-status="active"] {
+    color: #64d5d2;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-tag[data-status="active"] .status-dot {
+    box-shadow: 0 0 8px #64d5d2;
+}
+
+.status-tag[data-status="planned"] {
+    color: #ffb300;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-tag[data-status="shipped"] {
+    color: #5bc0de;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-tag[data-status="dormant"] {
+    color: #8ba3a3;
+    border-color: #2e4c5b;
+}
+
+/* project cards use the same vocabulary */
+.status-badge {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.7em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: transparent;
+    border: 1px solid #2e4c5b;
+    color: #8ba3a3;
+}
+
+.status-badge[data-status="active"] {
+    color: #64d5d2;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-badge[data-status="planned"] {
+    color: #ffb300;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-badge[data-status="shipped"] {
+    color: #5bc0de;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-badge[data-status="dormant"] {
+    color: #8ba3a3;
+    border-color: #2e4c5b;
+}
+
+/* ---------- Home: project log list ---------- */
+.log-section {
+    margin-bottom: 40px;
+}
+
+.rule-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.rule-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    margin: 0;
+}
+
+.rule-line {
+    flex: 1;
+    height: 1px;
+    background: #1f2a2a;
+}
+
+.rule-link {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: #64d5d2;
+    white-space: nowrap;
+}
+
+.log-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.log-row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 28px;
+    padding: 24px 0;
+    margin: 0;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    transition: background 0.2s ease;
+}
+
+.log-row:hover {
+    background: rgba(100, 213, 210, 0.04);
+}
+
+.log-gutter {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 1.9;
+    color: #8a9696;
+}
+
+.log-date,
+.log-tag {
+    display: block;
+}
+
+.log-tag {
+    color: #64d5d2;
+}
+
+.log-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 21px;
+    letter-spacing: 0.3px;
+    margin: 0 0 8px;
+}
+
+.log-title a {
+    color: #fafafa;
+}
+
+.log-title a:hover {
+    color: #64d5d2;
+}
+
+.log-excerpt {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #9aa6a6;
+    max-width: 840px;
+}
+
+.log-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #ffb300;
+}
+
+.log-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    padding-top: 24px;
+}
+
+.log-page-number {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #8a9696;
+}
+
+@media screen and (max-width: 700px) {
+    .log-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .log-gutter {
+        display: flex;
+        gap: 12px;
+        line-height: 1.4;
+    }
+}
+
+/* ---------- Footer ---------- */
+.footer-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-mark img {
+    height: 26px;
+    width: auto;
+    display: block;
+    opacity: 0.85;
+}
+
+.footer-mark p {
+    margin: 0;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: #8a9696;
+}

@@ -134,3 +134,9 @@ fabric.properties
 *.tar
 *.tar.gz
 *.zip
+
+# Superpowers SDD scratch (ledger, briefs, review packages)
+.superpowers/
+
+# Playwright MCP snapshot/console logs
+.playwright-mcp/
