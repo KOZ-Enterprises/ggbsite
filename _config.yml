@@ -15,6 +15,7 @@ exclude:
   - test.html
   # Internal planning and design-handoff docs. Tracked in git, not published.
   - docs/
+  - flowchart.html
 
 plugins:
   - jekyll-redirect-from
