@@ -82,7 +82,7 @@ module Jekyll
       data['tag'] = entry[:label]
       data['tagged_posts'] = entry[:posts].sort_by(&:date).reverse
       data['tagged_docs'] = entry[:docs]
-      data['title'] = "Tagged: \"#{entry[:label]}\""
+      data['title'] = "##{entry[:label]}"
     end
   end
 end

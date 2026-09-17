@@ -11,13 +11,24 @@ layout: default
     <span class="breadcrumb-current">Tag</span>
 </nav>
 
-<section class="page-head">
-    <p class="page-kicker">
-        {% if doc_count > 0 %}{{ doc_count }} project{% if doc_count != 1 %}s{% endif %} &middot; {% endif %}
-        {{ post_count }} log {% if post_count == 1 %}entry{% else %}entries{% endif %}
+{%- comment -%}
+Tag pages are detail pages: they carry a breadcrumb, so they use the detail
+head and title scale rather than the index-page .page-head/.page-title, which
+would render 46px against the 44px every other breadcrumbed page uses.
+{%- endcomment -%}
+<header class="detail-head">
+    <div class="detail-meta">
+        <span class="detail-meta-text">
+            {% if doc_count > 0 %}{{ doc_count }} project{% if doc_count != 1 %}s{% endif %} &middot; {% endif %}
+            {{ post_count }} log {% if post_count == 1 %}entry{% else %}entries{% endif %}
+        </span>
+    </div>
+    <h1 class="detail-title"><span class="tag-hash">#</span>{{ page.tag }}</h1>
+    <p class="detail-desc">
+        Everything on this site tagged <strong>{{ page.tag }}</strong>&thinsp;&mdash;&thinsp;projects that use it and
+        log entries that mention it.
     </p>
-    <h1 class="page-title"><span class="tag-hash">#</span>{{ page.tag }}</h1>
-</section>
+</header>
 
 <div class="page-rule"></div>
 
@@ -71,6 +82,6 @@ layout: default
 <p class="empty-note">Nothing tagged here yet.</p>
 {% endif %}
 
-<div class="post-actions">
+<div class="page-actions">
     <a href="/archives/" class="btn-ghost">&larr; Back to archives</a>
 </div>

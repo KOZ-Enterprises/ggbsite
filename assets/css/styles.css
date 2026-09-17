@@ -2644,7 +2644,7 @@ footer {
 /* ---------- Blog post / log entry ---------- */
 /* Left-aligned per spec 4b, NOT centered. The legacy .post-page rule set
    `margin: 0 auto; padding: 20px`, which centered the column while the footer
-   siblings (.post-more/.post-actions) stayed flush left — a 176px step. */
+   siblings (.post-more/.page-actions) stayed flush left — a 176px step. */
 .post-page {
     max-width: 800px;
     margin: 0;
@@ -2783,7 +2783,7 @@ footer {
     margin-bottom: 36px;
 }
 
-.post-actions {
+.page-actions {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
@@ -3435,8 +3435,8 @@ footer {
         font-size: 21px;
     }
 
-    .post-actions .btn-primary,
-    .post-actions .btn-ghost {
+    .page-actions .btn-primary,
+    .page-actions .btn-ghost {
         display: block;
         width: 100%;
         text-align: center;

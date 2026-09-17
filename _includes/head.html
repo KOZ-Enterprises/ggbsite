@@ -1,7 +1,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title | default: "Gary Gigabytes" }}</title>
+    {%- comment -%}
+    Titles are composed here, not in each page's front matter, so the site
+    suffix cannot drift. Pages set a bare title ("Projects"); the home page
+    sets none and renders the site name alone.
+    {%- endcomment -%}
+    {%- assign site_name = "Gary Gigabytes" -%}
+    {%- if page.title and page.title != site_name -%}
+    {%- assign page_title = page.title | append: " &middot; " | append: site_name -%}
+    {%- else -%}
+    {%- assign page_title = site_name -%}
+    {%- endif -%}
+    <title>{{ page_title }}</title>
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ page.title | default: 'Gary Gigabytes – Tech Projects & Portfolio' }}">
     <meta property="og:description"

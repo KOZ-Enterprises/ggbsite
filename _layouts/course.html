@@ -137,3 +137,12 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
         </section>
     </aside>
 </div>
+
+{%- comment -%}
+Same back-link rule as the other non-nav pages. The sidebar NAVIGATE module
+carries an all-courses link too (spec 4c), but that module is prev/next
+context; this is the consistent exit every other detail page ends with.
+{%- endcomment -%}
+<div class="page-actions">
+    <a href="/csumb/" class="btn-ghost">&larr; All coursework</a>
+</div>

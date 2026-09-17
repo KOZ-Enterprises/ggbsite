@@ -95,7 +95,7 @@ belongs to a project from ending on a lone ghost button.
 {%- endcomment -%}
 {%- assign linked_project = site.projects | where: "project-tag", page.project-tag | first -%}
 
-<div class="post-actions">
+<div class="page-actions">
     {% if page.project-url %}
     <a href="{{ page.project-url }}" class="btn-primary">View {{ page.project-title | default: "Project" }}</a>
     {% elsif linked_project %}

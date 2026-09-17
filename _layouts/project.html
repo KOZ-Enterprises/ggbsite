@@ -212,3 +212,13 @@ entries for projects whose posts were only ever matched by title.
         {% endif %}
     </aside>
 </div>
+
+{%- comment -%}
+Back-link rule for the site: pages reachable from the top nav (Home, Projects,
+Coursework, About) get none - the nav is the way back. Every other page gets a
+link to its parent. This page is reached from /projects/ or from a log entry,
+so it needs one; previously it had only the breadcrumb.
+{%- endcomment -%}
+<div class="page-actions">
+    <a href="/projects/" class="btn-ghost">&larr; All projects</a>
+</div>

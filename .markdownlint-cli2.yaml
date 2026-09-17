@@ -12,6 +12,10 @@ ignores:
   - ".jekyll-cache/**"
   - "vendor/**"
   - "node_modules/**"
+  # Symlink to AGENTS.md, which is linted directly. On Linux the link resolves
+  # and the content is checked twice; on Windows the checkout materializes it as
+  # a newline-less one-line file and trips MD047. Skip the alias.
+  - "CLAUDE.md"
   # Local-only scratch (git-ignored, so absent in CI - this keeps local runs quiet).
   - ".remember/**"
   # Internal design handoff and implementation plans, not site content.
