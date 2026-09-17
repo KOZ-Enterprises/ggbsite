@@ -13,6 +13,8 @@ collections:
 exclude:
   - template/
   - test.html
+  # Internal planning and design-handoff docs. Tracked in git, not published.
+  - docs/
 
 plugins:
   - jekyll-redirect-from
