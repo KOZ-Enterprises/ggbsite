@@ -12,3 +12,9 @@ ignores:
   - ".jekyll-cache/**"
   - "vendor/**"
   - "node_modules/**"
+  # Local-only scratch (git-ignored, so absent in CI - this keeps local runs quiet).
+  - ".remember/**"
+  # Internal design handoff and implementation plans, not site content.
+  # The spec README is vendored verbatim from the designer's bundle, so
+  # reformatting it would diverge it from the source.
+  - "docs/superpowers/**"
