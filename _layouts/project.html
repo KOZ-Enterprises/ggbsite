@@ -36,6 +36,14 @@ RENDERING:
     <div class="project-header-section">
         <h1 class="heading section-header text-left"><i class="fa-solid fa-rocket color-amber"></i> {{ page.title }}
         </h1>
+        {% if page.status %}
+        <p class="project-status-line">
+            <span class="status-tag" data-status="{{ page.status | downcase }}">
+                <span class="status-dot"></span>{{ page.status }}
+            </span>
+            {% if page.status_detail %}<span class="project-status-detail">{{ page.status_detail }}</span>{% endif %}
+        </p>
+        {% endif %}
         <p class="project-intro text-lg color-ccc m-10">{{ page.description }}</p>
     </div>
 

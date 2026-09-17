@@ -1952,6 +1952,23 @@ footer {
     padding: 0 14px;
 }
 
+/* ---------- Project detail: status line ---------- */
+.project-status-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 0 0 12px;
+}
+
+.project-status-detail {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a9696;
+}
+
 /* ---------- Mobile (≤700px) ---------- */
 @media screen and (max-width: 700px) {
 
