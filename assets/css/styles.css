@@ -2295,6 +2295,332 @@ footer {
     border-color: rgba(100, 213, 210, 0.45);
 }
 
+/* ---------- Breadcrumb ---------- */
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+}
+
+.breadcrumb a {
+    color: #64d5d2;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumb-sep,
+.breadcrumb-current {
+    color: #8a9696;
+}
+
+/* ---------- Detail page head ---------- */
+.detail-head {
+    margin-bottom: 32px;
+}
+
+.detail-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 14px;
+}
+
+.detail-meta-text {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a9696;
+}
+
+.detail-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 4.2vw, 44px);
+    line-height: 1.08;
+    letter-spacing: -0.3px;
+    color: #fafafa;
+    margin: 0 0 16px;
+}
+
+.detail-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #b9c4c4;
+    max-width: 820px;
+    margin: 0;
+}
+
+/* ---------- Detail page grid ---------- */
+.detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 48px;
+}
+
+.detail-main {
+    min-width: 0;
+}
+
+.detail-hero {
+    border: 1px solid #2e4c5b;
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 28px;
+}
+
+.detail-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.objective {
+    border-left: 2px solid #64d5d2;
+    background: rgba(46, 76, 91, 0.18);
+    border-radius: 0 6px 6px 0;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+}
+
+.objective-label {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #64d5d2;
+    margin: 0 0 10px;
+}
+
+.objective-text {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: #b9c4c4;
+    margin: 0;
+}
+
+.detail-body {
+    font-size: 15.5px;
+    line-height: 1.8;
+    color: #b9c4c4;
+    margin-bottom: 36px;
+}
+
+.detail-body h2 {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #fafafa;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #1f2a2a;
+    margin: 32px 0 16px;
+}
+
+.detail-body h3 {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    color: #fafafa;
+    margin: 26px 0 12px;
+}
+
+.detail-body img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #2e4c5b;
+    border-radius: 6px;
+}
+
+.empty-note {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    color: #7d8a8a;
+}
+
+/* ---------- Sidebar modules ---------- */
+.detail-side {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+}
+
+.side-module {
+    border: 1px solid #2e4c5b;
+    border-radius: 6px;
+    background: #1a1e1e;
+    overflow: hidden;
+}
+
+.side-head {
+    padding: 13px 18px;
+    border-bottom: 1px solid #2e4c5b;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #64d5d2;
+}
+
+.side-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 18px;
+}
+
+.side-chips .tech-chip {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #5bc0de;
+    border: 1px solid rgba(91, 192, 222, 0.4);
+    border-radius: 3px;
+    padding: 4px 9px;
+}
+
+.side-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    font-size: 14px;
+    color: #b9c4c4;
+    min-height: 44px;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+
+.side-row + .side-row {
+    border-top: 1px solid rgba(46, 76, 91, 0.25);
+}
+
+.side-row:hover {
+    background: rgba(100, 213, 210, 0.05);
+    color: #fafafa;
+}
+
+.side-arrow {
+    color: #64d5d2;
+    flex: 0 0 auto;
+}
+
+.side-note {
+    padding: 16px 18px;
+}
+
+.side-note p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #9aa6a6;
+    margin: 0 0 12px;
+}
+
+.side-link {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #ffb300;
+}
+
+/* ---------- Sidebar timeline ---------- */
+.side-timeline {
+    padding: 6px 0;
+}
+
+.tl-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 18px;
+}
+
+.tl-item + .tl-item {
+    border-top: 1px solid rgba(46, 76, 91, 0.25);
+}
+
+.tl-marker {
+    flex: 0 0 auto;
+    width: 11px;
+    height: 11px;
+    margin-top: 4px;
+    border: 2px solid #2e4c5b;
+    border-radius: 2px;
+}
+
+.tl-marker.done {
+    background: #64d5d2;
+    border-color: #64d5d2;
+    box-shadow: 0 0 8px rgba(100, 213, 210, 0.6);
+}
+
+.tl-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.tl-date {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a9696;
+}
+
+.tl-phase {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: #fafafa;
+}
+
+.tl-detail {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #9aa6a6;
+}
+
+/* ---------- Embedded content guards ---------- */
+/* Post/project bodies carry YouTube iframes and code blocks authored before
+   the redesign. Without these they overflow the viewport on small screens. */
+.detail-body iframe,
+.post-body iframe {
+    max-width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    border: 1px solid #2e4c5b;
+    border-radius: 6px;
+}
+
+.detail-body pre,
+.post-body pre {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+.detail-body table,
+.post-body table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
 /* ---------- Mobile (≤700px) ---------- */
 @media screen and (max-width: 700px) {
 
@@ -2523,5 +2849,41 @@ footer {
     .prior-degrees .btn-ghost {
         width: 100%;
         text-align: center;
+    }
+    /* --- Detail pages --- */
+    .detail-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+    }
+
+    .detail-title {
+        font-size: 32px;
+    }
+
+    .detail-desc {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .detail-hero {
+        margin-bottom: 20px;
+    }
+
+    .objective {
+        padding: 16px 18px;
+        margin-bottom: 22px;
+    }
+
+    .detail-body {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .detail-body h2 {
+        font-size: 21px;
+    }
+
+    .breadcrumb {
+        margin-bottom: 18px;
     }
 }

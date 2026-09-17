@@ -1,250 +1,217 @@
 ---
 layout: default
 ---
-<!--
-PROJECT LAYOUT
 
-Used for rendering individual project showcase pages from `_projects/` collection.
-
-EXPECTED FRONT-MATTER (in `_projects/project-name.md`):
----
-layout: project
-title: "Project Name"
-date: YYYY-MM-DD
-description: "One-line summary of the project"
-tags: [category, technology]
-image: /assets/imgs/project/project-name.png
-github: "https://github.com/org/repo"
-objective: "Clear statement of project goal"
----
-
-OPTIONAL FRONT-MATTER:
-- demo: "https://live-demo.com"        (live instance link)
-- paper: "https://link-to-paper.pdf"   (research paper)
-- video: "https://youtube.com/watch?v=..." (demo video)
+{%- comment -%}
+Project detail page.
 - status: "active", "planned", "shipped", or "dormant" (project status)
+- status_detail: optional free-text phrase shown in the mono meta row
+- Objective, timeline, and body content in the main column
+- Tech stack, resources, timeline, and origin in the sidebar
+{%- endcomment -%}
 
-RENDERING:
-- Title and description displayed in header
-- Hero image (if provided) shown below header
-- Project objective, timeline, and details in main content
-- Resource links (GitHub, demo, paper) in sidebar
-- Tags linked to tag archive pages
--->
+{%- comment -%}
+Related-post matching is deliberately the same OR that the previous layout
+used — tag match OR title match. Narrowing it to tags alone silently drops
+entries for projects whose posts were only ever matched by title.
+{%- endcomment -%}
+{%- assign log_count = 0 -%}
+{%- for p in site.posts -%}
+{%- if p.tags contains page.project-tag or p.title contains page.title -%}
+{%- assign log_count = log_count | plus: 1 -%}
+{%- endif -%}
+{%- endfor -%}
 
-<div class="project-container">
-    <div class="project-header-section">
-        <h1 class="heading section-header text-left"><i class="fa-solid fa-rocket color-amber"></i> {{ page.title }}
-        </h1>
+<nav class="breadcrumb">
+    <a href="/projects/">Projects</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">{{ page.title }}</span>
+</nav>
+
+<header class="detail-head">
+    <div class="detail-meta">
         {% if page.status %}
-        <p class="project-status-line">
-            <span class="status-tag" data-status="{{ page.status | downcase }}">
-                <span class="status-dot"></span>{{ page.status }}
-            </span>
-            {% if page.status_detail %}<span class="project-status-detail">{{ page.status_detail }}</span>{% endif %}
-        </p>
+        <span class="status-tag" data-status="{{ page.status | downcase }}">
+            <span class="status-dot"></span>{{ page.status }}
+        </span>
         {% endif %}
-        <p class="project-intro text-lg color-ccc m-10">{{ page.description }}</p>
+        <span class="detail-meta-text">
+            {%- if page.status_detail %}{{ page.status_detail }} &middot; {% endif -%}
+            {{ log_count }} log {% if log_count == 1 %}entry{% else %}entries{% endif %}
+        </span>
     </div>
+    <h1 class="detail-title">{{ page.title }}</h1>
+    {% if page.description %}
+    <p class="detail-desc">{{ page.description }}</p>
+    {% endif %}
+</header>
 
-    <!-- Main Grid: Sidebar (Info) + Main Content (Feed) ?? Or Info+Timeline vs Feed? -->
-    <!-- Let's do: Left=Main Content (Overview, Feed), Right=Sidebar (Meta, Timeline) -->
-    <div class="project-grid">
+<div class="detail-grid">
+    <main class="detail-main">
+        {% if page.image %}
+        <div class="detail-hero">
+            <img src="{{ page.image | relative_url }}" alt="{{ page.title }}" />
+        </div>
+        {% endif %}
 
-        <!-- Main Content Area -->
-        <div class="project-main">
-            {% if page.image %}
-            <div class="image-container mb-30 border-secondary">
-                <img src="{{ page.image }}" alt="{{ page.title }} Hero" class="w-full d-block" />
-            </div>
-            {% endif %}
+        {% if page.objective %}
+        <div class="objective">
+            <p class="objective-label">Objective</p>
+            <p class="objective-text">{{ page.objective }}</p>
+        </div>
+        {% endif %}
 
-            <div class="project-objective">
-                <h2 class="pop-heading section-header"><i class="fa-solid fa-bullseye heading-icon color-amber"></i>
-                    Mission
-                    Objective</h2>
-
-                <div class="objective-box">
-                    <p>{{ page.objective | default: "No objective defined." }}</p>
-                </div>
-            </div>
-
-            <div class="project-body">
-                {{ content }}
-            </div>
-
-            <!-- Related Updates Feed -->
-            <div class="updates-feed">
-                <h2 class="pop-heading section-header">
-                    <i class="fa-solid fa-satellite-dish heading-icon"></i> Project Log
-                </h2>
-
-                {% assign updates_found = false %}
-                {% assign all_posts = site.posts %}
-
-                <ul class="update-feed post-list">
-                    {% for post in all_posts %}
-                    {% assign is_related = false %}
-
-                    <!-- Check Tags -->
-                    {% if post.tags contains page.project-tag %}
-                    {% assign is_related = true %}
-                    {% endif %}
-
-                    <!-- Check Title (Basic Keyword Match) -->
-                    {% if post.title contains page.title %}
-                    {% assign is_related = true %}
-                    {% endif %}
-
-                    {% if is_related %}
-                    {% assign updates_found = true %}
-                    {% include post.html post=post type="excerpt" %}
-                    {% endif %}
-                    {% endfor %}
-                </ul>
-
-                {% unless updates_found %}
-                <p class="color-dark-muted text-italic">No log entries found for this project.</p>
-                {% endunless %}
-            </div>
+        <div class="detail-body">
+            {{ content }}
         </div>
 
-        <!-- Sidebar Area -->
-        <div class="project-sidebar">
-
-            <!-- Tech Stack -->
-            <div class="sidebar-module">
-                <h3><i class="fa-solid fa-microchip heading-icon"></i>
-                    Tech Stack</h3>
-                <div class="tech-stack-chips">
-                    {% assign tech_list = page.tech_stack | default: page.tools %}
-                    {% for tech in tech_list %}
-                    {% assign tech_name = tech.name | default: tech %}
-                    {% assign tech_slug = tech_name | downcase | slugify %}
-
-                    {% assign custom_url = site.data.tag_links[tech_slug] %}
-                    {% if custom_url %}
-                    <a href="{{ custom_url }}" class="tech-chip tech-chip-interactive">{{ tech_name }}</a>
-                    {% else %}
-                    <a href="/tags/{{ tech_slug | slugify }}/" class="tech-chip tech-chip-interactive">{{ tech_name
-                        }}</a>
-                    {% endif %}
-                    {% endfor %}
-                </div>
-            </div>
-
-            <!-- Deployment/Resources -->
-            {% if page.resources %}
-            <div class="sidebar-module">
-                <h3><i class="fa-solid fa-link heading-icon"></i> Deployment</h3>
-                <ul class="fa-ul resource-list">
-                    {% for resource in page.resources %}
-                    <li>
-                        <span class="fa-li"><i
-                                class="{{ resource.icon | default: 'fas fa-external-link-alt' }} course-status-icon completed"></i></span>
-                        <a href="{{ resource.link }}" target="_blank">{{ resource.name }}</a>
-                    </li>
-                    {% endfor %}
-                </ul>
-            </div>
+        <div class="rule-header">
+            <h2 class="rule-title">Project Log</h2>
+            <span class="rule-line"></span>
+            {% if log_count > 0 %}
+            <span class="rule-count">{{ log_count }} {% if log_count == 1 %}entry{% else %}entries{% endif %}</span>
             {% endif %}
-
-            <!-- Timeline -->
-            <div class="sidebar-module">
-                <h3><i class="fa-solid fa-timeline heading-icon"></i>
-                    Timeline</h3>
-
-                <div class="timeline-container">
-                    {% if page.timeline %}
-                    {% for item in page.timeline %}
-                    {% assign status_class = "" %}
-                    {% if item.completed %}
-                    {% assign status_class = "completed" %}
-                    {% endif %}
-                    <div class="timeline-item">
-                        <div class="timeline-marker {{ status_class }}"></div>
-                        <div class="timeline-content">
-                            <span class="timeline-date">{{ item.date }}</span>
-                            <h4 class="timeline-title {% if item.completed %}highlight{% endif %}">{{ item.phase }}</h4>
-                            <p class="timeline-details">{{ item.details }}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% else %}
-                    <!-- Programmatic Default Timeline based on page.status -->
-                    {% assign status = page.status | downcase %}
-                    {% assign progress = 0 %}
-
-                    {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
-                    status == "done" or status == "archived" or status == "maintenance" or status == "shipped" %}
-                    {% assign progress = 4 %}
-                    {% elsif status == "testing" or status == "validation" or status == "refinement" or status ==
-                    "polish" or status == "beta" %}
-                    {% assign progress = 3.5 %}
-                    {% elsif status == "in progress" or status == "building" or status == "implementation" or status ==
-                    "development" or status == "active" %}
-                    {% assign progress = 2.5 %}
-                    {% elsif status == "design" or status == "prototyping" or status == "mvp" or status ==
-                    "architecture" %}
-                    {% assign progress = 1.5 %}
-                    {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
-                    "ideation" or status == "planning" or status == "planned" %}
-                    {% assign progress = 0.5 %}
-                    {% elsif status == "on hold" or status == "paused" or status == "dormant" %}
-                    {% assign progress = 2.0 %} <!-- Middle state for paused projects -->
-                    {% endif %}
-
-                    {% comment %} Dynamic Labels and Descriptions {% endcomment %}
-                    {% assign step1_name = page.step1_name | default: "Research" %}
-                    {% assign step1_desc = page.step1_desc | default: "Concept & Requirements" %}
-
-                    {% assign step2_name = page.step2_name | default: "Design" %}
-                    {% assign step2_desc = page.step2_desc | default: "Architecture & Prototyping" %}
-
-                    {% assign step3_name = page.step3_name | default: "Build" %}
-                    {% assign step3_desc = page.step3_desc | default: "Implementation & Refinement" %}
-
-                    {% assign step4_name = page.step4_name | default: "Test" %}
-                    {% assign step4_desc = page.step4_desc | default: "Verification & Validation" %}
-
-                    {% if status == "live" or status == "production" %}
-                    {% assign step4_name = "Deployed" %}
-                    {% assign step4_desc = "Production Release" %}
-                    {% elsif status == "completed" or status == "finished" or status == "done" or status == "shipped" %}
-                    {% assign step4_name = "Completed" %}
-                    {% assign step4_desc = "Project Finalized" %}
-                    {% elsif status == "maintenance" %}
-                    {% assign step4_name = "Maintenance" %}
-                    {% assign step4_desc = "Ongoing Support" %}
-                    {% endif %}
-
-                    {% capture steps_string %}{{ step1_name }}|{{ step1_desc }},{{ step2_name }}|{{ step2_desc }},{{
-                    step3_name }}|{{ step3_desc }},{{ step4_name }}|{{ step4_desc }}{% endcapture %}
-                    {% assign steps = steps_string | split: "," %}
-
-                    {% for step_data in steps %}
-                    {% assign parts = step_data | split: "|" %}
-                    {% assign step_name = parts[0] %}
-                    {% assign step_details = parts[1] %}
-                    {% assign step_index = forloop.index %}
-
-                    {% assign is_completed = false %}
-                    {% if progress >= step_index %}
-                    {% assign is_completed = true %}
-                    {% endif %}
-
-                    <div class="timeline-item">
-                        <div class="timeline-marker {% if is_completed %}completed{% endif %}"></div>
-                        <div class="timeline-content">
-                            <h4 class="timeline-title {% if is_completed %}highlight{% endif %}">{{ step_name }}</h4>
-                            <p class="timeline-details mono-text-sm color-muted">{{ step_details }}</p>
-                        </div>
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-                </div>
-            </div>
-
         </div>
-    </div>
+
+        {% if log_count > 0 %}
+        <ul class="log-list">
+            {% for post in site.posts %}
+            {% if post.tags contains page.project-tag or post.title contains page.title %}
+            <li class="log-row">
+                <div class="log-gutter">
+                    <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                    {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
+                </div>
+                <div class="log-main">
+                    <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                    <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</div>
+                </div>
+            </li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-note">No log entries found for this project.</p>
+        {% endif %}
+    </main>
+
+    <aside class="detail-side">
+        {% assign tech_list = page.tech_stack | default: page.tools %}
+        {% if tech_list and tech_list.size > 0 %}
+        <section class="side-module">
+            <div class="side-head">Tech Stack</div>
+            <div class="side-chips">
+                {% for tech in tech_list %}
+                {% assign tech_name = tech.name | default: tech %}
+                {% assign tech_slug = tech_name | downcase | slugify %}
+                {% assign custom_url = site.data.tag_links[tech_slug] %}
+                {% if custom_url %}
+                <a href="{{ custom_url }}" class="tech-chip">{{ tech_name }}</a>
+                {% else %}
+                <a href="/tags/{{ tech_slug }}/" class="tech-chip">{{ tech_name }}</a>
+                {% endif %}
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        {% if page.resources %}
+        <section class="side-module">
+            <div class="side-head">Resources</div>
+            {% for resource in page.resources %}
+            <a class="side-row" href="{{ resource.link }}" target="_blank" rel="noopener">
+                <span class="side-arrow">&#8599;</span>{{ resource.name }}
+            </a>
+            {% endfor %}
+        </section>
+        {% endif %}
+
+        <section class="side-module">
+            <div class="side-head">Timeline</div>
+            <div class="side-timeline">
+                {% if page.timeline %}
+                {% for item in page.timeline %}
+                <div class="tl-item">
+                    <span class="tl-marker {% if item.completed %}done{% endif %}"></span>
+                    <div class="tl-content">
+                        {% if item.date %}<span class="tl-date">{{ item.date }}</span>{% endif %}
+                        <span class="tl-phase">{{ item.phase }}</span>
+                        {% if item.details %}<span class="tl-detail">{{ item.details }}</span>{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+                {% else %}
+                {%- comment -%} Programmatic default timeline based on page.status {%- endcomment -%}
+                {% assign status = page.status | downcase %}
+                {% assign progress = 0 %}
+
+                {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
+                status == "done" or status == "archived" or status == "maintenance" or status == "shipped" %}
+                {% assign progress = 4 %}
+                {% elsif status == "testing" or status == "validation" or status == "refinement" or status ==
+                "polish" or status == "beta" %}
+                {% assign progress = 3.5 %}
+                {% elsif status == "in progress" or status == "building" or status == "implementation" or status ==
+                "development" or status == "active" %}
+                {% assign progress = 2.5 %}
+                {% elsif status == "design" or status == "prototyping" or status == "mvp" or status ==
+                "architecture" %}
+                {% assign progress = 1.5 %}
+                {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
+                "ideation" or status == "planning" or status == "planned" %}
+                {% assign progress = 0.5 %}
+                {% elsif status == "on hold" or status == "paused" or status == "dormant" %}
+                {% assign progress = 2.0 %}
+                {% endif %}
+
+                {% assign step1_name = page.step1_name | default: "Research" %}
+                {% assign step1_desc = page.step1_desc | default: "Concept & Requirements" %}
+                {% assign step2_name = page.step2_name | default: "Design" %}
+                {% assign step2_desc = page.step2_desc | default: "Architecture & Prototyping" %}
+                {% assign step3_name = page.step3_name | default: "Build" %}
+                {% assign step3_desc = page.step3_desc | default: "Implementation & Refinement" %}
+                {% assign step4_name = page.step4_name | default: "Test" %}
+                {% assign step4_desc = page.step4_desc | default: "Verification & Validation" %}
+
+                {% if status == "live" or status == "production" %}
+                {% assign step4_name = "Deployed" %}
+                {% assign step4_desc = "Production Release" %}
+                {% elsif status == "completed" or status == "finished" or status == "done" or status == "shipped" %}
+                {% assign step4_name = "Completed" %}
+                {% assign step4_desc = "Project Finalized" %}
+                {% elsif status == "maintenance" %}
+                {% assign step4_name = "Maintenance" %}
+                {% assign step4_desc = "Ongoing Support" %}
+                {% endif %}
+
+                {% capture steps_string %}{{ step1_name }}|{{ step1_desc }},{{ step2_name }}|{{ step2_desc }},{{
+                step3_name }}|{{ step3_desc }},{{ step4_name }}|{{ step4_desc }}{% endcapture %}
+                {% assign steps = steps_string | split: "," %}
+
+                {% for step_data in steps %}
+                {% assign parts = step_data | split: "|" %}
+                {% assign is_completed = false %}
+                {% if progress >= forloop.index %}{% assign is_completed = true %}{% endif %}
+                <div class="tl-item">
+                    <span class="tl-marker {% if is_completed %}done{% endif %}"></span>
+                    <div class="tl-content">
+                        <span class="tl-phase">{{ parts[0] }}</span>
+                        <span class="tl-detail">{{ parts[1] }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+
+        {% if page.project-tag == "ggswarm" %}
+        <section class="side-module">
+            <div class="side-head">Origin</div>
+            <div class="side-note">
+                <p>Began as my CST 499 capstone at CSUMB, submitted April 2026.</p>
+                <a href="/csumb/" class="side-link">See the submitted snapshot &rarr;</a>
+            </div>
+        </section>
+        {% endif %}
+    </aside>
 </div>
