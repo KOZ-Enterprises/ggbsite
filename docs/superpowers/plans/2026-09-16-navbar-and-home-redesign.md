@@ -942,7 +942,7 @@ SPEC=docs/superpowers/specs/2026-09-16-navbar-and-home-redesign/code/assets/css/
 
 - [ ] **Step 4b: Fix the social-link touch targets**
 
-The v3 spec flags this explicitly: the social links "as bare inline anchors measure 13px tall and fail touch sizing". The existing rule at `.social-icons a` sets `padding-bottom: 10px` on an inline anchor, which does not create height. Append:
+The v3 spec flags this explicitly: the social links "as bare inline anchors measure 13px tall and fail touch sizing". The existing rule at `.social-icons a` sets `display: inline-block` with `font-size: 1.5em` and no height, so the anchors collapse to roughly the glyph's height. Append:
 
 ```css
 
@@ -955,7 +955,7 @@ The v3 spec flags this explicitly: the social links "as bare inline anchors meas
 }
 ```
 
-This intentionally overrides the earlier `padding-bottom: 10px` by cascade order (later rule, equal specificity). The `border-bottom` from the original rule survives and now sits flush under a 44px-tall target. Do not delete the original `.social-icons a` block — `color`, `font-size`, and `margin` still come from it.
+This overrides the original's `display: inline-block` by cascade order (later rule, equal specificity). `min-height` is honoured because the element is now `inline-flex` — it would have been ignored on the original inline-level box. Do not delete the original `.social-icons a` block: `color`, `margin`, `font-size`, `text-decoration`, and `transition` still come from it, and `.social-icons a:hover` depends on it too.
 
 Note this applies at **all** widths, not just mobile. A 13px touch target is a defect on tablets too.
 
