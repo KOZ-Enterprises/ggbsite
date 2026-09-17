@@ -1086,17 +1086,6 @@ footer {
     gap: 5px !important;
 }
 
-/* Individual Post Layout */
-.post-page {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-.post-header {
-    margin-bottom: 0;
-    text-align: center;
-}
 
 .post-title {
     font-size: 2.5em;
@@ -1179,11 +1168,6 @@ footer {
 }
 
 /* Centering tags for full post pages */
-.post-page .post-tags {
-    justify-content: center;
-    margin-bottom: 30px;
-}
-
 .post-tags .tag {
     background: rgba(100, 213, 210, 0.1);
     border: 1px solid rgba(100, 213, 210, 0.3);
@@ -2658,8 +2642,13 @@ footer {
 }
 
 /* ---------- Blog post / log entry ---------- */
+/* Left-aligned per spec 4b, NOT centered. The legacy .post-page rule set
+   `margin: 0 auto; padding: 20px`, which centered the column while the footer
+   siblings (.post-more/.post-actions) stayed flush left — a 176px step. */
 .post-page {
     max-width: 800px;
+    margin: 0;
+    padding: 0;
 }
 
 .post-head {
@@ -2805,7 +2794,7 @@ footer {
 /* ---------- About page ---------- */
 .bio-grid {
     display: grid;
-    grid-template-columns: 1.6fr 1fr;
+    grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
     gap: 44px;
     align-items: start;
     margin-bottom: 48px;
@@ -2997,7 +2986,7 @@ footer {
 
 .year-row {
     display: grid;
-    grid-template-columns: 100px minmax(0, 1fr) auto;
+    grid-template-columns: 100px minmax(0, 1fr) minmax(0, max-content);
     align-items: center;
     gap: 22px;
     padding: 13px 20px;
@@ -3005,7 +2994,8 @@ footer {
     transition: background 0.2s ease;
 }
 
-.year-row:first-of-type {
+.year-row:first-child,
+.year-head + .year-row {
     border-top: 0;
 }
 
@@ -3036,6 +3026,14 @@ footer {
     flex-wrap: wrap;
     gap: 8px;
     justify-content: flex-end;
+}
+
+.year-tag-more {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #7d8a8a;
+    white-space: nowrap;
 }
 
 .year-tag {
@@ -3442,5 +3440,32 @@ footer {
         display: block;
         width: 100%;
         text-align: center;
+    }
+    /* --- Touch targets: chips are the densest tap surface on the site.
+       Archives alone renders 32 filter chips and 114 tag chips; at their
+       desktop size they measure 13-25px against the spec's 44px floor. --- */
+    .post-tagchip,
+    .year-tag,
+    .tech-chip,
+    .side-chips .tech-chip,
+    .card-chips .tech-chip {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+    .tag-strip,
+    .year-tags,
+    .post-taglist {
+        gap: 6px 10px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
     }
 }

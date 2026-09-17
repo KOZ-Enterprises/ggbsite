@@ -1,0 +1,16 @@
+{%- comment -%}
+Shared log row. Used by home, project detail, course, post, and tag pages.
+  include.post     — the post to render (required)
+  include.truncate — excerpt length, default 220
+{%- endcomment -%}
+{%- assign excerpt_len = include.truncate | default: 220 -%}
+<li class="log-row">
+    <div class="log-gutter">
+        <span class="log-date">{{ include.post.date | date: "%Y-%m-%d" }}</span>
+        {% if include.post.tags %}<span class="log-tag">#{{ include.post.tags | first }}</span>{% endif %}
+    </div>
+    <div class="log-main">
+        <h3 class="log-title"><a href="{{ include.post.url }}">{{ include.post.title }}</a></h3>
+        <div class="log-excerpt">{{ include.post.excerpt | strip_html | truncate: excerpt_len }}</div>
+    </div>
+</li>

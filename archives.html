@@ -30,7 +30,8 @@ permalink: /archives/
 {% if all_tags.size > 0 %}
 <div class="tag-strip">
     {% for tag in all_tags %}
-    <a class="post-tagchip" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+    {% assign custom_url = site.data.tag_links[tag] %}
+    <a class="post-tagchip" href="{% if custom_url %}{{ custom_url }}{% else %}/tags/{{ tag | slugify }}/{% endif %}">#{{ tag }}</a>
     {% endfor %}
 </div>
 {% endif %}
@@ -56,10 +57,19 @@ permalink: /archives/
         <span class="year-date">{{ post.date | date: "%Y-%m-%d" }}</span>
         <a class="year-title" href="{{ post.url }}">{{ post.title }}</a>
         {% if post.tags %}
+        {%- comment -%}
+        Capped at 3. Real posts carry up to 7 tags where the mockup showed 1-2;
+        uncapped, the tag column took 455px and wrapped the title onto a second
+        line. The overflow count keeps rows a uniform height.
+        {%- endcomment -%}
         <span class="year-tags">
-            {% for tag in post.tags %}
-            <a class="year-tag" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+            {% for tag in post.tags limit: 3 %}
+            {% assign custom_url = site.data.tag_links[tag] %}
+            <a class="year-tag" href="{% if custom_url %}{{ custom_url }}{% else %}/tags/{{ tag | slugify }}/{% endif %}">#{{ tag }}</a>
             {% endfor %}
+            {% if post.tags.size > 3 %}
+            <span class="year-tag-more">+{{ post.tags.size | minus: 3 }}</span>
+            {% endif %}
         </span>
         {% endif %}
     </div>

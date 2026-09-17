@@ -8,8 +8,13 @@ than the old centered card. Related entries at the foot are matched on the
 post's project-tag when it has one.
 {%- endcomment -%}
 
+{%- comment -%}
+`divided_by` on integers floors, so adding 1 unconditionally over-counts by a
+full minute on exact multiples. Round to nearest instead, with a floor of 1.
+{%- endcomment -%}
 {%- assign words = content | strip_html | number_of_words -%}
-{%- assign read_time = words | divided_by: 200 | plus: 1 -%}
+{%- assign read_time = words | plus: 100 | divided_by: 200 -%}
+{%- if read_time < 1 -%}{%- assign read_time = 1 -%}{%- endif -%}
 
 <nav class="breadcrumb">
     <a href="/archives/">Log</a>
@@ -62,13 +67,13 @@ post's project-tag when it has one.
 
 {%- assign ptag = page.project-tag -%}
 {%- if ptag -%}
-{%- assign related = site.posts | where_exp: "p", "p.tags contains ptag" -%}
+{%- assign related = site.posts | where_exp: "p", "p.tags contains ptag" | where_exp: "p", "p.url != page.url" -%}
 {%- assign related_count = related | size -%}
 {%- else -%}
 {%- assign related_count = 0 -%}
 {%- endif -%}
 
-{% if related_count > 1 %}
+{% if related_count > 0 %}
 <section class="post-more">
     <div class="rule-header">
         <h2 class="rule-title">More from this project</h2>
@@ -76,26 +81,25 @@ post's project-tag when it has one.
     </div>
     <ul class="log-list">
         {% for post in related limit: 5 %}
-        {% unless post.url == page.url %}
-        <li class="log-row">
-            <div class="log-gutter">
-                <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
-            </div>
-            <div class="log-main">
-                <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-                <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
-            </div>
-        </li>
-        {% endunless %}
+            {% include log-row.html post=post truncate=200 %}
         {% endfor %}
     </ul>
 </section>
 {% endif %}
 
+{%- comment -%}
+project-url and project-tag are set independently across the archive: some
+posts have one, some the other, some neither. Falling back from an explicit
+project-url to the project that project-tag names keeps every post that
+belongs to a project from ending on a lone ghost button.
+{%- endcomment -%}
+{%- assign linked_project = site.projects | where: "project-tag", page.project-tag | first -%}
+
 <div class="post-actions">
     {% if page.project-url %}
     <a href="{{ page.project-url }}" class="btn-primary">View {{ page.project-title | default: "Project" }}</a>
+    {% elsif linked_project %}
+    <a href="{{ linked_project.url }}" class="btn-primary">View {{ linked_project.title }}</a>
     {% endif %}
     <a href="/archives/" class="btn-ghost">&larr; All entries</a>
 </div>

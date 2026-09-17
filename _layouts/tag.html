@@ -62,16 +62,7 @@ layout: default
 
 <ul class="log-list">
     {% for post in page.tagged_posts %}
-    <li class="log-row">
-        <div class="log-gutter">
-            <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-            {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
-        </div>
-        <div class="log-main">
-            <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
-            <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</div>
-        </div>
-    </li>
+            {% include log-row.html post=post %}
     {% endfor %}
 </ul>
 {% endif %}
