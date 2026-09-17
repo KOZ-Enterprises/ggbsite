@@ -1981,3 +1981,154 @@ footer {
     min-height: 44px;
     padding: 0 14px;
 }
+
+/* ---------- Mobile (≤700px) ---------- */
+@media screen and (max-width: 700px) {
+
+    /* --- Navbar --- */
+    .nav-shell {
+        min-height: 68px;
+        padding: 0 20px;
+    }
+
+    .nav-brand {
+        gap: 12px;
+    }
+
+    .nav-mark {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+    }
+
+    .nav-mark img {
+        height: 21px;
+    }
+
+    .nav-name {
+        font-size: 16px;
+        letter-spacing: 2.5px;
+    }
+
+    .nav-caption {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+
+    .nav-caption-rest {
+        display: none;
+    }
+
+    /* --- Page rhythm --- */
+    #main {
+        width: auto;
+        padding: 28px 20px;
+        margin: 0 0 24px;
+    }
+
+    /* --- Intro band --- */
+    .intro-band {
+        padding: 28px 20px;
+        margin-bottom: 24px;
+    }
+
+    .intro-title {
+        font-size: 30px;
+    }
+
+    .intro-body {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    /* --- Buttons stack full width --- */
+    .intro-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .intro-actions .btn-primary,
+    .intro-actions .btn-ghost {
+        display: block;
+        width: 100%;
+        padding: 14px 22px;
+        text-align: center;
+    }
+
+    /* --- Featured hero: side gradient does not work at 390px --- */
+    .feature-hero {
+        display: block;
+        min-height: 0;
+        margin-bottom: 24px;
+    }
+
+    .feature-hero-img {
+        position: static;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+    .feature-hero::after {
+        background: linear-gradient(to top,
+                rgba(20, 24, 24, 0.96) 22%,
+                rgba(20, 24, 24, 0.3) 75%);
+    }
+
+    .feature-hero-body {
+        margin-top: -96px;
+        padding: 0 20px 28px;
+        max-width: none;
+    }
+
+    .feature-hero-title {
+        font-size: 32px;
+    }
+
+    .feature-hero-desc {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+
+    .feature-hero .status-tag {
+        background: rgba(15, 17, 17, 0.7);
+    }
+
+    /* --- Section rule headers --- */
+    .rule-title {
+        font-size: 18px;
+    }
+
+    /* --- Log rows: date gutter is dropped, rows stack --- */
+    .log-row {
+        padding: 18px 0;
+    }
+
+    .log-gutter {
+        font-size: 10.5px;
+    }
+
+    .log-title {
+        font-size: 19px;
+    }
+
+    /* --- Footer stacks and centers --- */
+    footer {
+        padding: 24px 20px;
+    }
+
+    .footer-mark {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-mark img {
+        height: 24px;
+    }
+
+    .footer-mark p {
+        font-size: 9.5px;
+        line-height: 1.7;
+        text-align: center;
+    }
+}
