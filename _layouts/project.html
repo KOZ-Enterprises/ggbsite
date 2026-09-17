@@ -40,9 +40,9 @@ entries for projects whose posts were only ever matched by title.
             {{ log_count }} log {% if log_count == 1 %}entry{% else %}entries{% endif %}
         </span>
     </div>
-    <h1 class="detail-title">{{ page.title }}</h1>
+    <h1 class="page-title">{{ page.title }}</h1>
     {% if page.description %}
-    <p class="detail-desc">{{ page.description }}</p>
+    <p class="page-lead">{{ page.description }}</p>
     {% endif %}
 </header>
 
@@ -61,7 +61,7 @@ entries for projects whose posts were only ever matched by title.
         </div>
         {% endif %}
 
-        <div class="detail-body">
+        <div class="page-body">
             {{ content }}
         </div>
 

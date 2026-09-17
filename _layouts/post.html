@@ -34,10 +34,10 @@ full minute on exact multiples. Round to nearest instead, with a floor of 1.
             {% endif %}
         </div>
 
-        <h1 class="post-h1">{{ page.title }}</h1>
+        <h1 class="page-title">{{ page.title }}</h1>
 
         {% if page.description %}
-        <p class="post-desc">{{ page.description }}</p>
+        <p class="page-lead">{{ page.description }}</p>
         {% endif %}
 
         {% if page.tags %}
@@ -60,7 +60,7 @@ full minute on exact multiples. Round to nearest instead, with a floor of 1.
     </div>
     {% endif %}
 
-    <div class="post-body">
+    <div class="page-body">
         {{ content }}
     </div>
 </article>

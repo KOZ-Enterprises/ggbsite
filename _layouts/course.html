@@ -44,12 +44,12 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
         <p class="page-kicker">
             {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
         </p>
-        <h1 class="detail-title course-title">{{ course_name }}</h1>
+        <h1 class="page-title">{{ course_name }}</h1>
         {% if page.note %}
-        <p class="detail-desc">{{ page.note }}</p>
+        <p class="page-lead">{{ page.note }}</p>
         {% endif %}
 
-        <div class="detail-body">
+        <div class="page-body">
             {{ content }}
         </div>
 

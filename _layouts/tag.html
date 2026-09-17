@@ -23,8 +23,8 @@ would render 46px against the 44px every other breadcrumbed page uses.
             {{ post_count }} log {% if post_count == 1 %}entry{% else %}entries{% endif %}
         </span>
     </div>
-    <h1 class="detail-title"><span class="tag-hash">#</span>{{ page.tag }}</h1>
-    <p class="detail-desc">
+    <h1 class="page-title"><span class="tag-hash">#</span>{{ page.tag }}</h1>
+    <p class="page-lead">
         Everything on this site tagged <strong>{{ page.tag }}</strong>&thinsp;&mdash;&thinsp;projects that use it and
         log entries that mention it.
     </p>
