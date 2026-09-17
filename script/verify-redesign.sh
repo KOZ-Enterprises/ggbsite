@@ -4,7 +4,9 @@
 set -u
 fail=0
 check() { # check <name> <expected-count> <pattern> <file>
-  local n; n=$(grep -c -- "$3" "$4" 2>/dev/null || echo 0)
+  local n
+  n=$(grep -c -- "$3" "$4" 2>/dev/null) || true
+  [ -n "$n" ] || n=0
   if [ "$n" -ge "$2" ]; then
     echo "  PASS  $1"
   else
