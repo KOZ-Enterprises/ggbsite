@@ -239,7 +239,7 @@ The two changes everything else depends on. Fonts must load before any Chakra Pe
 - Modify: `_includes/head.html:26-28` (the Google Fonts `<link>`)
 - Modify: `_projects/drone.md:7`, `_projects/ggbytes.md:7`, `_projects/ggswarm.md:7`, `_projects/ggtrader.md:7`, `_projects/hexmaster.md:7`, `_projects/rover.md:8`, `_projects/smartmirror.md:8`
 - Modify: `assets/css/styles.css` — append status section, delete lines 466–478 then 399–408
-- Modify: `_layouts/project.html:167-206` — three `or`-chain additions only (see Step 6b)
+- Modify: `_layouts/project.html:167-206` — four `or`-chain additions only, no other change (see Step 6b: `shipped`→progress-4, `planned`→progress-0.5, `dormant`→progress-2.0, `shipped`→step-4 relabel)
 - Verify only (no edit): `_includes/project-card.html:16`
 
 **Interfaces:**
