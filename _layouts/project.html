@@ -209,7 +209,13 @@ entries for projects whose posts were only ever matched by title.
             <div class="side-head">Origin</div>
             <div class="side-note">
                 <p>Began as my CST 499 capstone at CSUMB, submitted April 2026.</p>
-                <a href="/csumb/" class="side-link">See the submitted snapshot &rarr;</a>
+                {%- comment -%}
+                Points at the CST499 course page rather than the Coursework index: that
+                page is the actual snapshot view, carrying the entries tagged to the
+                capstone. The date split is implicit — capstone-tagged posts end at
+                submission, while this project page keeps accruing.
+                {%- endcomment -%}
+                <a href="/csumb/cst499/" class="side-link">See the submitted snapshot &rarr;</a>
             </div>
         </section>
         {% endif %}

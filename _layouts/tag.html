@@ -2,37 +2,84 @@
 layout: default
 ---
 
-<div class="mt-20">
-    <h1 class="pop-heading section-header text-left">Tagged: #{{ page.tag }}</h1>
+{%- assign doc_count = page.tagged_docs | size -%}
+{%- assign post_count = page.tagged_posts | size -%}
+
+<nav class="breadcrumb">
+    <a href="/archives/">Archives</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">Tag</span>
+</nav>
+
+<section class="page-head">
+    <p class="page-kicker">
+        {% if doc_count > 0 %}{{ doc_count }} project{% if doc_count != 1 %}s{% endif %} &middot; {% endif %}
+        {{ post_count }} log {% if post_count == 1 %}entry{% else %}entries{% endif %}
+    </p>
+    <h1 class="page-title"><span class="tag-hash">#</span>{{ page.tag }}</h1>
+</section>
+
+<div class="page-rule"></div>
+
+{% if doc_count > 0 %}
+<div class="rule-header">
+    <h2 class="rule-title">Projects</h2>
+    <span class="rule-line"></span>
 </div>
 
-<div class="post-page">
-    <div class="post-content">
-        {% if page.tagged_docs and page.tagged_docs.size > 0 %}
-        <h2>Projects</h2>
-        <ul class="update-feed post-list">
-            {% for doc in page.tagged_docs %}
-            <li>
-                <a href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-                {% if doc.description %} — {{ doc.description | truncate: 160 }}{% endif %}
-            </li>
-            {% endfor %}
-        </ul>
-        {% endif %}
+<div class="wide-card-list">
+    {% for doc in page.tagged_docs %}
+    <a class="wide-card" href="{{ doc.url | relative_url }}">
+        <span class="wide-card-media">
+            {% if doc.image %}
+            <img src="{{ doc.image | relative_url }}" alt="{{ doc.title }}" />
+            {% else %}
+            <span class="card-noimg">No preview</span>
+            {% endif %}
+        </span>
+        <span class="wide-card-body">
+            <span class="wide-card-head">
+                <span class="card-title">{{ doc.title }}</span>
+                {% if doc.status %}
+                <span class="status-badge" data-status="{{ doc.status | downcase }}">{{ doc.status }}</span>
+                {% endif %}
+            </span>
+            {% if doc.description %}
+            <span class="card-desc">{{ doc.description | strip_html | truncate: 170 }}</span>
+            {% endif %}
+        </span>
+    </a>
+    {% endfor %}
+</div>
+{% endif %}
 
-        {% if page.tagged_posts and page.tagged_posts.size > 0 %}
-        {% if page.tagged_docs and page.tagged_docs.size > 0 %}
-        <h2>Posts</h2>
-        {% endif %}
-        <ul class="update-feed post-list">
-            {% for post in page.tagged_posts %}
-            {% include post.html post=post type="excerpt" %}
-            {% endfor %}
-        </ul>
-        {% endif %}
-    </div>
+{% if post_count > 0 %}
+<div class="rule-header">
+    <h2 class="rule-title">Log Entries</h2>
+    <span class="rule-line"></span>
+    <span class="rule-count">{{ post_count }} {% if post_count == 1 %}entry{% else %}entries{% endif %}</span>
 </div>
 
-<div class="text-center mt-40 mb-40">
-    <a href="/archives/" class="archive-btn"><i class="fas fa-arrow-left"></i> Back to Archives</a>
+<ul class="log-list">
+    {% for post in page.tagged_posts %}
+    <li class="log-row">
+        <div class="log-gutter">
+            <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+            {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
+        </div>
+        <div class="log-main">
+            <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+            <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endif %}
+
+{% if doc_count == 0 and post_count == 0 %}
+<p class="empty-note">Nothing tagged here yet.</p>
+{% endif %}
+
+<div class="post-actions">
+    <a href="/archives/" class="btn-ghost">&larr; Back to archives</a>
 </div>

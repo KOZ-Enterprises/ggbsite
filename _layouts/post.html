@@ -2,32 +2,47 @@
 layout: default
 ---
 
-<div class="post-page">
-    <header class="post-header">
-        <h1 class="post-title pop-heading section-header">{{ page.title }}</h1>
+{%- comment -%}
+Blog post / log entry. Header is left-aligned in a measured column rather
+than the old centered card. Related entries at the foot are matched on the
+post's project-tag when it has one.
+{%- endcomment -%}
 
-        <div class="post-meta">
-            <span><i class="fa-regular fa-calendar"></i> {{ page.date | date: "%B %d, %Y" }}</span>
+{%- assign words = content | strip_html | number_of_words -%}
+{%- assign read_time = words | divided_by: 200 | plus: 1 -%}
+
+<nav class="breadcrumb">
+    <a href="/archives/">Log</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">{{ page.date | date: "%Y-%m-%d" }}</span>
+</nav>
+
+<article class="post-page">
+    <header class="post-head">
+        <div class="post-metarow">
+            <span>{{ page.date | date: "%b %d, %Y" }}</span>
+            <span class="post-metadot">&middot;</span>
+            <span>{{ read_time }} min read</span>
             {% if page.project-title %}
-            <span class="post-meta-separator">|</span>
-            <span><i class="fa-solid fa-diagram-project"></i>
-                <a href="{{ page.project-url }}" class="post-project-link">{{ page.project-title }}</a>
-            </span>
+            <span class="post-metadot">&middot;</span>
+            <a href="{{ page.project-url }}">{{ page.project-title }}</a>
             {% endif %}
         </div>
 
+        <h1 class="post-h1">{{ page.title }}</h1>
+
         {% if page.description %}
-        <p class="post-description">{{ page.description }}</p>
+        <p class="post-desc">{{ page.description }}</p>
         {% endif %}
 
         {% if page.tags %}
-        <div class="post-tags">
+        <div class="post-taglist">
             {% for tag in page.tags %}
             {% assign custom_url = site.data.tag_links[tag] %}
             {% if custom_url %}
-            <a class="tag" href="{{ custom_url }}">#{{ tag }}</a>
+            <a class="post-tagchip" href="{{ custom_url }}">#{{ tag }}</a>
             {% else %}
-            <a class="tag" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
+            <a class="post-tagchip" href="/tags/{{ tag | slugify }}/">#{{ tag }}</a>
             {% endif %}
             {% endfor %}
         </div>
@@ -35,20 +50,52 @@ layout: default
     </header>
 
     {% if page.image %}
-    <div class="post-hero-image">
+    <div class="post-hero">
         <img src="{{ page.image }}" alt="{{ page.title }}" />
     </div>
     {% endif %}
 
-    <article class="post-content">
+    <div class="post-body">
         {{ content }}
-    </article>
-
-    {% if page.project-url %}
-    <div class="post-footer">
-        <a href="{{ page.project-url }}" class="post-project-btn">
-            <i class="fa-solid fa-arrow-right"></i> View {{ page.project-title | default: "Project" }}
-        </a>
     </div>
+</article>
+
+{%- assign ptag = page.project-tag -%}
+{%- if ptag -%}
+{%- assign related = site.posts | where_exp: "p", "p.tags contains ptag" -%}
+{%- assign related_count = related | size -%}
+{%- else -%}
+{%- assign related_count = 0 -%}
+{%- endif -%}
+
+{% if related_count > 1 %}
+<section class="post-more">
+    <div class="rule-header">
+        <h2 class="rule-title">More from this project</h2>
+        <span class="rule-line"></span>
+    </div>
+    <ul class="log-list">
+        {% for post in related limit: 5 %}
+        {% unless post.url == page.url %}
+        <li class="log-row">
+            <div class="log-gutter">
+                <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
+            </div>
+            <div class="log-main">
+                <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 200 }}</div>
+            </div>
+        </li>
+        {% endunless %}
+        {% endfor %}
+    </ul>
+</section>
+{% endif %}
+
+<div class="post-actions">
+    {% if page.project-url %}
+    <a href="{{ page.project-url }}" class="btn-primary">View {{ page.project-title | default: "Project" }}</a>
     {% endif %}
+    <a href="/archives/" class="btn-ghost">&larr; All entries</a>
 </div>
