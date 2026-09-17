@@ -436,39 +436,6 @@ footer {
     /* Removes the default link underline */
 }
 
-/* Hero Card */
-.hero-card {
-    background: #1a1e1e;
-    border-left: 4px solid #64d5d2;
-    padding: 30px;
-    margin: 40px auto;
-    margin-bottom: 20px;
-    width: 90%;
-    max-width: 890px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-card p {
-    padding: 0px;
-    margin: 0px;
-    font-size: 1.1em;
-    line-height: 1.6;
-    color: #fafafa;
-}
-
-.hero-quote {
-    font-size: 1.3em;
-    font-weight: 300;
-    color: #fafafa;
-    line-height: 1.6;
-    margin: 0;
-    font-style: italic;
-    text-align: center;
-}
-
 /* Updates Feed (Home) */
 .update-feed {
     list-style: none;
@@ -1693,3 +1660,292 @@ footer {
 .nav-shell.responsive .nav-icon-bar {
     background: #64d5d2;
 }
+
+/* ---------- Home: intro band ---------- */
+.intro-band {
+    background-color: #141818;
+    background-image:
+        linear-gradient(rgba(100, 213, 210, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 213, 210, 0.045) 1px, transparent 1px);
+    background-size: 40px 40px;
+    border: 1px solid #2e4c5b;
+    border-radius: 4px;
+    padding: 52px 48px;
+    margin: 0 0 40px;
+}
+
+.intro-inner {
+    max-width: 780px;
+}
+
+.intro-kicker {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #ffb300;
+    margin: 0 0 16px;
+}
+
+.intro-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: clamp(30px, 4.4vw, 46px);
+    line-height: 1.08;
+    letter-spacing: -0.5px;
+    color: #fafafa;
+    margin: 0 0 18px;
+}
+
+.intro-body {
+    font-size: 16.5px;
+    line-height: 1.65;
+    color: #b9c4c4;
+    margin: 0 0 28px;
+}
+
+.intro-body strong {
+    color: #fafafa;
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.btn-primary,
+.btn-ghost {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: 6px;
+    padding: 12px 22px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.btn-primary {
+    background: #64d5d2;
+    color: #141818;
+    border: 1px solid #64d5d2;
+}
+
+.btn-primary:hover {
+    background: #7fe3e0;
+    border-color: #7fe3e0;
+    color: #141818;
+}
+
+.btn-ghost {
+    color: #64d5d2;
+    border: 1px solid #2e4c5b;
+}
+
+.btn-ghost:hover {
+    border-color: #64d5d2;
+    color: #fafafa;
+}
+
+/* ---------- Home: featured project hero ---------- */
+.feature-hero {
+    position: relative;
+    min-height: 430px;
+    border: 1px solid #2e4c5b;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.feature-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.feature-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba(20, 24, 24, 0.97) 0%,
+            rgba(20, 24, 24, 0.85) 42%,
+            rgba(20, 24, 24, 0.25) 100%);
+}
+
+.feature-hero-body {
+    position: relative;
+    z-index: 1;
+    padding: 44px 48px;
+    max-width: 660px;
+}
+
+.feature-hero-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: clamp(32px, 4.6vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: #fafafa;
+    margin: 16px 0;
+}
+
+.feature-hero-desc {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #c3cece;
+    max-width: 560px;
+    margin: 0 0 24px;
+}
+
+@media screen and (max-width: 700px) {
+    .intro-band {
+        padding: 32px 22px;
+    }
+
+    .feature-hero-body {
+        padding: 32px 22px;
+    }
+}
+
+
+/* ---------- Home: project log list ---------- */
+.log-section {
+    margin-bottom: 40px;
+}
+
+.rule-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.rule-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #fafafa;
+    margin: 0;
+}
+
+.rule-line {
+    flex: 1;
+    height: 1px;
+    background: #1f2a2a;
+}
+
+.rule-link {
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: #64d5d2;
+    white-space: nowrap;
+}
+
+.log-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.log-row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 28px;
+    padding: 24px 0;
+    margin: 0;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    transition: background 0.2s ease;
+}
+
+.log-row:hover {
+    background: rgba(100, 213, 210, 0.04);
+}
+
+.log-gutter {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    line-height: 1.9;
+    color: #8a9696;
+}
+
+.log-date,
+.log-tag {
+    display: block;
+}
+
+.log-tag {
+    color: #64d5d2;
+}
+
+.log-title {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 21px;
+    letter-spacing: 0.3px;
+    margin: 0 0 8px;
+}
+
+.log-title a {
+    color: #fafafa;
+}
+
+.log-title a:hover {
+    color: #64d5d2;
+}
+
+.log-excerpt {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: #9aa6a6;
+    max-width: 840px;
+}
+
+.log-more {
+    display: inline-block;
+    margin-top: 10px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #ffb300;
+}
+
+.log-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    padding-top: 24px;
+}
+
+.log-page-number {
+    font-family: "Roboto Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: #8a9696;
+}
+
+@media screen and (max-width: 700px) {
+    .log-row {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .log-gutter {
+        display: flex;
+        gap: 12px;
+        line-height: 1.4;
+    }
+}
+

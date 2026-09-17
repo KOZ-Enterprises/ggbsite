@@ -39,4 +39,16 @@ absent "old navbar markup gone"    'class="navbar"'             _site/index.html
 absent "old nav-links gone"        'class="nav-links"'          _site/index.html
 absent "fa-bars glyph gone"        'fa fa-bars'                 _site/index.html
 
+echo "== Task 3: home layout =="
+check  "intro band"          1 'class="intro-band"'      _site/index.html
+check  "intro kicker"        1 'ECS ANALYSIS ENGINEER'   _site/index.html
+check  "featured hero"       1 'class="feature-hero"'    _site/index.html
+check  "status tag on hero"  1 'class="status-tag"'      _site/index.html
+check  "rule header"         1 'class="rule-header"'     _site/index.html
+check  "log rows"            3 'class="log-row"'         _site/index.html
+check  "primary button"      1 'class="btn-primary"'     _site/index.html
+absent "quote card gone"       'hero-quote'              _site/index.html
+absent "quote icon gone"       'fa-quote-left'           _site/index.html
+absent "old grid block gone"   'grid-container grid-start' _site/index.html
+
 exit $fail
