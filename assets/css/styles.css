@@ -1696,7 +1696,12 @@ footer {
     transition: all 0.25s ease;
 }
 
-.btn-primary {
+/* :visited is included deliberately. The global `a, a:visited` rule at the top
+   of this file has specificity (0,1,1), which beats a bare `.btn-primary`
+   (0,1,0) — so a visited primary button rendered teal-on-teal and its label
+   disappeared. `.btn-primary:visited` is (0,2,0) and wins. */
+.btn-primary,
+.btn-primary:visited {
     background: #64d5d2;
     color: #141818;
     border: 1px solid #64d5d2;
