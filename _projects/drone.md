@@ -4,7 +4,8 @@ title: "Drone"
 image: "/assets/imgs/project/drone2.png"
 description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
 objective: "Build a simple drone n stuff yo"
-status: "Conceptualization"
+status: "planned"
+status_detail: "Conceptualization"
 order: 10
 project-tag: "drone"
 tools: 

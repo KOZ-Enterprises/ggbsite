@@ -168,7 +168,7 @@ RENDERING:
                     {% assign progress = 0 %}
 
                     {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
-                    status == "done" or status == "archived" or status == "maintenance" %}
+                    status == "done" or status == "archived" or status == "maintenance" or status == "shipped" %}
                     {% assign progress = 4 %}
                     {% elsif status == "testing" or status == "validation" or status == "refinement" or status ==
                     "polish" or status == "beta" %}
@@ -180,9 +180,9 @@ RENDERING:
                     "architecture" %}
                     {% assign progress = 1.5 %}
                     {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
-                    "ideation" or status == "planning" %}
+                    "ideation" or status == "planning" or status == "planned" %}
                     {% assign progress = 0.5 %}
-                    {% elsif status == "on hold" or status == "paused" %}
+                    {% elsif status == "on hold" or status == "paused" or status == "dormant" %}
                     {% assign progress = 2.0 %} <!-- Middle state for paused projects -->
                     {% endif %}
 
@@ -202,7 +202,7 @@ RENDERING:
                     {% if status == "live" or status == "production" %}
                     {% assign step4_name = "Deployed" %}
                     {% assign step4_desc = "Production Release" %}
-                    {% elsif status == "completed" or status == "finished" or status == "done" %}
+                    {% elsif status == "completed" or status == "finished" or status == "done" or status == "shipped" %}
                     {% assign step4_name = "Completed" %}
                     {% assign step4_desc = "Project Finalized" %}
                     {% elsif status == "maintenance" %}

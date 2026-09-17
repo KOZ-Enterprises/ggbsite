@@ -396,16 +396,6 @@ nav {
 }
 
 
-.status-badge {
-    font-size: 0.7em;
-    padding: 2px 6px;
-    border-radius: 2px;
-    background-color: #2e4c5b;
-    color: #64d5d2;
-    text-transform: uppercase;
-    font-family: "Roboto Mono", monospace;
-}
-
 .description {
     font-size: 0.9em;
     color: #ccc;
@@ -461,19 +451,6 @@ nav {
     color: #ddd;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     margin-bottom: 30px;
-}
-
-.status-badge {
-    background-color: #141818;
-    color: #64d5d2;
-    padding: 2px 8px;
-    border-radius: 4px;
-    font-size: 0.7em;
-    text-transform: uppercase;
-    border: 1px solid #64d5d2;
-    white-space: nowrap;
-    line-height: 1.5;
-    /* Ensure vertical centering */
 }
 
 
@@ -1516,3 +1493,93 @@ footer {
     text-align: center;
     margin: 20px 0;
 }
+/* ============================================================
+   GGBytes redesign — navbar, home layout, status tags
+   Paste at the END of assets/css/styles.css.
+   Then DELETE the old blocks it replaces (see code/README.md).
+   Requires Chakra Petch (see README step 1).
+   ============================================================ */
+
+/* ---------- Status tag system ----------
+   Fixed vocabulary: active / planned / shipped / dormant.
+   Set `status:` in project front matter to one of those. */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: 3px;
+    border: 1px solid #2e4c5b;
+    color: #8ba3a3;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.status-tag[data-status="active"] {
+    color: #64d5d2;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-tag[data-status="active"] .status-dot {
+    box-shadow: 0 0 8px #64d5d2;
+}
+
+.status-tag[data-status="planned"] {
+    color: #ffb300;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-tag[data-status="shipped"] {
+    color: #5bc0de;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-tag[data-status="dormant"] {
+    color: #8ba3a3;
+    border-color: #2e4c5b;
+}
+
+/* project cards use the same vocabulary */
+.status-badge {
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.7em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: 3px;
+    background: transparent;
+    border: 1px solid #2e4c5b;
+    color: #8ba3a3;
+}
+
+.status-badge[data-status="active"] {
+    color: #64d5d2;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-badge[data-status="planned"] {
+    color: #ffb300;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-badge[data-status="shipped"] {
+    color: #5bc0de;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-badge[data-status="dormant"] {
+    color: #8ba3a3;
+    border-color: #2e4c5b;
+}
+

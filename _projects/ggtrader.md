@@ -4,7 +4,8 @@ title: "ggTrader"
 image: "/assets/imgs/project/tradingbot.png"
 description: "An algorithmic trading bot and a research framework for professional strategy development."
 objective: "Create a reproducible and scalable trading research and execution framework for professional traders."
-status: "Optimization of Core Code"
+status: "active"
+status_detail: "Core optimization"
 order: 3
 project-tag: "ggtrader"
 tools: 

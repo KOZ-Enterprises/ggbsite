@@ -4,7 +4,8 @@ title: "GG Swarm"
 image: "/assets/imgs/project/ggswarm-3-cropped.png"
 description: "A decentralized coordination framework transitioning from simulation to real-world drone light shows."
 objective: "Deploy an adaptive RL-based execution layer onto physical PX4-based drone swarms for commercial light shows and complex formation maneuvers."
-status: "Active - Hardware Deployment"
+status: "active"
+status_detail: "Hardware deployment"
 order: 1
 project-tag: "ggswarm"
 tools:

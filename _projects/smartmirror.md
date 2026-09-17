@@ -5,7 +5,7 @@ image: "/assets/imgs/smartmirror/magicmirror_final_cropped.jpg"
 image_caption: "Final Build of the Smart Mirror"
 description: "A functional smart mirror and a localized information hub for daily-use metrics."
 objective: "Build a smart mirror for daily-use information at a glance."
-status: "Completed"
+status: "shipped"
 reflection: "This was one of my first DIY tech builds and helped me understand the basics of Linux, web-based UIs, and integrating hardware into a polished product."
 resources:
   - name: "MagicMirror² Framework"
