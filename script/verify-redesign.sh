@@ -51,4 +51,10 @@ absent "quote card gone"       'hero-quote'              _site/index.html
 absent "quote icon gone"       'fa-quote-left'           _site/index.html
 absent "old grid block gone"   'grid-container grid-start' _site/index.html
 
+echo "== Task 4: footer + cleanup =="
+check  "footer lockup"      1 'class="footer-mark"'                  _site/index.html
+check  "footer logo img"    1 'ggbytes-transparent-cropped.png'      _site/index.html
+check  "coordinates line"   1 '33.77'                                _site/index.html
+absent "old copyright gone"   'All rights reserved'                  _site/index.html
+
 exit $fail

@@ -1949,3 +1949,35 @@ footer {
     }
 }
 
+
+/* ---------- Footer ---------- */
+.footer-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.footer-mark img {
+    height: 26px;
+    width: auto;
+    display: block;
+    opacity: 0.85;
+}
+
+.footer-mark p {
+    margin: 0;
+    font-family: "Roboto Mono", monospace;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: #8a9696;
+}
+
+/* social links need a real touch target — bare inline anchors measure ~13px */
+.social-icons a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 14px;
+}
