@@ -25,4 +25,16 @@ echo "== Task 1: fonts + status =="
 check "Chakra Petch loaded"  1 "Chakra+Petch"  _site/index.html
 check "Roboto Mono loaded"   1 "Roboto+Mono"   _site/index.html
 
+echo "== Task 2: navbar =="
+check  "nav-shell present"       1 'class="nav-shell"'          _site/index.html
+check  "toggle id preserved"     1 'id="myNavbar"'              _site/index.html
+check  "nav mark image"          1 'branding/logo/ggbytes-transparent-g.png' _site/index.html
+check  "Coursework label"        1 '>Coursework<'               _site/index.html
+check  "home link active"        1 'nav-item active'            _site/index.html
+check  "caption tail splittable" 1 'class="nav-caption-rest"'   _site/index.html
+check  "hamburger bars"          3 'class="nav-icon-bar"'       _site/index.html
+absent "old navbar markup gone"    'class="navbar"'             _site/index.html
+absent "old nav-links gone"        'class="nav-links"'          _site/index.html
+absent "fa-bars glyph gone"        'fa fa-bars'                 _site/index.html
+
 exit $fail

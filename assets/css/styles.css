@@ -94,104 +94,6 @@ nav {
     z-index: 1000;
 }
 
-.navbar {
-    background-color: #141818;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: stretch;
-    /* vital for full height hover */
-    border-top: 1px solid #eff4f1;
-    border-bottom: 1px solid #eff4f1;
-    padding: 0 5%;
-    min-height: 60px;
-}
-
-.navbar .nav-links {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
-.navbar a {
-    color: #64d5d2;
-    padding: 0 20px;
-    /* Remove vertical padding, handle via flex alignment */
-    text-decoration: none;
-    font-weight: 600;
-    /* text-transform: uppercase; */
-    font-size: 1.1em;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    /* Center text vertically */
-    height: 100%;
-    /* Fill navbar height */
-}
-
-.navbar a.active,
-.navbar a:hover {
-    background-color: #2e4c5b;
-    color: white;
-    transition: 0.4s;
-}
-
-.navbar .icon {
-    display: none;
-    color: #64d5d2;
-    font-size: 24px;
-    padding: 14px 20px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-@media screen and (max-width: 700px) {
-    .navbar {
-        flex-direction: column;
-        align-items: stretch;
-        height: auto;
-    }
-
-    .navbar a {
-        width: 90%;
-        text-align: center;
-        min-width: 60px;
-    }
-
-    .navbar .icon {
-        display: block;
-        text-align: right;
-        padding: 14px 16px;
-    }
-
-    .navbar .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-    }
-
-    .navbar.responsive .nav-links {
-        display: flex;
-    }
-}
-
-/* Logo Styles */
-.navbar .logo {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-.navbar .logo img {
-    width: auto;
-    margin: 5px;
-    display: block;
-    max-height: 50px;
-}
-
 /* Old Logo Styles (for reference or other uses) */
 .page-header-logo img {
     max-width: 500px;
@@ -1583,3 +1485,211 @@ footer {
     border-color: #2e4c5b;
 }
 
+
+/* ---------- Navbar ---------- */
+.nav-shell {
+    background-color: #1a1e1e;
+    border-bottom: 1px solid #2e4c5b;
+    padding: 0 5%;
+    min-height: 86px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+}
+
+/* teal→amber hairline under the bar */
+.nav-shell::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg,
+            rgba(100, 213, 210, 0) 0%,
+            rgba(100, 213, 210, 0.55) 35%,
+            rgba(255, 179, 0, 0.5) 70%,
+            rgba(100, 213, 210, 0) 100%);
+    pointer-events: none;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    text-decoration: none;
+}
+
+.nav-mark {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    border: 2px solid #64d5d2;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 16px rgba(100, 213, 210, 0.25);
+}
+
+.nav-mark img {
+    height: 26px;
+    width: auto;
+    display: block;
+}
+
+.nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-name {
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 4px;
+    color: #fafafa;
+    line-height: 1;
+}
+
+.nav-name em {
+    font-style: normal;
+    color: #64d5d2;
+}
+
+.nav-caption {
+    font-family: "Roboto Mono", monospace;
+    font-size: 9.5px;
+    letter-spacing: 3.5px;
+    color: #8a9696;
+    line-height: 1;
+}
+
+.nav-menu {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    position: relative;
+    font-family: "Chakra Petch", "Roboto", sans-serif;
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8ba3a3;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+}
+
+.nav-item:hover {
+    color: #64d5d2;
+    border-bottom-color: #2e4c5b;
+}
+
+/* active: glowing underline with bracket ticks — no filled block */
+.nav-item.active {
+    color: #fafafa;
+    border-bottom-color: transparent;
+}
+
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 2px;
+    background: #64d5d2;
+    box-shadow: 0 0 10px rgba(100, 213, 210, 0.8);
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 7px;
+    border-left: 2px solid #64d5d2;
+    border-right: 2px solid #64d5d2;
+}
+
+.nav-icon {
+    display: none;
+    background: none;
+    border: 0;
+    color: #64d5d2;
+    font-size: 24px;
+    padding: 14px 16px;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 860px) {
+    .nav-shell {
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .nav-icon {
+        display: block;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 8px;
+    }
+
+    .nav-shell.responsive .nav-menu {
+        display: flex;
+    }
+
+    .nav-item {
+        min-height: 48px;
+        padding: 0 4px;
+        border-bottom: 1px solid rgba(46, 76, 91, 0.5);
+    }
+
+    .nav-item.active::before,
+    .nav-item.active::after {
+        left: 0;
+        right: auto;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        height: auto;
+        border: 0;
+        background: #64d5d2;
+    }
+}
+
+
+/* hamburger bars — replaces the Font Awesome glyph (see nav.html) */
+.nav-icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: #8ba3a3;
+    transition: background 0.25s ease;
+}
+
+.nav-icon-bar + .nav-icon-bar {
+    margin-top: 5px;
+}
+
+.nav-shell.responsive .nav-icon-bar {
+    background: #64d5d2;
+}
