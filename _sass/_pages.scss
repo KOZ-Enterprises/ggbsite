@@ -15,8 +15,8 @@
 .intro-band {
     background-color: $c-bg;
     background-image:
-        linear-gradient(rgba(100, 213, 210, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(100, 213, 210, 0.045) 1px, transparent 1px);
+        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
     background-size: 40px 40px;
     border: 1px solid $c-border;
     border-radius: 4px;
@@ -102,15 +102,15 @@
     position: absolute;
     inset: 0;
     background: linear-gradient(90deg,
-            rgba(20, 24, 24, 0.97) 0%,
-            rgba(20, 24, 24, 0.85) 42%,
-            rgba(20, 24, 24, 0.25) 100%);
+            rgba($c-bg, 0.97) 0%,
+            rgba($c-bg, 0.85) 42%,
+            rgba($c-bg, 0.25) 100%);
 
     // the side gradient does not work at 390px - it becomes a bottom scrim
     @include respond-to(mobile) {
         background: linear-gradient(to top,
-                rgba(20, 24, 24, 0.96) 22%,
-                rgba(20, 24, 24, 0.3) 75%);
+                rgba($c-bg, 0.96) 22%,
+                rgba($c-bg, 0.3) 75%);
     }
 }
 
@@ -157,7 +157,7 @@
 // (0,2,0) - the status tag needs a scrim once it sits over the photo
 .feature-hero .status-tag {
     @include respond-to(mobile) {
-        background: rgba(15, 17, 17, 0.7);
+        background: rgba($c-surface-deep, 0.7);
     }
 }
 
@@ -272,11 +272,11 @@
 }
 
 .registry-row + .registry-row {
-    border-top: 1px solid rgba(46, 76, 91, 0.25);
+    border-top: 1px solid rgba($c-border, 0.25);
 }
 
 .registry-row:hover {
-    background: rgba(100, 213, 210, 0.05);
+    background: rgba($c-accent, 0.05);
 }
 
 .registry-code {
@@ -423,7 +423,7 @@
     font-size: $text-meta;
     letter-spacing: 1px;
     color: $c-accent;
-    border: 1px solid rgba(100, 213, 210, 0.35);
+    border: 1px solid rgba($c-accent, 0.35);
     border-radius: $radius-chip;
     padding: 4px 9px;
 
@@ -535,7 +535,7 @@
 }
 
 .edu-item + .edu-item {
-    border-top: 1px solid rgba(46, 76, 91, 0.25);
+    border-top: 1px solid rgba($c-border, 0.25);
 }
 
 .edu-degree {
@@ -624,7 +624,7 @@
     align-items: center;
     gap: 22px;
     padding: 13px 20px;
-    border-top: 1px solid rgba(46, 76, 91, 0.28);
+    border-top: 1px solid rgba($c-border, 0.28);
     transition: background 0.2s ease;
 
     @include respond-to(mobile) {
@@ -640,7 +640,7 @@
 }
 
 .year-row:hover {
-    background: rgba(100, 213, 210, 0.04);
+    background: rgba($c-accent, 0.04);
 }
 
 .year-date {
