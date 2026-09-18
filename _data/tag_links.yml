@@ -17,9 +17,21 @@ cst499: /csumb/cst499/
 drone: /projects/drone/
 ggbytes: /projects/ggbytes/
 gary-gigabytes: /projects/ggbytes/
+ggswarm: /projects/ggswarm/
+hexmaster: /projects/hexmaster/
 rover: /projects/rover/
 smartmirror: /projects/smartmirror/
 smart-mirror: /projects/smartmirror/
+ggtrader: /projects/ggtrader/
 
-# Optional category tags -> hub pages
+# Category and topic tags -> hub pages
 hobby-projects: /projects/
+capstone: /csumb/
+finalproject: /csumb/
+foxhole: /projects/hexmaster/
+logistics: /projects/hexmaster/
+isaac-lab: /projects/ggswarm/
+marl: /projects/ggswarm/
+skrl: /projects/ggswarm/
+docker: /projects/ggbytes/
+google-cloud: /projects/ggbytes/

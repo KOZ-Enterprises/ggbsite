@@ -2,6 +2,7 @@
 layout: course
 title: "CST462S: Race, Gender, Class in the Digital World"
 course_code: "CST462S"
+note: "Technology, social justice, and community service"
 status: completed
 order: 10
 

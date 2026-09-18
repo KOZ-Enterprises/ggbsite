@@ -1,0 +1,16 @@
+steps:
+  # Copy ggbsite
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['pull', 'ghcr.io/koz-enterprises/ggbsite:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'ghcr.io/koz-enterprises/ggbsite:latest', 'gcr.io/$PROJECT_ID/ggbsite:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/ggbsite:latest']
+
+  # Copy culinaryotter
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['pull', 'ghcr.io/terrabit-apex-solutions/culinaryotter:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['tag', 'ghcr.io/terrabit-apex-solutions/culinaryotter:latest', 'gcr.io/$PROJECT_ID/culinaryotter:latest']
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/culinaryotter:latest']

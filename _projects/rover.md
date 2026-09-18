@@ -5,7 +5,8 @@ image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
 description: "A smart RC car and a foundational platform for autonomous navigation experiments."
 objective: "Develop a rover with wireless control and eventually autonomous navigation."
-status: "Conceptualization"
+status: "planned"
+status_detail: "Conceptualization"
 reflection: "Rover has taught me about wireless communication, embedded motor control, and practical hardware debugging. It's also helping lay the foundation for future robotics projects."
 resources:
   - name: "GitHub Project Page"
@@ -85,5 +86,28 @@ timeline:
     details: "Apply algorithms learned from GG Swarm project to the rover."
     completed: false
 
-
 ---
+
+## Project Overview
+
+A smart RC car built as a foundational platform for autonomous
+navigation experiments. Starting with wireless joystick control
+and working toward self-driving capabilities using lessons
+from the GG Swarm project.
+
+## Technical Approach
+
+- **Compute**: Arduino-based control with XBee wireless
+  communication
+- **Input**: PS4 controller for manual driving
+- **Drive**: DRV8871 motor drivers for differential steering
+- **Chassis**: 3D-printed custom frame
+- **Software**: C++ firmware for motor control and
+  wireless command parsing
+
+## Connection to GG Swarm
+
+Like the Drone project, this rover is a stepping stone toward
+real-world autonomous coordination. The plan is to apply
+navigation and consensus algorithms developed in simulation
+to physical ground-based platforms.

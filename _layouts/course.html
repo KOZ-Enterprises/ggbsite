@@ -1,27 +1,148 @@
 ---
 layout: default
-
 ---
 
-<h1 class="pop-heading section-header text-left">
-    <i class="fa-solid fa-book color-amber"></i> {{ page.title }}
-</h1>
+{%- comment -%}
+Course page for the `_csumb/` collection.
 
-{{ content }}
+EXPECTED FRONT MATTER:
+  title:       "CST363: Database Management"  (code prefix is split off for the h1)
+  course_code: "CST363"
+  status:      completed | in-progress | planned
+  order:       integer, used for prev/next navigation
+  note:        one-line summary, shown in the Coursework registry
+OPTIONAL:
+  term:        "Spring 2025"   — rendered in the COURSE module when present
+  skills:      [a, b]          — rendered as a SKILLS module when present
 
-<!-- Posts -->
-{% assign filtered_posts = site.posts | where: "tags", page.slug %}
-{% if filtered_posts.size > 0 %}
-<div class="mt-40">
-    <h2 class="pop-heading section-header">
-        <i class="fa-solid fa-flask color-amber"></i> Related Projects
-    </h2>
-    <ul class="update-feed post-list">
-        {% for post in filtered_posts %}
-        {% include post.html post=post type="excerpt" %}
-        {% endfor %}
-    </ul>
+Related posts are matched on the lowercased course_code appearing in a post's
+tags (posts use e.g. tags: ["cst363", "csumb"]).
+{%- endcomment -%}
+
+{%- assign code_lower = page.course_code | downcase -%}
+{%- assign title_parts = page.title | split: ": " -%}
+{%- if title_parts.size > 1 -%}
+{%- assign course_name = title_parts | last -%}
+{%- else -%}
+{%- assign course_name = page.title -%}
+{%- endif -%}
+
+{%- assign course_posts = site.posts | where_exp: "p", "p.tags contains code_lower" -%}
+{%- assign post_count = course_posts | size -%}
+
+{%- assign all_courses = site.csumb | sort: "order" -%}
+{%- assign course_total = all_courses | size -%}
+
+<nav class="breadcrumb">
+    <a href="/csumb/">Coursework</a>
+    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-current">{{ page.course_code }}</span>
+</nav>
+
+<div class="detail-grid detail-grid-narrow">
+    <main class="detail-main">
+        <p class="page-kicker">
+            {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
+        </p>
+        <h1 class="page-title">{{ course_name }}</h1>
+        {% if page.note %}
+        <p class="page-lead">{{ page.note }}</p>
+        {% endif %}
+
+        <div class="page-body">
+            {{ content }}
+        </div>
+
+        <div class="rule-header">
+            <h2 class="rule-title">Work from this course</h2>
+            <span class="rule-line"></span>
+            {% if post_count > 0 %}
+            <span class="rule-count">{{ post_count }} {% if post_count == 1 %}entry{% else %}entries{% endif %}</span>
+            {% endif %}
+        </div>
+
+        {% if post_count > 0 %}
+        <ul class="log-list">
+            {% for post in course_posts %}
+            {% include log-row.html post=post %}
+            {% endfor %}
+        </ul>
+        {% else %}
+        <p class="empty-note">No log entries tagged for this course yet.</p>
+        {% endif %}
+    </main>
+
+    <aside class="detail-side">
+        <section class="side-module">
+            <div class="side-head">Course</div>
+            <div class="side-kv">
+                <span class="side-k">Code</span>
+                <span class="side-v">{{ page.course_code }}</span>
+            </div>
+            {% if page.term %}
+            <div class="side-kv">
+                <span class="side-k">Term</span>
+                <span class="side-v">{{ page.term }}</span>
+            </div>
+            {% endif %}
+            <div class="side-kv">
+                <span class="side-k">State</span>
+                <span class="side-v">
+                    <span class="status-badge" data-status="{{ page.status | downcase }}">
+                        {%- if page.status == "completed" -%}Complete
+                        {%- elsif page.status == "in-progress" -%}In progress
+                        {%- else -%}{{ page.status }}{%- endif -%}
+                    </span>
+                </span>
+            </div>
+        </section>
+
+        {% if page.skills %}
+        <section class="side-module">
+            <div class="side-head">Skills</div>
+            <div class="side-chips">
+                {% for skill in page.skills %}
+                <span class="tech-chip">{{ skill }}</span>
+                {% endfor %}
+            </div>
+        </section>
+        {% endif %}
+
+        <section class="side-module">
+            <div class="side-head">Navigate</div>
+            {% for c in all_courses %}
+            {% if c.url == page.url %}
+            {% assign idx = forloop.index0 %}
+            {% endif %}
+            {% endfor %}
+            {% if idx > 0 %}
+            {%- comment -%} Liquid cannot apply a filter inside an index, so
+            the offset must be assigned to its own variable first. {%- endcomment -%}
+            {% assign prev_idx = idx | minus: 1 %}
+            {% assign prev_course = all_courses[prev_idx] %}
+            <a class="side-row" href="{{ prev_course.url }}">
+                <span class="side-arrow">&larr;</span>{{ prev_course.course_code }}
+            </a>
+            {% endif %}
+            {% assign next_idx = idx | plus: 1 %}
+            {% if next_idx < course_total %}
+            {% assign next_course = all_courses[next_idx] %}
+            <a class="side-row" href="{{ next_course.url }}">
+                <span class="side-arrow">&rarr;</span>{{ next_course.course_code }}
+            </a>
+            {% endif %}
+            <div class="side-note">
+                <a href="/csumb/" class="side-link">All {{ course_total }} courses &rarr;</a>
+            </div>
+        </section>
+    </aside>
 </div>
-{% else %}
-<p>No posts found.</p>
-{% endif %}
+
+{%- comment -%}
+Same back-link rule as the other non-nav pages. The sidebar NAVIGATE module
+carries an all-courses link too (spec 4c), but that module is prev/next
+context; this is the consistent exit every other detail page ends with.
+{%- endcomment -%}
+<div class="page-actions">
+    <a href="/csumb/" class="btn-ghost">&larr; All coursework</a>
+</div>

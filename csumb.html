@@ -1,71 +1,82 @@
 ---
 layout: default
-title: CSUMB
+title: Coursework
 permalink: /csumb/
 ---
 
-<h1 class="pop-heading section-header text-left">
-    <i class="fa-solid fa-flask color-amber"></i> Program Goal
-</h1>
+{% assign courses = site.csumb | sort: "order" | reverse %}
+{% assign capstone = site.projects | where: "project-tag", "ggswarm" | first %}
 
-<div class="hero-card">
-    <p>
-        I am not just "transitioning" to tech—I am <strong>combining</strong> my years of experience in
-        Mechanical Engineering with advanced Computer Science concepts.
-        My goal is to develop tangible products, build intelligent autonomy, and apply AI/ML to solve real-world
-        physical problems.
+<section class="page-head">
+    <p class="page-kicker">CSU Monterey Bay &middot; BS Computer Science &middot; April 2026</p>
+    <h1 class="page-title">Coursework</h1>
+    <p class="page-lead">
+        Every course from my BS in Computer Science at CSU Monterey Bay, completed nights and weekends while working
+        full time. Each entry links to the work I built for it. I am not just transitioning to tech — I am
+        <strong>combining</strong> years of experience in Mechanical Engineering with advanced Computer Science
+        concepts.
     </p>
+</section>
+
+{% if capstone %}
+<div class="rule-header">
+    <h2 class="rule-title">Capstone</h2>
+    <span class="rule-line"></span>
 </div>
 
+<section class="capstone-card">
+    {% if capstone.image %}
+    <div class="capstone-media">
+        <img src="{{ capstone.image | relative_url }}" alt="{{ capstone.title }}" />
+    </div>
+    {% endif %}
+    <div class="capstone-body">
+        <div class="capstone-head">
+            <h3 class="capstone-title">{{ capstone.title }}</h3>
+            <span class="status-tag" data-status="submitted">
+                <span class="status-dot"></span>As submitted &middot; Apr 2026
+            </span>
+        </div>
+        <p class="capstone-desc">{{ capstone.description }}</p>
+        <a href="{{ capstone.url }}" class="capstone-link">Continued as an active build &rarr;</a>
+    </div>
+</section>
+{% endif %}
 
-<div class="mt-40">
-    <h2 class="pop-heading section-header"><i class="fa-solid fa-database color-amber"></i> Course Registry</h2>
+<div class="rule-header">
+    <h2 class="rule-title">Course Registry</h2>
+    <span class="rule-line"></span>
+    <span class="rule-count">{{ courses | size }} Courses</span>
+</div>
 
-    <div class="mb-20 text-lg color-ccc">
-        <p>
-            The CSUMB Computer Science program builds a solid foundation in programming, software
-            design, algorithms, databases, operating systems, networking, and modern web development.
-            It focuses on problem-solving and real-world applications to produce graduates who can
-            design and build real software systems.
+<section class="registry">
+    {% for course in courses %}
+    {% assign title_parts = course.title | split: ": " %}
+    {% if title_parts.size > 1 %}
+    {% assign course_name = title_parts | last %}
+    {% else %}
+    {% assign course_name = course.title %}
+    {% endif %}
+    <a class="registry-row" href="{{ course.url }}">
+        <span class="registry-code">{{ course.course_code }}</span>
+        <span class="registry-name">{{ course_name }}</span>
+        <span class="registry-note">{{ course.note }}</span>
+        <span class="status-badge" data-status="{{ course.status | downcase }}">
+            {%- if course.status == "completed" -%}Complete
+            {%- elsif course.status == "in-progress" -%}In progress
+            {%- else -%}{{ course.status }}{%- endif -%}
+        </span>
+    </a>
+    {% endfor %}
+</section>
+
+<section class="prior-degrees">
+    <div class="prior-degrees-text">
+        <p class="prior-degrees-label">Prior degrees</p>
+        <p class="prior-degrees-list">
+            MS Mechanical Engineering, CSU Long Beach (2015) &middot;
+            BS Mechanical Engineering, Cal Poly SLO (2012)
         </p>
     </div>
-
-    <div class="course-grid">
-        {% assign sorted_courses = site.csumb | sort: "order" | reverse %}
-        {% for course in sorted_courses %}
-        <a href="{{ course.url }}" class="no-underline">
-            <div class=" course-item {{ course.status }}">
-                <div class="flex-between-start mb-10">
-                    <span class="course-code-tag">[{{ course.course_code }}]</span>
-                    <span class="course-status-icon">
-                        {% if course.status == "completed" %}
-                        <i class="fa-regular fa-circle-check completed" title="Verified"></i>
-                        {% elsif course.status == "in-progress" %}
-                        <i class="fa-solid fa-spinner fa-spin in-progress" title="Optimizing"></i>
-                        {% else %}
-                        <i class="fa-regular fa-circle planned" title="Planned"></i>
-                        {% endif %}
-                    </span>
-                </div>
-
-                <span class="font-bold d-block mb-10 color-fafafa no-underline">{{ course.title }}</span>
-                <div class="mono-text-sm color-muted" style="line-height: 1.4;">{{ course.content | strip_html |
-                    truncate:
-                    80 }}</div>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-</div>
-
-<div class="mt-40">
-    <h2 class="pop-heading section-header"><i class="fa-solid fa-flask color-amber"></i> Project Showcase</h2>
-    <div class="blueprint-grid">
-        <div class="grid-container" style="justify-items: center;">
-            {% assign sorted_projects = site.posts | where: "tags", "csumb" | sort: "date" | reverse %}
-            {% for project in sorted_projects %}
-            {% include project-card.html project=project %}
-            {% endfor %}
-        </div>
-    </div>
-</div>
+    <a href="/about/" class="btn-ghost">See About &rarr;</a>
+</section>

@@ -1,0 +1,25 @@
+{
+    "version": "0.2",
+    "ignorePaths": [],
+    "dictionaryDefinitions": [],
+    "dictionaries": [],
+    "words": [
+        "Crazyflie",
+        "csumb",
+        "gatv",
+        "ggswarm",
+        "imgs",
+        "isaac",
+        "mappo",
+        "png",
+        "Py",
+        "skrl",
+        "url",
+        "MINCO",
+        "autoplay",
+        "welp",
+        
+    ],
+    "ignoreWords": [],
+    "import": []
+}

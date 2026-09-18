@@ -28,15 +28,15 @@ Key achievements include:
 
 The research illustrates a scalable method for rapid cataloging and provides significant engineering insight into the deployment of orbital assets. Complex behaviors like orbital missions leave patterns in data that can be decoded with the right statistical tools.
 
-### Project Deliverables
+## Project Deliverables
 
-#### Presentation
+### Presentation
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/KzVvEeuzbCY?si=neDMlO8tIxXXr5Bc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 <p></p></div>
 
-#### Interactive Notebook
+### Interactive Notebook
 
 <div style="text-align:center">
 <iframe

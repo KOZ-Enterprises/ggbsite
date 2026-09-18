@@ -5,4 +5,6 @@ tags: ["rover"]
 
 
 
-Im buildin a rover yo. woot
+Im working on it!
+
+<!--more-->

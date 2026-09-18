@@ -1,0 +1,30 @@
+;;
+;; Domain:     garygigabytes.com.
+;; Updated:    2026-03-21
+;; Purpose:    GCP Cloud Run migration — DNS import to Cloudflare
+;;
+;; IMPORTANT: NS and SOA records are omitted intentionally.
+;; Cloudflare manages its own nameservers and SOA records.
+;; Only import A records and TXT records via this file.
+;;
+;; Import Instructions:
+;; 1. Cloudflare Dashboard → garygigabytes.com → DNS
+;; 2. Click "Import DNS records"
+;; 3. Select this file and upload
+;; 4. Cloudflare will automatically skip NS/SOA records
+;;
+;; Expected Result:
+;; - 4 A records updated (garygigabytes.com, *, culinaryotter, hexmaster)
+;; - 3 TXT records preserved (ACME challenges, domain verification)
+;;
+
+;; A Records — IP updated to GCP static IP (34.36.126.59)
+garygigabytes.com.                  1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
+*.garygigabytes.com.                1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
+culinaryotter.garygigabytes.com.    1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
+hexmaster.garygigabytes.com.        1  IN  A  34.36.126.59 ; cf_tags=cf-proxied:true
+
+;; TXT Records (preserved from original export)
+_acme-challenge.garygigabytes.com.  1  IN  TXT  "vcZlFWjcpMpUKyMe8vwJL5fSkUFY_dTqLV9nOnH7ExM"
+_acme-challenge.garygigabytes.com.  1  IN  TXT  "jYNtJcxbfH89UjgB00riwcCRtd0DIBvfa2hC6Yr7nfU"
+garygigabytes.com.                  1  IN  TXT  "openai-domain-verification=dv-yeKfYB5K3OxERecfLCa56iVj"

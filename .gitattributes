@@ -1,0 +1,27 @@
+# Line endings.
+#
+# Without this file, line endings depended on each contributor's core.autocrlf
+# setting, and files committed from Windows landed in the repository with CRLF.
+# CI runs on ubuntu-latest, where yamllint rejects CRLF outright
+# ("wrong new line character: expected \n"), so every tracked YAML file failed
+# the Lint job.
+#
+# Store LF in the repository and check out LF everywhere.
+* text=auto eol=lf
+
+# Binary assets must never be normalized.
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.gif  binary
+*.ico  binary
+*.svg  text eol=lf
+*.pdf  binary
+*.zip  binary
+*.pptx binary
+*.woff binary
+*.woff2 binary
+
+# Windows-only scripts genuinely need CRLF.
+*.bat text eol=crlf
+*.cmd text eol=crlf

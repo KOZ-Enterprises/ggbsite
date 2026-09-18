@@ -3,100 +3,71 @@ layout: default
 title: Gary Gigabytes
 ---
 
-<!-- Hero Card -->
-<div class="hero-card">
-    <p class="hero-quote">
-        <i class="fas fa-quote-left quote-icon"></i>
-        Bridging the physical and digital worlds—combining my <strong>Mechanical Engineering</strong> background with
-        <strong>Computer Science</strong> to build tangible products, intelligent systems, and explore practical AI
-        applications.
-        <i class="fas fa-quote-right quote-icon"></i>
-    </p>
-</div>
-
-
-
-<div class="grid-container grid-start no-top-padding no-top-margin">
-    <!-- Update List -->
-    <div>
-        <h2 class="pop-heading section-header text-left">
-            <i class="fas fa-history color-amber"></i> Recent Log Entries
-        </h2>
-        <ul class="update-feed">
-            {% for post in site.posts limit:6 %}
-            <li class="update-item">
-                <div class="update-icon">
-                    <i class="fas fa-terminal"></i>
-                </div>
-                <div class="update-content">
-                    <span class="update-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-                    <a href="{{ post.url }}" class="update-link">{{ post.title }}</a>
-                </div>
-            </li>
-            {% endfor %}
-        </ul>
-        <div class="text-center mt-20">
-            <a href="/archives/" class="archive-btn">View
-                all archives <i class="fas fa-arrow-right"></i></a>
+<!-- 1. Intro band -->
+<section class="intro-band">
+    <div class="intro-inner">
+        <p class="intro-kicker">GARY KUEPPER // ECS ANALYSIS ENGINEER @ BOEING</p>
+        <h1 class="page-title">Bridging the physical<br />and digital worlds</h1>
+        <p class="page-lead">
+            Combining my <strong>Mechanical Engineering</strong> background with <strong>Computer Science</strong>
+            to build tangible products, intelligent systems, and explore practical AI applications.
+        </p>
+        <div class="intro-actions">
+            <a href="/projects/" class="btn-primary">Browse Projects</a>
+            <a href="/about/" class="btn-ghost">About Me</a>
         </div>
     </div>
+</section>
 
-    <!-- Project Highlight -->
-    <div>
-        <h2 class="pop-heading section-header text-left">
-            <i class="fa-solid fa-star color-amber"></i> Featured Project
-        </h2>
-        <div class="featured-box">
+<!-- 2. Featured project hero -->
+{% assign featured_project = site.projects | where: "project-tag", "ggswarm" | first %}
+{% unless featured_project %}{% assign featured_project = site.projects | first %}{% endunless %}
 
-            {% assign featured_project = site.projects | where: "project-tag", "hexmaster" | first %}
-            {% unless featured_project %}
-            {% assign featured_project = site.posts | where: "project-tag", "hexmaster" | first %}
-            {% endunless %}
-
-            {% unless featured_project %}
-            {% assign featured_project = site.projects | first %}
-            {% endunless %}
-
-            {% if featured_project %}
-            {% include project-card.html project=featured_project %}
-
-            {% else %}
-            <div class="p-20 text-center color-muted">
-                <p>No projects found. Add markdown files to _projects/</p>
-            </div>
-            {% endif %}
+{% if featured_project %}
+<section class="feature-hero">
+    {% if featured_project.image %}
+    <img class="feature-hero-img" src="{{ featured_project.image | relative_url }}"
+        alt="{{ featured_project.title }}" />
+    {% endif %}
+    <div class="feature-hero-body">
+        {% if featured_project.status %}
+        <span class="status-tag" data-status="{{ featured_project.status | downcase }}">
+            <span class="status-dot"></span>{{ featured_project.status }}
+        </span>
+        {% endif %}
+        <h2 class="feature-hero-title">{{ featured_project.title }}</h2>
+        <p class="feature-hero-desc">{{ featured_project.description | truncate: 240 }}</p>
+        <div class="intro-actions">
+            <a href="{{ featured_project.url }}" class="btn-primary">Open Project</a>
+            <a href="/projects/" class="btn-ghost">All {{ site.projects | size }} Projects</a>
         </div>
     </div>
-</div>
-<div class="mt-40">
-    <h2 class="pop-heading section-header">
-        <i class="fa-solid fa-journal-whills color-amber"></i> Project Logs & Updates
-    </h2>
-    <ul class="update-feed post-list">
+</section>
+{% endif %}
+
+<!-- 3. Project logs -->
+<section class="log-section">
+    <div class="rule-header">
+        <h2 class="rule-title">Project Logs</h2>
+        <span class="rule-line"></span>
+        <a href="/archives/" class="rule-link">ARCHIVES →</a>
+    </div>
+
+    <ul class="log-list">
         {% for post in paginator.posts %}
-        {% include post.html post=post type="excerpt" %}
+            {% include log-row.html post=post %}
         {% endfor %}
     </ul>
-</div>
 
-<!-- Pagination Controls -->
-{% if paginator.total_pages > 1 %}
-<div class="pagination mt-40 mb-40 text-center">
-    {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="archive-btn m-10">
-        <i class="fas fa-arrow-left"></i> Newer Logs
-    </a>
+    {% if paginator.total_pages > 1 %}
+    <div class="log-pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="btn-ghost">← Newer Logs</a>
+        {% endif %}
+        <span class="log-page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="btn-ghost">Older Logs →</a>
+        {% endif %}
+    </div>
     {% endif %}
-
-    <span class="page-number color-ddd mono-text-sm">
-        Page {{ paginator.page }} of {{ paginator.total_pages }}
-    </span>
-
-    {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="archive-btn m-10">
-        Older Logs <i class="fas fa-arrow-right"></i>
-    </a>
-    {% endif %}
-</div>
-{% endif %}
-</div>
+</section>

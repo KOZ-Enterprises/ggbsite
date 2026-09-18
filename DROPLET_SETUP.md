@@ -114,7 +114,7 @@ docker --version
 docker compose version
 ```
 
-*(You should see Docker Compose V2.x.x)*
+You should see Docker Compose V2.x.x
 
 ---
 

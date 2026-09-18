@@ -23,15 +23,15 @@ This exploration covers:
 
 The project highlights the critical need for secure communication in the quantum era and evaluates the current state of quantum-safe technology. Proactive cryptographic agility is the only way to safeguard our digital future against emerging quantum threats.
 
-### Project Deliverables
+## Project Deliverables
 
-#### Presentation: Short
+### Presentation: Short
 
 <div style="text-align:center">
 <iframe width="560" height="315" style="margin-bottom: 10px" src="https://www.youtube.com/embed/Ps1hElV-MJs?si=GipEdbDwQyS1A-RX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 </div>
 
-#### Presentation: Long
+### Presentation: Long
 
 <div style="text-align:center">
 <iframe width="560" height="315" src="https://www.youtube.com/embed/ocg25-n4EtM?si=-7EdYTvzL25Fsvac" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

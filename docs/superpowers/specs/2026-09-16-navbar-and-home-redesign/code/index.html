@@ -1,0 +1,83 @@
+---
+layout: default
+title: Gary Gigabytes
+---
+
+<!-- 1. Intro band -->
+<section class="intro-band">
+    <div class="intro-inner">
+        <p class="intro-kicker">GARY KUEPPER // ECS ANALYSIS ENGINEER @ BOEING</p>
+        <h1 class="intro-title">Bridging the physical<br />and digital worlds</h1>
+        <p class="intro-body">
+            Combining my <strong>Mechanical Engineering</strong> background with <strong>Computer Science</strong>
+            to build tangible products, intelligent systems, and explore practical AI applications.
+        </p>
+        <div class="intro-actions">
+            <a href="/projects/" class="btn-primary">Browse Projects</a>
+            <a href="/about/" class="btn-ghost">About Me</a>
+        </div>
+    </div>
+</section>
+
+<!-- 2. Featured project hero -->
+{% assign featured_project = site.projects | where: "project-tag", "ggswarm" | first %}
+{% unless featured_project %}{% assign featured_project = site.projects | first %}{% endunless %}
+
+{% if featured_project %}
+<section class="feature-hero">
+    {% if featured_project.image %}
+    <img class="feature-hero-img" src="{{ featured_project.image | relative_url }}"
+        alt="{{ featured_project.title }}" />
+    {% endif %}
+    <div class="feature-hero-body">
+        {% if featured_project.status %}
+        <span class="status-tag" data-status="{{ featured_project.status | downcase }}">
+            <span class="status-dot"></span>{{ featured_project.status }}
+        </span>
+        {% endif %}
+        <h2 class="feature-hero-title">{{ featured_project.title }}</h2>
+        <p class="feature-hero-desc">{{ featured_project.description | truncate: 240 }}</p>
+        <div class="intro-actions">
+            <a href="{{ featured_project.url }}" class="btn-primary">Open Project</a>
+            <a href="/projects/" class="btn-ghost">All {{ site.projects | size }} Projects</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- 3. Project logs -->
+<section class="log-section">
+    <div class="rule-header">
+        <h2 class="rule-title">Project Logs</h2>
+        <span class="rule-line"></span>
+        <a href="/archives/" class="rule-link">ARCHIVES →</a>
+    </div>
+
+    <ul class="log-list">
+        {% for post in paginator.posts %}
+        <li class="log-row">
+            <div class="log-gutter">
+                <span class="log-date">{{ post.date | date: "%Y-%m-%d" }}</span>
+                {% if post.tags %}<span class="log-tag">#{{ post.tags | first }}</span>{% endif %}
+            </div>
+            <div class="log-main">
+                <h3 class="log-title"><a href="{{ post.url }}">{{ post.title }}</a></h3>
+                <div class="log-excerpt">{{ post.excerpt | strip_html | truncate: 220 }}</div>
+                <a href="{{ post.url }}" class="log-more">Read more →</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+
+    {% if paginator.total_pages > 1 %}
+    <div class="log-pagination">
+        {% if paginator.previous_page %}
+        <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="btn-ghost">← Newer Logs</a>
+        {% endif %}
+        <span class="log-page-number">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+        {% if paginator.next_page %}
+        <a href="{{ paginator.next_page_path | prepend: site.baseurl }}" class="btn-ghost">Older Logs →</a>
+        {% endif %}
+    </div>
+    {% endif %}
+</section>

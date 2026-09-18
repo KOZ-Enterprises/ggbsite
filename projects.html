@@ -3,23 +3,22 @@ layout: default
 title: Projects
 permalink: /projects/
 ---
-<h1 class="pop-heading section-header text-left">
-  <i class="fa-solid fa-flask color-amber"></i> Hobby Projects
-</h1>
 
-<div class="hero-card">
-  <p class="m-0 color-ddd" style="font-size: 1.1em; line-height: 1.6;">
-    Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best
-    job documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm
-    building and learning.
-  </p>
-</div>
+<section class="page-head">
+    <p class="page-kicker">Hobby Projects</p>
+    <h1 class="page-title">Things I'm building</h1>
+    <p class="page-lead">
+        Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best
+        job documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm
+        building and learning.
+    </p>
+</section>
 
-<div class="blueprint-grid">
-  <div class="grid-container" style="justify-items: center;">
+<div class="page-rule"></div>
+
+<section class="card-grid">
     {% assign sorted_projects = site.projects | sort: "order" %}
     {% for project in sorted_projects %}
     {% include project-card.html project=project %}
     {% endfor %}
-  </div>
-</div>
+</section>

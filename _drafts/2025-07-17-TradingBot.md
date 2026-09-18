@@ -4,16 +4,15 @@ title: "Introducing My Trading Bot"
 tags: ["Trading Bot", "Python", "Finance", "Algorithms"]
 ---
 
-<div  class="image-container">
-<a href="/assets/imgs/tradingbot.png" >
-<img src="/assets/imgs/tradingbot.png" alt="TradingBot"   ></a>
-</div>
+[![TradingBot](/assets/imgs/tradingbot.png)](/assets/imgs/tradingbot.png)
+{:.image-container}
 
 I'm excited to share my latest project: a [trading bot](/projects/ggtrade/) built with Python! This comprehensive platform combines technical analysis with automated trading to make data-driven investment decisions.
-
+<!--more-->
 ### What It Does
 
 The bot is designed as a modular framework that:
+
 - **Backtests strategies** against historical market data
 - **Optimizes parameters** to find the best configurations
 - **Paper trades live** using Alpaca's API for real-time testing
@@ -30,6 +29,7 @@ This bot represents the perfect intersection of my engineering problem-solving a
 ### What's Next
 
 I'm planning a series of follow-up posts diving deeper into:
+
 - The backtesting framework and how to avoid common pitfalls
 - Technical analysis strategies that actually work
 - Risk management in automated trading systems

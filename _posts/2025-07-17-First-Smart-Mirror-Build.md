@@ -21,35 +21,35 @@ I'll be posting the new monitor build soon, but wanted to share my original buil
 <p class="caption">The 3 monitor PCBs are visible.  I was able to find where the AC power gets convert to ~18VDC, where I soldered in the 5V DC-DC converter to power the pi.  Also note a PI Zero is shown which DOES NOT WORK btw.  From experience it's best to use a PI4 and above. </p>
 </div>
 
-### Components
+## Components
 
 - [MagicMirror² software](https://magicmirror.builders/)
 - [Raspberry Pi 3 1GB](https://www.pishop.us/product/raspberry-pi-3-model-b-plus/)
 - [11x17 Frame](https://a.co/d/7LMuKS5)
 
-### MagicMirror² Modules
+## MagicMirror² Modules
 
-#### Core Modules
+### Core Modules
 
 - [Calendar](https://docs.magicmirror.builders/modules/calendar.html)
 - [Clock](https://docs.magicmirror.builders/modules/clock.html)
 - [Weather](https://docs.magicmirror.builders/modules/weather.html)
 
-#### Third-Party Modules
+### Third-Party Modules
 
 - [MMM-GoogleCalendar](https://github.com/MichMich/MagicMirror/tree/master/modules/MMM-GoogleCalendar)
 - [MMM-MonthyCalendar](https://github.com/kolbyjack/MMM-MonthlyCalendar)
 - [MMM-CloneWarsQuotes](https://github.com/macd2point0/MMM-CloneWarsQuotes)
 
-### Steps to Build
+## Steps to Build
 
 1. **Install MagicMirror²**: Follow the [installation guide](https://docs.magicmirror.builders/getting-started/installation.html) to set up the software on your Raspberry Pi.
-2. **Configure Modules**: Customize the modules you want to display, such as weather, calendar, and news. You can find a list of available modules [here](https://docs.magicmirror.builders/modules/).
+2. **Configure Modules**: Customize the modules you want to display, such as weather, calendar, and news. You can find the [list of available modules](https://docs.magicmirror.builders/modules/) in the MagicMirror² docs.
 3. **Set Up the Hardware**: Assemble the two-way mirror with the monitor and frame. Ensure the monitor is positioned behind the mirror for optimal visibility.
 4. **Connect the Raspberry Pi**: Connect the Raspberry Pi to the monitor and power it on. Make sure it boots into the MagicMirror² interface.
 5. **Final Adjustments**: Adjust the settings in the `config.js` file to customize the appearance and functionality of your smart mirror.
 
-### Key Takeaways
+## Key Takeaways
 
 - This was a fun project that uses a Raspberry PI to create a functional smart mirror that I use daily.
 - Using a modern Portable Monitor I think is the way to go, since it's already low voltage and excellent viewing angle compared to older screens.

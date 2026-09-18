@@ -1,0 +1,24 @@
+config:
+  MD013: false  # line length not enforced for blog prose/front-matter
+  MD033: false  # inline HTML is common in Jekyll content
+  MD041: false  # front-matter means files won't start with a heading
+
+globs:
+  - "**/*.md"
+
+ignores:
+  - "_site/**"
+  - "_drafts/**"
+  - ".jekyll-cache/**"
+  - "vendor/**"
+  - "node_modules/**"
+  # Symlink to AGENTS.md, which is linted directly. On Linux the link resolves
+  # and the content is checked twice; on Windows the checkout materializes it as
+  # a newline-less one-line file and trips MD047. Skip the alias.
+  - "CLAUDE.md"
+  # Local-only scratch (git-ignored, so absent in CI - this keeps local runs quiet).
+  - ".remember/**"
+  # Internal design handoff and implementation plans, not site content.
+  # The spec README is vendored verbatim from the designer's bundle, so
+  # reformatting it would diverge it from the source.
+  - "docs/superpowers/**"

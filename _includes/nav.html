@@ -1,15 +1,24 @@
-<div class="navbar" id="myNavbar">
-    <div class="logo">
-        <a href="/"><img src="/assets/imgs/ggbytes/ggbytes-transparent-cropped.png" alt="GaryGigabytes" /></a>
-    </div>
-    <div class="icon" onclick="toggleNavbar()">
-        <i class="fa fa-bars"></i>
-    </div>
-    <div class="nav-links">
-        <a href="/" class="{% if page.url == '/' %}active{% endif %}">Home</a>
-        <a href="/csumb/" class="{% if page.url == '/csumb/' %}active{% endif %}">CS Portfolio</a>
+<div class="nav-shell" id="myNavbar">
+    <a class="nav-brand" href="/">
+        <span class="nav-mark">
+            <img src="/assets/branding/logo/ggbytes-transparent-g.png" alt="GaryGigabytes" />
+        </span>
+        <span class="nav-wordmark">
+            <span class="nav-name">GARY<em>GIGABYTES</em></span>
+            <span class="nav-caption">ENGINEERING LOG<span class="nav-caption-rest"> &amp; PORTFOLIO</span></span>
+        </span>
+    </a>
 
-        <a href="/projects/" class="{% if page.url == '/projects/' %}active{% endif %}">Hobby Projects</a>
-        <a href="/about/" class="{% if page.url == '/about/' %}active{% endif %}">About</a>
+    <button class="nav-icon" type="button" onclick="toggleNavbar()" aria-label="Menu">
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar"></span>
+    </button>
+
+    <div class="nav-menu">
+        <a href="/" class="nav-item {% if page.url == '/' %}active{% endif %}">Home</a>
+        <a href="/projects/" class="nav-item {% if page.url contains '/projects/' %}active{% endif %}">Projects</a>
+        <a href="/csumb/" class="nav-item {% if page.url contains '/csumb/' %}active{% endif %}">Coursework</a>
+        <a href="/about/" class="nav-item {% if page.url == '/about/' %}active{% endif %}">About</a>
     </div>
 </div>

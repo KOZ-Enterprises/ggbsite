@@ -3,10 +3,10 @@ services:
     image: ghcr.io/koz-enterprises/ggbsite:latest
     container_name: ggbsite
     restart: always
+    # ports:
+    #   - "8080:80"  # Uncomment for local testing if not using proxy
     networks:
       - proxy_network
-    # ports:
-    #   - "8080:80" # Uncomment for local testing if not using proxy
 
 networks:
   proxy_network:

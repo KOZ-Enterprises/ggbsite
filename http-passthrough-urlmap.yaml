@@ -1,0 +1,2 @@
+name: gary-gigabytes-http-redirect
+defaultService: https://www.googleapis.com/compute/v1/projects/gary-gigabytes/global/backendServices/ggbsite-backend
