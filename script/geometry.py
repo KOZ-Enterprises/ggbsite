@@ -32,7 +32,7 @@ is this codebase's style throughout.
 """
 import io, re, sys, glob
 
-ALLOWED = {4, 8, 16, 24, 32, 40, 48}   # 4 only via `$space-1 + $space-half`
+ALLOWED = {8, 16, 24, 32, 40, 48}
 
 DECL = re.compile(r'^\s*(margin|padding|gap|row-gap|column-gap)'
                   r'(-top|-bottom|-left|-right)?\s*:\s*([^;]+);')
@@ -48,9 +48,34 @@ def vertical(prop, side, parts):
     if len(parts) in (3, 4): return [parts[0], parts[2]]
     return []
 
+def strip_block_comments(raw, in_comment):
+    """Removes /* ... */ spans from a line, tracking state across lines."""
+    out = []
+    i = 0
+    while i < len(raw):
+        if in_comment:
+            end = raw.find("*/", i)
+            if end == -1:
+                i = len(raw)
+            else:
+                i = end + 2
+                in_comment = False
+        else:
+            start = raw.find("/*", i)
+            if start == -1:
+                out.append(raw[i:])
+                i = len(raw)
+            else:
+                out.append(raw[i:start])
+                i = start + 2
+                in_comment = True
+    return "".join(out), in_comment
+
 def check(path):
     bad, sel = [], ""
+    in_comment = False
     for n, raw in enumerate(io.open(path, encoding="utf-8").read().splitlines(), 1):
+        raw, in_comment = strip_block_comments(raw, in_comment)
         line = raw.strip()
         # Track the top-level selector (a rule opened at column 0) purely so
         # violations can be reported with a useful name. Nested blocks are
@@ -68,7 +93,7 @@ def check(path):
             continue
 
         m = DECL.match(code)
-        if not m or marked:
+        if not m:
             continue
         prop, side, value = m.group(1), m.group(2) or "", m.group(3)
         for part in vertical(prop, side, value.split()):
