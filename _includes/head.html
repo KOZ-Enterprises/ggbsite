@@ -13,10 +13,24 @@
     {%- assign page_title = site_name -%}
     {%- endif -%}
     <title>{{ page_title }}</title>
+    {%- comment -%}
+    LinkedIn's Post Inspector rejects an og:description under 100 characters,
+    and 22 pages set a one-line description well below that. Rather than
+    rewriting every front matter, a short description gets the site blurb
+    appended, so every page ships a card that validates. The default is already
+    over the limit on its own.
+    {%- endcomment -%}
+    {%- assign site_blurb = "Part of the Gary Gigabytes engineering log and portfolio, covering robotics, autonomous drone swarms, algorithmic trading systems, and CS coursework." -%}
+    {%- assign default_desc = "Engineering log and portfolio of Gary Kuepper, documenting robotics, autonomous drone swarms, algorithmic trading systems, and computer science coursework, one build at a time." -%}
+    {%- assign meta_desc = page.description | default: default_desc | strip_html | strip_newlines | strip -%}
+    {%- assign desc_len = meta_desc | size -%}
+    {%- if desc_len < 100 -%}
+    {%- assign meta_desc = meta_desc | append: " " | append: site_blurb -%}
+    {%- endif -%}
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="{{ page.title | default: 'Gary Gigabytes – Tech Projects & Portfolio' }}">
-    <meta property="og:description"
-        content="{{ page.description | default: 'Explore personal tech projects, CS coursework, and creative engineering from Gary Gigabytes.' }}">
+    <meta property="og:description" content="{{ meta_desc | escape }}">
     <meta property="og:image" content="https://garygigabytes.com/assets/imgs/ggbytes/ggbytes-preview.png">
     <meta property="og:url" content="https://garygigabytes.com{{ page.url }}">
     <meta property="og:type" content="website">
@@ -24,8 +38,7 @@
     <!-- Twitter Card Meta Tags (optional but recommended) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ page.title | default: 'Gary Gigabytes – Tech Projects & Portfolio' }}">
-    <meta name="twitter:description"
-        content="{{ page.description | default: 'Explore personal tech projects, CS coursework, and creative engineering from Gary Gigabytes.' }}">
+    <meta name="twitter:description" content="{{ meta_desc | escape }}">
     <meta name="twitter:image" content="https://garygigabytes.com/assets/imgs/ggbytes/ggbytes-preview.png">
 
     <!-- Stylesheets and Scripts -->
