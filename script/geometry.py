@@ -6,6 +6,17 @@ Rules, from docs/superpowers/specs/2026-09-17-page-consistency-design.md:
   1. The VERTICAL axis of margin/padding/gap must be on the spacing scale.
      Only the vertical axis is inspected - the scale is vertical rhythm, so a
      horizontal inset like `padding: 0 20px` is out of scope by construction.
+     Per shorthand form: a 1-value margin/padding applies to all sides and is
+     checked. A 2-value form is `[vertical, horizontal]`, so only the first
+     component is checked. A 3-value form is `[top, horizontal, bottom]`, so
+     the first AND third components are checked - the third is a real bottom
+     value, not a horizontal one. A 4-value form is
+     `[top, right, bottom, left]`, so again the first and third are checked.
+     `-top`/`-bottom` longhands are always checked; `-left`/`-right` never
+     are. For `gap`/`row-gap`, only the first (row) component is checked - a
+     2-value `gap`'s second component is the column gap, which is
+     horizontal; `column-gap` alone is entirely horizontal and is never
+     checked.
   2. Values of 6px or less are optical and always allowed: chips, badges,
      hairline gaps, icon spacing.
   3. Negative values are offsets, not rhythm, and are skipped.
@@ -28,13 +39,13 @@ DECL = re.compile(r'^\s*(margin|padding|gap|row-gap|column-gap)'
 RADIUS = re.compile(r'^\s*border-radius\s*:\s*([^;]+);')
 
 def vertical(prop, side, parts):
-    if prop in ("gap", "row-gap"): return parts
+    if prop in ("gap", "row-gap"): return parts[:1]
     if prop == "column-gap": return []
     if side in ("-left", "-right"): return []
     if side in ("-top", "-bottom"): return parts
     if len(parts) == 1: return parts
-    if len(parts) in (2, 3): return parts[:1]
-    if len(parts) == 4: return [parts[0], parts[2]]
+    if len(parts) == 2: return parts[:1]
+    if len(parts) in (3, 4): return [parts[0], parts[2]]
     return []
 
 def check(path):
