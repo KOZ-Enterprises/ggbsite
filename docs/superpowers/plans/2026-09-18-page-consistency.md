@@ -668,14 +668,23 @@ DECL = re.compile(r'^(\s*)(margin|padding|gap|row-gap|column-gap)'
                   r'(-top|-bottom|-left|-right)?(\s*:\s*)([^;]+)(;.*)$')
 
 def vertical_indices(prop, side, parts):
-    """Which components of a shorthand are vertical."""
-    if prop in ("gap", "row-gap"): return list(range(len(parts)))
+    """Which components of a shorthand are vertical.
+
+    MUST mirror vertical() in script/geometry.py exactly. When they disagree
+    the migration leaves violations the gate then fails on, and the task
+    cannot reach its acceptance count. An earlier draft of this script
+    grouped 3-value with 2-value (checking only the top) while the checker
+    grouped 3-value with 4-value (checking top and bottom); that left nine
+    declarations unmigrated, including .page-kicker's `margin: 0 0 14px`,
+    which Step 4's hand-edit depends on having been converted.
+    """
+    if prop in ("gap", "row-gap"): return [0]
     if prop == "column-gap": return []
     if side in ("-left", "-right"): return []
     if side in ("-top", "-bottom"): return list(range(len(parts)))
     if len(parts) == 1: return [0]
-    if len(parts) in (2, 3): return [0]
-    if len(parts) == 4: return [0, 2]
+    if len(parts) == 2: return [0]
+    if len(parts) in (3, 4): return [0, 2]
     return []
 
 def migrate(path):
@@ -714,6 +723,36 @@ for p in sorted(glob.glob("_sass/*.scss")):
 print(f"total: {total}")
 ```
 
+- [ ] **Step 2b: Prove the two axis functions agree before running anything**
+
+The migration and the checker must classify every shorthand identically. Verify it rather than assuming — this exact divergence has already blocked this task once.
+
+```bash
+python - <<'PY'
+import sys, importlib.util
+sys.path.insert(0, "script")
+spec = importlib.util.spec_from_file_location("geom", "script/geometry.py")
+geom = importlib.util.module_from_spec(spec); spec.loader.exec_module(geom)
+spec2 = importlib.util.spec_from_file_location("mig", "script/remap-spacing.py")
+mig = importlib.util.module_from_spec(spec2); spec2.loader.exec_module(mig)
+
+cases = [("margin","",["0","0","14px"]), ("margin","",["8px","8px","13px","8px"]),
+         ("margin","",["5px","0"]), ("padding","",["13px"]),
+         ("gap","",["6px","10px"]), ("gap","",["13px"]),
+         ("margin","-bottom",["28px"]), ("column-gap","",["10px"])]
+bad = 0
+for prop, side, parts in cases:
+    g = geom.vertical(prop, side, parts)
+    m = [parts[i] for i in mig.vertical_indices(prop, side, parts)]
+    ok = g == m
+    bad += not ok
+    print(f"{'OK ' if ok else 'MISMATCH'}  {prop}{side}: {' '.join(parts):22} checker={g} migration={m}")
+print("AGREE" if not bad else f"{bad} MISMATCHES - fix before running the migration")
+PY
+```
+
+Expected: every line `OK`, final line `AGREE`. A mismatch means the migration will leave violations the gate fails on; stop and reconcile the two functions before proceeding.
+
 - [ ] **Step 3: Run it and check the count**
 
 ```bash
@@ -724,7 +763,13 @@ Expected: **89**, the share of the 100 baseline this task owns. (Task 2 clears 8
 
 - [ ] **Step 4: Apply the one hand edit the script cannot make**
 
-`.page-kicker`'s `margin-bottom` is the sole place `$space-half` is legal. The script will have turned its `14px` into `$space-2`; change it to the compound:
+`.page-kicker` is the sole place `$space-half` is legal. Its source is a three-value shorthand at `_sass/_layout.scss`:
+
+```scss
+    margin: 0 0 14px;
+```
+
+The script converts that to `margin: 0 0 $space-2`. Change it to the compound:
 
 ```scss
     margin: 0 0 $space-1 + $space-half;
