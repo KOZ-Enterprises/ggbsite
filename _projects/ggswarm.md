@@ -27,6 +27,18 @@ resources:
 
 Following the successful completion of the academic capstone, the project has transitioned into **GG Swarm Live**, a real-hardware deployment program. The focus is now on taking the decentralized GATv2/PPO policies developed in simulation and deploying them onto physical PX4-based airframes. This creates an adaptive execution layer that can handle formation stability, obstacle avoidance, and decentralized coordination for commercial drone light shows.
 
+### Cinematic Trailer
+
+Cut from twenty clips captured in Phase 5 of the capstone: decentralized
+GATv2/PPO policies holding formation, avoiding obstacles and coordinating
+in simulation.
+
+<!-- markdownlint-disable MD033 -->
+<div align="center">
+<iframe width="560" height="315" src="https://www.youtube.com/embed/toPCBIbLLLM?si=Oy1DaxqxORCvJR57" title="GG Swarm cinematic trailer" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+<!-- markdownlint-enable MD033 -->
+
 ### Roadmap & Development Phases
 
 The project is currently progressing through the following hardware-focused roadmap:
@@ -88,10 +100,3 @@ The simulation phase leveraged **NVIDIA Isaac Lab** for GPU-accelerated physics,
 * **Weeks 5–11**: Core Development (Brain/Muscles) (Completed)
 * **Weeks 12–15**: Stress Testing and Showcase Prep (Completed)
 * **Week 16**: Capstone Festival Delivery (Completed April 2026)
-
-### Original Simulation Demo
-<!-- markdownlint-disable MD033 -->
-<div align="center">
-<iframe width="560" height="315" src="https://www.youtube.com/embed/toPCBIbLLLM?si=Oy1DaxqxORCvJR57" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-</div>
-<!-- markdownlint-enable MD033 -->
