@@ -1,0 +1,702 @@
+// =============================================================================
+// PAGES
+// Styling used by exactly one page. If a second page starts using one of these
+// blocks, move it to _components.scss rather than copying it.
+//
+// Contains: .intro-band and .feature-hero (home), .capstone-card, .registry
+//           and .prior-degrees (coursework), .post-page (log entry), .xp-list
+//           and .edu-list (about), .tag-strip and .year-block (archives),
+//           .tag-hash (tag page)
+// =============================================================================
+
+@use "tokens" as *;
+
+// ---- Home: intro band ------------------------------------------------------
+.intro-band {
+    background-color: $c-bg;
+    background-image:
+        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
+    background-size: 40px 40px;
+    border: 1px solid $c-border;
+    border-radius: 4px;
+    padding: 52px 48px;
+    margin: 0 0 40px;
+
+    @include respond-to(mobile) {
+        padding: 28px 20px;
+        margin-bottom: 24px;
+    }
+}
+
+.intro-inner {
+    max-width: 780px;
+}
+
+.intro-kicker {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 3px;
+    color: $c-amber;
+    margin: 0 0 16px;
+}
+
+.intro-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+// (0,2,0) - beats the (0,1,0) mobile button rule in _components.scss on
+// specificity, so this may live here even though _pages is loaded later.
+.intro-actions .btn-primary,
+.intro-actions .btn-ghost {
+    @include respond-to(mobile) {
+        display: block;
+        width: 100%;
+        padding: 14px 22px;
+        text-align: center;
+    }
+}
+
+// ---- Home: featured project hero -------------------------------------------
+.feature-hero {
+    position: relative;
+    min-height: 430px;
+    border: 1px solid $c-border;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+
+    @include respond-to(mobile) {
+        display: block;
+        min-height: 0;
+        margin-bottom: 24px;
+    }
+}
+
+.feature-hero-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    @include respond-to(mobile) {
+        position: static;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+}
+
+.feature-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+            rgba($c-bg, 0.97) 0%,
+            rgba($c-bg, 0.85) 42%,
+            rgba($c-bg, 0.25) 100%);
+
+    // the side gradient does not work at 390px - it becomes a bottom scrim
+    @include respond-to(mobile) {
+        background: linear-gradient(to top,
+                rgba($c-bg, 0.96) 22%,
+                rgba($c-bg, 0.3) 75%);
+    }
+}
+
+.feature-hero-body {
+    position: relative;
+    z-index: 1;
+    padding: 44px 48px;
+    max-width: 660px;
+
+    @include respond-to(mobile) {
+        margin-top: -96px;
+        padding: 0 20px 28px;
+        max-width: none;
+    }
+}
+
+.feature-hero-title {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: clamp(32px, 4.6vw, 50px);
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: $c-ink;
+    margin: 16px 0;
+
+    @include respond-to(mobile) {
+        font-size: 32px;
+    }
+}
+
+.feature-hero-desc {
+    font-size: $text-lead;
+    line-height: 1.6;
+    color: #c3cece;   // no token: not one of the 16 palette colours
+    max-width: 560px;
+    margin: 0 0 24px;
+
+    @include respond-to(mobile) {
+        font-size: 15px;
+        line-height: 1.75;
+    }
+}
+
+// (0,2,0) - the status tag needs a scrim once it sits over the photo
+.feature-hero .status-tag {
+    @include respond-to(mobile) {
+        background: rgba($c-surface-deep, 0.7);
+    }
+}
+
+// ---- Coursework: capstone card ---------------------------------------------
+.capstone-card {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    background: $c-surface;
+    overflow: hidden;
+    margin-bottom: 44px;
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+        margin-bottom: 32px;
+    }
+}
+
+.capstone-media {
+    position: relative;
+    min-height: 200px;
+    border-right: 1px solid $c-border;
+
+    // the divider moves from the side to the top once the card stacks
+    @include respond-to(mobile) {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+        border-right: 0;
+        border-bottom: 1px solid $c-border;
+    }
+}
+
+.capstone-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.capstone-body {
+    padding: 26px 28px;
+
+    @include respond-to(mobile) {
+        padding: 22px 20px;
+    }
+}
+
+.capstone-head {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 12px;
+}
+
+.capstone-title {
+    font-family: $font-display;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    letter-spacing: 0.5px;
+    color: $c-ink;
+    margin: 0;
+
+    @include respond-to(mobile) {
+        font-size: 21px;
+    }
+}
+
+.capstone-desc {
+    font-size: $text-excerpt;
+    line-height: 1.6;
+    color: $c-body-dim;
+    margin: 0 0 18px;
+    max-width: 640px;
+}
+
+.capstone-link {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-amber;
+}
+
+// ---- Coursework: course registry -------------------------------------------
+.registry {
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    overflow: hidden;
+    margin-bottom: 44px;
+}
+
+// rows restack: code + pill on one line, then title, then note
+.registry-row {
+    display: grid;
+    grid-template-columns: 110px 1.1fr 1.4fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 16px 22px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr auto;
+        gap: 7px;
+        padding: 16px 18px;
+    }
+}
+
+.registry-row + .registry-row {
+    border-top: 1px solid rgba($c-border, 0.25);
+}
+
+.registry-row:hover {
+    background: rgba($c-accent, 0.05);
+}
+
+.registry-code {
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: $c-accent;
+
+    @include respond-to(mobile) {
+        grid-column: 1;
+        grid-row: 1;
+    }
+}
+
+// (0,2,0) - overrides the shared badge font-size on specificity, not order
+.registry-row .status-badge {
+    @include respond-to(mobile) {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+        font-size: 9.5px;
+    }
+}
+
+.registry-name {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 16px;
+    color: $c-ink;
+
+    @include respond-to(mobile) {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+.registry-note {
+    font-family: $font-mono;
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: $c-muted;
+
+    @include respond-to(mobile) {
+        grid-column: 1 / -1;
+        grid-row: 3;
+    }
+}
+
+// ---- Coursework: prior degrees strip ---------------------------------------
+.prior-degrees {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 1px solid $c-rule;
+    padding-top: 24px;
+    margin-bottom: 48px;
+
+    @include respond-to(mobile) {
+        align-items: flex-start;
+        flex-direction: column;
+        margin-bottom: 32px;
+    }
+}
+
+.prior-degrees-label {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $c-muted;
+    margin: 0 0 8px;
+}
+
+.prior-degrees-list {
+    font-size: 15px;
+    line-height: 1.6;
+    color: $c-body;
+    margin: 0;
+}
+
+.prior-degrees .btn-ghost {
+    @include respond-to(mobile) {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+// ---- Blog post / log entry -------------------------------------------------
+// Left-aligned per spec 4b, NOT centered. The legacy .post-page rule set
+// `margin: 0 auto; padding: 20px`, which centered the column while the footer
+// siblings (.post-more / .page-actions) stayed flush left - a 176px step.
+.post-page {
+    max-width: 800px;
+    margin: 0;
+    padding: 0;
+}
+
+// COLLISION SET - (0,1,1), the same specificity as `.page-body h2` in
+// _content.scss, and both touch the bottom margin (`margin-bottom` here,
+// the `margin` shorthand there). _content.scss is loaded after _pages.scss, so
+// the shorthand still wins exactly as it did in the single file. Moving this
+// rule into _content.scss would reverse that.
+.post-page h2 {
+    margin-bottom: 5px;
+}
+
+.post-head {
+    margin-bottom: 28px;
+}
+
+.post-metarow {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted;
+    margin-bottom: 16px;
+}
+
+.post-metadot {
+    color: $c-muted-low;
+}
+
+.post-taglist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid $c-rule;
+
+    @include respond-to(mobile) {
+        gap: 6px 10px;
+    }
+}
+
+.post-tagchip {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1px;
+    color: $c-accent;
+    border: 1px solid rgba($c-accent, 0.35);
+    border-radius: $radius-chip;
+    padding: 4px 9px;
+
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+.post-hero {
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    overflow: hidden;
+    margin: 28px 0;
+}
+
+.post-hero img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.post-more {
+    max-width: 800px;
+    margin-bottom: 36px;
+}
+
+.page-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    max-width: 800px;
+    margin-bottom: 48px;
+}
+
+.page-actions .btn-primary,
+.page-actions .btn-ghost {
+    @include respond-to(mobile) {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+// ---- About: experience timeline --------------------------------------------
+.xp-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.xp-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-left: 2px solid $c-border;
+    padding-left: 18px;
+}
+
+.xp-item.current {
+    border-left-color: $c-accent;
+}
+
+.xp-company {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 17px;   // a display heading, not a lead - deliberately not $text-lead
+    color: $c-ink;
+}
+
+// COLLISION SET - `.xp-range` appears in both rules at (0,1,0) and both set
+// `color`. The single-selector rule below must stay second or the ranges would
+// render teal instead of muted.
+.xp-role,
+.xp-range {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-accent;
+}
+
+.xp-range {
+    color: $c-muted;
+}
+
+.xp-detail {
+    font-size: 14px;
+    line-height: 1.6;
+    color: $c-body-dim;
+    margin-top: 4px;
+}
+
+// ---- About: education list -------------------------------------------------
+.edu-list {
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    overflow: hidden;
+}
+
+.edu-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+}
+
+.edu-item + .edu-item {
+    border-top: 1px solid rgba($c-border, 0.25);
+}
+
+.edu-degree {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 15.5px;
+    color: $c-ink;
+    grid-column: 1;
+}
+
+.edu-school {
+    font-size: 13.5px;
+    color: $c-body-dim;
+    grid-column: 1;
+}
+
+.edu-year {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    color: $c-muted-alt;
+}
+
+.edu-year.recent {
+    color: $c-accent;
+}
+
+// ---- Archives --------------------------------------------------------------
+.tag-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    @include respond-to(mobile) {
+        gap: 6px 10px;
+    }
+}
+
+.year-block {
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    overflow: hidden;
+    margin-bottom: 28px;
+}
+
+.year-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    background: $c-surface-deep;
+    border-bottom: 1px solid $c-border;
+    padding: 14px 20px;
+
+    @include respond-to(mobile) {
+        padding: 12px 16px;
+    }
+}
+
+.year-name {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: $c-accent;
+
+    @include respond-to(mobile) {
+        font-size: 19px;
+    }
+}
+
+.year-count {
+    font-family: $font-mono;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-muted;
+}
+
+.year-row {
+    display: grid;
+    grid-template-columns: 100px minmax(0, 1fr) minmax(0, max-content);
+    align-items: center;
+    gap: 22px;
+    padding: 13px 20px;
+    border-top: 1px solid rgba($c-border, 0.28);
+    transition: background 0.2s ease;
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+        gap: 6px;
+        padding: 14px 16px;
+    }
+}
+
+.year-row:first-child,
+.year-head + .year-row {
+    border-top: 0;
+}
+
+.year-row:hover {
+    background: rgba($c-accent, 0.04);
+}
+
+.year-date {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1px;
+    color: $c-muted;
+}
+
+.year-title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 16px;
+    color: $c-ink;
+}
+
+.year-title:hover {
+    color: $c-accent;
+}
+
+.year-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+
+    @include respond-to(mobile) {
+        justify-content: flex-start;
+        gap: 6px 10px;
+    }
+}
+
+.year-tag-more {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: $c-muted-low;
+    white-space: nowrap;
+}
+
+.year-tag {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: $c-accent;
+    white-space: nowrap;
+
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+// ---- Tag page --------------------------------------------------------------
+.tag-hash {
+    color: $c-accent;
+}

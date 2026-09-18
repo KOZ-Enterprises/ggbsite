@@ -1,0 +1,94 @@
+// =============================================================================
+// BASE
+// Element defaults: the bare tags a layout or a Markdown document emits before
+// any class touches them, plus the #main page shell. A rule belongs here only
+// if its selector names no class - the moment it needs one, it belongs in
+// _layout, _components or _pages instead.
+//
+// Contains: html, body, h1-h3, p, ul, ol, li, a, #main
+// =============================================================================
+
+@use "tokens" as *;
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0 auto;
+    background-color: $c-bg;
+    color: $c-ink;
+    font-family: $font-body;
+    font-weight: 400;
+    font-size: 1em;
+    justify-content: center;
+}
+
+h1,
+h2 {
+    color: $c-accent;
+}
+
+h1 {
+    font-size: 1.75em;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 1.5em;
+    font-weight: 550;
+}
+
+h3 {
+    font-size: 1.25em;
+    font-style: italic;
+    font-weight: 500;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+ul,
+ol {
+    margin: 5px 0;
+    padding-left: 30px;
+}
+
+ul li {
+    margin-bottom: 10px;
+}
+
+ol li {
+    margin-bottom: 10px;
+}
+
+// (0,1,1). Beats a bare .btn-primary at (0,1,0) - see the note in
+// _components.scss on why the buttons carry an explicit :visited rule.
+a,
+a:visited {
+    color: $c-accent;
+    text-decoration: none;
+}
+
+a:hover {
+    color: $c-accent;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+// The single page shell every layout renders into.
+#main {
+    padding: 10px;
+    width: 90%;
+    min-height: 600px;
+    margin: 5px auto 40px;
+    max-width: 1200px;
+
+    @include respond-to(mobile) {
+        width: auto;
+        padding: 28px 20px;
+        margin: 0 0 24px;
+    }
+}

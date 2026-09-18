@@ -1,0 +1,274 @@
+// =============================================================================
+// NAV
+// The sticky navbar and everything inside it, including the 860px switch to the
+// toggle. That breakpoint is spec-mandated and is the reason the wide tier at
+// 1024px exists: a mobile navbar must never sit above a desktop body.
+//
+// Contains: nav, .nav-shell, .nav-brand, .nav-mark, .nav-wordmark, .nav-name,
+//           .nav-caption, .nav-caption-rest, .nav-menu, .nav-item, .nav-icon,
+//           .nav-icon-bar
+// =============================================================================
+
+@use "tokens" as *;
+
+nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-shell {
+    background-color: $c-surface;
+    border-bottom: 1px solid $c-border;
+    padding: 0 5%;
+    min-height: 86px;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    position: relative;
+
+    @include respond-to(nav) {
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    @include respond-to(mobile) {
+        min-height: 68px;
+        padding: 0 20px;
+    }
+}
+
+// teal -> amber hairline under the bar
+.nav-shell::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: linear-gradient(90deg,
+            rgba($c-accent, 0) 0%,
+            rgba($c-accent, 0.55) 35%,
+            rgba($c-amber, 0.5) 70%,
+            rgba($c-accent, 0) 100%);
+    pointer-events: none;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 0;
+    text-decoration: none;
+
+    @include respond-to(mobile) {
+        gap: 12px;
+    }
+}
+
+.nav-mark {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 auto;
+    border: 2px solid $c-accent;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 16px rgba($c-accent, 0.25);
+
+    @include respond-to(mobile) {
+        width: 42px;
+        height: 42px;
+        border-radius: 10px;
+    }
+}
+
+.nav-mark img {
+    height: 26px;
+    width: auto;
+    display: block;
+
+    @include respond-to(mobile) {
+        height: 21px;
+    }
+}
+
+.nav-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nav-name {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 4px;
+    color: $c-ink;
+    line-height: 1;
+
+    @include respond-to(mobile) {
+        font-size: 16px;
+        letter-spacing: 2.5px;
+    }
+}
+
+.nav-name em {
+    font-style: normal;
+    color: $c-accent;
+}
+
+.nav-caption {
+    font-family: $font-mono;
+    font-size: 9.5px;
+    letter-spacing: 3.5px;
+    color: $c-muted;
+    line-height: 1;
+
+    @include respond-to(mobile) {
+        font-size: 10px;
+        letter-spacing: 1.5px;
+    }
+}
+
+.nav-caption-rest {
+    @include respond-to(mobile) {
+        display: none;
+    }
+}
+
+.nav-menu {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+
+    @include respond-to(nav) {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        padding-bottom: 8px;
+    }
+}
+
+.nav-shell.responsive .nav-menu {
+    @include respond-to(nav) {
+        display: flex;
+    }
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0 22px;
+    position: relative;
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 14.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-muted-alt;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    transition: color 0.25s ease, border-color 0.25s ease;
+
+    @include respond-to(nav) {
+        min-height: 48px;
+        padding: 0 4px;
+        border-bottom: 1px solid rgba($c-border, 0.5);
+    }
+}
+
+.nav-item:hover {
+    color: $c-accent;
+    border-bottom-color: $c-border;
+}
+
+// active: glowing underline with bracket ticks - no filled block
+.nav-item.active {
+    color: $c-ink;
+    border-bottom-color: transparent;
+}
+
+// COLLISION SET - each ::before/::after pair below sets the same properties at
+// the same (0,2,1) specificity as its own base rule, so the nav-tier override
+// must stay nested inside that rule. Split across two top-level blocks the way
+// the old single media query did it, the ::after border reset would land before
+// the ::after border it is meant to clear.
+.nav-item.active::before {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 2px;
+    background: $c-accent;
+    box-shadow: 0 0 10px rgba($c-accent, 0.8);
+
+    @include respond-to(nav) {
+        left: 0;
+        right: auto;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        height: auto;
+        border: 0;
+        background: $c-accent;
+    }
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 0;
+    height: 7px;
+    border-left: 2px solid $c-accent;
+    border-right: 2px solid $c-accent;
+
+    @include respond-to(nav) {
+        left: 0;
+        right: auto;
+        top: 10px;
+        bottom: 10px;
+        width: 2px;
+        height: auto;
+        border: 0;
+        background: $c-accent;
+    }
+}
+
+.nav-icon {
+    display: none;
+    background: none;
+    border: 0;
+    color: $c-accent;
+    font-size: 24px;
+    padding: 14px 16px;
+    cursor: pointer;
+
+    @include respond-to(nav) {
+        display: block;
+        margin-left: auto;
+    }
+}
+
+// hamburger bars - replaces the Font Awesome glyph (see nav.html)
+.nav-icon-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    border-radius: 1px;
+    background: $c-muted-alt;
+    transition: background 0.25s ease;
+}
+
+.nav-icon-bar + .nav-icon-bar {
+    margin-top: 5px;
+}
+
+.nav-shell.responsive .nav-icon-bar {
+    background: $c-accent;
+}

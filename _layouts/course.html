@@ -110,6 +110,7 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
 
         <section class="side-module">
             <div class="side-head">Navigate</div>
+            {%- assign idx = -1 -%}
             {% for c in all_courses %}
             {% if c.url == page.url %}
             {% assign idx = forloop.index0 %}
@@ -125,7 +126,7 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
             </a>
             {% endif %}
             {% assign next_idx = idx | plus: 1 %}
-            {% if next_idx < course_total %}
+            {% if idx >= 0 and next_idx < course_total %}
             {% assign next_course = all_courses[next_idx] %}
             <a class="side-row" href="{{ next_course.url }}">
                 <span class="side-arrow">&rarr;</span>{{ next_course.course_code }}

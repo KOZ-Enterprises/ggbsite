@@ -1,0 +1,34 @@
+---
+# Empty front matter is required: it marks this file for Jekyll processing.
+---
+
+// =============================================================================
+// GGBytes stylesheet
+//
+// Source lives in _sass/. This manifest only composes it. Compiles to
+// /assets/css/styles.css, the path _includes/head.html links.
+//
+// Where does a new rule go? The decision list lives in docs/css-architecture.md
+// and that copy is the normative one. It is deliberately not duplicated here:
+// two ordered lists in two files disagree the moment one of them is edited.
+//
+// Responsive rules live WITH their component, via @include respond-to().
+//
+// ORDER IS LOAD-BEARING. Broad to specific, so a later rule wins on equal
+// specificity exactly as it did in the single file this replaces. Three places
+// depend on it and say so at the rule: `.social-icons a` in _footer.scss must
+// outrank `a, a:visited` in _base.scss; `.page-body h2` in _content.scss must
+// outrank `.post-page h2` in _pages.scss; and the `.detail-grid` /
+// `.detail-grid-narrow` pair is kept together in _layout.scss for the same
+// reason. Reordering these @use rules changes the rendering.
+// =============================================================================
+
+@use "tokens" as *;
+@use "base";
+@use "layout";
+@use "nav";
+@use "components";
+@use "pages";
+@use "content";
+@use "footer";
+@use "utilities";

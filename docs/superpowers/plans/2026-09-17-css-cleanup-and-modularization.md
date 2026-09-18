@@ -326,8 +326,10 @@ Then change the loop from `{% for doc in page.tagged_docs %}` to `{% for doc in 
 Run:
 ```bash
 bundle exec jekyll build
-echo "csumb tag projects: $(grep -c 'wide-card' _site/tags/csumb/index.html)"
-echo "python tag projects: $(grep -c 'wide-card' _site/tags/python/index.html)"
+# Anchor the class name: a bare `wide-card` also matches wide-card-list,
+# wide-card-media, wide-card-body and wide-card-head, over-counting 3 as 13.
+echo "csumb tag projects:  $(grep -o 'class="wide-card"' _site/tags/csumb/index.html | wc -l)"
+echo "python tag projects: $(grep -o 'class="wide-card"' _site/tags/python/index.html | wc -l)"
 ```
 Expected: `csumb` → `0` (was 2 bogus course cards); `python` → `3` (real projects, unchanged).
 
@@ -769,24 +771,51 @@ When finished, `_legacy.scss` is empty and can be deleted, and **no partial shou
 
 Order matters: tokens first, then broad-to-specific, so later rules win on equal specificity exactly as they did in the single file.
 
-- [ ] **Step 6: Prove the compiled output is unchanged**
+- [ ] **Step 6: Prove the compiled output is equivalent**
 
-Reuse the Task 0 comparison:
+> **Corrected after execution.** This step originally reused Task 0's
+> normalise-and-string-compare and expected `IDENTICAL`. That is **impossible
+> given Step 4**, and the contradiction is an authoring error, not an
+> implementation problem. Sass emits a nested `@media` at the position of the
+> rule that contains it, so moving one trailing `max-width: 700px` block into
+> ~65 per-component `respond-to(mobile)` blocks necessarily rearranges the
+> output text. Measured on this repo: **4 media blocks become 77, and the file
+> grows 26,583 -> 29,783 bytes (+12%)**, every byte of it extra `@media {`
+> wrappers. Expect that growth; it is not a regression. Compare *cascade
+> behaviour*, not text.
 
 ```bash
 bundle exec jekyll build
-python - <<'PY'
-import re, io
-def norm(p):
-    s = io.open(p, encoding='utf-8').read()
-    s = re.sub(r'/\*.*?\*/', '', s, flags=re.S)
-    return re.sub(r'\s+', '', s)
-a, b = norm('/g/tmp/css-presplit.css'), norm('_site/assets/css/styles.css')
-print('IDENTICAL' if a == b else 'DIFFERS — investigate before committing')
-PY
 ```
 
-A pure reorganisation should produce identical CSS. **If it differs, find out why before proceeding** — the likely cause is a changed rule order altering the cascade, which is a real regression even though no value changed.
+Two checks, both required:
+
+1. **Declaration multiset.** Parse both stylesheets into `(media, selector,
+   property, value)` tuples and assert the multisets are equal. This proves
+   nothing was lost, added, duplicated, or value-changed by tokenisation, and
+   it discharges Step 3's "no value changed" requirement without auditing
+   tokens by hand.
+
+2. **Rendering diff.** Build both commits, then for each page load it once and
+   swap the stylesheet in place - the HTML is identical between the two
+   commits, so the DOM is guaranteed identical and only CSS varies. Diff
+   `getComputedStyle` over **every** element in `<body>` plus `::before` and
+   `::after`. Do not sample: run all built pages, all breakpoint edges
+   (390/700/701/768/860/861/1024/1025/1280), and every computed property
+   (`getComputedStyle(el).length`, 416 here), not a hand-picked subset.
+   Expect `totalDiffs: 0`.
+
+A static source-order check over "colliding" declarations is a useful third
+signal but is **necessary, not sufficient** - it is easy to build one that
+silently under-reports. Two traps, both hit in practice: comparing literal
+property names misses shorthand-vs-longhand collisions (`margin` vs
+`margin-bottom`), and an ancestor-subset heuristic for "can these match the
+same element" wrongly rejects real collisions like `.detail-grid .x` vs
+`.card .x`. If a pair is flagged, settle it against the real DOM
+(`querySelectorAll(A).some(e => e.matches(B))`) rather than by heuristic.
+
+**If the rendering diff is non-zero, stop** - a changed rule order altering the
+cascade is a real regression even though no value changed.
 
 - [ ] **Step 7: Assert no bare media queries survive**
 

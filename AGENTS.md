@@ -185,7 +185,7 @@ tags: [csumb, subject-matter]
 ```
 
 **Workflow File:** `.github/workflows/deploy.yml`
-**Status Checks:** Lint (RuboCop, HTMLProofer, yamllint, markdownlint)
+**Status Checks:** Lint (RuboCop, HTMLProofer, yamllint, markdownlint, actionlint, hadolint, dead-CSS)
 
 ## Key Files for AI Agents
 
@@ -194,7 +194,8 @@ tags: [csumb, subject-matter]
 | `_config.yml` | Jekyll config (collections, plugins) | Adding new collection type |
 | `_layouts/*.html` | HTML templates | Changing page structure |
 | `_includes/*.html` | Reusable components | Updating navigation, footers, cards |
-| `assets/css/styles.css` | Vanilla CSS | Visual updates (dark mode first!) |
+| `_sass/*.scss` | Sass partials (the stylesheet source) | Visual updates (dark mode first!) |
+| `assets/css/styles.scss` | Manifest; compiles to `/assets/css/styles.css` | Adding a partial |
 | `.rubocop.yml` | Ruby linting rules | Adjusting code standards |
 | `.github/workflows/*.yml` | CI/CD automation | Changing build/deploy process |
 | `Dockerfile` | Container definition | Changing base image or build steps |
@@ -247,8 +248,22 @@ tags: [csumb, subject-matter]
 - **YAML:** yamllint enforced (see `.yamllint.yml`)
 - **Markdown:** markdownlint enforced (see `.markdownlint-cli2.yaml`)
 - **Dockerfile:** hadolint enforced (see `.hadolint.yaml`)
-- **CSS:** Vanilla, no frameworks, dark-mode-first
+- **CSS:** Sass partials in `_sass/`, no frameworks, dark-mode-first
 - **JavaScript:** Minimal, vanilla (no jQuery required)
+
+### CSS
+
+Read `docs/css-architecture.md` before touching the stylesheet. Three rules
+carry most of the weight:
+
+- **The palette is closed.** Every colour is a token in `_sass/_tokens.scss`.
+  Four documented literals sit outside it; do not add a fifth silently.
+- **Three breakpoints only** — `respond-to(wide|nav|mobile)` at 1024 / 860 /
+  700px. A fourth width re-creates the 701-860px bug this replaced.
+- **Responsive rules live with their component**, nested via `respond-to()`.
+  No partial contains a bare `@media`.
+
+`script/dead-css.py --count` must report `0`; CI fails the build otherwise.
 
 ## Style Persona (for Content)
 
