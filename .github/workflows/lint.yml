@@ -47,7 +47,7 @@ jobs:
           echo "geometry violations: $count"
           if [ "$count" -gt 0 ]; then
             python3 script/geometry.py
-            echo "::error::$count geometry violations. Use the token scales in _sass/_tokens.scss, or change the rule in the spec - not the script's constants."
+            echo "::error::$count geometry violations. Use the token scales in _sass/_tokens.scss."
             exit 1
           fi
 
