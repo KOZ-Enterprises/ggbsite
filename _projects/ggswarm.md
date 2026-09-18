@@ -33,14 +33,14 @@ The project is currently progressing through the following hardware-focused road
 
 | Phase | Title | Status | Details |
 | :--- | :--- | :--- | :--- |
-| **0** | **Capstone Baseline** | ✅ Complete | v1.0.0-capstone simulation baseline. |
-| **1** | **Shared-Scene Training** | 🔨 Active | Multi-drone training in complex shared simulation scenes. |
-| **2** | **Sim-to-Real Baseline** | 📅 Planned | Initial deployment to Crazyflie drones with LPS. |
-| **3** | **Decentralized Assignment** | 📅 Planned | Transitioning to peer-to-peer ranging and consensus logic. |
-| **4** | **Drone Show Capability** | 📅 Planned | Integration with **Skybrush** for expressive shapes and light shows. |
-| **5** | **Outdoor Deployment** | 📅 Planned | Extended fault tolerance and RTK-GPS integration. |
-| **6** | **Onboard Compute** | 📅 Planned | Moving all inference and obstacle avoidance to onboard chips. |
-| **7** | **Hardware-Agnostic** | 🚀 Stretch | General-purpose adaptive swarm execution layer. |
+| **0** | **Capstone Baseline** | Complete | v1.0.0-capstone simulation baseline. |
+| **1** | **Shared-Scene Training** | Active | Multi-drone training in complex shared simulation scenes. |
+| **2** | **Sim-to-Real Baseline** | Planned | Initial deployment to Crazyflie drones with LPS. |
+| **3** | **Decentralized Assignment** | Planned | Transitioning to peer-to-peer ranging and consensus logic. |
+| **4** | **Drone Show Capability** | Planned | Integration with **Skybrush** for expressive shapes and light shows. |
+| **5** | **Outdoor Deployment** | Planned | Extended fault tolerance and RTK-GPS integration. |
+| **6** | **Onboard Compute** | Planned | Moving all inference and obstacle avoidance to onboard chips. |
+| **7** | **Hardware-Agnostic** | Stretch | General-purpose adaptive swarm execution layer. |
 
 ---
 
