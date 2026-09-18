@@ -29,6 +29,18 @@ jobs:
       - name: Build site (Jekyll)
         run: JEKYLL_ENV=production bundle exec jekyll build --quiet
 
+      # Must run after the build: _site is the oracle, since it contains every
+      # page Jekyll renders and the source templates alone do not.
+      - name: Dead CSS check
+        run: |
+          count=$(python3 script/dead-css.py --count)
+          echo "dead selectors: $count"
+          if [ "$count" -gt 0 ]; then
+            python3 script/dead-css.py
+            echo "::error::$count unused CSS selectors. Remove them or add the class to a template."
+            exit 1
+          fi
+
       - name: HTMLProofer (internal links)
         continue-on-error: true
         run: >
