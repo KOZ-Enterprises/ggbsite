@@ -12,29 +12,18 @@
 @use "tokens" as *;
 
 // ---- Home: intro band ------------------------------------------------------
+// COLLISION SET - the home band is the shared treatment from _layout.scss,
+// scaled up. Both rules are (0,1,0) and both set padding and margin, so this
+// wins only because _pages.scss loads after _layout.scss. Do not move it
+// earlier, and do not restate the border, the radius or the grid here.
 .intro-band {
-    @include blueprint-grid($grid-pitch-band);
-    border: 1px solid $c-border;
-    border-radius: $radius-surface;
-    padding: 52px 48px;
-    margin: 0 0 40px;
+    padding: $space-6;
+    margin: 0 0 $space-5;
 
     @include respond-to(mobile) {
-        padding: 28px 20px;
-        margin-bottom: 24px;
+        padding: $space-4 $space-2;
+        margin: 0 0 $space-3;
     }
-}
-
-.intro-inner {
-    max-width: 780px;
-}
-
-.intro-kicker {
-    font-family: $font-mono;
-    font-size: $text-meta;
-    letter-spacing: 3px;
-    color: $c-amber;
-    margin: 0 0 16px;
 }
 
 .intro-actions {

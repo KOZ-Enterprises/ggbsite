@@ -12,9 +12,26 @@
 @use "tokens" as *;
 
 // ---- Page head (Projects, Coursework, Archives, About) ---------------------
-.page-head {
-    max-width: 820px;
-    margin: 0 0 28px;
+// The page's opening surface: one per page, always at the top, and the only
+// place the blueprint grid shows. Blog posts are deliberately excluded -
+// .post-head is a reading surface and the texture fights body prose.
+//
+// max-width is deliberately NOT set. It used to sit on .page-head, but a band
+// has to span the content column or index and detail pages get visibly
+// different widths. The reading measure is carried by .page-lead's own 820px.
+.page-head,
+.detail-head,
+.intro-band {
+    @include blueprint-grid($grid-pitch-band);
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+    padding: $space-4;
+    margin: 0 0 $space-4;
+
+    @include respond-to(mobile) {
+        padding: $space-3 $space-2;
+        margin: 0 0 $space-3;
+    }
 }
 
 .page-kicker {
@@ -66,23 +83,7 @@
     color: $c-ink;
 }
 
-.page-rule {
-    height: 1px;
-    background: $c-rule;
-    // Longhand after shorthand: the mobile margin-bottom only wins because the
-    // media block is emitted after this rule's own `margin`. Keep it nested.
-    margin: 0 0 32px;
-
-    @include respond-to(mobile) {
-        margin-bottom: 24px;
-    }
-}
-
 // ---- Detail page head ------------------------------------------------------
-.detail-head {
-    margin-bottom: 32px;
-}
-
 .detail-meta {
     display: flex;
     align-items: center;
