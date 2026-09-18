@@ -132,10 +132,15 @@ Expected: `IDENTICAL`. **This has been prototyped end to end and does pass** —
 - [ ] **Step 5: Confirm the new tokens emit nothing**
 
 ```bash
-grep -c "space-\|radius-surface\|grid-pitch" _site/assets/css/styles.css
+grep -oE "radius-surface|grid-pitch-[a-z]+|space-half" _site/assets/css/styles.css | wc -l
 ```
 
 Expected: `0`. Sass variables never reach the output.
+
+Use `grep -o … | wc -l`, not `grep -c`. The compressed stylesheet is a single
+line, so `grep -c` counts matching *lines* and returns 1 for any match at all.
+A bare `space-` also matches the pre-existing `justify-content:space-between`,
+which is a false positive unrelated to these tokens.
 
 - [ ] **Step 6: Create the geometry checker**
 
@@ -314,7 +319,7 @@ git checkout _sass/_utilities.scss
 git status --porcelain _sass/_utilities.scss   # must be empty
 ```
 
-All eight cases have been verified against this exact script; if any disagrees, the script was transcribed wrongly.
+All seven probes above have been verified against this exact script, along with four more covering tokens, the half-step compound, comments and an element selector; if any disagrees, the script was transcribed wrongly.
 
 - [ ] **Step 9: Commit**
 
