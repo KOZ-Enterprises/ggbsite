@@ -4,7 +4,13 @@
 **Date:** 2026-09-17
 **Scope:** page anatomy and geometry across every archetype on garygigabytes.com
 
-**Revision note:** the first draft of this spec measured the geometry with a grep that matched only `margin: 0 0 Npx` and `margin-bottom: Npx`. It therefore reported 12 spacing values when there are 28, estimated the blast radius at "around eight rules" when it is 53 declarations, and omitted `gap` entirely — 55 declarations, 19 distinct values. The page-anatomy findings were correct and survive unchanged; every number in the geometry sections below has been re-measured. Two Success Criteria were self-defeating and are rewritten.
+**Revision note:** this spec has been reviewed twice and rewritten twice.
+
+The first review found the geometry had been measured with a grep matching only shorthand `margin`, which under-reported the inventory. The second review found that the rewrite fixing that had introduced fresh contradictions: the band's concrete values in Section 2 disagreed with the remapping table in Section 3, the enforcement rule in Section 6 rejected the two exemptions Section 4 grants, and the in-scope total was still quoted three different ways.
+
+Two structural changes prevent a third recurrence. **Every value is stated exactly once** — the band's own values live in Section 2 and nowhere else, and the remapping table explicitly does not govern them. And **every exemption is a named selector**, not a category, because a linter reading `_sass/*.scss` cannot infer that one `margin` is type-to-type and another is a block margin.
+
+The page-anatomy findings have been correct and unchanged across both reviews. Every defect found so far has been in the spacing scale and its enforcement.
 
 ## The problem
 
@@ -23,7 +29,17 @@ Measured on the current build:
 | `about.html:7-11` | bare kicker/title/lead, no wrapper, inside `.bio-grid > .bio-main` | none |
 | `_layouts/post.html:26` | `.post-head` | none |
 
-**Spacing has no scale.** 28 distinct px values appear in `margin*`/`padding*` declarations: 2, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16, 18, 20, 22, 24, 26, 28, 30, 32, 36, 40, 44, 48, 52, 96. A further 19 distinct values appear in `gap`/`row-gap`/`column-gap` across 55 declarations, 39 of them off any rhythm — including the structural ones (`.bio-grid` at 44px, the responsive collapses at 28px).
+**Spacing has no scale.** 28 distinct px values appear in `margin*`/`padding*` declarations, and a further 19 in `gap`/`row-gap`/`column-gap`. Counting every untokenised declaration of `margin`, `padding` or `gap` that carries a px value — comments stripped, horizontal-only components ignored — there are **182 governed declarations, of which 100 carry an off-scale vertical value**:
+
+| Value | Count | Value | Count | Value | Count |
+| --- | --- | --- | --- | --- | --- |
+| 7 | 2 | 14 | 16 | 26 | 3 |
+| 9 | 1 | 15 | 1 | 28 | 11 |
+| 10 | 18 | 18 | 9 | 36 | 2 |
+| 12 | 12 | 20 | 10 | 44 | 6 |
+| 13 | 4 | 22 | 4 | 52 | 1 |
+
+By partial: `_components` 32, `_pages` 32, `_layout` 16, `_nav` 6, `_base` 5, `_content` 5, `_footer` 4.
 
 **Seven corner radii, five bypassing the tokens.** `$radius-card` 6px and `$radius-chip` 3px are defined. Raw literals in use: 12px (`.tech-chip`, `.nav-mark`), 10px (`.nav-mark` at mobile), 4px (`.intro-band`, `.feature-hero`, `.portrait-frame img`), 2px (`.tl-marker`), 1px (`.nav-icon-bar`). Plus `border-radius: 50%` on `.status-dot`.
 
@@ -63,19 +79,29 @@ PAGE ACTIONS    back-link / primary action     (detail pages)
 
 ### 2. The band
 
-`.page-head`, `.detail-head` and `.intro-band` become one shared rule:
+`.page-head`, `.detail-head` and `.intro-band` become one shared rule.
 
-- blueprint grid at `$grid-pitch-band` (40px)
-- 1px `$c-border`
-- `$radius-surface`
-- `padding: $space-4` (32px); at mobile `$space-3 $space-2` (24px 16px)
-- `margin: 0 0 $space-4` (32px)
+**These are the band's values. They are set here, not derived from the remapping table in Section 3, and the table does not govern them.** The band is a new shared surface, so its geometry is chosen rather than migrated; `.page-head`'s current 28px margin and `.detail-head`'s 32px are both superseded.
 
-`.intro-band` keeps only what differs: `padding: $space-6` (48px, from 52/48); at mobile `$space-4 $space-2` (32px 16px, from 28/20); `margin: 0 0 $space-5` (40px, unchanged).
+| | Shared band | `.intro-band` override |
+| --- | --- | --- |
+| padding, desktop | `$space-4` (32px) | `$space-6` (48px) |
+| padding, mobile | `$space-3 $space-2` (24px 16px) | `$space-4 $space-2` (32px 16px) |
+| margin-bottom, desktop | `$space-4` (32px) | `$space-5` (40px) |
+| margin-bottom, mobile | `$space-3` (24px) | `$space-3` (24px) |
+| border | 1px `$c-border` | inherited |
+| radius | `$radius-surface` | inherited |
+| grid | `$grid-pitch-band` (40px) | inherited |
 
-**Width:** the band spans the content column on every page. No `max-width` is set on the band itself. `.page-head`'s current `max-width: 820px` is removed; the reading measure is carried by `.page-lead`, which already sets its own `max-width: 820px`. Index-page headers therefore widen; nothing narrows.
+Surface padding uses scale values on **both** axes. This is a deliberate exception to the horizontal exemption in Section 3, which exists for inline and navbar insets, not for the padding of a bordered surface.
 
-**`.intro-inner` is deleted** — both the wrapper in `index.html` and the rule in `_sass/_pages.scss`. Its 780px measure would otherwise sit 40px inside `.page-lead`'s 820px and make the home lead narrower than every other page's. Deleting the rule without deleting the markup, or the reverse, fails the dead-selector gate.
+**Width:** the band spans the content column on every page. No `max-width` is set on the band itself. `.page-head`'s current `max-width: 820px` is removed; the reading measure is carried by `.page-lead`, which already sets its own `max-width: 820px`. `.page-kicker` and `.page-title` have no measure of their own and will run the full column — at 1280px that is a 1132px band and a 1066px text column. No current title or kicker is close to that length, so nothing reflows; what visibly changes is the band *surface*, which is the intent.
+
+Every element inside `.page-head` and `.detail-head` also narrows by the band's padding: 64px at desktop, 32px at mobile. At 390px the text column becomes 318px, down from 350px.
+
+**`.intro-inner` is deleted** — both the wrapper in `index.html` and the rule in `_sass/_pages.scss`. Its 780px measure would otherwise sit 40px inside `.page-lead`'s 820px and make the home lead narrower than every other page's. Nothing depends on it: no descendant selector references it, and `.intro-kicker`/`.intro-actions` are top-level rules. Deleting the rule without the markup, or the reverse, fails the dead-selector gate.
+
+**`.intro-kicker` is unified into `.page-kicker`.** The home band is the one page that already had a band, and it uses `.intro-kicker` (`index.html:9`), so the kicker hierarchy in Section 3 would otherwise never reach it. The two rules are identical but for `text-transform: uppercase` — which is a no-op, since the home kicker text is already uppercase in the markup — and their margin. `index.html` switches class and the `.intro-kicker` rule is deleted. `script/verify-redesign.sh` asserts on the kicker's text, not its class, so the gate is unaffected.
 
 **The grid appears on the band and on the two media backplates, and nowhere else.** The backplates stay: they are fallbacks behind images, not decoration.
 
@@ -86,7 +112,7 @@ PAGE ACTIONS    back-link / primary action     (detail pages)
 Six steps on an 8px rhythm, plus one tightly-scoped half-step. The 40px blueprint pitch is five steps, so texture and spacing share a grid.
 
 ```scss
-$space-half:  4px;   // type-to-type inside a band or card ONLY
+$space-half:  4px;   // legal ONLY in the compound below, on the named selector
 $space-1:     8px;
 $space-2:    16px;
 $space-3:    24px;
@@ -95,35 +121,65 @@ $space-5:    40px;
 $space-6:    48px;
 ```
 
-**What the scale governs:** block margins, padding on surfaces, and layout `gap`. Roughly 57 declarations.
+**What the scale governs:** the vertical axis of `margin`, `padding` and `gap`. The counts are in The Problem above and are not restated here. The band's own geometry is set in Section 2 and is not part of this.
 
-**What it does not govern, stated as categories rather than a line list:**
+**Exemptions are named selectors, not categories.** A linter reading `_sass/*.scss` sees a property, a value and a selector string; it cannot infer that one `margin` is type-to-type and another is structural. Any exemption a script cannot apply mechanically is not an exemption, it is a hole. The complete list:
 
-- **Small-component optical padding** — chips, status pills and badges use 2-5px padding tuned to a 13px type size. An 8px floor would visibly fatten them. (~9-11 declarations)
-- **Horizontal-only values** — the scale is vertical rhythm. `padding: 0 20px` on the navbar is horizontal inset, not rhythm. (~15 declarations)
-- **Negative offsets** — `_sass/_pages.scss:124 margin-top: -96px` is a deliberate overlap, not spacing.
-- **Properties other than margin, padding and gap** — `border`, `letter-spacing` and gradient stops are not spacing and are never inspected.
+*Optical padding on chips and badges* — vertical padding of 6px or less, where an 8px floor would visibly fatten a component set in 10-11px type:
 
-`$space-half` exists for one purpose: spacing between type elements inside a band or a card, where the 8px floor destroys deliberate hierarchy. Today `.page-kicker` sits 14px above the title and `.page-title` 18px above the lead — the kicker is bound tighter on purpose. Flattening both to 16px would remove that distinction on the three elements this spec is most about. It becomes kicker→title 12px (`$space-1 + $space-half`), title→lead 16px (`$space-2`). `$space-half` is not valid for block margins, surface padding or layout gap.
+| Selector | Declaration |
+| --- | --- |
+| `.tech-chip` | `padding: 2px 8px` |
+| `.status-tag` | `padding: 5px 11px` |
+| `.status-badge` | `padding: 3px 9px` |
+| `.card-chips .tech-chip` | `padding: 3px 8px` |
+| `.side-chips .tech-chip` | `padding: 4px 9px` |
+| `.side-timeline` | `padding: 6px 0` |
+| `.post-tagchip` | `padding: 4px 9px` |
 
-**Remapping.** Every value that moves, with its new token:
+*Horizontal-only insets* — the scale is vertical rhythm, and these set no vertical value at all:
 
-| Current | New | Current | New |
-| --- | --- | --- | --- |
-| 10 | `$space-1` 8 | 30 | `$space-4` 32 |
-| 12 | `$space-1 + $space-half` 12 (type) / `$space-2` 16 (block) | 36 | `$space-4` 32 |
-| 13 | exempt (optical) | 44 | `$space-5` 40 |
-| 14 | 12 (type) / `$space-2` 16 (block) | 52 | `$space-6` 48 |
-| 15 | `$space-2` 16 | 96 | exempt (negative offset) |
-| 18 | `$space-2` 16 | 20 | `$space-3` 24 (vertical) / exempt (horizontal) |
-| 22 | `$space-3` 24 | 26 | `$space-3` 24 |
-| 28 | `$space-3` 24 | | |
+| Selector | Declaration |
+| --- | --- |
+| `.social-icons a` | `margin: 0 10px`, `padding: 0 14px` |
+| `.nav-shell` | `padding: 0 20px` (twice) |
+| `.nav-item` | `padding: 0 22px`, `padding: 0 4px` |
 
-Values already on the scale (8, 16, 24, 32, 40, 48) are unchanged. Values at or below 6px are optical and exempt.
+*Negative offsets* — `_sass/_pages.scss:124 margin-top: -96px` is a deliberate overlap, not rhythm.
+
+*Properties other than `margin`, `padding` and `gap`* — `border`, `letter-spacing` and gradient stops are never inspected.
+
+**`$space-half` is legal in exactly one place.** It exists because `.page-kicker` sits 14px above the title while `.page-title` sits 18px above the lead — the kicker is bound tighter on purpose, and a flat 8px scale erases that distinction on the three elements this spec is most about.
+
+The rule a script can apply: **`$space-half` may appear only inside the compound `$space-1 + $space-half` (12px), and only on `.page-kicker`'s `margin-bottom`.** A bare `12px` is rejected everywhere, including there. Anything else that wants a half-step is a spec change, not a judgement call at the call site.
+
+That yields kicker→title 12px and title→lead 16px.
+
+**Remapping.** Every off-scale value and its target. The band's values are excluded — see Section 2.
+
+| Current | Count | New |
+| --- | --- | --- |
+| 7 | 2 | `$space-1` 8 |
+| 9 | 1 | `$space-1` 8 |
+| 10 | 18 | `$space-1` 8 |
+| 12 | 12 | `$space-2` 16 |
+| 13 | 4 | `$space-2` 16 — `.side-head`, `.side-row`, `.side-kv`, `.year-row`; these are sidebar rows, not chips, so the optical exemption does not reach them |
+| 14 | 16 | `$space-2` 16, except `.page-kicker`'s `margin-bottom` → `$space-1 + $space-half` 12 |
+| 15 | 1 | `$space-2` 16 |
+| 18 | 9 | `$space-2` 16 |
+| 20 | 10 | `$space-3` 24 where vertical; the horizontal-only cases are exempt above |
+| 22 | 4 | `$space-3` 24 |
+| 26 | 3 | `$space-3` 24 |
+| 28 | 11 | `$space-3` 24 |
+| 36 | 2 | `$space-4` 32 |
+| 44 | 6 | `$space-5` 40 |
+| 52 | 1 | the sole occurrence is `.intro-band`'s padding, set in Section 2 |
+
+Values already on the scale (8, 16, 24, 32, 40, 48) do not move. Values of 6px or less are optical; the only ones in the governed set are the named exemptions above.
 
 ### 4. Radius scale
 
-Three named tokens plus two documented exemptions.
+Three named tokens plus two documented px exemptions. (`.status-dot`'s `border-radius: 50%` is not a px literal and is outside the rule entirely.)
 
 ```scss
 $radius-surface:  6px;   // cards, bands, modules, heroes, code blocks, media
@@ -165,7 +221,7 @@ The check must be **axis-aware, longhand-aware and comment-skipping**, or it is 
 - evaluate only the **vertical** axis of shorthand values, since horizontal insets are out of scope
 - skip comments, so prose like `` // `margin: 0 auto; padding: 20px` `` is not a violation
 - skip the exempt categories in Section 3 by rule, not by a hand-maintained list of line numbers
-- reject any `border-radius` px literal outside the token definitions
+- reject any `border-radius` px literal, **except** the two exemptions named in Section 4, which are recognised by an `// OPTICAL` comment marker on the line rather than by line number
 
 It reports `file:line` for each violation.
 
@@ -175,7 +231,7 @@ Enforcement is the point rather than an extra. 28 spacing values and seven radii
 
 `docs/css-architecture.md` is the normative reference and is updated in the same change. Specifically:
 
-- the `_tokens.scss` row gains the spacing scale, the radius scale and the `blueprint-grid()` mixin
+- the `_tokens.scss` row gains the spacing scale, the radius scale, the `$grid-pitch-band` / `$grid-pitch-media` tokens and the `blueprint-grid()` mixin
 - the `_layout.scss` row gains the band
 - the `_pages.scss` row loses `.intro-band` as a one-page component
 - a new section states the page skeleton, the band rule, the two scales and their exemptions
@@ -187,11 +243,11 @@ Merging `.page-head, .detail-head, .intro-band` into one rule in `_layout.scss` 
 
 1. Every page has exactly one header band, except blog posts, which have none. (13 pages currently have no header element at all: `/about/` and the 12 course pages.)
 2. Band width is identical across archetypes at a given viewport, and no band sets `max-width`.
-3. The enforcement check reports zero violations, where a violation is an off-scale vertical `margin`/`padding`/`gap` value outside the Section 3 exemption categories.
+3. The enforcement check reports zero violations, where a violation is an off-scale vertical `margin`/`padding`/`gap` value on a selector not in Section 3's exemption tables. Every currently off-scale declaration is either remapped by Section 3's table or named in one of its exemption tables; none is left to an implementer's judgement.
 4. `grep -rn "border-radius:[^;]*px" _sass/` returns nothing but the two documented nav exemptions.
 5. The blueprint grid appears on the band and on the two media backplates, nowhere else.
 6. `.page-rule` and `.intro-inner` exist in neither templates nor Sass.
-7. Text in the band meets AA against `$c-bg`: `.page-kicker`, `.page-title` and `.page-lead` at 4.5:1 or better, measured on a banded page. The grid is `rgba($c-accent, 0.045)` and should be negligible, but this site has already shipped one AA failure from stacked transparency.
+7. Text in the band meets AA against `$c-bg`: `.page-kicker`, `.page-title` and `.page-lead` at 4.5:1 or better, measured on `/` and on one index and one detail page. (`.page-kicker` exists on all three once `.intro-kicker` is unified per Section 2.) The grid is `rgba($c-accent, 0.045)` and should be negligible, but this site has already shipped one AA failure from stacked transparency.
 8. The existing gates still pass: 26 build assertions, 0 dead selectors, no bare `@media` outside `_tokens.scss`, markdownlint clean, `bundle exec rubocop` clean.
 9. No horizontal overflow at 390, 768, 861 or 1280 on any archetype.
 
@@ -204,7 +260,7 @@ Merging `.page-head, .detail-head, .intro-band` into one rule in `_layout.scss` 
 
 ## Risks
 
-- **The spacing remap is a large visible change** — roughly 57 declarations, not the handful the first draft claimed. It cannot be verified by the byte-identical comparison used for pure refactors. Verification is visual, per archetype, per viewport.
+- **The spacing remap is a large visible change** — see the inventory in The Problem for the count and its distribution across partials. Both earlier drafts of this spec under-reported it, the first by a factor of two and the second by nearly half. It cannot be verified by the byte-identical comparison used for pure refactors. Verification is visual, per archetype, per viewport.
 - **The enforcement check is the hard part of this work.** A naive implementation is over-inclusive (flagging chip padding and horizontal insets the spec calls correct) and simultaneously under-inclusive (blind to longhand, where most violations are). Both failure modes were present in the first draft of this spec. Budget for the check being harder than the remap, and test it against the known-correct exemptions before wiring it into CI.
 - **Removing `.page-head`'s `max-width` widens three index headers.** Intended, but it is the change most likely to look wrong at first glance.
 - **`about.html` restructuring touches a two-column layout.** Moving the heading out of `.bio-main` may affect how `.bio-grid` resolves.
