@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "ggTrader"
-image: "/assets/imgs/project/tradingbot.png"
+image: "/assets/imgs/project/ggtrader-logo.png"
 description: "An algorithmic trading bot and a research framework for professional strategy development."
 objective: "Create a reproducible and scalable trading research and execution framework for professional traders."
 status: "active"
