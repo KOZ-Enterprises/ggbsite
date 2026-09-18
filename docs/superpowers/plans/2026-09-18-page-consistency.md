@@ -27,13 +27,13 @@
 
 ```text
 Task 1 (tokens + mixin + script/geometry.py)
-   ├── Task 2 (radius)    ─┐   clears 5 of the 95
-   ├── Task 3 (band)      ─┼─  clears 1 of the 95
-   └── Task 4 (spacing)   ─┘   clears 89 of the 95
+   ├── Task 2 (radius)    ─┐   clears 8 of the 100
+   ├── Task 3 (band)      ─┼─  clears 3 of the 100
+   └── Task 4 (spacing)   ─┘   clears 89 of the 100
                             └── Task 5 (wire the gate into CI) ── Task 6 (docs)
 ```
 
-`script/geometry.py` reports **95 violations** on the tree as it stands today. Tasks 2, 3 and 4 each drive a known share of that to zero and can run in any order or in parallel once Task 1 is committed. Task 5 only adds the CI step, and must come last because the gate fails on anything the other three have not yet fixed.
+`script/geometry.py` reports **100 violations** on the tree as it stands today — 8 `border-radius` literals, 3 in rules the band task rewrites, and 89 spacing declarations. Tasks 2, 3 and 4 each drive a known share of that to zero and can run in any order or in parallel once Task 1 is committed. Task 5 only adds the CI step, and must come last because the gate fails on anything the other three have not yet fixed.
 
 ---
 
@@ -240,7 +240,7 @@ if __name__ == "__main__":
 python script/geometry.py --count
 ```
 
-Expected: **95**. That is the debt Tasks 2, 3 and 4 pay off — 5 radius literals (Task 2), `.intro-band`'s 52px padding (Task 3), and 89 spacing declarations (Task 4). A different number means the rules or the tree differ from what this plan was written against; investigate before continuing.
+Expected: **100**. That is the debt Tasks 2, 3 and 4 pay off — 8 radius literals (Task 2), `.page-head`'s margin plus `.intro-band`'s two paddings (Task 3), and 89 spacing declarations (Task 4). A different number means the rules or the tree differ from what this plan was written against; investigate before continuing.
 
 - [ ] **Step 8: Prove the checker works in both directions**
 
@@ -253,7 +253,7 @@ printf '
     margin-bottom: 13px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 96 (95 + 1)
+python script/geometry.py --count      # expect 101 (100 + 1)
 git checkout _sass/_utilities.scss
 
 # MUST flag: an unmarked radius
@@ -262,7 +262,7 @@ printf '
     border-radius: 7px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 96
+python script/geometry.py --count      # expect 101
 git checkout _sass/_utilities.scss
 
 # MUST flag: a violation after an optical rule. Regression test - an earlier
@@ -277,7 +277,7 @@ h2 {
     margin-bottom: 13px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 96, NOT 95
+python script/geometry.py --count      # expect 101, NOT 100
 git checkout _sass/_utilities.scss
 
 # must NOT flag: horizontal-only inset
@@ -286,7 +286,7 @@ printf '
     padding: 0 22px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 95
+python script/geometry.py --count      # expect 100
 git checkout _sass/_utilities.scss
 
 # must NOT flag: optical <= 6px
@@ -295,7 +295,7 @@ printf '
     padding: 2px 8px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 95
+python script/geometry.py --count      # expect 100
 git checkout _sass/_utilities.scss
 
 # must NOT flag: a marked optical radius
@@ -304,7 +304,7 @@ printf '
     border-radius: 7px;  // OPTICAL - probe
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 95
+python script/geometry.py --count      # expect 100
 git checkout _sass/_utilities.scss
 
 # must NOT flag: a negative offset
@@ -313,7 +313,7 @@ printf '
     margin-top: -96px;
 }
 ' >> _sass/_utilities.scss
-python script/geometry.py --count      # expect 95
+python script/geometry.py --count      # expect 100
 git checkout _sass/_utilities.scss
 
 git status --porcelain _sass/_utilities.scss   # must be empty
@@ -333,7 +333,7 @@ Spacing scale, radius scale, grid pitch tokens, and a mixin replacing three
 hand-copied gradient pairs at two pitches. Compiled CSS is byte-identical, so
 the migrations that follow land on a proven-neutral base.
 
-Also adds script/geometry.py, which reports 95 violations on the tree as it
+Also adds script/geometry.py, which reports 100 violations on the tree as it
 stands. It is a local tool for now; the next three tasks each drive a known
 share of that to zero, and only then is it wired into CI.
 
@@ -425,10 +425,10 @@ Then in the browser at 1280px on `/projects/ggswarm/`, confirm every `.tech-chip
 bash script/verify-redesign.sh          # 26 PASS
 python script/dead-css.py --count       # 0
 python script/geometry.py | grep -c border-radius    # expect 0
-python script/geometry.py --count                     # expect 90, down from 95
+python script/geometry.py --count                     # expect 92, down from 100
 ```
 
-Every radius violation is now gone; the 90 remaining are `.intro-band`'s padding (Task 3) and the spacing remap (Task 4). If a radius line still reports, it is missing either a token or its `// OPTICAL` marker.
+Every radius violation is now gone; the 92 remaining are the three the band task owns and the 89 spacing declarations. If a radius line still reports, it is missing either a token or its `// OPTICAL` marker.
 
 - [ ] **Step 8: Commit**
 
@@ -571,7 +571,7 @@ find _site -name "*.html" | wc -l       # 153
 grep -rn "@media" _sass/ | grep -v _tokens.scss || echo ok
 ```
 
-`.intro-band`'s `padding: 52px 48px` was the one spacing violation this task owns; it is now `$space-6`. The total drops by one.
+This task owns three violations: `.page-head`'s `margin: 0 0 28px`, and `.intro-band`'s desktop `52px 48px` and mobile `28px 20px` paddings. All three become tokens, so the total drops from 92 to 89.
 
 - [ ] **Step 9: Verify one band per page, at every breakpoint**
 
@@ -720,7 +720,7 @@ print(f"total: {total}")
 python script/remap-spacing.py
 ```
 
-Expected: **89**, the share of the 95 baseline this task owns. (Task 2 clears 5 radius literals; Task 3 clears `.intro-band`'s 52px padding.) A materially different total means the axis logic or the target table differs from what this plan was written against; investigate before building.
+Expected: **89**, the share of the 100 baseline this task owns. (Task 2 clears 8 radius literals; Task 3 clears 3 band declarations.) A materially different total means the axis logic or the target table differs from what this plan was written against; investigate before building.
 
 - [ ] **Step 4: Apply the one hand edit the script cannot make**
 
@@ -732,15 +732,16 @@ Expected: **89**, the share of the 95 baseline this task owns. (Task 2 clears 5 
 
 This is 12px, and keeps the kicker bound tighter to the title than the title is to the lead — the distinction a flat scale would erase.
 
-- [ ] **Step 5: Verify no off-scale value survives**
+- [ ] **Step 5: Verify with the checker, not a grep**
 
 ```bash
 bundle exec jekyll build
-grep -rnE "(margin|padding|gap)[a-z-]*:[^;]*\b(7|9|10|12|13|14|15|18|20|22|26|28|36|44)px" _sass/ \
-  | grep -v "// OPTICAL"
+python script/geometry.py --count
 ```
 
-Expected: only lines whose owning selector is in the spec's exemption tables. Anything else is a miss.
+Expected: **0** if Tasks 2 and 3 have already run; otherwise exactly the count they still owe — 8 radius literals if Task 2 has not run, 3 band declarations if Task 3 has not.
+
+Run `python script/geometry.py` and confirm every remaining line belongs to one of those two tasks. A *spacing* violation surviving here is a miss in the migration, and the `--count` is the acceptance measure — do not substitute a grep, which is how the axis and optical rules get accidentally re-implemented wrongly.
 
 - [ ] **Step 6: Delete the migration script**
 
