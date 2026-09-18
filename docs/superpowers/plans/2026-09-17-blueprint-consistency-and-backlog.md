@@ -4,71 +4,78 @@
 
 **Goal:** Make the blueprint grid a deliberate, reusable page-header treatment instead of a one-off on the home page, and clear the backlog of verified defects and stale metadata left from the September 2026 redesign.
 
-**Architecture:** The grid is currently three hand-copied `linear-gradient` pairs at two different pitches. Task 1 extracts it into a `blueprint-grid()` mixin in `_tokens.scss`, proves that refactor changes no bytes, and only then introduces a shared `.page-band` header surface that every index and detail page uses. Tasks 2-5 are independent and can run in any order.
+**Architecture:** The grid is three hand-copied `linear-gradient` pairs at two pitches. Task 1 extracts it into a `blueprint-grid()` mixin, proves that extraction changes no bytes, then bands the header elements that **already exist** — `.page-head`, `.detail-head`, `.intro-band` — rather than introducing a parallel wrapper class. Tasks 2-5 are independent of Task 1 and of each other.
 
 **Tech Stack:** Jekyll 4.4.1, native Sass via `jekyll-sass-converter` 3.1.0 / `sass-embedded` 1.93.2, Playwright MCP for visual verification.
 
-**Spec:** No separate spec. This plan is self-contained; every decision is recorded inline with the evidence behind it. Background on the CSS architecture lives in `docs/css-architecture.md`.
+**Spec:** No separate spec. Every decision is recorded inline with the evidence behind it. Background on the CSS architecture is in `docs/css-architecture.md`.
+
+**Revision note:** this plan was reviewed before execution and rewritten. The review found a verification step that the plan's own preceding step made impossible — the same defect that shipped in the previous plan — plus a script that corrupted a content file, a wrong filename, and a task with no executable content. All are fixed below. The review's structural recommendation (band the existing header elements instead of adding `.page-band`) was adopted; it removes five template edits, the dead-selector exposure, and a `margin` collision.
 
 ## Global Constraints
 
 - **The palette is closed.** Sixteen tokens in `_sass/_tokens.scss`. Three literals are documented exceptions (`#f5f5f5`, `#c3cece`, `#8fd6d4`); do not add a fourth without a comment at the line.
 - **Three breakpoints only**, reached solely through `@include respond-to(wide|nav|mobile)`. No bare `@media` outside `_tokens.scss`. Verify: `grep -rn "@media" _sass/ | grep -v _tokens.scss` must print nothing.
-- **Dead selectors must stay at zero.** `python script/dead-css.py --count` → `0`. This is a build-failing CI gate; a new class that no template uses will fail the Lint workflow.
+- **Dead selectors must stay at zero.** `python script/dead-css.py --count` → `0`. This is a build-failing CI gate. Note it reports **class** selectors; an attribute selector like `[data-status="x"]` is invisible to it.
 - **`script/verify-redesign.sh` must report 26 PASS, exit 0.**
-- **`docs/**` is linted by CI** (the markdownlint ignores cover `docs/superpowers/**`, not `docs/**`). Any new guide must pass `npx markdownlint-cli2 --config .markdownlint-cli2.yaml`.
-- **`CLAUDE.md` is a symlink to `AGENTS.md`** (git mode `120000`, content exactly `AGENTS.md`, no trailing newline). Never write to it. Never "fix" a trailing-newline warning on it.
-- **The Bash tool's sandbox discards writes to the project directory between calls.** Use `dangerouslyDisableSandbox: true` for anything that builds, writes, or must persist. Three agents lost time to this.
-- **`_config.yml` excludes `docs/`**, so plans and guides are not published.
-- **Deploy is `publish`.** Pushing there builds a Docker image via Cloud Build and deploys to Cloud Run. `assets/css/styles.css` is generated, not committed.
-- **Cloudflare caches assets for 30 days** (`max-age=2592000`) and there is no CLI or API token on this machine. Changing an image means changing its filename.
+- **`docs/**` is linted by CI** (ignores cover `docs/superpowers/**`, not `docs/**`).
+- **`CLAUDE.md` is a symlink to `AGENTS.md`** (mode `120000`, content exactly `AGENTS.md`, no trailing newline). Never write to it.
+- **The Bash sandbox discards writes to the project directory between calls.** Use `dangerouslyDisableSandbox: true` for anything that builds or writes. Four agents have lost time to this.
+- **Equal-specificity rules that set the same property need a `COLLISION SET` comment** (`docs/css-architecture.md`), including shorthand against longhand (`margin` against `margin-bottom`).
+- **Deploy is `publish`.** `assets/css/styles.css` is generated, not committed.
+- **Cloudflare caches assets 30 days** and there is no CLI or token on this machine. Changing an image means changing its filename.
 
 ---
 
-### Task 1: Make the blueprint grid a real page-header treatment
+### Task 1: Band every page header, and make the blueprint grid its signature
 
-The main event. Currently the grid reads as a design element on exactly one surface — the home page intro band — which is why every page after it feels unrelated.
+The grid currently reads as a design element on exactly one surface, which is why every other page looks unrelated to it.
 
-**What is actually there today** (verified, not assumed):
+**What exists today** (verified):
 
-| Location | Pitch | Visible? |
+| Location | Pitch | Ever visible? |
 | --- | --- | --- |
-| `_sass/_pages.scss:15` `.intro-band` | 40px | Yes — home page only |
-| `_sass/_components.scss:373` `.card-media` | 32px | No — it is a backplate behind a project thumbnail, and all 7 projects have images |
-| `_sass/_components.scss:~736` `.wide-card-media` | 32px | No — same reason |
+| `_sass/_pages.scss:18-19` `.intro-band` | 40px | Yes — home page only |
+| `_sass/_components.scss:381-382` `.card-media` | 32px | No — backplate behind a thumbnail; all 7 projects have `image:`, and `card-noimg` appears in 0 built pages |
+| `_sass/_components.scss:740-741` `.wide-card-media` | 32px | No — same reason |
 
-So the grid exists three times, at two pitches, and is only ever *seen* in one place.
-
-**And the header markup is five different shapes** doing the same job:
+**Six header shapes do the same job:**
 
 | Page | Markup | Surface |
 | --- | --- | --- |
 | `index.html:7` | `.intro-band > .intro-inner` | framed + grid |
-| `projects.html:7`, `csumb.html:10`, `archives.html:12` | `.page-head` | none (just `max-width` + margin) |
-| `_layouts/project.html:31`, `_layouts/tag.html:26` | `.detail-head` | none |
-| `_layouts/course.html:43` | bare `.page-kicker`/`.page-title`/`.page-lead`, no wrapper at all | none |
+| `projects.html:7`, `csumb.html:10`, `archives.html:12` | `.page-head` | none (`max-width: 820px; margin: 0 0 28px`) |
+| `_layouts/project.html:31`, `_layouts/tag.html:26` | `.detail-head` | none (`margin-bottom: 32px`) |
+| `_layouts/course.html:44` | bare kicker/title/lead, **no wrapper**, inside `.detail-main` | none |
+| `about.html:7-11` | `.bio-grid > .bio-main`, bare kicker/title/lead, **no wrapper** | none |
 | `_layouts/post.html:26` | `.post-head` | none |
 
-**The rule this task establishes:** every page opens with one banded header carrying the blueprint grid, and nothing else on the page uses it. One blueprint surface per page, at the top.
+**The rule:** every page opens with one banded header carrying the blueprint grid, and nothing else on the page uses it.
 
-**Deliberate exception — blog posts keep their plain header.** A post is a reading surface; a textured band directly above body prose competes with it, and `.post-head` already solved its own problem (left-aligned, measured column). If you disagree, adding `.page-band` to `_layouts/post.html` is a one-line change — but make it a decision, not a default.
+**Blog posts are the one deliberate exclusion.** A post is a reading surface and the texture competes with body prose. Structurally this costs nothing: `.post-head` shares no class with the others, so excluding it requires no code.
 
-**Alternative direction, if you'd rather go the other way:** delete the grid from `.intro-band` so nothing has it, and keep it purely as a media backplate. That is a two-line change and Tasks 1.4-1.8 become unnecessary. This plan assumes you want the grid promoted, because you said you liked it.
+**`/about/` is included.** An earlier draft omitted it while excluding posts with an argument — that asymmetry was an oversight, not a decision.
+
+**Why band the existing elements instead of adding a `.page-band` wrapper:** `.page-head` and `.detail-head` already sit exactly where the band goes and already cover five of the six surfaces. Styling them directly removes five template edits, removes the risk of a new class tripping the dead-CSS gate, and removes a `margin` collision. The cost is that `.page-head`/`.detail-head` can no longer be used un-banded — which is precisely the rule being established.
+
+**Alternative, if you want the opposite:** delete the grid from `.intro-band` so nothing has it. That is a two-line change and Steps 6-13 become unnecessary.
 
 **Files:**
 
-- Modify: `_sass/_tokens.scss` (add pitch tokens + mixin)
-- Modify: `_sass/_pages.scss:15-21`, `_sass/_components.scss:373-384`, `_sass/_components.scss:736-744` (replace literals)
-- Modify: `_sass/_layout.scss` (add `.page-band`)
-- Modify: `projects.html`, `csumb.html`, `archives.html`, `_layouts/project.html`, `_layouts/tag.html`, `_layouts/course.html`
+- Modify: `_sass/_tokens.scss` (pitch tokens + mixin)
+- Modify: `_sass/_pages.scss:16-20`, `_sass/_components.scss:378-382`, `_sass/_components.scss:738-742` (replace literals)
+- Modify: `_sass/_layout.scss:15-18` (`.page-head`), `:82-84` (`.detail-head`)
+- Modify: `_layouts/course.html`, `about.html` (add the missing wrappers)
+- Modify: `projects.html:17`, `archives.html:39`, `_layouts/tag.html:40` (remove the now-redundant rule)
+- Modify: `docs/css-architecture.md`
 
 - [ ] **Step 1: Add the tokens and the mixin**
 
-In `_sass/_tokens.scss`, after the breakpoint block. A mixin emits nothing until it is used, so `_tokens.scss` still compiles to zero CSS and the guide's claim stays true.
+In `_sass/_tokens.scss`, after the breakpoint block:
 
 ```scss
 // ---- Blueprint grid --------------------------------------------------------
-// The signature texture: a faint accent-coloured graph paper. Two pitches, and
+// The signature texture: faint accent-coloured graph paper. Two pitches, and
 // only two. Bands are large surfaces and take the coarser grid; media
 // backplates are small 4:3 boxes where 40px would show barely two lines.
 $grid-pitch-band:   40px;
@@ -84,37 +91,41 @@ $grid-alpha:        0.045;
 }
 ```
 
-- [ ] **Step 2: Snapshot the compiled CSS before touching anything**
+A mixin emits nothing until used, so `_tokens.scss` still compiles to zero CSS.
+
+- [ ] **Step 2: Snapshot the compiled CSS**
 
 ```bash
 bundle exec jekyll build
 cp _site/assets/css/styles.css "$SCRATCH/pre-mixin.css"
 ```
 
-Use the session scratchpad for `$SCRATCH`, not the project directory.
+`$SCRATCH` is the session scratchpad, not the project directory.
 
-- [ ] **Step 3: Replace all three literal copies with the mixin**
+- [ ] **Step 3: Replace the three literal copies**
 
-`_sass/_pages.scss` `.intro-band` — replace the four background lines with:
+At each of the three sites, replace the **three declarations spanning five lines** (`background-color`, the three-line `background-image`, and `background-size`) with a single `@include`, leaving every surrounding declaration in place and in order.
+
+`_sass/_pages.scss` `.intro-band` (lines 16-20) and `_sass/_layout.scss` usage take the band pitch:
 
 ```scss
     @include blueprint-grid($grid-pitch-band);
 ```
 
-`_sass/_components.scss` `.card-media` and `.wide-card-media` — replace the four background lines in each with:
+`_sass/_components.scss` `.card-media` (378-382) and `.wide-card-media` (738-742):
 
 ```scss
     @include blueprint-grid($grid-pitch-media);
 ```
 
-- [ ] **Step 4: Prove that refactor changed nothing**
+- [ ] **Step 4: Prove the extraction changed nothing**
 
 ```bash
 bundle exec jekyll build
 cmp "$SCRATCH/pre-mixin.css" _site/assets/css/styles.css && echo "IDENTICAL" || echo "DIFFERS"
 ```
 
-Expected: `IDENTICAL`. This is a pure extraction — three call sites producing the bytes they produced before. If it differs, the mixin's argument order or default is wrong. Fix before continuing.
+Expected: `IDENTICAL`. **This check has been prototyped end to end and does pass** — all three call sites already emit `background-color` → `background-image` → `background-size` contiguously in that order, which is what the mixin emits, and `style: compressed` makes whitespace irrelevant. If it differs, the argument order or a default is wrong. Do not weaken this step.
 
 - [ ] **Step 5: Commit the extraction on its own**
 
@@ -123,21 +134,26 @@ git add _sass/_tokens.scss _sass/_pages.scss _sass/_components.scss
 git commit -m "refactor(css): extract the blueprint grid into a mixin
 
 Three hand-copied gradient pairs at two pitches become one mixin with named
-pitch tokens. Compiled CSS is byte-identical; this is extraction only, so the
-behaviour change that follows lands on top of a proven-neutral base."
+pitch tokens. Compiled CSS is byte-identical, so the appearance change that
+follows lands on a proven-neutral base."
 ```
 
-Keeping this separate matters: if the visual change in Step 8 looks wrong, this commit is still good and can stay.
+- [ ] **Step 6: Band the existing header elements**
 
-- [ ] **Step 6: Add the shared band surface**
-
-In `_sass/_layout.scss`, next to `.page-head`:
+Replace the current `.page-head` rule in `_sass/_layout.scss:15-18` with the shared band, and **delete the standalone `.detail-head` rule at `:82-84`** — the band owns its margin now.
 
 ```scss
-// The page's opening surface. One per page, always at the top - this is the
-// only place the blueprint grid is allowed to show. `.intro-band` on the home
-// page is the same treatment with a taller inner padding.
-.page-band {
+// The page's opening surface: one per page, always at the top, and the only
+// place the blueprint grid is allowed to show. Blog posts are deliberately
+// excluded - .post-head is a reading surface and the texture fights body prose.
+//
+// max-width is deliberately NOT set here. It used to sit on .page-head, but a
+// band has to span the content column or index pages and detail pages get
+// visibly different widths. The text measure is carried by .page-lead, which
+// sets its own max-width: 820px.
+.page-head,
+.detail-head,
+.intro-band {
     @include blueprint-grid($grid-pitch-band);
     border: 1px solid $c-border;
     border-radius: 4px;
@@ -148,162 +164,205 @@ In `_sass/_layout.scss`, next to `.page-head`:
         padding: 24px 20px;
     }
 }
+```
 
-.page-band .page-head {
-    margin-bottom: 0;
+- [ ] **Step 7: Reduce `.intro-band` to its overrides**
+
+`.intro-band` in `_sass/_pages.scss` now inherits the band. Delete its `background-*`, `border`, `border-radius` declarations and keep only what differs — the larger padding and margin. Add the collision comment the architecture doc requires:
+
+```scss
+// COLLISION SET - the home band is the shared treatment from _layout.scss,
+// scaled up. Both rules are (0,1,0) and both set padding and margin, so this
+// wins only because _pages.scss loads after _layout.scss. Do not move it
+// earlier, and do not restate the border or the grid here.
+.intro-band {
+    padding: 52px 48px;
+    margin: 0 0 40px;
+
+    @include respond-to(mobile) {
+        padding: 28px 20px;
+    }
 }
 ```
 
-- [ ] **Step 7: Wrap the three index-page headers**
+Confirm the existing mobile padding value before writing it; match what is there rather than what is shown here if they differ.
 
-In `projects.html`, `csumb.html` and `archives.html`, wrap the existing `<section class="page-head">…</section>` in the band. `projects.html` becomes:
+- [ ] **Step 8: Give `course.html` the header it never had**
 
-```html
-<div class="page-band">
-    <section class="page-head">
-        <p class="page-kicker">Hobby Projects</p>
-        <h1 class="page-title">Things I'm building</h1>
-        <p class="page-lead">
-            Over the years, I've worked on a variety of personal and academic projects — but I haven't always done the best
-            job documenting them. That changes here. This site is my attempt to track, showcase, and share the things I'm
-            building and learning.
-        </p>
-    </section>
-</div>
-```
+`_layouts/course.html` has no wrapper, and its kicker/title/lead sit **inside** `.detail-main` — a grid column. `project.html` puts `.detail-head` **above** `.detail-grid` at full width. Match that, so the band is the same width on every detail page.
 
-Apply the same wrapper in `csumb.html:10` and `archives.html:12`, leaving their inner content untouched.
-
-- [ ] **Step 8: Wrap the detail headers**
-
-`_layouts/project.html:31` and `_layouts/tag.html:26` already have `<header class="detail-head">`. Add the band class to it rather than nesting another element:
+Move the three elements out of `.detail-main` to just above `<div class="detail-grid detail-grid-narrow">`:
 
 ```html
-<header class="detail-head page-band">
+<header class="detail-head">
+    <p class="page-kicker">
+        {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ course_name }}</h1>
+    {% if page.note %}
+    <p class="page-lead">{{ page.note }}</p>
+    {% endif %}
+</header>
 ```
 
-`_layouts/course.html` has no header wrapper at all — its kicker, title and lead sit bare inside `.detail-main`. Give it one, wrapping only those three elements and leaving `.page-body` and everything after it outside:
+Leave `.page-body` and everything after it inside `.detail-main`.
 
-```html
-        <header class="detail-head page-band">
-            <p class="page-kicker">
-                {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
-            </p>
-            <h1 class="page-title">{{ course_name }}</h1>
-            {% if page.note %}
-            <p class="page-lead">{{ page.note }}</p>
-            {% endif %}
-        </header>
-```
+- [ ] **Step 9: Give `about.html` the same treatment**
 
-- [ ] **Step 9: Check `.detail-head` does not now double up**
+`about.html:7-11` has bare kicker/title/lead inside `.bio-grid > .bio-main`. Move those three elements out of `.bio-grid` entirely, into a `<header class="detail-head">` above it, so the band spans full width like every other page. The portrait and prose stay in `.bio-grid`.
 
-`.detail-head` may already carry its own margin or border that fights the band.
+Check afterwards that `.bio-grid`'s two-column layout still resolves with the heading removed — it may have been relying on `.bio-main` having that content.
+
+- [ ] **Step 10: Remove the now-redundant hairlines**
+
+`projects.html:17`, `archives.html:39` and `_layouts/tag.html:40` each place `<div class="page-rule"></div>` immediately after the header. With a bordered band directly above, that is one separator too many. Delete those three lines.
+
+Then check whether `.page-rule` is still used anywhere:
 
 ```bash
-sed -n "/^\.detail-head/,/^}/p" _sass/_layout.scss
+grep -rn "page-rule" --include=*.html --include=*.md . | grep -v _site
 ```
 
-If it sets `border`, `border-radius`, `padding` or `background`, reconcile it — the band owns those now. Leave its `max-width` alone.
+If nothing uses it, remove the rule from the Sass too — otherwise the dead-CSS gate fails the build.
 
-- [ ] **Step 10: Build and run the gates**
+- [ ] **Step 11: Build and run the gates**
 
 ```bash
 bundle exec jekyll build
 bash script/verify-redesign.sh          # 26 PASS
 python script/dead-css.py --count       # 0
 grep -rn "@media" _sass/ | grep -v _tokens.scss || echo ok
+find _site -name "*.html" | wc -l       # 153
 ```
 
-`.page-band` is a new class — if the count is not 0, a template is not using it and the CI gate will fail the build.
+- [ ] **Step 12: Verify visually at every breakpoint**
 
-- [ ] **Step 11: Verify visually, at every breakpoint**
-
-Serve with `bash script/preview.sh 4325` (`jekyll serve --detach` crashes on Windows), then with Playwright check `/`, `/projects/`, `/csumb/`, `/archives/`, `/projects/ggswarm/`, `/csumb/cst363/`, `/tags/ggswarm/` at **390, 768, 861, 1280**:
+Serve with `bash script/preview.sh 4325` (`jekyll serve --detach` crashes on Windows). With Playwright, check `/`, `/about/`, `/projects/`, `/csumb/`, `/archives/`, `/projects/ggswarm/`, `/csumb/cst363/`, `/tags/ggswarm/` at **390, 768, 861, 1280**:
 
 ```js
-() => ({
-  overflow: document.documentElement.scrollWidth > window.innerWidth,
-  bands: [...document.querySelectorAll('.page-band, .intro-band')].length,
-  bandBg: getComputedStyle(document.querySelector('.page-band, .intro-band')).backgroundImage.slice(0, 60)
-})
+() => {
+  const band = document.querySelector('.page-head, .detail-head, .intro-band');
+  return {
+    overflow: document.documentElement.scrollWidth > window.innerWidth,
+    bandCount: document.querySelectorAll('.page-head, .detail-head, .intro-band').length,
+    bandImage: band ? getComputedStyle(band).backgroundImage.slice(0, 48) : 'NO BAND',
+    bandWidth: band ? Math.round(band.getBoundingClientRect().width) : null
+  };
+}
 ```
 
-Assert: no horizontal overflow anywhere, exactly **one** band per page, and the grid actually painting. A page with two bands means a wrapper was nested wrongly.
+Assert on every page: no horizontal overflow, `bandCount === 1`, `bandImage` contains `linear-gradient`, and `bandWidth` is the same on `/projects/` and `/projects/ggswarm/` at a given viewport. The null guard matters — a page with no band must report `NO BAND`, not throw.
 
-- [ ] **Step 12: Confirm the grid did not cost any text contrast**
+Then load a blog post and confirm `bandCount === 0` there, as intended.
 
-The grid is `rgba($c-accent, 0.045)` over `$c-bg`, so the luminance shift should be negligible — but the site just had an AA failure from stacked transparency, so measure rather than assume. On `/projects/` at 1280, check `.page-kicker`, `.page-title` and `.page-lead` compute to at least 4.5:1 against `$c-bg` (`rgb(20,24,24)`).
+- [ ] **Step 13: Confirm no text lost contrast**
 
-- [ ] **Step 13: Commit**
+The grid is `rgba($c-accent, 0.045)` over `$c-bg`, so the shift should be negligible — but this site just had an AA failure from stacked transparency, so measure. On `/projects/` at 1280, check `.page-kicker`, `.page-title` and `.page-lead` compute to at least 4.5:1 against `rgb(20,24,24)`.
+
+- [ ] **Step 14: Update the architecture guide**
+
+`docs/css-architecture.md` is the normative reference and two of its claims are now stale:
+
+- The partial table says `_tokens.scss` holds "variables only; emits no CSS". Still true (a mixin emits only where used), but it now also holds the `blueprint-grid()` mixin — say so.
+- The `_layout.scss` row lists what it owns; add the band.
+- Add the blueprint grid to the guide as a named treatment: what it is, the two pitch tokens, and the rule that it appears on the page band and nowhere else.
+
+Keep the file under 150 lines and passing markdownlint.
+
+- [ ] **Step 15: Commit**
 
 ```bash
 git add -A
 git commit -m "feat(css): one banded, blueprint-gridded header on every page
 
-The grid previously read as a design element on exactly one surface, the home
-intro band, so every other page looked unrelated to it. Five different header
-shapes now share one .page-band treatment, and the grid appears there and
-nowhere else.
+The grid read as a design element on exactly one surface, the home intro band,
+so every other page looked unrelated to it. The six header shapes now share one
+band treatment applied to the elements that already existed, and the grid
+appears there and nowhere else.
 
-Blog posts keep their plain header on purpose: a post is a reading surface and
-the texture competes with body prose."
+course.html and about.html gain the header wrapper they never had, both placed
+above their grid so the band is full width everywhere. Blog posts keep their
+plain header: a post is a reading surface and the texture fights body prose."
 ```
 
 ---
 
-### Task 2: Reformat the GG Swarm roadmap
+### Task 2: Style the GG Swarm roadmap status column
 
-Deferred deliberately during the emoji removal. The roadmap is an 8-row markdown table (`_projects/ggswarm.md:33-41`) whose Status column is now bare words (`Complete`, `Active`, `Planned`, `Stretch`) after the emoji were stripped.
+Deferred during the emoji removal. The roadmap is an 8-row table at `_projects/ggswarm.md:46-55` (heading at `:44`) whose Status column is now bare words after the emoji were stripped.
 
-The site already has a status vocabulary and a component for exactly this: `data-status` attributes rendered as `.status-badge` / `.status-tag`, with the vocabulary `active`, `planned`, `shipped`, `dormant`, plus `completed` / `in-progress` on course pages. The roadmap reinvents it as plain text in a table cell.
+The site already has a component for this: `.status-badge` with a `data-status` attribute (`_sass/_components.scss:105-131`). The roadmap reinvents it as plain text.
+
+**The decision, made:** keep the table and style the status cell. The alternative — moving the roadmap into front matter to reuse the timeline — was rejected on inspection: that component is `.side-timeline`, a **sidebar** module (`_layouts/project.html:120-134`), and its item schema uses `completed:` as a **boolean**, which cannot carry four states. Moving an 8-row main-column table into a narrow sidebar is a relocation, not a formatting fix.
+
+**Status vocabulary:** the defined values are `active`, `planned`, `shipped`, `dormant`, `completed`, `in-progress`. The roadmap's `Stretch` is not among them. Map it to `dormant` — both mean "not committed, not in progress" — and keep the visible label "Stretch". Do **not** invent an undocumented status. If you want Stretch to read distinctly, add it to `_sass/_components.scss` **and** to the vocabulary list in `docs/css-architecture.md` in the same commit.
 
 **Files:**
 
-- Modify: `_projects/ggswarm.md:30-41`
-- Possibly modify: `_sass/_components.scss` (if the badge needs a table-cell variant)
+- Modify: `_projects/ggswarm.md:46-55`
 
-- [ ] **Step 1: Decide the target shape**
+- [ ] **Step 1: Confirm kramdown renders inline HTML inside a table cell**
 
-Two options; pick one before writing any markup.
-
-1. **Keep the table, style the status cell.** Requires rendering raw HTML in the markdown table so each status becomes `<span class="status-badge" data-status="planned">Planned</span>`. Cheapest, keeps the scannable grid.
-2. **Replace the table with a phase list**, matching the `.timeline` component the project layout already renders from front matter. Most consistent with the rest of the site, but the roadmap is *page body* content and the timeline is *front matter* — so this means moving eight rows into `_projects/ggswarm.md` front matter and letting the layout render them.
-
-Option 2 is the more consistent answer and removes hand-formatted markup entirely. Option 1 is a twenty-minute change. Choose deliberately.
-
-- [ ] **Step 2: Check the status vocabulary actually covers it**
-
-```bash
-grep -rn "data-status" _sass/_components.scss | head
-grep -rn "status-badge\|status-tag" _includes _layouts | head
-```
-
-The roadmap uses `Stretch`, which is **not** in the vocabulary. Either map it onto an existing value or add it to the palette and the guide's vocabulary list deliberately — do not invent an undocumented status.
-
-- [ ] **Step 3: Implement, build, verify**
+There is no precedent for this in the content — no `<span>` appears in any `_projects/*.md` or `_posts/*.md`. Prove it before rewriting eight rows. Change one row, build, and check the output:
 
 ```bash
 bundle exec jekyll build
-python script/dead-css.py --count    # 0 - a new status class with no template use fails CI
+grep -o 'status-badge[^<]*' _site/projects/ggswarm/index.html | head -3
+```
+
+If the span is escaped rather than rendered, stop and use the alternative below.
+
+- [ ] **Step 2: Rewrite the status cells**
+
+```markdown
+| **0** | **Capstone Baseline** | <span class="status-badge" data-status="completed">Complete</span> | v1.0.0-capstone simulation baseline. |
+| **1** | **Shared-Scene Training** | <span class="status-badge" data-status="active">Active</span> | Multi-drone training in complex shared simulation scenes. |
+| **2** | **Sim-to-Real Baseline** | <span class="status-badge" data-status="planned">Planned</span> | Initial deployment to Crazyflie drones with LPS. |
+```
+
+Apply the same shape to rows 3-6 (`planned`) and row 7 (`dormant`, label `Stretch`). Keep the Phase, Title and Details columns exactly as they are.
+
+Add `<!-- markdownlint-disable MD033 -->` / `<!-- markdownlint-enable MD033 -->` around the table if the config does not already allow inline HTML — check `.markdownlint-cli2.yaml`, which currently sets `MD033: false`, meaning it is already permitted.
+
+- [ ] **Step 3: If Step 1 showed the HTML is escaped**
+
+Fall back to a definition-style list instead of a table, using the same badge markup outside a table cell. Do not leave the status column as bare text — that is the state this task exists to improve.
+
+- [ ] **Step 4: Verify**
+
+```bash
+bundle exec jekyll build
+grep -c 'status-badge' _site/projects/ggswarm/index.html   # expect 8
+python script/dead-css.py --count                          # 0
 npx --yes markdownlint-cli2 --config .markdownlint-cli2.yaml
 ```
 
-- [ ] **Step 4: Check mobile**
+`dead-css.py` reports class selectors, and `.status-badge` is already used elsewhere, so this cannot newly fail — run it as a regression check, not as the gate for this change.
 
-Tables are the most common source of horizontal overflow. At 390px confirm `document.documentElement.scrollWidth <= window.innerWidth` on `/projects/ggswarm/`.
+- [ ] **Step 5: Check mobile**
 
-- [ ] **Step 5: Commit**
+Tables are the most common source of horizontal overflow. At 390px on `/projects/ggswarm/`, confirm `document.documentElement.scrollWidth <= window.innerWidth`. The badge adds padding and a border to a cell that previously held bare text.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add _projects/ggswarm.md
+git commit -m "content(ggswarm): render roadmap status as the shared badge
+
+The Status column was bare text after the emoji were removed, reinventing a
+component the site already has. Stretch maps to dormant - both mean not
+committed, not in progress - rather than inventing an undocumented status."
+```
 
 ---
 
 ### Task 3: Make a project appear on its own tag page
 
-A verified defect, and a much smaller one than it looks. The machinery already works — it is one missing key.
+A verified defect, and one line to fix. The machinery already works.
 
-`_plugins/tag_generator.rb:30` already indexes non-post collection docs, and `_layouts/tag.html:11` already renders them as project cards. But `tag_names` (`_plugins/tag_generator.rb:55-63`) harvests tags from `tech_stack`, `tools` and `tags` only. A project declares its own identity in **`project-tag`**, which is not in that list.
+`_plugins/tag_generator.rb:30` already indexes non-post collection docs, and `_layouts/tag.html` already renders them as project cards. But `tag_names` (`:55-63`) harvests tags from `tech_stack`, `tools` and `tags` only. A project declares its identity in **`project-tag`**, which is not in that list.
 
-The result, measured on the current build:
+Measured on the current build:
 
 ```
 /tags/python/    links to /projects/ggswarm/ = 1     <- works
@@ -311,15 +370,13 @@ The result, measured on the current build:
 /tags/ggswarm/   links to /projects/ggswarm/ = 0     <- broken
 ```
 
-So GG Swarm appears on the tag page for *Python*, but not on the tag page for *itself*. `/tags/ggswarm/` shows ten log entries about the project and no way to reach it.
+GG Swarm appears on the tag page for *Python* but not on the tag page for *itself*.
 
 **Files:**
 
-- Modify: `_plugins/tag_generator.rb:55-63`
+- Modify: `_plugins/tag_generator.rb:6-12` (comment), `:55-63` (`tag_names`)
 
 - [ ] **Step 1: Add `project-tag` to the harvested keys**
-
-In `tag_names`, add one line:
 
 ```ruby
     def tag_names(doc)
@@ -334,114 +391,159 @@ In `tag_names`, add one line:
     end
 ```
 
-Update the comment block at the top of the class (lines 6-12) to say three sources, not two — it currently enumerates them explicitly and will otherwise be wrong.
+Update the class comment at `:6-12`, which enumerates the tag sources explicitly and will otherwise be wrong.
 
-- [ ] **Step 2: Understand the blast radius before building**
+- [ ] **Step 2: Know the blast radius before building**
 
-`tag_names` is shared by posts and collection docs, so this also indexes posts by their `project-tag`. That is harmless — a post carrying `project-tag: "ggswarm"` already lists `ggswarm` in its `tags:`, and `add_all` dedupes with `list << doc unless list.include?(doc)`. Confirm rather than assume:
+`tag_names` is shared by posts and collection docs, so posts are now also indexed by their `project-tag`. For **11 of the 12** posts that carry one, this is a no-op — they already list the same value in `tags:` and `add_all` dedupes with `list << doc unless list.include?(doc)`.
+
+**One post is not a no-op:** `_posts/2026-05-01-introducing-gg-swarm-live.md` has `project-tag: ggswarm` but `tags: [robotics, drones, hardware, engineering]`. It will correctly start appearing on `/tags/ggswarm/`, taking that page from 10 log rows to 11.
+
+Confirm the set yourself before building — note that `tags:` is a YAML **block** list in most posts and an inline list in others, so a naive `grep '^tags:.*ggswarm'` matches nothing and proves nothing:
 
 ```bash
-grep -l '^project-tag:' _posts/*.md | head -3 | xargs grep -l '^tags:.*ggswarm' | wc -l
+python - <<'PY'
+import glob, re, io
+for p in sorted(glob.glob("_posts/*.md")):
+    s = io.open(p, encoding="utf-8").read(2500)
+    pt = re.search(r'^project-tag:\s*["\']?([\w-]+)', s, re.M)
+    if not pt:
+        continue
+    tg = re.search(r'^tags:\s*(\[.*?\]|(?:\n\s*-\s*.*)+)', s, re.M)
+    if pt.group(1) not in (tg.group(1) if tg else ""):
+        print("will newly appear:", p, pt.group(1))
+PY
 ```
 
-- [ ] **Step 3: Build and check the page count first**
+- [ ] **Step 3: Build and check the page count**
 
 ```bash
 bundle exec jekyll build
 find _site -name "*.html" | wc -l
 ```
 
-Was 153. A `project-tag` value with no existing tag page **creates a new page** — for example `_projects/ggbytes.md` declares `project-tag: "gary-gigabytes"`. An increase is expected and correct; note the new number and confirm each new page is one you want.
+Was **153**, expect **155**. Two tag pages are created because their `project-tag` values had no page: **`ggtrader`** and **`rover`**. (`/tags/gary-gigabytes/` already exists, so `_projects/ggbytes.md` adds nothing.) Confirm those two are pages you want; if not, the fix is front matter, not the plugin.
 
-- [ ] **Step 4: Verify the fix and that nothing regressed**
+- [ ] **Step 4: Verify the fix, and that nothing regressed**
 
 ```bash
 grep -c "/projects/ggswarm/" _site/tags/ggswarm/index.html    # expect >= 1, was 0
-grep -c "log-row" _site/tags/ggswarm/index.html               # expect 10, unchanged
+grep -c "log-row" _site/tags/ggswarm/index.html               # expect 11, was 10 (see Step 2)
 grep -c "/projects/ggswarm/" _site/tags/python/index.html     # expect 1, unchanged
 bash script/verify-redesign.sh                                # 26 PASS
 python script/dead-css.py --count                             # 0
 bundle exec rubocop                                           # the plugin is linted
 ```
 
-- [ ] **Step 5: Check a tag that has posts but no project**
+- [ ] **Step 5: Check a tag with posts but no project**
 
-`_layouts/tag.html:11` filters `tagged_docs` through `project_urls contains d.url`, which exists because course pages once rendered as empty project cards. Confirm that filter still holds: pick a tag with posts and no owning project and verify it renders no empty card and no Liquid error.
+`_layouts/tag.html` filters `tagged_docs` through `project_urls contains d.url`, which exists because course pages once rendered as empty project cards. Pick a tag with posts and no owning project and confirm it renders no empty card and no Liquid error.
 
 - [ ] **Step 6: Commit**
+
+```bash
+git add _plugins/tag_generator.rb
+git commit -m "fix(tags): index projects by their own project-tag
+
+The generator already indexed collection docs and the layout already rendered
+them, but tag_names harvested only tech_stack, tools and tags - so GG Swarm
+appeared on /tags/python/ and not on /tags/ggswarm/.
+
+Adds two tag pages (ggtrader, rover) whose project-tag had no page, and one log
+entry to /tags/ggswarm/ from a post that carries project-tag: ggswarm without
+listing it in tags:."
+```
 
 ---
 
 ### Task 4: Content metadata and copy fixes
 
-Small, independent, verified. Some need your input; those are marked.
+Small, independent, verified. Two steps need your input and are marked.
 
-**Files:** `about.md`, `_posts/2026-02-09-HexMaster-Testing.md`, `_csumb/*.md` (12 files), `_posts/*.md` (18 files)
+**Files:** `about.html`, `_posts/2026-02-09-HexMaster-Testing.md`, `_csumb/*.md` (12), `_posts/*.md` (18)
 
 - [ ] **Step 1: Give `/about/` a real description**
 
-`about.md` has no `description:` front matter, so it falls back to the site-wide blurb. Confirmed: `grep -c "^description:" about.md` → `0`.
+The file is **`about.html`**, not `about.md`. Its front matter has no `description:`, so it falls back to the site-wide blurb:
 
-Add a `description:` of **at least 100 characters** — below that, `_includes/head.html` appends the site blurb to satisfy LinkedIn, which reads fine but is generic. Write one that describes the page.
+```bash
+grep -c "^description:" about.html    # 0
+```
+
+Add a `description:` of **at least 100 characters** describing the page. Below 100, `_includes/head.html` appends the generic site blurb to satisfy LinkedIn — which validates but reads generically.
 
 - [ ] **Step 2: Remove the last emoji**
 
-`_posts/2026-02-09-HexMaster-Testing.md` contains one U+1F680 (rocket).
+`_posts/2026-02-09-HexMaster-Testing.md:31` ends a heading with U+1F680: `## Quick Command Reference 🚀`.
+
+Strip the **preceding** whitespace, not the following. A greedy trailing `\s*` eats the newline and pulls the next markdown table row up into the heading, which silently stops the table rendering:
 
 ```bash
 python - <<'PY'
 import io, re
 p = "_posts/2026-02-09-HexMaster-Testing.md"
 s = io.open(p, encoding="utf-8").read()
-s = re.sub("[\U0001F000-\U0001FAFF]\\s*", "", s)
+s = re.sub(r"\s*[\U0001F000-\U0001FAFF]", "", s)
 io.open(p, "w", encoding="utf-8", newline="").write(s)
 PY
+sed -n '29,34p' _posts/2026-02-09-HexMaster-Testing.md
 ```
 
-Check the line still reads correctly afterwards — if the emoji carried meaning, replace it with a word rather than deleting it.
+Confirm the heading still reads correctly and the table below it still starts on its own line.
 
 - [ ] **Step 3 (NEEDS YOUR DATA): `term:` and `skills:` on the 12 course files**
 
-`_layouts/course.html:13-16` documents both as optional front matter, and renders a Term row and a Skills module when present. Coverage is currently **0 of 12** for each, so both features are dead code in practice.
+`_layouts/course.html:14-15` documents both as optional front matter and renders a Term row and a Skills module when present. Coverage is **0 of 12** for each, so both features are dead in practice.
 
-This needs the actual terms ("Spring 2025") and skill lists per course — it cannot be inferred from the repo. Supply them and this becomes mechanical.
+This needs the real terms ("Spring 2025") and skill lists per course. It cannot be inferred from the repo. Supply them and this is mechanical.
 
 - [ ] **Step 4 (NEEDS YOUR DATA): `project-tag:` on the remaining posts**
 
-12 of 30 posts carry `project-tag:`. The other 18 do not, so they never appear in a project's related-entries feed and `_layouts/post.html:96`'s fallback link cannot resolve.
-
-List them and decide which belong to which project:
+12 of 30 posts carry `project-tag:`. The other 18 never appear in a project's related-entries feed, and `_layouts/post.html:96`'s fallback link cannot resolve for them.
 
 ```bash
 grep -L '^project-tag:' _posts/*.md
 ```
 
-Some genuinely belong to no project; those are correct as they are.
+Some genuinely belong to no project; those are correct as they are. Decide per post.
 
-- [ ] **Step 5: Verify and commit**
+- [ ] **Step 5: Verify at the source, not the output**
+
+Do **not** verify Step 1 by checking built `og:description` lengths — `_includes/head.html` pads anything under 100 characters, so that assertion passes before and after and can never detect whether the step was done. Assert on the front matter instead:
 
 ```bash
 bundle exec jekyll build
 python - <<'PY'
-import glob, re, io
-bad = [f for f in glob.glob("_site/**/*.html", recursive=True)
-       if (m := re.search(r'<meta property="og:description" content="(.*?)">', io.open(f, encoding="utf-8", errors="ignore").read(), re.S))
-       and len(m.group(1)) < 100]
-print(f"pages under 100 chars: {len(bad)}")
+import io, re
+s = io.open("about.html", encoding="utf-8").read(1200)
+m = re.search(r'^description:\s*["\']?(.*?)["\']?\s*$', s, re.M)
+print("about.html description:", len(m.group(1)) if m else "MISSING", "chars")
+PY
+python - <<'PY'
+import io, re
+s = io.open("_posts/2026-02-09-HexMaster-Testing.md", encoding="utf-8").read()
+print("emoji remaining:", len(re.findall("[\U0001F000-\U0001FAFF]", s)))
 PY
 ```
 
-Expected: `0`.
+Expected: a length of 100 or more, and 0 emoji.
+
+- [ ] **Step 6: Commit**
+
+```bash
+git add -A
+git commit -m "content: about description, last emoji removed"
+```
 
 ---
 
 ### Task 5: Sync `main` with `publish`
 
-`main` is the default branch; `publish` is what deploys. PR #55 merged `publish` into `main`, but captured the state before the last several pushes.
+`main` is the default branch; `publish` deploys. PR #55 merged `publish` into `main` but captured the state before the last several pushes.
 
-Current: `main` is **28 commits behind** and 1 ahead (its own merge commit). Dependabot alerts are at **0 open**, so this is housekeeping, not a security issue.
+Current: `main` is **28 behind**, 1 ahead (its own merge commit). Dependabot open alerts: **0**. This is housekeeping, not security.
 
-- [ ] **Step 1: Confirm the gap before acting**
+- [ ] **Step 1: Confirm the gap**
 
 ```bash
 git fetch origin
@@ -453,11 +555,11 @@ git rev-list --count origin/publish..origin/main
 
 - [ ] **Step 2: Open a PR rather than pushing to `main`**
 
-`main` is protected by the Lint workflow. Open `publish` → `main` as a pull request so the checks run, exactly as PR #55 did. Do not force-push and do not fast-forward locally.
+`.github/workflows/lint.yml` runs on `pull_request`, so opening `publish` → `main` as a PR runs the checks, exactly as PR #55 did. Do not force-push and do not fast-forward locally.
 
-- [ ] **Step 3: Confirm the merge kept `publish` deployable**
+- [ ] **Step 3: Confirm `publish` still deploys**
 
-`main` merging does not redeploy — only pushes to `publish` do. After the merge, confirm `publish` is unchanged and the live site still responds:
+Merging to `main` does not redeploy — only pushes to `publish` do. Afterwards:
 
 ```bash
 curl -sI https://garygigabytes.com/ | head -1
@@ -475,30 +577,29 @@ bash script/verify-redesign.sh              # 26 PASS
 python script/dead-css.py --count           # 0
 bundle exec rubocop
 npx --yes markdownlint-cli2 --config .markdownlint-cli2.yaml
-find _site -name "*.html" | wc -l           # 153, unless Task 3 intentionally changes it
+find _site -name "*.html" | wc -l           # 153, or 155 after Task 3
 grep -rn "@media" _sass/ | grep -v _tokens.scss || echo ok
 git ls-files -s CLAUDE.md                   # mode 120000, blob 47dc3e3d...
 ```
 
 - [ ] **Four viewports, no regressions**
 
-390, 768, 861, 1280 on `/`, `/projects/`, `/about/`, `/projects/ggswarm/`, `/csumb/cst363/`, `/tags/ggswarm/`: no horizontal overflow, single-column below 1024px, one band per page, 44px touch targets at mobile.
+390, 768, 861, 1280 on `/`, `/about/`, `/projects/`, `/projects/ggswarm/`, `/csumb/cst363/`, `/tags/ggswarm/`: no horizontal overflow, single column below 1024px, exactly one band per page, zero bands on a blog post, 44px touch targets at mobile.
 
 - [ ] **Shipping**
 
-Merge to `publish` and push. If any image changed, **its filename must change too** — Cloudflare caches for 30 days and there is no purge tooling on this machine.
+Merge to `publish` and push. If any image changed, **its filename must change too** — Cloudflare caches 30 days and there is no purge tooling here.
 
 ## Deferred, not scheduled
 
-Recorded so they are not lost, but not worth a task yet:
-
-- **A small-format GG Swarm mark.** HexMaster has `assets/branding/logo/hexmaster.svg`; GG Swarm has only a 1024px PNG. Worth generating if the swarm logo ever needs to render small, the way the HexMaster one did.
-- **A committed cascade-equivalence tool.** Task 3 of the previous plan used a throwaway script to prove a CSS refactor changed no rendering. It was never committed, and its review found two real flaws: it compared literal property names, so it missed shorthand-versus-longhand collisions (`margin` against `margin-bottom`), and its ancestor-subset heuristic wrongly rejected genuine collisions. If a future refactor needs it, rebuild it shorthand-aware and ancestor-agnostic, and settle flagged pairs against the real DOM rather than a heuristic. Do not resurrect the original.
-- **`.ai-disclaimer` sizing.** Now passes AA at 5.01:1, but it renders at 10.88px, which is small for body copy. A size bump is a design call, not a fix.
+- **A small-format GG Swarm mark.** HexMaster has `assets/branding/logo/hexmaster.svg`; GG Swarm has only a 1024px PNG.
+- **A committed cascade-equivalence tool.** The previous plan used a throwaway script to prove a CSS refactor changed no rendering. Its review found two real flaws: it compared literal property names, missing shorthand-versus-longhand collisions, and its ancestor-subset heuristic wrongly rejected genuine collisions. If a future refactor needs one, rebuild it shorthand-aware and ancestor-agnostic and settle flagged pairs against the real DOM. Do not resurrect the original.
+- **`.ai-disclaimer` sizing.** Passes AA at 5.01:1 but renders at 10.88px. A size bump is a design call, not a fix.
+- **UTF-8 BOM on compiled `styles.css`.** Noted as minor and deferred during the Sass migration; harmless, and recorded here so the decision is not rediscovered as a bug.
 
 ## Notes for the executor
 
-- Task 1 is the only task with a visual outcome; it is deliberately split so the mixin extraction (provably byte-neutral) commits separately from the appearance change.
+- Task 1 is the only task with a visual outcome, and is deliberately split so the provably byte-neutral mixin extraction commits separately from the appearance change.
 - Tasks 2-5 are independent of Task 1 and of each other.
-- Task 4 Steps 3 and 4 are blocked on information only the author has. Do the rest of Task 4 and report those two as outstanding rather than guessing at course terms or project ownership.
-- The previous plan in this directory shipped with a self-contradiction between two of its steps that three agents had to work around. If a step here cannot be satisfied as written, say so and stop — do not quietly substitute a weaker check.
+- Task 4 Steps 3 and 4 are blocked on information only the author has. Do the rest and report those two outstanding rather than guessing at course terms or project ownership.
+- This plan's first draft contained a verification step that its own preceding step made impossible, and the plan before it shipped with the same defect. If a step here cannot be satisfied as written, **say so and stop** — do not quietly substitute a weaker check.
