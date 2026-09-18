@@ -145,7 +145,7 @@
 
 .detail-hero {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     aspect-ratio: 16 / 9;
     margin-bottom: 28px;
@@ -206,7 +206,7 @@
 
 .portrait-frame {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     padding: 14px;
     background: $c-surface;
 }
@@ -216,7 +216,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
     object-fit: cover;
-    border-radius: 4px;
+    border-radius: $radius-surface;
 }
 
 .portrait-caption {

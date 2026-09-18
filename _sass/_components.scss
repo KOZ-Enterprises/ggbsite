@@ -18,7 +18,7 @@
     color: $c-blue;
     font-size: 0.75em;
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: $radius-chip;
     white-space: nowrap;
     position: relative;
     z-index: 2;
@@ -141,7 +141,7 @@
     font-size: 13.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     padding: 12px 22px;
     text-decoration: none;
     // there is no global box-sizing reset in this stylesheet; without this, a
@@ -357,7 +357,7 @@
     flex-direction: column;
     background: $c-surface;
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     text-decoration: none;
     transition: border-color 0.25s ease, background 0.25s ease;
@@ -498,7 +498,7 @@
 .objective {
     border-left: 2px solid $c-accent;
     background: rgba($c-border, 0.18);
-    border-radius: 0 $radius-card $radius-card 0;
+    border-radius: 0 $radius-surface $radius-surface 0;
     padding: 20px 24px;
     margin-bottom: 28px;
 
@@ -527,7 +527,7 @@
 // ---- Sidebar modules -------------------------------------------------------
 .side-module {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
 }
@@ -633,7 +633,7 @@
     height: 11px;
     margin-top: 4px;
     border: 2px solid $c-border;
-    border-radius: 2px;
+    border-radius: $radius-chip;
 }
 
 .tl-marker.done {
@@ -710,7 +710,7 @@
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
     text-decoration: none;

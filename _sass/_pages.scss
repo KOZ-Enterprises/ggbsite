@@ -15,7 +15,7 @@
 .intro-band {
     @include blueprint-grid($grid-pitch-band);
     border: 1px solid $c-border;
-    border-radius: 4px;
+    border-radius: $radius-surface;
     padding: 52px 48px;
     margin: 0 0 40px;
 
@@ -65,7 +65,7 @@
     position: relative;
     min-height: 430px;
     border: 1px solid $c-border;
-    border-radius: 4px;
+    border-radius: $radius-surface;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -162,7 +162,7 @@
     display: grid;
     grid-template-columns: 300px minmax(0, 1fr);
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
     margin-bottom: 44px;
@@ -245,7 +245,7 @@
 // ---- Coursework: course registry -------------------------------------------
 .registry {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     margin-bottom: 44px;
 }
@@ -433,7 +433,7 @@
 
 .post-hero {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     margin: 28px 0;
 }
@@ -518,7 +518,7 @@
 // ---- About: education list -------------------------------------------------
 .edu-list {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
 }
 
@@ -575,7 +575,7 @@
 
 .year-block {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     margin-bottom: 28px;
 }
