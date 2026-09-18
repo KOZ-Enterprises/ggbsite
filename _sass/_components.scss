@@ -43,7 +43,7 @@
 .status-tag {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: $space-1;
     font-family: $font-mono;
     font-size: 10px;
     letter-spacing: 2.5px;
@@ -142,7 +142,7 @@
     letter-spacing: 2px;
     text-transform: uppercase;
     border-radius: $radius-surface;
-    padding: 12px 22px;
+    padding: $space-2 22px;
     text-decoration: none;
     // there is no global box-sizing reset in this stylesheet; without this, a
     // width:100% button at mobile overflows by its 44px horizontal padding
@@ -246,7 +246,7 @@
 .log-row {
     display: grid;
     grid-template-columns: 140px minmax(0, 1fr);
-    gap: 28px;
+    gap: $space-3;
     padding: 24px 0;
     margin: 0;
     border-top: 1px solid rgba($c-border, 0.35);
@@ -255,8 +255,8 @@
     // the date gutter is dropped and the rows stack
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 18px 0;
+        gap: $space-1;
+        padding: $space-2 0;
     }
 }
 
@@ -273,7 +273,7 @@
 
     @include respond-to(mobile) {
         display: flex;
-        gap: 12px;
+        gap: $space-2;
         line-height: 1.4;
         font-size: 10.5px;
     }
@@ -347,7 +347,7 @@
 
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: $space-2;
         margin-bottom: 32px;
     }
 }
@@ -403,7 +403,7 @@
 
 .card-body {
     display: block;
-    padding: 18px 20px 20px;
+    padding: $space-2 20px $space-3;
     border-top: 1px solid $c-border;
 }
 
@@ -411,8 +411,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: $space-2;
+    margin-bottom: $space-1;
     flex-wrap: wrap;          // badge drops to its own line before clipping
 }
 
@@ -431,7 +431,7 @@
     font-size: $text-excerpt;
     line-height: 1.6;
     color: $c-body-dim;
-    margin-bottom: 14px;
+    margin-bottom: $space-2;
 }
 
 .card-chips {
@@ -470,15 +470,15 @@
 .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $space-1;
     font-family: $font-mono;
     font-size: 10.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 26px;
+    margin-bottom: $space-3;
 
     @include respond-to(mobile) {
-        margin-bottom: 18px;
+        margin-bottom: $space-2;
     }
 }
 
@@ -499,12 +499,12 @@
     border-left: 2px solid $c-accent;
     background: rgba($c-border, 0.18);
     border-radius: 0 $radius-surface $radius-surface 0;
-    padding: 20px 24px;
-    margin-bottom: 28px;
+    padding: $space-3 24px;
+    margin-bottom: $space-3;
 
     @include respond-to(mobile) {
         padding: 16px 18px;
-        margin-bottom: 22px;
+        margin-bottom: $space-3;
     }
 }
 
@@ -514,7 +514,7 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: $c-accent;
-    margin: 0 0 10px;
+    margin: 0 0 $space-1;
 }
 
 .objective-text {
@@ -533,7 +533,7 @@
 }
 
 .side-head {
-    padding: 13px 18px;
+    padding: $space-2 18px;
     border-bottom: 1px solid $c-border;
     font-family: $font-mono;
     font-size: 10px;
@@ -545,8 +545,8 @@
 .side-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-    padding: 18px;
+    gap: $space-1;
+    padding: $space-2;
 }
 
 .side-chips .tech-chip {
@@ -570,8 +570,8 @@
 .side-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 13px 18px;
+    gap: $space-1;
+    padding: $space-2 18px;
     font-size: 14px;
     color: $c-body;
     min-height: $touch-min;
@@ -601,7 +601,7 @@
     font-size: 14px;
     line-height: 1.6;
     color: $c-body-dim;
-    margin: 0 0 12px;
+    margin: 0 0 $space-2;
 }
 
 .side-link {
@@ -619,8 +619,8 @@
 
 .tl-item {
     display: flex;
-    gap: 12px;
-    padding: 12px 18px;
+    gap: $space-2;
+    padding: $space-2 18px;
 }
 
 .tl-item + .tl-item {
@@ -675,8 +675,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    padding: 13px 18px;
+    gap: $space-2;
+    padding: $space-2 18px;
 }
 
 .side-kv + .side-kv {
@@ -702,7 +702,7 @@
 .wide-card-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: $space-2;
     margin-bottom: 40px;
 }
 
@@ -751,13 +751,13 @@
 
 .wide-card-body {
     display: block;
-    padding: 20px 22px;
+    padding: $space-3 22px;
 }
 
 .wide-card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: $space-2;
+    margin-bottom: $space-1;
 }

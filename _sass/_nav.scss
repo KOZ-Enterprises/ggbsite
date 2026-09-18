@@ -59,11 +59,11 @@ nav {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 12px 0;
+    padding: $space-2 0;
     text-decoration: none;
 
     @include respond-to(mobile) {
-        gap: 12px;
+        gap: $space-2;
     }
 }
 
@@ -247,7 +247,7 @@ nav {
     border: 0;
     color: $c-accent;
     font-size: 24px;
-    padding: 14px 16px;
+    padding: $space-2 16px;
     cursor: pointer;
 
     @include respond-to(nav) {
