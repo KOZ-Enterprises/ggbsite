@@ -33,13 +33,10 @@ the palette is the whole colour surface. Never use a text colour darker than
 `shipped`, `dormant`, plus `completed` / `in-progress` on course pages.
 
 **If a colour you need is not in the table**, it is a design decision, not a
-commit. Pick the nearest token, or get the palette extended deliberately. Four
-literals predate the closed palette, each commented at the line — adding a fifth
+commit. Pick the nearest token, or get the palette extended deliberately. Three
+literals predate the closed palette, each commented at the line — adding a fourth
 without a comment is what this section exists to stop:
 
-- `#888` — `.ai-disclaimer` in `_footer.scss`. 5.05:1, marginally *lighter* than
-  `$c-muted-low`. The AA failure there is the adjacent `opacity: 0.7` (composites
-  to 3.11:1), which a token would not fix. Left alone; do not copy the pattern.
 - `#f5f5f5` — `.social-icons a` in `_footer.scss`. Close to `$c-ink`, not equal.
 - `#c3cece` — `.feature-hero-desc` in `_pages.scss`; and `#8fd6d4` —
   `.page-body pre, .page-body code` in `_content.scss`.
