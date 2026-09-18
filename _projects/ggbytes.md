@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "Gary Gigabytes Website"
-image: "/assets/imgs/ggbytes/ggbytes-page.png"
+image: "/assets/imgs/ggbytes/ggbytes-card-2026-09.png"
 description: "A technical portfolio and a central hub for documenting my engineering journey."
 objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
 status: "active"
