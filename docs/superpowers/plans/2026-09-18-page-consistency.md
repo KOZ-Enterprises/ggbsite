@@ -715,12 +715,20 @@ def migrate(path):
     io.open(path, "w", encoding="utf-8", newline="").write("".join(out))
     return changed
 
-total = 0
-for p in sorted(glob.glob("_sass/*.scss")):
-    n = migrate(p)
-    total += n
-    print(f"  {p}: {n}")
-print(f"total: {total}")
+def main():
+    total = 0
+    for p in sorted(glob.glob("_sass/*.scss")):
+        n = migrate(p)
+        total += n
+        print(f"  {p}: {n}")
+    print(f"total: {total}")
+
+# The guard is load-bearing. Step 2b imports this module to compare its axis
+# logic against the checker's BEFORE migrating; without the guard, that import
+# runs the migration, so the pre-flight check and the change it was meant to
+# gate happen in the same breath.
+if __name__ == "__main__":
+    main()
 ```
 
 - [ ] **Step 2b: Prove the two axis functions agree before running anything**
