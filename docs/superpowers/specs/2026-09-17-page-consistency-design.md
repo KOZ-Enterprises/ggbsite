@@ -123,31 +123,15 @@ $space-6:    48px;
 
 **What the scale governs:** the vertical axis of `margin`, `padding` and `gap`. The counts are in The Problem above and are not restated here. The band's own geometry is set in Section 2 and is not part of this.
 
-**Exemptions are named selectors, not categories.** A linter reading `_sass/*.scss` sees a property, a value and a selector string; it cannot infer that one `margin` is type-to-type and another is structural. Any exemption a script cannot apply mechanically is not an exemption, it is a hole. The complete list:
+**Exemptions are mechanical rules, not a list.** An earlier draft named individual selectors, on the reasoning that a linter cannot infer intent from source text. Testing a real checker against the tree showed that is true but unnecessary: three axis-and-magnitude rules subsume every selector that list named, and several it had missed. A rule a script applies uniformly beats a list someone has to maintain.
 
-*Optical padding on chips and badges* — vertical padding of 6px or less, where an 8px floor would visibly fatten a component set in 10-11px type:
+1. **Only the vertical axis is inspected.** For a shorthand, that is the first component (and the third, in the four-value form); for `gap` and `row-gap`, all of it; for `column-gap`, `-left` and `-right`, nothing. This alone exempts every horizontal inset — `padding: 0 20px` on the navbar has a vertical component of `0`, which carries no px literal at all.
+2. **Values of 6px or less are optical and always allowed.** Chips, badges, hairline gaps and icon spacing live here, tuned against 10-11px type where an 8px floor would visibly fatten them. Every selector the earlier draft exempted by name — `.tech-chip`, `.status-tag`, `.status-badge`, `.side-timeline`, `.post-tagchip` and the rest — falls under this rule, as do nine more it had missed, including `ol`, `#main`, `.card-chips`, `.tl-content`, `.nav-wordmark`, `.post-page h2` and `.year-row`.
+3. **Negative values are offsets, not rhythm**, and are skipped. The only one is `_sass/_pages.scss:124 margin-top: -96px`, a deliberate overlap.
 
-| Selector | Declaration |
-| --- | --- |
-| `.tech-chip` | `padding: 2px 8px` |
-| `.status-tag` | `padding: 5px 11px` |
-| `.status-badge` | `padding: 3px 9px` |
-| `.card-chips .tech-chip` | `padding: 3px 8px` |
-| `.side-chips .tech-chip` | `padding: 4px 9px` |
-| `.side-timeline` | `padding: 6px 0` |
-| `.post-tagchip` | `padding: 4px 9px` |
+Properties other than `margin`, `padding` and `gap` are never inspected: `border`, `letter-spacing` and gradient stops are not spacing.
 
-*Horizontal-only insets* — the scale is vertical rhythm, and these set no vertical value at all:
-
-| Selector | Declaration |
-| --- | --- |
-| `.social-icons a` | `margin: 0 10px`, `padding: 0 14px` |
-| `.nav-shell` | `padding: 0 20px` (twice) |
-| `.nav-item` | `padding: 0 22px`, `padding: 0 4px` |
-
-*Negative offsets* — `_sass/_pages.scss:124 margin-top: -96px` is a deliberate overlap, not rhythm.
-
-*Properties other than `margin`, `padding` and `gap`* — `border`, `letter-spacing` and gradient stops are never inspected.
+For `border-radius` the rule is simpler still — no px literal at all, unless the line carries an `// OPTICAL` comment. Exactly two lines qualify, both named in Section 4.
 
 **`$space-half` is legal in exactly one place.** It exists because `.page-kicker` sits 14px above the title while `.page-title` sits 18px above the lead — the kicker is bound tighter on purpose, and a flat 8px scale erases that distinction on the three elements this spec is most about.
 
