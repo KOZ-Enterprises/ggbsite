@@ -326,8 +326,10 @@ Then change the loop from `{% for doc in page.tagged_docs %}` to `{% for doc in 
 Run:
 ```bash
 bundle exec jekyll build
-echo "csumb tag projects: $(grep -c 'wide-card' _site/tags/csumb/index.html)"
-echo "python tag projects: $(grep -c 'wide-card' _site/tags/python/index.html)"
+# Anchor the class name: a bare `wide-card` also matches wide-card-list,
+# wide-card-media, wide-card-body and wide-card-head, over-counting 3 as 13.
+echo "csumb tag projects:  $(grep -o 'class="wide-card"' _site/tags/csumb/index.html | wc -l)"
+echo "python tag projects: $(grep -o 'class="wide-card"' _site/tags/python/index.html | wc -l)"
 ```
 Expected: `csumb` → `0` (was 2 bogus course cards); `python` → `3` (real projects, unchanged).
 
