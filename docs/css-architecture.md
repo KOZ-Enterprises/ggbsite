@@ -1,7 +1,6 @@
 # CSS architecture
 
-Source lives in `_sass/`. `assets/css/styles.scss` is a manifest of `@use` rules compiling to
-`/assets/css/styles.css`, the one path `_includes/head.html` links. Jekyll compiles it natively — no gems, no npm, no build step.
+Source lives in `_sass/`. `assets/css/styles.scss` is a manifest of `@use` rules compiling to `/assets/css/styles.css`, the one path `_includes/head.html` links. Jekyll compiles it natively — no gems, no npm, no build step.
 
 ## The palette is closed
 
@@ -26,20 +25,9 @@ Every colour is a variable in `_sass/_tokens.scss`. There are sixteen.
 | `$c-muted-alt` | `#8ba3a3` | inactive nav links, neutral status |
 | `$c-muted-low` | `#7d8a8a` | placeholder labels, darkest allowed text |
 
-All 45 `rgba()` values resolve from these tokens too, gradient stops included, so
-the palette is the whole colour surface. Never use a text colour darker than
-`$c-muted-low`; the type scale is fixed at three roles (`.page-title`,
-`.page-lead`, `.page-body`); the status vocabulary is exactly `active`, `planned`,
-`shipped`, `dormant`, plus `completed` / `in-progress` on course pages.
+All 41 `rgba()` values resolve from these tokens too, so the palette is the whole colour surface. Never use a text colour darker than `$c-muted-low`.
 
-**If a colour you need is not in the table**, it is a design decision, not a
-commit. Pick the nearest token, or get the palette extended deliberately. Three
-literals predate the closed palette, each commented at the line — adding a fourth
-without a comment is what this section exists to stop:
-
-- `#f5f5f5` — `.social-icons a` in `_footer.scss`. Close to `$c-ink`, not equal.
-- `#c3cece` — `.feature-hero-desc` in `_pages.scss`; and `#8fd6d4` —
-  `.page-body pre, .page-body code` in `_content.scss`.
+**If a colour you need is not in the table**, it is a design decision, not a commit. Three literals predate the closed palette, each commented at the line: `#f5f5f5` in `_footer.scss`, and `#c3cece` / `#8fd6d4` in `_pages.scss` / `_content.scss`. Adding a fourth without a comment is what this stops.
 
 ## Three breakpoints, and why only three
 
@@ -51,14 +39,27 @@ Defined in `_tokens.scss` and reached only through `respond-to()`:
 | `respond-to(nav)` | 860px | navbar switches to the toggle (spec-mandated) |
 | `respond-to(mobile)` | 700px | single column, mobile type, 44px touch targets |
 
-The stylesheet used to have nine media queries at six widths, and the gap
-between them was a real bug: the navbar switched to the hamburger at 860px but
-`.detail-grid` did not collapse until 700px, so **701–860px rendered a mobile
-navbar above a desktop two-column body**, and at 768px the 320px sidebar was
-wider than the 318px main column. The 1024px tier closes that band.
+These replaced nine media queries at six widths that left real gaps. No partial contains a bare `@media`; verify with `grep -rn "@media" _sass/ | grep -v _tokens.scss`.
 
-No partial contains a bare `@media` — verify with
-`grep -rn "@media" _sass/ | grep -v _tokens.scss`.
+## The page skeleton
+
+Every page resolves to the same three parts, in order:
+
+```text
+HEADER BAND     kicker · title · lead          (+ actions on the home page)
+BODY            archetype-specific
+PAGE ACTIONS    back-link / primary action     (detail pages)
+```
+
+| Archetype | Header | Body | Actions |
+| --- | --- | --- | --- |
+| Home | band, large padding | featured hero + log list | — |
+| Projects / Coursework / Archives | band | card grid or list | — |
+| About | band | `.bio-grid` | — |
+| Project / Course / Tag | band | `.detail-grid` (main + side) | yes |
+| Blog post | **plain** `.post-head` | `.page-body` + related entries | yes |
+
+`.page-head`, `.detail-head` and `.intro-band` share one rule in `_layout.scss`; `.intro-band` overrides only its larger padding and margin, in `_pages.scss`. Blog posts are the one deliberate exclusion: a textured band above body prose would compete with it rather than frame it.
 
 ## The partials
 
@@ -66,81 +67,56 @@ Listed in manifest order: broad to specific, and load-bearing.
 
 | File | Owns |
 | --- | --- |
-| `_tokens.scss` | variables only; emits no CSS |
+| `_tokens.scss` | variables, the spacing/radius/grid-pitch scales and `blueprint-grid()` — emits no CSS of its own; a mixin emits only where used |
 | `_base.scss` | element defaults — selectors naming no class, plus `#main` |
-| `_layout.scss` | page shells and grids: `.page-head`, `.detail-grid`, `.bio-grid` |
+| `_layout.scss` | page shells and grids: the header band, `.detail-grid`, `.bio-grid` |
 | `_nav.scss` | `.nav-shell` and everything inside it |
 | `_components.scss` | reused on 2+ pages: `.card`, `.log-row`, `.btn-*`, `.side-*` |
-| `_pages.scss` | used on exactly one page: `.intro-band`, `.registry`, `.xp-list` |
+| `_pages.scss` | used on exactly one page: `.registry`, `.xp-list`, and `.intro-band`'s override of the shared band |
 | `_content.scss` | Markdown prose — `.page-body` descendants, `.mermaid` |
 | `_footer.scss` | `footer`, `.social-icons`, `.footer-mark` |
 | `_utilities.scss` | standalone helpers, loaded last so they can override |
 
-Responsive rules live **with** their component, nested via `respond-to()`: a
-single mobile block at a 3,000-line file's end is what let the 768px gap hide.
+Responsive rules live **with** their component, nested via `respond-to()`: a single mobile block at a 3,000-line file's end is what let the 768px gap hide.
+
+## Two geometry scales
+
+`_tokens.scss` also holds the geometry that used to accumulate per component.
+
+**Spacing:** six steps on 8px, `$space-1`…`$space-6` (8px–48px), plus `$space-half` (4px), legal **only** in the compound `$space-1 + $space-half` and **only** on `.page-kicker`'s margin — so the kicker binds tighter to the title than the title does to the lead.
+
+**Radius:** `$radius-surface` (6px, cards/bands/media), `$radius-chip` (3px, chips/pills/markers), `$radius-mark` (12px, the nav logo frame), plus exactly two `// OPTICAL`-marked px literals in `_nav.scss` where the value tracks a sibling dimension instead — `grep -rn "border-radius:[^;]*px" _sass/` finds exactly these two.
+
+**Grid:** `blueprint-grid()` appears in exactly three places, the header band (`$grid-pitch-band`, 40px) and the two media backplates `.card-media` / `.wide-card-media` (`$grid-pitch-media`, 32px), and nowhere else.
+
+Both scales are enforced mechanically (see Enforcement below), not by a list of exempt selectors — an earlier spec draft named ten by hand, and the mechanical rules subsumed all ten plus nine it had missed. Full rules: `docs/superpowers/specs/2026-09-17-page-consistency-design.md`.
 
 ## Where does a new rule go?
 
-Work down the list and stop at the first match:
+Work down the list, stop at the first match: a colour or size literal → add a token; selector names no class → `_base.scss`; navbar → `_nav.scss`, footer → `_footer.scss`; positions blocks on the page → `_layout.scss`; used on 2+ pages → `_components.scss`; used on exactly one page → `_pages.scss`; styles Markdown output → `_content.scss`; a hand-applied helper belonging to no component → `_utilities.scss`.
 
-1. A colour or size literal → add a token, then reference it.
-2. Selector names no class → `_base.scss`.
-3. It is the navbar → `_nav.scss`. The footer → `_footer.scss`.
-4. It positions blocks on the page → `_layout.scss`.
-5. Two or more pages use it → `_components.scss`.
-6. Exactly one page uses it → `_pages.scss`.
-7. It styles Markdown output → `_content.scss`.
-8. It is a hand-applied helper belonging to no component → `_utilities.scss`.
+**Then check the cascade — it can override the answer.** Tied specificity is broken by source order (the `@use` order): `.detail-grid-narrow` ties `.detail-grid` on specificity, so it stays in `_layout.scss` rather than `_pages.scss` purely to load later. If specificity decides the winner, follow the list; if source order decides it, the rule is pinned where it is.
 
-**Then check the cascade, because it can override the answer.** When two rules
-tie on specificity, source order decides — and source order is the `@use` order.
-
-The worked example is `.detail-grid-narrow`, which lives in `_layout.scss`
-although rule 6 would send it to `_pages.scss`. It ships as
-`class="detail-grid detail-grid-narrow"` and sets `grid-template-columns` at the
-same (0,1,0) specificity as `.detail-grid`, so it wins purely on being later,
-and must sit after the base rule and before the responsive collapse.
-`_pages.scss` loads after `_layout.scss`, so a copy there would re-apply the
-two-column track *below* both media queries and course detail pages would never
-collapse — the main column measures 22px wide at 390px.
-
-The opposite case: `.intro-actions .btn-primary` is (0,2,0) and beats the
-(0,1,0) mobile `.btn-primary` rule in `_components.scss` on specificity, so
-source order cannot touch it and `_pages.scss` is safe. Four similar rules rely
-on the same reasoning. **If specificity decides the winner, follow the list; if
-source order decides it, the rule is pinned where it is.**
-
-## Collision sets
-
-Six places in the partials carry a `COLLISION SET` comment — two or more rules
-at equal specificity setting the same property, where reordering changes the
-rendering. Find them with `grep -rn "COLLISION SET" _sass/`. Each states which
-rules collide, at what specificity, and what breaks if they are swapped.
-
-You have found a new one when two rules match the same element, tie on
-specificity, and touch the same property — including shorthand against longhand
-(`margin` against `margin-bottom` counts). Write the comment in the same shape,
-immediately above the rule that must stay second.
+Seven places carry a `COLLISION SET` comment: two tied rules touch the same property (shorthand against longhand counts, e.g. `margin` vs. `margin-bottom`) and reordering would change the render — `grep -rn "COLLISION SET" _sass/`. Comment a new one the same way, immediately above the rule that must stay second.
 
 ## Naming
 
-- `.page-*` for page shells, `.detail-*` for the two-column detail layout, and
-  `.card` / `.wide-card` / `.log-row` / `.side-*` / `.btn-*` for components.
-- State is a `data-status` attribute, never a class — see the vocabulary above.
+- `.page-*` for page shells, `.detail-*` for the two-column detail layout, and `.card` / `.wide-card` / `.log-row` / `.side-*` / `.btn-*` for components.
+- State is a `data-status` attribute, never a class: `active`, `planned`, `shipped`, `dormant`, plus `completed` / `in-progress` on course pages.
 
-## The dead-selector audit
+## Enforcement
 
-`script/dead-css.py` reports class selectors defined in `_sass/` that appear in
-no built page. `_site` is the oracle, so build first.
+Two build-failing scripts, both wired into the Lint workflow on every pull request.
+
+**`script/dead-css.py`** reports class selectors defined in `_sass/` that appear in no built page (`_site` is the oracle, so build first). Two sets exempt live-but-invisible selectors: `RUNTIME` (added by `assets/js/scripts.js`) and `TEMPLATE_FALLBACK` (a template branch current content never takes) — comment any addition.
 
 ```bash
 bundle exec jekyll build
-python script/dead-css.py            # list them
-python script/dead-css.py --count    # just the number
+python script/dead-css.py --count    # must be 0
 ```
 
-The count must be zero. The Lint workflow runs it on every pull request and
-fails otherwise, so a dead selector is caught in the commit that creates it
-rather than accumulating for a year. Two sets exempt live-but-invisible selectors:
-`RUNTIME` (added by `assets/js/scripts.js`) and `TEMPLATE_FALLBACK` (a template
-branch current content never takes). Comment any addition.
+**`script/geometry.py`** rejects geometry that bypasses the two scales above, applying three mechanical rules to every `margin`/`padding`/`gap` and `border-radius` declaration in `_sass/`: only the vertical axis is inspected; 6px or less is optical and always allowed; negatives are offsets and skipped. A violation the scale should legitimately allow is a spec change — edit the design spec's rules and this doc, not the script's constants.
+
+```bash
+python script/geometry.py --count    # must be 0
+```
