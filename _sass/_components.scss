@@ -1,0 +1,774 @@
+// =============================================================================
+// COMPONENTS
+// Reusable units that appear on two or more pages. A rule belongs here only if
+// more than one page uses it; single-page styling lives in _pages.scss.
+//
+// Contains: .tech-chip, .status-tag, .status-dot, .status-badge,
+//           .btn-primary, .btn-ghost, .log-section, .log-row, .rule-header,
+//           .card-grid, .card, .breadcrumb, .objective, .side-module,
+//           .side-timeline, .wide-card
+// =============================================================================
+
+@use "tokens" as *;
+
+// ---- Tech chip -------------------------------------------------------------
+.tech-chip {
+    background-color: transparent;
+    border: 1px solid $c-blue;
+    color: $c-blue;
+    font-size: 0.75em;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    width: fit-content;
+
+    // Chips are the densest tap surface on the site. Archives alone renders 32
+    // filter chips and 114 tag chips; at desktop size they measure 13-25px
+    // against the 44px floor the spec sets.
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+// ---- Status tag system -----------------------------------------------------
+// Fixed vocabulary: active / planned / shipped / dormant. Set `status:` in
+// project front matter to one of those. Course pages add completed /
+// in-progress on the badge variant only.
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 5px 11px;
+    border-radius: $radius-chip;
+    border: 1px solid $c-border;
+    color: $c-muted-alt;
+    white-space: nowrap;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: currentColor;
+    flex: 0 0 auto;
+}
+
+.status-tag[data-status="active"] {
+    color: $c-accent;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-tag[data-status="active"] .status-dot {
+    box-shadow: 0 0 8px $c-accent;
+}
+
+.status-tag[data-status="planned"] {
+    color: $c-amber;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-tag[data-status="shipped"] {
+    color: $c-blue;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-tag[data-status="dormant"] {
+    color: $c-muted-alt;
+    border-color: $c-border;
+}
+
+// project cards use the same vocabulary
+.status-badge {
+    font-family: $font-mono;
+    font-size: 0.7em;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 9px;
+    border-radius: $radius-chip;
+    background: transparent;
+    border: 1px solid $c-border;
+    color: $c-muted-alt;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.status-badge[data-status="active"] {
+    color: $c-accent;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+.status-badge[data-status="planned"] {
+    color: $c-amber;
+    border-color: rgba(255, 179, 0, 0.45);
+}
+
+.status-badge[data-status="shipped"] {
+    color: $c-blue;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-badge[data-status="dormant"] {
+    color: $c-muted-alt;
+    border-color: $c-border;
+}
+
+// course + capstone states reuse the shared pill; map their vocabulary
+.status-badge[data-status="completed"] {
+    color: $c-blue;
+    border-color: rgba(91, 192, 222, 0.45);
+}
+
+.status-badge[data-status="in-progress"] {
+    color: $c-accent;
+    border-color: rgba(100, 213, 210, 0.45);
+}
+
+// ---- Buttons ---------------------------------------------------------------
+.btn-primary,
+.btn-ghost {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 13.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border-radius: $radius-card;
+    padding: 12px 22px;
+    text-decoration: none;
+    // there is no global box-sizing reset in this stylesheet; without this, a
+    // width:100% button at mobile overflows by its 44px horizontal padding
+    box-sizing: border-box;
+    transition: all 0.25s ease;
+
+    // Page-level overrides (.intro-actions, .page-actions, .prior-degrees) set
+    // display:block at (0,2,0) and beat this on specificity, not source order,
+    // so they are free to live in _pages.scss.
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+// :visited is included deliberately. The global `a, a:visited` rule in
+// _base.scss has specificity (0,1,1), which beats a bare `.btn-primary`
+// (0,1,0) - so a visited primary button rendered teal-on-teal and its label
+// disappeared. `.btn-primary:visited` is (0,2,0) and wins.
+.btn-primary,
+.btn-primary:visited {
+    background: $c-accent;
+    color: $c-bg;
+    border: 1px solid $c-accent;
+}
+
+.btn-primary:hover {
+    background: $c-accent-hover;
+    border-color: $c-accent-hover;
+    color: $c-bg;
+}
+
+.btn-ghost {
+    color: $c-accent;
+    border: 1px solid $c-border;
+}
+
+.btn-ghost:hover {
+    border-color: $c-accent;
+    color: $c-ink;
+}
+
+// ---- Section rule header ---------------------------------------------------
+.log-section {
+    margin-bottom: 40px;
+}
+
+.rule-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.rule-title {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $c-ink;
+    margin: 0;
+
+    @include respond-to(mobile) {
+        font-size: 18px;
+    }
+}
+
+.rule-line {
+    flex: 1;
+    height: 1px;
+    background: $c-rule;
+}
+
+.rule-link {
+    font-family: $font-mono;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    color: $c-accent;
+    white-space: nowrap;
+}
+
+.rule-count {
+    font-family: $font-mono;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-muted;
+    white-space: nowrap;
+}
+
+// ---- Project log list ------------------------------------------------------
+.log-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.log-row {
+    display: grid;
+    grid-template-columns: 140px minmax(0, 1fr);
+    gap: 28px;
+    padding: 24px 0;
+    margin: 0;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    transition: background 0.2s ease;
+
+    // the date gutter is dropped and the rows stack
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 18px 0;
+    }
+}
+
+.log-row:hover {
+    background: rgba(100, 213, 210, 0.04);
+}
+
+.log-gutter {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1px;
+    line-height: 1.9;
+    color: $c-muted;
+
+    @include respond-to(mobile) {
+        display: flex;
+        gap: 12px;
+        line-height: 1.4;
+        font-size: 10.5px;
+    }
+}
+
+.log-date,
+.log-tag {
+    display: block;
+}
+
+.log-tag {
+    color: $c-accent;
+}
+
+.log-title {
+    font-family: $font-display;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 21px;
+    letter-spacing: 0.3px;
+    margin: 0 0 8px;
+
+    @include respond-to(mobile) {
+        font-size: 19px;
+    }
+}
+
+.log-title a {
+    color: $c-ink;
+}
+
+.log-title a:hover {
+    color: $c-accent;
+}
+
+.log-excerpt {
+    font-size: $text-excerpt;
+    line-height: $lh-lead;
+    color: $c-body-dim;
+    max-width: 840px;
+}
+
+.log-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    border-top: 1px solid rgba(46, 76, 91, 0.35);
+    padding-top: 24px;
+}
+
+.log-page-number {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1.5px;
+    color: $c-muted;
+}
+
+// ---- Project card grid -----------------------------------------------------
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+    margin-bottom: 48px;
+
+    // wide before mobile: all three set grid-template-columns at (0,1,0), so
+    // the single column must be emitted last to win below 700px.
+    @include respond-to(wide) {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-bottom: 32px;
+    }
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: $c-surface;
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.card:hover {
+    border-color: $c-accent;
+    background: $c-surface-hover;
+}
+
+// aspect-ratio wrapper is required: without it flex resolves the wrapper from
+// the intrinsic ratio of the image and card heights go ragged
+.card-media {
+    flex: 0 0 auto;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    display: block;
+    background-color: $c-bg;
+    // The rgba() values inside a gradient stay literal on purpose: a token here
+    // would be folded by Sass into a computed colour and change the emitted
+    // text of the gradient.
+    background-image:
+        linear-gradient(rgba(100, 213, 210, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 213, 210, 0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-noimg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $c-muted-low;
+}
+
+.card-body {
+    display: block;
+    padding: 18px 20px 20px;
+    border-top: 1px solid $c-border;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+    flex-wrap: wrap;          // badge drops to its own line before clipping
+}
+
+.card-title {
+    font-family: $font-display;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 21px;
+    letter-spacing: 0.5px;
+    color: $c-ink;
+    min-width: 0;             // lets the title shrink instead of shoving the badge out
+}
+
+.card-desc {
+    display: block;
+    font-size: $text-excerpt;
+    line-height: 1.6;
+    color: $c-body-dim;
+    margin-bottom: 14px;
+}
+
+.card-chips {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-chips .tech-chip {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $c-blue;
+    border: 1px solid rgba(91, 192, 222, 0.4);
+    border-radius: $radius-chip;
+    padding: 3px 8px;
+
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+.card-chip-more {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: $c-muted-low;
+}
+
+// ---- Breadcrumb ------------------------------------------------------------
+.breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: $font-mono;
+    font-size: 10.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 26px;
+
+    @include respond-to(mobile) {
+        margin-bottom: 18px;
+    }
+}
+
+.breadcrumb a {
+    color: $c-accent;
+    min-height: $touch-min;
+    display: inline-flex;
+    align-items: center;
+}
+
+.breadcrumb-sep,
+.breadcrumb-current {
+    color: $c-muted;
+}
+
+// ---- Objective callout -----------------------------------------------------
+.objective {
+    border-left: 2px solid $c-accent;
+    background: rgba(46, 76, 91, 0.18);
+    border-radius: 0 $radius-card $radius-card 0;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+
+    @include respond-to(mobile) {
+        padding: 16px 18px;
+        margin-bottom: 22px;
+    }
+}
+
+.objective-label {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $c-accent;
+    margin: 0 0 10px;
+}
+
+.objective-text {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: $c-body;
+    margin: 0;
+}
+
+// ---- Sidebar modules -------------------------------------------------------
+.side-module {
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    background: $c-surface;
+    overflow: hidden;
+}
+
+.side-head {
+    padding: 13px 18px;
+    border-bottom: 1px solid $c-border;
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: $c-accent;
+}
+
+.side-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 18px;
+}
+
+.side-chips .tech-chip {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $c-blue;
+    border: 1px solid rgba(91, 192, 222, 0.4);
+    border-radius: $radius-chip;
+    padding: 4px 9px;
+
+    @include respond-to(mobile) {
+        min-height: $touch-min;
+        display: inline-flex;
+        align-items: center;
+        box-sizing: border-box;
+    }
+}
+
+.side-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 18px;
+    font-size: 14px;
+    color: $c-body;
+    min-height: $touch-min;
+    box-sizing: border-box;
+    transition: background 0.2s ease;
+}
+
+.side-row + .side-row {
+    border-top: 1px solid rgba(46, 76, 91, 0.25);
+}
+
+.side-row:hover {
+    background: rgba(100, 213, 210, 0.05);
+    color: $c-ink;
+}
+
+.side-arrow {
+    color: $c-accent;
+    flex: 0 0 auto;
+}
+
+.side-note {
+    padding: 16px 18px;
+}
+
+.side-note p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: $c-body-dim;
+    margin: 0 0 12px;
+}
+
+.side-link {
+    font-family: $font-mono;
+    font-size: 10.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-amber;
+}
+
+// ---- Sidebar timeline ------------------------------------------------------
+.side-timeline {
+    padding: 6px 0;
+}
+
+.tl-item {
+    display: flex;
+    gap: 12px;
+    padding: 12px 18px;
+}
+
+.tl-item + .tl-item {
+    border-top: 1px solid rgba(46, 76, 91, 0.25);
+}
+
+.tl-marker {
+    flex: 0 0 auto;
+    width: 11px;
+    height: 11px;
+    margin-top: 4px;
+    border: 2px solid $c-border;
+    border-radius: 2px;
+}
+
+.tl-marker.done {
+    background: $c-accent;
+    border-color: $c-accent;
+    box-shadow: 0 0 8px rgba(100, 213, 210, 0.6);
+}
+
+.tl-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+}
+
+.tl-date {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted;
+}
+
+.tl-phase {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 15px;
+    color: $c-ink;
+}
+
+.tl-detail {
+    font-size: 13px;
+    line-height: 1.5;
+    color: $c-body-dim;
+}
+
+// ---- Sidebar key/value rows (course pages) ---------------------------------
+.side-kv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 13px 18px;
+}
+
+.side-kv + .side-kv {
+    border-top: 1px solid rgba(46, 76, 91, 0.25);
+}
+
+.side-k {
+    font-family: $font-mono;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: $c-muted;
+}
+
+.side-v {
+    font-family: $font-display;
+    font-weight: 600;
+    font-size: 14px;
+    color: $c-ink;
+}
+
+// ---- Wide card (tag and archive listings) ----------------------------------
+.wide-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-bottom: 40px;
+}
+
+.wide-card {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    border: 1px solid $c-border;
+    border-radius: $radius-card;
+    background: $c-surface;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.25s ease, background 0.25s ease;
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.wide-card:hover {
+    border-color: $c-accent;
+    background: $c-surface-hover;
+}
+
+.wide-card-media {
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 3;
+    border-right: 1px solid $c-border;
+    background-color: $c-bg;
+    background-image:
+        linear-gradient(rgba(100, 213, 210, 0.045) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(100, 213, 210, 0.045) 1px, transparent 1px);
+    background-size: 32px 32px;
+
+    // the divider moves from the side to the top once the card stacks
+    @include respond-to(mobile) {
+        border-right: 0;
+        border-bottom: 1px solid $c-border;
+    }
+}
+
+.wide-card-media img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.wide-card-body {
+    display: block;
+    padding: 20px 22px;
+}
+
+.wide-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 10px;
+}

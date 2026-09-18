@@ -1,0 +1,32 @@
+// =============================================================================
+// UTILITIES
+// The few single-purpose helpers that survived the dead-selector sweep. These
+// are applied by hand in a template or in Markdown and belong to no component.
+// Loaded last so a helper can override the block it is applied to.
+//
+// Contains: .project-image, .image-container, .empty-note
+// =============================================================================
+
+@use "tokens" as *;
+
+// Ensures the image covers its area so nothing peeks through an overlay.
+.project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.image-container {
+    max-width: 600px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+// The placeholder line a listing shows when a collection renders empty.
+.empty-note {
+    font-family: $font-mono;
+    font-size: 11.5px;
+    letter-spacing: 1px;
+    color: $c-muted-low;
+}
