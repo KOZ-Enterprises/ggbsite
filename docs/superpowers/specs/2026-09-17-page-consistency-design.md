@@ -131,7 +131,7 @@ $radius-chip:     3px;   // chips, status pills, timeline markers
 $radius-mark:    12px;   // the nav logo frame at desktop
 ```
 
-`$radius-card` is **renamed** to `$radius-surface`. It is referenced at 20 call sites across `_components.scss`, `_content.scss`, `_layout.scss` and `_pages.scss`; all are updated in the same change and the old name is retired, not aliased.
+`$radius-card` is **renamed** to `$radius-surface`. It is referenced at 16 call sites — 5 in `_components.scss`, 5 in `_pages.scss`, 4 in `_content.scss`, 2 in `_layout.scss` — plus its definition in `_tokens.scss`. All are updated in the same change and the old name is retired, not aliased.
 
 | Rule | Current | New |
 | --- | --- | --- |
