@@ -376,11 +376,7 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     display: block;
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 32px 32px;
+    @include blueprint-grid($grid-pitch-media);
 }
 
 .card-media img {
@@ -735,11 +731,7 @@
     display: block;
     aspect-ratio: 4 / 3;
     border-right: 1px solid $c-border;
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 32px 32px;
+    @include blueprint-grid($grid-pitch-media);
 
     // the divider moves from the side to the top once the card stacks
     @include respond-to(mobile) {

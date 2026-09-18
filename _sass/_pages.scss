@@ -13,11 +13,7 @@
 
 // ---- Home: intro band ------------------------------------------------------
 .intro-band {
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 40px 40px;
+    @include blueprint-grid($grid-pitch-band);
     border: 1px solid $c-border;
     border-radius: 4px;
     padding: 52px 48px;

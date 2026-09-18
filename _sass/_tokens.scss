@@ -39,9 +39,40 @@ $lh-lead:  1.65;
 $lh-body:  1.8;
 
 // ---- Space & shape ---------------------------------------------------------
-$radius-card: 6px;
-$radius-chip: 3px;
-$touch-min:   44px;  // minimum interactive target
+// Vertical rhythm. Six steps on an 8px base; the 40px blueprint pitch is five
+// steps, so texture and spacing share a grid. $space-half is legal ONLY in the
+// compound `$space-1 + $space-half` and ONLY on .page-kicker's margin-bottom -
+// see docs/css-architecture.md. A bare 12px is rejected by script/geometry.py.
+$space-half:  4px;
+$space-1:     8px;
+$space-2:    16px;
+$space-3:    24px;
+$space-4:    32px;
+$space-5:    40px;
+$space-6:    48px;
+
+$radius-surface:  6px;   // cards, bands, modules, heroes, code blocks, media
+$radius-chip:     3px;   // chips, status pills, timeline markers
+$radius-mark:    12px;   // the nav logo frame at desktop
+
+$radius-card: 6px;       // DEPRECATED alias, removed in the radius migration
+$touch-min:   44px;      // minimum interactive target
+
+// ---- Blueprint grid --------------------------------------------------------
+// The signature texture: faint accent-coloured graph paper. Two pitches only.
+// Bands are large surfaces and take the coarser grid; media backplates are
+// small 4:3 boxes where 40px would show barely two lines.
+$grid-pitch-band:   40px;
+$grid-pitch-media:  32px;
+$grid-alpha:        0.045;
+
+@mixin blueprint-grid($pitch: $grid-pitch-band, $alpha: $grid-alpha) {
+    background-color: $c-bg;
+    background-image:
+        linear-gradient(rgba($c-accent, $alpha) 1px, transparent 1px),
+        linear-gradient(90deg, rgba($c-accent, $alpha) 1px, transparent 1px);
+    background-size: $pitch $pitch;
+}
 
 // ---- Breakpoints -----------------------------------------------------------
 // Three tiers, no more. Anything else re-creates the 701-860px gap where a
