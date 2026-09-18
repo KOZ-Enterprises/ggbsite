@@ -1384,6 +1384,8 @@ footer {
     background: transparent;
     border: 1px solid #2e4c5b;
     color: #8ba3a3;
+    flex: 0 0 auto;
+    white-space: nowrap;
 }
 
 .status-badge[data-status="active"] {
@@ -1744,17 +1746,6 @@ footer {
     margin: 0 0 24px;
 }
 
-@media screen and (max-width: 700px) {
-    .intro-band {
-        padding: 32px 22px;
-    }
-
-    .feature-hero-body {
-        padding: 32px 22px;
-    }
-}
-
-
 /* ---------- Home: project log list ---------- */
 .log-section {
     margin-bottom: 40px;
@@ -2064,6 +2055,7 @@ footer {
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 10px;
+    flex-wrap: wrap;          /* added: badge drops to its own line before clipping */
 }
 
 .card-title {
@@ -2073,6 +2065,7 @@ footer {
     font-size: 21px;
     letter-spacing: 0.5px;
     color: #fafafa;
+    min-width: 0;             /* added: allows the title to shrink instead of shoving the badge out */
 }
 
 .card-desc {
@@ -3003,6 +2996,33 @@ footer {
     justify-content: space-between;
     gap: 12px;
     margin-bottom: 10px;
+}
+
+/* ---------- Wide tablet (≤1024px) ----------
+   The navbar switches to the toggle at 860px but the page grids only
+   collapsed at 700px, so 701-860px rendered a mobile navbar above a desktop
+   two-column body. At 768px the 320px sidebar was wider than the 318px main
+   column. This tier collapses the page grids before that can happen. */
+@media screen and (max-width: 1024px) {
+    .detail-grid,
+    .detail-grid-narrow {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .bio-grid,
+    .about-cols {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 32px;
+    }
+
+    .bio-portrait {
+        max-width: 320px;
+    }
 }
 
 /* ---------- Mobile (≤700px) ---------- */
