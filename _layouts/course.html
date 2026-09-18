@@ -39,16 +39,18 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
     <span class="breadcrumb-current">{{ page.course_code }}</span>
 </nav>
 
+<header class="detail-head">
+    <p class="page-kicker">
+        {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
+    </p>
+    <h1 class="page-title">{{ course_name }}</h1>
+    {% if page.note %}
+    <p class="page-lead">{{ page.note }}</p>
+    {% endif %}
+</header>
+
 <div class="detail-grid detail-grid-narrow">
     <main class="detail-main">
-        <p class="page-kicker">
-            {{ page.course_code }}{% if page.term %} &middot; {{ page.term }}{% endif %}
-        </p>
-        <h1 class="page-title">{{ course_name }}</h1>
-        {% if page.note %}
-        <p class="page-lead">{{ page.note }}</p>
-        {% endif %}
-
         <div class="page-body">
             {{ content }}
         </div>

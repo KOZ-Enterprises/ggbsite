@@ -19,9 +19,10 @@ render as empty "No preview" project cards. Restrict to real projects.
 </nav>
 
 {%- comment -%}
-Tag pages are detail pages: they carry a breadcrumb, so they use the detail
-head and title scale rather than the index-page .page-head/.page-title, which
-would render 46px against the 44px every other breadcrumbed page uses.
+Tag pages are detail pages: they carry a breadcrumb, so they use .detail-head
+(with its .detail-meta count line) rather than the home page's plain
+.page-head. Both bands share the same geometry and .page-title now, so this
+only affects which meta markup surrounds the title.
 {%- endcomment -%}
 <header class="detail-head">
     <div class="detail-meta">
@@ -36,8 +37,6 @@ would render 46px against the 44px every other breadcrumbed page uses.
         log entries that mention it.
     </p>
 </header>
-
-<div class="page-rule"></div>
 
 {% if doc_count > 0 %}
 <div class="rule-header">

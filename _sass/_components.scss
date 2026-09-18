@@ -18,7 +18,7 @@
     color: $c-blue;
     font-size: 0.75em;
     padding: 2px 8px;
-    border-radius: 12px;
+    border-radius: $radius-chip;
     white-space: nowrap;
     position: relative;
     z-index: 2;
@@ -43,7 +43,7 @@
 .status-tag {
     display: inline-flex;
     align-items: center;
-    gap: 9px;
+    gap: $space-1;
     font-family: $font-mono;
     font-size: 10px;
     letter-spacing: 2.5px;
@@ -141,8 +141,8 @@
     font-size: 13.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    border-radius: $radius-card;
-    padding: 12px 22px;
+    border-radius: $radius-surface;
+    padding: $space-2 22px;
     text-decoration: none;
     // there is no global box-sizing reset in this stylesheet; without this, a
     // width:100% button at mobile overflows by its 44px horizontal padding
@@ -246,7 +246,7 @@
 .log-row {
     display: grid;
     grid-template-columns: 140px minmax(0, 1fr);
-    gap: 28px;
+    gap: $space-3;
     padding: 24px 0;
     margin: 0;
     border-top: 1px solid rgba($c-border, 0.35);
@@ -255,8 +255,8 @@
     // the date gutter is dropped and the rows stack
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
-        gap: 10px;
-        padding: 18px 0;
+        gap: $space-1;
+        padding: $space-2 0;
     }
 }
 
@@ -273,7 +273,7 @@
 
     @include respond-to(mobile) {
         display: flex;
-        gap: 12px;
+        gap: $space-2;
         line-height: 1.4;
         font-size: 10.5px;
     }
@@ -347,7 +347,7 @@
 
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: $space-2;
         margin-bottom: 32px;
     }
 }
@@ -357,7 +357,7 @@
     flex-direction: column;
     background: $c-surface;
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
     text-decoration: none;
     transition: border-color 0.25s ease, background 0.25s ease;
@@ -376,11 +376,7 @@
     width: 100%;
     aspect-ratio: 4 / 3;
     display: block;
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 32px 32px;
+    @include blueprint-grid($grid-pitch-media);
 }
 
 .card-media img {
@@ -407,7 +403,7 @@
 
 .card-body {
     display: block;
-    padding: 18px 20px 20px;
+    padding: $space-2 20px $space-3;
     border-top: 1px solid $c-border;
 }
 
@@ -415,8 +411,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: $space-2;
+    margin-bottom: $space-1;
     flex-wrap: wrap;          // badge drops to its own line before clipping
 }
 
@@ -435,7 +431,7 @@
     font-size: $text-excerpt;
     line-height: 1.6;
     color: $c-body-dim;
-    margin-bottom: 14px;
+    margin-bottom: $space-2;
 }
 
 .card-chips {
@@ -474,15 +470,15 @@
 .breadcrumb {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: $space-1;
     font-family: $font-mono;
     font-size: 10.5px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 26px;
+    margin-bottom: $space-3;
 
     @include respond-to(mobile) {
-        margin-bottom: 18px;
+        margin-bottom: $space-2;
     }
 }
 
@@ -502,13 +498,13 @@
 .objective {
     border-left: 2px solid $c-accent;
     background: rgba($c-border, 0.18);
-    border-radius: 0 $radius-card $radius-card 0;
-    padding: 20px 24px;
-    margin-bottom: 28px;
+    border-radius: 0 $radius-surface $radius-surface 0;
+    padding: $space-3 24px;
+    margin-bottom: $space-3;
 
     @include respond-to(mobile) {
         padding: 16px 18px;
-        margin-bottom: 22px;
+        margin-bottom: $space-3;
     }
 }
 
@@ -518,7 +514,7 @@
     letter-spacing: 2.5px;
     text-transform: uppercase;
     color: $c-accent;
-    margin: 0 0 10px;
+    margin: 0 0 $space-1;
 }
 
 .objective-text {
@@ -531,13 +527,13 @@
 // ---- Sidebar modules -------------------------------------------------------
 .side-module {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
 }
 
 .side-head {
-    padding: 13px 18px;
+    padding: $space-2 18px;
     border-bottom: 1px solid $c-border;
     font-family: $font-mono;
     font-size: 10px;
@@ -549,8 +545,8 @@
 .side-chips {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-    padding: 18px;
+    gap: $space-1;
+    padding: $space-2;
 }
 
 .side-chips .tech-chip {
@@ -574,8 +570,8 @@
 .side-row {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 13px 18px;
+    gap: $space-1;
+    padding: $space-2 18px;
     font-size: 14px;
     color: $c-body;
     min-height: $touch-min;
@@ -605,7 +601,7 @@
     font-size: 14px;
     line-height: 1.6;
     color: $c-body-dim;
-    margin: 0 0 12px;
+    margin: 0 0 $space-2;
 }
 
 .side-link {
@@ -623,8 +619,8 @@
 
 .tl-item {
     display: flex;
-    gap: 12px;
-    padding: 12px 18px;
+    gap: $space-2;
+    padding: $space-2 18px;
 }
 
 .tl-item + .tl-item {
@@ -637,7 +633,7 @@
     height: 11px;
     margin-top: 4px;
     border: 2px solid $c-border;
-    border-radius: 2px;
+    border-radius: $radius-chip;
 }
 
 .tl-marker.done {
@@ -679,8 +675,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 14px;
-    padding: 13px 18px;
+    gap: $space-2;
+    padding: $space-2 18px;
 }
 
 .side-kv + .side-kv {
@@ -706,7 +702,7 @@
 .wide-card-list {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: $space-2;
     margin-bottom: 40px;
 }
 
@@ -714,7 +710,7 @@
     display: grid;
     grid-template-columns: 220px minmax(0, 1fr);
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
     text-decoration: none;
@@ -735,11 +731,7 @@
     display: block;
     aspect-ratio: 4 / 3;
     border-right: 1px solid $c-border;
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 32px 32px;
+    @include blueprint-grid($grid-pitch-media);
 
     // the divider moves from the side to the top once the card stacks
     @include respond-to(mobile) {
@@ -759,13 +751,13 @@
 
 .wide-card-body {
     display: block;
-    padding: 20px 22px;
+    padding: $space-3 22px;
 }
 
 .wide-card-head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
-    margin-bottom: 10px;
+    gap: $space-2;
+    margin-bottom: $space-1;
 }

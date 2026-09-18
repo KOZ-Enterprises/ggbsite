@@ -12,43 +12,28 @@
 @use "tokens" as *;
 
 // ---- Home: intro band ------------------------------------------------------
+// COLLISION SET - the home band is the shared treatment from _layout.scss,
+// scaled up. Both rules are (0,1,0) and both set padding and margin, so this
+// wins only because _pages.scss loads after _layout.scss. Do not move it
+// earlier, and do not restate the border, the radius or the grid here.
 .intro-band {
-    background-color: $c-bg;
-    background-image:
-        linear-gradient(rgba($c-accent, 0.045) 1px, transparent 1px),
-        linear-gradient(90deg, rgba($c-accent, 0.045) 1px, transparent 1px);
-    background-size: 40px 40px;
-    border: 1px solid $c-border;
-    border-radius: 4px;
-    padding: 52px 48px;
-    margin: 0 0 40px;
+    padding: $space-6;
+    margin: 0 0 $space-5;
 
     @include respond-to(mobile) {
-        padding: 28px 20px;
-        margin-bottom: 24px;
+        padding: $space-4 $space-2;
+        margin: 0 0 $space-3;
     }
-}
-
-.intro-inner {
-    max-width: 780px;
-}
-
-.intro-kicker {
-    font-family: $font-mono;
-    font-size: $text-meta;
-    letter-spacing: 3px;
-    color: $c-amber;
-    margin: 0 0 16px;
 }
 
 .intro-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: $space-2;
 
     @include respond-to(mobile) {
         flex-direction: column;
-        gap: 10px;
+        gap: $space-1;
     }
 }
 
@@ -59,7 +44,7 @@
     @include respond-to(mobile) {
         display: block;
         width: 100%;
-        padding: 14px 22px;
+        padding: $space-2 22px;
         text-align: center;
     }
 }
@@ -69,7 +54,7 @@
     position: relative;
     min-height: 430px;
     border: 1px solid $c-border;
-    border-radius: 4px;
+    border-radius: $radius-surface;
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -117,12 +102,12 @@
 .feature-hero-body {
     position: relative;
     z-index: 1;
-    padding: 44px 48px;
+    padding: $space-5 48px;
     max-width: 660px;
 
     @include respond-to(mobile) {
         margin-top: -96px;
-        padding: 0 20px 28px;
+        padding: 0 20px $space-3;
         max-width: none;
     }
 }
@@ -166,10 +151,10 @@
     display: grid;
     grid-template-columns: 300px minmax(0, 1fr);
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     background: $c-surface;
     overflow: hidden;
-    margin-bottom: 44px;
+    margin-bottom: $space-5;
 
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
@@ -201,10 +186,10 @@
 }
 
 .capstone-body {
-    padding: 26px 28px;
+    padding: $space-3 28px;
 
     @include respond-to(mobile) {
-        padding: 22px 20px;
+        padding: $space-3 20px;
     }
 }
 
@@ -212,8 +197,8 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 14px;
-    margin-bottom: 12px;
+    gap: $space-2;
+    margin-bottom: $space-2;
 }
 
 .capstone-title {
@@ -234,7 +219,7 @@
     font-size: $text-excerpt;
     line-height: 1.6;
     color: $c-body-dim;
-    margin: 0 0 18px;
+    margin: 0 0 $space-2;
     max-width: 640px;
 }
 
@@ -249,9 +234,9 @@
 // ---- Coursework: course registry -------------------------------------------
 .registry {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
-    margin-bottom: 44px;
+    margin-bottom: $space-5;
 }
 
 // rows restack: code + pill on one line, then title, then note
@@ -266,7 +251,7 @@
 
     @include respond-to(mobile) {
         grid-template-columns: 1fr auto;
-        gap: 7px;
+        gap: $space-1;
         padding: 16px 18px;
     }
 }
@@ -331,7 +316,7 @@
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: $space-3;
     border-top: 1px solid $c-rule;
     padding-top: 24px;
     margin-bottom: 48px;
@@ -386,14 +371,14 @@
 }
 
 .post-head {
-    margin-bottom: 28px;
+    margin-bottom: $space-3;
 }
 
 .post-metarow {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: $space-1;
     font-family: $font-mono;
     font-size: $text-meta;
     letter-spacing: 1.5px;
@@ -410,7 +395,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    padding-bottom: 20px;
+    padding-bottom: $space-3;
     border-bottom: 1px solid $c-rule;
 
     @include respond-to(mobile) {
@@ -437,9 +422,9 @@
 
 .post-hero {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
-    margin: 28px 0;
+    margin: $space-3 0;
 }
 
 .post-hero img {
@@ -450,13 +435,13 @@
 
 .post-more {
     max-width: 800px;
-    margin-bottom: 36px;
+    margin-bottom: $space-4;
 }
 
 .page-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: $space-2;
     max-width: 800px;
     margin-bottom: 48px;
 }
@@ -522,7 +507,7 @@
 // ---- About: education list -------------------------------------------------
 .edu-list {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
 }
 
@@ -530,7 +515,7 @@
     display: grid;
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
-    gap: 14px;
+    gap: $space-2;
     padding: 16px 18px;
 }
 
@@ -579,9 +564,9 @@
 
 .year-block {
     border: 1px solid $c-border;
-    border-radius: $radius-card;
+    border-radius: $radius-surface;
     overflow: hidden;
-    margin-bottom: 28px;
+    margin-bottom: $space-3;
 }
 
 .year-head {
@@ -591,10 +576,10 @@
     gap: 16px;
     background: $c-surface-deep;
     border-bottom: 1px solid $c-border;
-    padding: 14px 20px;
+    padding: $space-2 20px;
 
     @include respond-to(mobile) {
-        padding: 12px 16px;
+        padding: $space-2 16px;
     }
 }
 
@@ -622,15 +607,15 @@
     display: grid;
     grid-template-columns: 100px minmax(0, 1fr) minmax(0, max-content);
     align-items: center;
-    gap: 22px;
-    padding: 13px 20px;
+    gap: $space-3;
+    padding: $space-2 20px;
     border-top: 1px solid rgba($c-border, 0.28);
     transition: background 0.2s ease;
 
     @include respond-to(mobile) {
         grid-template-columns: 1fr;
         gap: 6px;
-        padding: 14px 16px;
+        padding: $space-2 16px;
     }
 }
 

@@ -59,11 +59,11 @@ nav {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 12px 0;
+    padding: $space-2 0;
     text-decoration: none;
 
     @include respond-to(mobile) {
-        gap: 12px;
+        gap: $space-2;
     }
 }
 
@@ -72,7 +72,7 @@ nav {
     height: 52px;
     flex: 0 0 auto;
     border: 2px solid $c-accent;
-    border-radius: 12px;
+    border-radius: $radius-mark;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -81,7 +81,8 @@ nav {
     @include respond-to(mobile) {
         width: 42px;
         height: 42px;
-        border-radius: 10px;
+        border-radius: 10px;  // OPTICAL - scales with the 52->42px box; $radius-mark
+                              // would reshape the brand mark on phones
     }
 }
 
@@ -246,7 +247,7 @@ nav {
     border: 0;
     color: $c-accent;
     font-size: 24px;
-    padding: 14px 16px;
+    padding: $space-2 16px;
     cursor: pointer;
 
     @include respond-to(nav) {
@@ -260,7 +261,8 @@ nav {
     display: block;
     width: 22px;
     height: 2px;
-    border-radius: 1px;
+    border-radius: 1px;   // OPTICAL - 2px-tall bar; $radius-chip exceeds half
+                          // its height
     background: $c-muted-alt;
     transition: background 0.25s ease;
 }

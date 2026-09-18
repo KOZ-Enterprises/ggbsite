@@ -47,7 +47,7 @@ h3 {
 
 p {
     line-height: 1.6;
-    margin-bottom: 15px;
+    margin-bottom: $space-2;
 }
 
 ul,
@@ -57,11 +57,11 @@ ol {
 }
 
 ul li {
-    margin-bottom: 10px;
+    margin-bottom: $space-1;
 }
 
 ol li {
-    margin-bottom: 10px;
+    margin-bottom: $space-1;
 }
 
 // (0,1,1). Beats a bare .btn-primary at (0,1,0) - see the note in
@@ -80,7 +80,7 @@ a:hover {
 
 // The single page shell every layout renders into.
 #main {
-    padding: 10px;
+    padding: $space-1;
     width: 90%;
     min-height: 600px;
     margin: 5px auto 40px;
@@ -88,7 +88,7 @@ a:hover {
 
     @include respond-to(mobile) {
         width: auto;
-        padding: 28px 20px;
+        padding: $space-3 20px;
         margin: 0 0 24px;
     }
 }
