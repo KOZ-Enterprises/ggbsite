@@ -1,8 +1,7 @@
 # CSS architecture
 
-Source lives in `_sass/`. `assets/css/styles.scss` is a manifest of `@use` rules
-compiling to `/assets/css/styles.css`, the one path `_includes/head.html` links.
-Jekyll compiles it natively — no gems, no npm, no build step.
+Source lives in `_sass/`. `assets/css/styles.scss` is a manifest of `@use` rules compiling to
+`/assets/css/styles.css`, the one path `_includes/head.html` links. Jekyll compiles it natively — no gems, no npm, no build step.
 
 ## The palette is closed
 
@@ -27,22 +26,23 @@ Every colour is a variable in `_sass/_tokens.scss`. There are sixteen.
 | `$c-muted-alt` | `#8ba3a3` | inactive nav links, neutral status |
 | `$c-muted-low` | `#7d8a8a` | placeholder labels, darkest allowed text |
 
-All 45 `rgba()` values resolve from these tokens too, gradient stops included,
-so the palette really is the whole colour surface. Never use a text colour
-darker than `$c-muted-low`; the type scale is fixed at three roles
-(`.page-title`, `.page-lead`, `.page-body`); and the status vocabulary is
-exactly `active`, `planned`, `shipped`, `dormant`, plus `completed` /
-`in-progress` on course pages.
+All 45 `rgba()` values resolve from these tokens too, gradient stops included, so
+the palette is the whole colour surface. Never use a text colour darker than
+`$c-muted-low`; the type scale is fixed at three roles (`.page-title`,
+`.page-lead`, `.page-body`); the status vocabulary is exactly `active`, `planned`,
+`shipped`, `dormant`, plus `completed` / `in-progress` on course pages.
 
 **If a colour you need is not in the table**, it is a design decision, not a
 commit. Pick the nearest token, or get the palette extended deliberately. Four
-literals predate the closed palette and survive as exceptions, each commented at
-the line — adding a fifth without a comment is what this section exists to stop:
+literals predate the closed palette, each commented at the line — adding a fifth
+without a comment is what this section exists to stop:
 
-- `#888` — `.ai-disclaimer` in `_footer.scss`. Known violation: darker than
-  `$c-muted-low`. Pre-existing, left alone on purpose; do not copy it.
+- `#888` — `.ai-disclaimer` in `_footer.scss`. 5.05:1, marginally *lighter* than
+  `$c-muted-low`. The AA failure there is the adjacent `opacity: 0.7` (composites
+  to 3.11:1), which a token would not fix. Left alone; do not copy the pattern.
 - `#f5f5f5` — `.social-icons a` in `_footer.scss`. Close to `$c-ink`, not equal.
-- `#c3cece` — `.feature-hero-desc` in `_pages.scss`; and `#8fd6d4` — `.page-body code` in `_content.scss`.
+- `#c3cece` — `.feature-hero-desc` in `_pages.scss`; and `#8fd6d4` —
+  `.page-body pre, .page-body code` in `_content.scss`.
 
 ## Three breakpoints, and why only three
 
@@ -144,6 +144,6 @@ python script/dead-css.py --count    # just the number
 
 The count must be zero. The Lint workflow runs it on every pull request and
 fails otherwise, so a dead selector is caught in the commit that creates it
-rather than accumulating for a year. Classes added at runtime by
-`assets/js/scripts.js` never appear in static output and are listed in the
-script's `RUNTIME` set.
+rather than accumulating for a year. Two sets exempt live-but-invisible selectors:
+`RUNTIME` (added by `assets/js/scripts.js`) and `TEMPLATE_FALLBACK` (a template
+branch current content never takes). Comment any addition.

@@ -21,8 +21,11 @@ footer {
 
 .ai-disclaimer {
     font-size: 0.85em;
-    color: #888;   // no token: predates the closed palette and is darker than
-                   // $c-muted-low, so it cannot be mapped without a value change
+    color: #888;   // No token: predates the closed palette. Note it is not
+                   // darker than $c-muted-low - it is marginally lighter
+                   // (5.05:1 vs 5.01:1 on $c-bg). The AA failure here is the
+                   // opacity below, which composites this to 3.11:1; mapping
+                   // the colour to a token would not fix that.
     margin-top: 5px;
     font-style: italic;
     opacity: 0.7;

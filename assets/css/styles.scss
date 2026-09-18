@@ -8,16 +8,9 @@
 // Source lives in _sass/. This manifest only composes it. Compiles to
 // /assets/css/styles.css, the path _includes/head.html links.
 //
-// Where does a new rule go?
-//   a colour or size literal ......... _tokens.scss (then reference it)
-//   an element default ............... _base.scss
-//   a page shell or grid ............. _layout.scss
-//   the navbar ....................... _nav.scss
-//   reused on 2+ pages ............... _components.scss
-//   used on exactly one page ......... _pages.scss
-//   styles Markdown-rendered prose ... _content.scss
-//   the footer ....................... _footer.scss
-//   a standalone helper class ........ _utilities.scss
+// Where does a new rule go? The decision list lives in docs/css-architecture.md
+// and that copy is the normative one. It is deliberately not duplicated here:
+// two ordered lists in two files disagree the moment one of them is edited.
 //
 // Responsive rules live WITH their component, via @include respond-to().
 //

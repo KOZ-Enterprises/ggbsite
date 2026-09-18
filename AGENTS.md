@@ -185,7 +185,7 @@ tags: [csumb, subject-matter]
 ```
 
 **Workflow File:** `.github/workflows/deploy.yml`
-**Status Checks:** Lint (RuboCop, HTMLProofer, yamllint, markdownlint)
+**Status Checks:** Lint (RuboCop, HTMLProofer, yamllint, markdownlint, actionlint, hadolint, dead-CSS)
 
 ## Key Files for AI Agents
 
