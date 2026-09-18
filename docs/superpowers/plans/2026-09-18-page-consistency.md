@@ -882,7 +882,7 @@ State the three-part anatomy — header band, body, page actions — and the arc
 
 - [ ] **Step 3: Add the two scales**
 
-The six spacing steps and the half-step's single legal use; the three radius tokens and the two `// OPTICAL` exemptions. Point at the spec for the full exemption tables rather than duplicating them — two copies of a list drift, which is how this project got twelve margins in the first place.
+The six spacing steps and the half-step's single legal use; the three radius tokens and the two `// OPTICAL` exemptions. State the three mechanical rules that define what the scale governs — vertical axis only, 6px and under is optical, negatives are offsets — and point at the spec rather than restating them at length. The spec deliberately has no exemption list: an earlier draft named ten selectors and the rules turned out to subsume all of them plus nine it had missed.
 
 - [ ] **Step 4: Document the gate**
 
