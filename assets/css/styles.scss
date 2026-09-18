@@ -1,0 +1,23 @@
+---
+# Empty front matter is required: it marks this file for Jekyll processing.
+---
+
+// =============================================================================
+// GGBytes stylesheet
+//
+// Source lives in _sass/. This manifest only composes it. Compiles to
+// /assets/css/styles.css, the path _includes/head.html links.
+//
+// Where does a new rule go?
+//   a colour or size literal ......... _tokens.scss (then reference it)
+//   an element default ............... _base.scss
+//   a page shell or grid ............. _layout.scss
+//   reused on 2+ pages ............... _components.scss
+//   used on exactly one page ......... _pages.scss
+//   styles Markdown-rendered prose ... _content.scss
+//
+// Responsive rules live WITH their component, via @include respond-to().
+// =============================================================================
+
+@use "tokens" as *;
+@use "legacy";

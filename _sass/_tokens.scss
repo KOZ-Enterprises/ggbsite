@@ -1,0 +1,58 @@
+// =============================================================================
+// TOKENS
+// Variables only. This file must emit no CSS.
+// Every colour here already existed in the pre-refactor stylesheet; the
+// palette is closed and additions need a design decision, not a commit.
+// =============================================================================
+
+// ---- Colour ----------------------------------------------------------------
+$c-bg:            #141818;  // page ground
+$c-surface:       #1a1e1e;  // cards, navbar, sidebar modules
+$c-surface-deep:  #0f1111;  // year headers, code blocks
+$c-surface-hover: #1e2323;  // card hover fill
+$c-border:        #2e4c5b;  // every 1px border
+$c-rule:          #1f2a2a;  // section hairlines
+$c-accent:        #64d5d2;  // primary teal
+$c-accent-hover:  #7fe3e0;
+$c-amber:         #ffb300;
+$c-blue:          #5bc0de;
+$c-ink:           #fafafa;
+$c-body:          #b9c4c4;
+$c-body-dim:      #9aa6a6;
+$c-muted:         #8a9696;
+$c-muted-alt:     #8ba3a3;
+$c-muted-low:     #7d8a8a;  // darkest permitted text colour
+
+// ---- Type ------------------------------------------------------------------
+$font-display: "Chakra Petch", "Roboto", sans-serif;
+$font-body:    "Roboto", sans-serif;
+$font-mono:    "Roboto Mono", monospace;
+
+$text-title: clamp(30px, 4.2vw, 44px);
+$text-lead:  17px;
+$text-body:  16px;
+$text-excerpt: 14.5px;
+$text-meta:  11px;
+
+$lh-title: 1.08;
+$lh-lead:  1.65;
+$lh-body:  1.8;
+
+// ---- Space & shape ---------------------------------------------------------
+$radius-card: 6px;
+$radius-chip: 3px;
+$touch-min:   44px;  // minimum interactive target
+
+// ---- Breakpoints -----------------------------------------------------------
+// Three tiers, no more. Anything else re-creates the 701-860px gap where a
+// mobile navbar sat above a desktop two-column body.
+$bp-wide:   1024px;  // multi-column page layouts collapse below this
+$bp-nav:     860px;  // navbar switches to the toggle
+$bp-mobile:  700px;  // single column, mobile type scale
+
+@mixin respond-to($bp) {
+  @if $bp == wide       { @media screen and (max-width: $bp-wide)   { @content; } }
+  @else if $bp == nav   { @media screen and (max-width: $bp-nav)    { @content; } }
+  @else if $bp == mobile{ @media screen and (max-width: $bp-mobile) { @content; } }
+  @else { @error "Unknown breakpoint `#{$bp}`. Use wide, nav, or mobile."; }
+}
