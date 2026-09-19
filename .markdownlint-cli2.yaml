@@ -18,6 +18,7 @@ ignores:
   - "CLAUDE.md"
   # Local-only scratch (git-ignored, so absent in CI - this keeps local runs quiet).
   - ".remember/**"
+  - ".superpowers/**"
   # Internal design handoff and implementation plans, not site content.
   # The spec README is vendored verbatim from the designer's bundle, so
   # reformatting it would diverge it from the source.

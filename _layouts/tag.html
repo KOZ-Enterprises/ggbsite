@@ -2,7 +2,14 @@
 layout: default
 ---
 
-{%- assign doc_count = page.tagged_docs | size -%}
+{%- comment -%}
+tagged_docs is filled from every non-post collection doc with tags, which
+includes _csumb course pages. Courses have no description or image, so they
+render as empty "No preview" project cards. Restrict to real projects.
+{%- endcomment -%}
+{%- assign project_urls = site.projects | map: "url" -%}
+{%- assign tagged_projects = page.tagged_docs | where_exp: "d", "project_urls contains d.url" -%}
+{%- assign doc_count = tagged_projects | size -%}
 {%- assign post_count = page.tagged_posts | size -%}
 
 <nav class="breadcrumb">
@@ -12,9 +19,10 @@ layout: default
 </nav>
 
 {%- comment -%}
-Tag pages are detail pages: they carry a breadcrumb, so they use the detail
-head and title scale rather than the index-page .page-head/.page-title, which
-would render 46px against the 44px every other breadcrumbed page uses.
+Tag pages are detail pages: they carry a breadcrumb, so they use .detail-head
+(with its .detail-meta count line) rather than the home page's plain
+.page-head. Both bands share the same geometry and .page-title now, so this
+only affects which meta markup surrounds the title.
 {%- endcomment -%}
 <header class="detail-head">
     <div class="detail-meta">
@@ -30,8 +38,6 @@ would render 46px against the 44px every other breadcrumbed page uses.
     </p>
 </header>
 
-<div class="page-rule"></div>
-
 {% if doc_count > 0 %}
 <div class="rule-header">
     <h2 class="rule-title">Projects</h2>
@@ -39,7 +45,7 @@ would render 46px against the 44px every other breadcrumbed page uses.
 </div>
 
 <div class="wide-card-list">
-    {% for doc in page.tagged_docs %}
+    {% for doc in tagged_projects %}
     <a class="wide-card" href="{{ doc.url | relative_url }}">
         <span class="wide-card-media">
             {% if doc.image %}
@@ -52,7 +58,9 @@ would render 46px against the 44px every other breadcrumbed page uses.
             <span class="wide-card-head">
                 <span class="card-title">{{ doc.title }}</span>
                 {% if doc.status %}
-                <span class="status-badge" data-status="{{ doc.status | downcase }}">{{ doc.status }}</span>
+                <span class="status-badge" data-status="{{ doc.status | downcase }}">{%- if doc.status == "completed" -%}Complete
+                    {%- elsif doc.status == "in-progress" -%}In progress
+                    {%- else -%}{{ doc.status }}{%- endif -%}</span>
                 {% endif %}
             </span>
             {% if doc.description %}
