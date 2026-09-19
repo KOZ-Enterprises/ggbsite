@@ -192,13 +192,12 @@
     }
 }
 
-// COLLISION SET - `.bio-portrait` has no desktop rule at all; it only caps the
-// portrait once the bio grid has collapsed. Both overrides set max-width at
-// (0,1,0), so wide must stay above mobile or the 320px cap would win at 390px.
+// COLLISION SET - `.bio-portrait` caps max-width at every width. The bio column
+// beside it is two paragraphs; an uncapped square portrait outruns it by ~200px
+// and leaves a dead gap. Both rules set max-width at (0,1,0), so the mobile
+// override must stay below the base declaration or the 320px cap wins at 390px.
 .bio-portrait {
-    @include respond-to(wide) {
-        max-width: 320px;
-    }
+    max-width: 320px;
 
     @include respond-to(mobile) {
         max-width: 280px;
