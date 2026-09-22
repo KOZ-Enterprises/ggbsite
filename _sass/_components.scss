@@ -3,13 +3,35 @@
 // Reusable units that appear on two or more pages. A rule belongs here only if
 // more than one page uses it; single-page styling lives in _pages.scss.
 //
-// Contains: .tech-chip, .status-tag, .status-dot, .status-badge,
+// Contains: .skip-link, .tech-chip, .status-tag, .status-dot, .status-badge,
 //           .btn-primary, .btn-ghost, .log-section, .log-row, .rule-header,
 //           .card-grid, .card, .breadcrumb, .objective, .side-module,
 //           .side-timeline, .wide-card
 // =============================================================================
 
 @use "tokens" as *;
+
+// ---- Skip link -------------------------------------------------------------
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: $space-2;
+    background: $c-surface;
+    color: $c-accent;
+    padding: $space-1 $space-2;
+    border: 1px solid $c-accent;
+    border-radius: $radius-chip;
+    font-family: $font-mono;
+    font-size: $text-meta;
+    z-index: 9999;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: $space-2;
+}
 
 // ---- Tech chip -------------------------------------------------------------
 .tech-chip {
@@ -177,6 +199,11 @@
     color: $c-bg;
 }
 
+.btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
 .btn-ghost {
     color: $c-accent;
     border: 1px solid $c-border;
@@ -185,6 +212,11 @@
 .btn-ghost:hover {
     border-color: $c-accent;
     color: $c-ink;
+}
+
+.btn-ghost:active {
+    transform: scale(0.98);
+    background: rgba($c-accent, 0.08);
 }
 
 // ---- Section rule header ---------------------------------------------------

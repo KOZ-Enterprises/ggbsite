@@ -60,33 +60,33 @@ which provides a customizable interface for displaying information like time, we
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final-usb-fail.jpg">
-        <img src="/assets/imgs/smartmirror/mm-final-usb-fail.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final-usb-fail.jpg" alt="Right angle USB connector clearance issue" class="project-image">
        </a> <p class="caption">Soo... was hoping to use these right angle usb connectors to keep all the cables inside but that didn't go as planned. </p>
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final-micro-hdmi-final2.jpg">  
-        <img src="/assets/imgs/smartmirror/mm-final-micro-hdmi-final2.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final-micro-hdmi-final2.jpg" alt="Micro HDMI cable orientation issue on Raspberry Pi 4" class="project-image">
        </a> <p class="caption">Did not realize the micro hdmi was in the opposite orientation as on the RPI4... whoops. </p>
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final-mirror-border.jpg">
-        <img src="/assets/imgs/smartmirror/mm-final-mirror-border.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final-mirror-border.jpg" alt="Custom wooden mirror border for two-way mirror support" class="project-image">
        </a> <p class="caption">Mirror Border to fill the empty space and add support for the 2 way mirror.</p>
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg">
-        <img src="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final-packing-spacers.jpg" alt="Foam packing spacers centering monitor in frame" class="project-image">
        </a> <p class="caption">I put these white packing material around the monitor to help center it in the frame.</p>
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final-sealing-up.jpg">  
-        <img src="/assets/imgs/smartmirror/mm-final-sealing-up.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final-sealing-up.jpg" alt="Sealing back of mirror frame with nails" class="project-image">
        </a> <p class="caption">Sealing the whole thing up with nails.  I wish I had a better way but oh well! It works ¯\_(ツ)_/¯
     </p>
 </div>
     <div class="image-container">
       <a href="/assets/imgs/smartmirror/mm-final.jpg">  
-        <img src="/assets/imgs/smartmirror/mm-final.jpg" alt="Mirror fail" class="project-image">
+        <img src="/assets/imgs/smartmirror/mm-final.jpg" alt="Completed Smart Mirror build hanging on wall" class="project-image">
        </a> <p class="caption"> Still came out clean! :)
     </p>
 </div>

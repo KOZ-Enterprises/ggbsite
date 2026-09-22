@@ -33,9 +33,9 @@ tags (posts use e.g. tags: ["cst363", "csumb"]).
 {%- assign all_courses = site.csumb | sort: "order" -%}
 {%- assign course_total = all_courses | size -%}
 
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/csumb/">Coursework</a>
-    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
     <span class="breadcrumb-current">{{ page.course_code }}</span>
 </nav>
 

@@ -249,7 +249,7 @@
     text-decoration: none;
     transition: background 0.2s ease;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-template-columns: 1fr auto;
         gap: $space-1;
         padding: 16px 18px;
@@ -270,7 +270,7 @@
     letter-spacing: 1px;
     color: $c-accent;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1;
         grid-row: 1;
     }
@@ -278,7 +278,7 @@
 
 // (0,2,0) - overrides the shared badge font-size on specificity, not order
 .registry-row .status-badge {
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 2;
         grid-row: 1;
         justify-self: end;
@@ -292,7 +292,7 @@
     font-size: 16px;
     color: $c-ink;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1 / -1;
         grid-row: 2;
     }
@@ -304,7 +304,7 @@
     line-height: 1.5;
     color: $c-muted;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1 / -1;
         grid-row: 3;
     }
@@ -584,6 +584,7 @@
 }
 
 .year-name {
+    margin: 0;
     font-family: $font-display;
     font-weight: 700;
     font-size: 22px;

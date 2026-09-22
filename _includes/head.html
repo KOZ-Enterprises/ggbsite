@@ -53,6 +53,7 @@
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
 
+    {%- if content contains "language-mermaid" or page.mermaid or page.content contains "mermaid" -%}
     <script type="module">
         import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
         mermaid.initialize({ startOnLoad: false, theme: 'dark' });
@@ -65,4 +66,5 @@
         });
         await mermaid.run();
     </script>
+    {%- endif -%}
 </head>

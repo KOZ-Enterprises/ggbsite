@@ -22,9 +22,9 @@ entries for projects whose posts were only ever matched by title.
 {%- endif -%}
 {%- endfor -%}
 
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/projects/">Projects</a>
-    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
     <span class="breadcrumb-current">{{ page.title }}</span>
 </nav>
 
