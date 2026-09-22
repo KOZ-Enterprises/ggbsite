@@ -4,9 +4,9 @@ title: "Rover"
 image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
 description: "A smart RC car and a foundational platform for autonomous navigation experiments."
-objective: "Develop a rover with wireless control and eventually autonomous navigation."
+objective: "Develop a ground rover with wireless telemetry and progressive autonomous navigation capabilities."
 status: "planned"
-status_detail: "Conceptualization"
+status_detail: "Phase 0 · Conceptualization"
 reflection: "Rover has taught me about wireless communication, embedded motor control, and practical hardware debugging. It's also helping lay the foundation for future robotics projects."
 resources:
   - name: "GitHub Project Page"
@@ -26,64 +26,44 @@ tools:
   - name: "3D Printing"
 
 timeline:
-  - date: "Phase 0: Conceptualization"
+  - date: "Phase 0"
     phase: "Conceptualization"
-    details: "Conceptualize the rover hardware and software architecture."
+    details: "Kinematics, power budgeting & architecture"
     completed: false
 
-  - date: "Phase 1: Hardware Design"
-    phase: "Design"
-    details: "Design the rover chassis and electronics layout."
-    completed: false
-  
-  - date: "Phase 1.5: Hardware Design of Remote Controller"
-    phase: "Design"
-    details: "Design the remote controller chassis and electronics layout."
+  - date: "Phase 1"
+    phase: "Chassis & Motor Mounts"
+    details: "Modular 3D-printed differential drive frame"
     completed: false
 
-  - date: "Phase 2: Software Bench Build"
-    phase: "Software"
-    details: "Build the software architecture for the rover."
+  - date: "Phase 1.5"
+    phase: "Remote Controller CAD"
+    details: "Handheld transmitter enclosure with analog sticks"
     completed: false
 
-  - date: "Phase 2.5: Software Bench Build of Remote Controller"
-    phase: "Software"
-    details: "Build the software architecture for the remote controller."
+  - date: "Phase 2"
+    phase: "Firmware Bench Build"
+    details: "Arduino C++ motor driver & safety watchdog"
     completed: false
 
-  - date: "Phase 3: Hardware Build"
-    phase: "Hardware"
-    details: "Build the rover hardware."
+  - date: "Phase 2.5"
+    phase: "Wireless Link"
+    details: "XBee telemetry link & packet protocol"
     completed: false
 
-  - date: "Phase 3.5: Hardware Build of Remote Controller"
-    phase: "Hardware"
-    details: "Build the remote controller hardware."
-    completed: false
-  
-  - date: "Phase 4: Testing"
-    phase: "Testing"
-    details: "Test the rover."
+  - date: "Phase 3"
+    phase: "Hardware Assembly"
+    details: "Chassis build, motor testing & road tests"
     completed: false
 
-  - date: "Phase 4.5: Testing of Remote Controller"
-    phase: "Testing"
-    details: "Test the remote controller."
+  - date: "Phase 4"
+    phase: "Obstacle Avoidance"
+    details: "ToF/ultrasonic ranging & reactive steering"
     completed: false
 
-  - date: "Phase 5: Integration Testing"
-    phase: "Testing"
-    details: "Test the rover and remote controller together."
-    completed: false
-
-  - date: "Phase 6: Deployment"
-    phase: "Deployment"
-    details: "Deploy the rover and remote controller."
-    completed: false
-
-  - date: "Phase 7: Future"
-    phase: "Future"
-    details: "Apply algorithms learned from GG Swarm project to the rover."
+  - date: "Phase 5"
+    phase: "Ground Swarm Coordination"
+    details: "Porting GG Swarm multi-agent consensus"
     completed: false
 
 ---
@@ -94,6 +74,94 @@ A smart RC car built as a foundational platform for autonomous
 navigation experiments. Starting with wireless joystick control
 and working toward self-driving capabilities using lessons
 from the GG Swarm project.
+
+### Roadmap & Development Phases
+
+The project is currently progressing through the following hardware-focused roadmap:
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 0</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">8 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">UGV & Robotics Track</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Phase 0 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Conceptualization & Architecture</h4>
+<p class="phase-details">Kinematics modeling, differential drive power budgeting, and embedded controller architecture.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Chassis CAD & Mechanical Layout</h4>
+<p class="phase-details">3D-printed modular chassis, dual DRV8871 H-bridge motor driver brackets, and LiPo battery bay.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 1.5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Remote Controller Hardware</h4>
+<p class="phase-details">Custom handheld wireless transmitter enclosure with dual analog joysticks and mode switches.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Firmware Bench Build</h4>
+<p class="phase-details">Arduino C++ command parsing, differential drive steering curves, and failsafe watchdog timer.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 2.5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Wireless Telemetry Pipeline</h4>
+<p class="phase-details">Bidirectional XBee serial packet transmission, signal quality monitoring, and control latency testing.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Prototype Assembly & Road Testing</h4>
+<p class="phase-details">Physical assembly, motor driver heat dissipation verification, and outdoor rough-terrain drive tests.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 4</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Obstacle Ranging & Reactive Steering</h4>
+<p class="phase-details">Integrating ultrasonic and Time-of-Flight (ToF) distance sensors for collision avoidance.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Ground Swarm Coordination</h4>
+<p class="phase-details">Porting multi-agent consensus and decentralized path-following algorithms from GG Swarm research.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Technical Approach
 

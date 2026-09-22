@@ -5,6 +5,7 @@ image: "/assets/imgs/ggbytes/ggbytes-card-2026-09.png"
 description: "A technical portfolio and a central hub for documenting my engineering journey."
 objective: "Develop a high-performance, responsive workstation for documenting CS and Engineering projects with a focus on modularity and technical aesthetics."
 status: "active"
+status_detail: "Phase 8 · Workstation & Optimization"
 project-tag: "gary-gigabytes"
 order: 0
 tools: 
@@ -20,52 +21,45 @@ tools:
   - name: "GitHub Actions"
   - name: "Cloudflare"
 
-
 timeline:
-
-  - date: "Phase 1: Initial Bare HTML/CSS Design"
-    phase: "Initial Design"
-    details: "Create a basic HTML/CSS design for the portfolio."
+  - date: "Phase 1"
+    phase: "HTML/CSS Baseline"
+    details: "Initial static portfolio prototype on DigitalOcean"
     completed: true
 
-  - date: "Phase 1.1: Nginx Setup"
-    phase: "Initial Implementation"
-    details: "Set up Nginx on DigitalOcean."
+  - date: "Phase 2"
+    phase: "Jekyll Integration"
+    details: "Collection-driven blogging & front-matter taxonomy"
     completed: true
 
-  - date: "Phase 2: Jekyll Integration"
-    phase: "Blog Development"
-    details: "Integrate Jekyll into the portfolio."
+  - date: "Phase 3"
+    phase: "Responsive Refactor"
+    details: "Mobile-first grid layout & responsive navigation"
     completed: true
 
-  - date: "Phase 3: Responsive Design"
-    phase: "Design Improvement"
-    details: "Make the portfolio responsive."
+  - date: "Phase 4"
+    phase: "Docker Build"
+    details: "Multi-stage Docker containerization"
     completed: true
 
-  - date: "Phase 4: Polish Design"
-    phase: "Final Design Improvement"
-    details: "Polish the portfolio design."
+  - date: "Phase 5"
+    phase: "Cloud Migration"
+    details: "GCP Cloud Run, Global Load Balancer & CI/CD"
     completed: true
 
-  - date: "Phase 5: Docker Setup"
-    phase: "Implementation"
-    details: "Set up Docker for the portfolio."
+  - date: "Phase 6"
+    phase: "CSS Modularization"
+    details: "Sass partials, closed 16-color palette & tokens"
     completed: true
 
-  - date: "Phase 6: Cloud Migration (DigitalOcean → GCP)"
-    phase: "Infrastructure Upgrade"
-    details: "Migrate from DigitalOcean droplet to Google Cloud Run with Global Load Balancer and CI/CD automation."
+  - date: "Phase 7"
+    phase: "UI/UX Overhaul"
+    details: "Blueprint grid theme, typography & accessibility"
     completed: true
 
-  - date: "Phase 7: Navbar Redesign & CSS Modularization"
-    phase: "Design Overhaul"
-    details: "Rebuilt the navbar, home and detail layouts, then split a 3,356-line stylesheet into documented Sass partials behind a closed colour palette and three breakpoints."
-    completed: true
-
-  - date: "Phase 8: Maintenance"
-    phase: "Maintenance"
-    details: "Maintain the portfolio."
+  - date: "Phase 8"
+    phase: "Continuous Maintenance"
+    details: "Interactive roadmap components & automated quality gates"
     completed: false
 ---
 
@@ -75,6 +69,94 @@ This portfolio site serves as a central hub for documenting
 my engineering journey — from CS coursework at CSUMB to
 personal robotics and trading projects. Built with Jekyll
 and deployed on Google Cloud Run.
+
+### Roadmap & Development Phases
+
+The site's architecture has evolved through the following technical milestones:
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 8</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">8 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Platform Infrastructure Track</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Bare HTML/CSS & DigitalOcean Nginx</h4>
+<p class="phase-details">Created the initial static site prototype running on a DigitalOcean droplet behind Nginx.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Jekyll Static Engine Integration</h4>
+<p class="phase-details">Integrated Jekyll 4.3 with custom layouts for blog posts, project showcases, and CSUMB courses.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Responsive Design & Layout Flow</h4>
+<p class="phase-details">Implemented fluid column layouts, card grids, and mobile-friendly navigation patterns.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 4</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Docker Containerization</h4>
+<p class="phase-details">Containerized the Jekyll build environment for deterministic local preview and cloud deployments.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Cloud Run Migration & CI/CD</h4>
+<p class="phase-details">Migrated from DigitalOcean to Google Cloud Run with Global Load Balancer, Cloudflare SSL, and automated GitHub Actions.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 6</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Sass Modularization & Token Architecture</h4>
+<p class="phase-details">Deconstructed 3,356 lines of monolithic CSS into 8 Sass partials behind a closed 16-color palette and strict geometry rules.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 7</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">UI/UX Overhaul & Accessibility</h4>
+<p class="phase-details">Engineered blueprint grid visuals, Chakra Petch / Roboto Mono type pairing, skip links, and WCAG AA contrast.</p>
+</div>
+
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Phase 8 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Continuous Maintenance & Technical Documentation</h4>
+<p class="phase-details">Ongoing additions of interactive engineering components, quality gates (geometry, dead-CSS, htmlproofer), and research notes.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Technical Architecture
 
@@ -87,17 +169,6 @@ and deployed on Google Cloud Run.
   Google Cloud Run with a Global Load Balancer
 - **CI/CD**: GitHub Actions triggers Cloud Build on push
 - **DNS/CDN**: Cloudflare for caching and SSL
-
-## Key Milestones
-
-- **DigitalOcean → GCP Migration**: Moved from a $6/month
-  always-on droplet to serverless Cloud Run, paying only
-  for actual requests
-- **Portfolio Overhaul**: Complete visual redesign with
-  blueprint grid backgrounds, consistent spacing, and
-  modular layout system
-- **Project Showcase System**: Custom collections for
-  projects and courses with auto-linked post feeds
 
 ## Design History
 

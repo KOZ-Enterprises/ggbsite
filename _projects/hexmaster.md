@@ -5,7 +5,7 @@ image: "/assets/imgs/project/hexmaster-logo.png"
 description: "A powerful Discord bot and an intelligent logistics coordinator for Foxhole groups."
 objective: "Enable seamless stockpile management and intelligent supply chain coordination for large-scale logistics operations."
 status: "active"
-status_detail: "Testing"
+status_detail: "Phase 4 · Guild Testing & Verification"
 order: 2
 project-tag: "hexmaster"
 tools: 
@@ -21,34 +21,34 @@ resources:
     icon: "fa-brands fa-github"
 
 timeline:
-  - date: "Phase 1: Foundation"
+  - date: "Phase 1"
     phase: "Core Architecture"
-    details: "Implemented snapshot-based storage model using PostgreSQL and SQLAlchemy for historical data tracking."
+    details: "Snapshot-based PostgreSQL schema & historical tracking"
     completed: true
     
-  - date: "Phase 2: Intelligence"
+  - date: "Phase 2"
     phase: "OCR & Reporting"
-    details: "Integrated OCR services to transcribe stockpile screenshots into structured data via /report commands."
+    details: "Tesseract OCR parsing of stockpile screenshots via /report"
     completed: true
 
-  - date: "Phase 3: Logistics"
+  - date: "Phase 3"
     phase: "Supply Chain Logic"
-    details: "Developed requisition algorithms with 4x hub multipliers and Cartesian-Staggered hex math for distance sorting."
+    details: "Cartesian-Staggered hex math & 4x Seaport multipliers"
     completed: true
 
-  - date: "Phase 4: Testing"
-    phase: "Bot Testing"
-    details: "Deployed the trading bot to a production environment."
+  - date: "Phase 4"
+    phase: "Guild Testing"
+    details: "Discord bot stress-testing with active Foxhole regiments"
     completed: false
 
-  - date: "Phase 5: Deployment"
-    phase: "Bot Deployment"
-    details: "Deployed the trading bot to a production environment."
+  - date: "Phase 5"
+    phase: "Production Deployment"
+    details: "Docker containerization with automated database backups"
     completed: false
 
-  - date: "Phase 6: Future"
+  - date: "Phase 6"
     phase: "Threat Mapping"
-    details: "Planned integration with live WarAPI map data to overlay logistics threat levels and automated alerts."
+    details: "Live WarAPI map overlays & automated supply alerts"
     completed: false
 
 reflection: "HexMaster bridges the gap between raw game data and strategic logistics, turning chaotic stockpiles into a searchable, actionable intelligence network."
@@ -59,6 +59,76 @@ reflection: "HexMaster bridges the gap between raw game data and strategic logis
 HexMaster is a powerful Discord bot designed for **Foxhole** logistics groups. It enables seamless stockpile management, cross-map item discovery, and intelligent supply chain comparison using OCR and real-time game data.
 
 The bot follows a **snapshot-based storage** model, preserving full historical data of every stockpile update without ever overwriting.
+
+### Roadmap & Development Phases
+
+The project progresses through the following logistics and bot engineering milestones:
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 4</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">6 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Logistics Automation Track</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Foundation & Core Architecture</h4>
+<p class="phase-details">Implemented snapshot-based storage model using PostgreSQL and SQLAlchemy for non-destructive historical tracking.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">OCR Ingestion & Stockpile Reporting</h4>
+<p class="phase-details">Integrated computer vision OCR pipelines to transcribe in-game stockpile screenshots into structured records via <code>/report</code>.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Supply Chain Algorithms & Hex Math</h4>
+<p class="phase-details">Developed requisition algorithms with 4x Seaport multipliers and custom Cartesian-Staggered hex math for accurate distance sorting.</p>
+</div>
+
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Phase 4 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Guild Testing & Verification</h4>
+<p class="phase-details">Active live testing with Foxhole logistics regiments, verifying OCR edge cases, command response latency, and database concurrency.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Production Containerization</h4>
+<p class="phase-details">Fully Dockerized cloud deployment with automated Postgres health checks, volume backups, and zero-downtime restarts.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Phase 6</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Threat Mapping & WarAPI Live Alerts</h4>
+<p class="phase-details">Live WarAPI dynamic map integration to overlay frontline contested roads, driver hazard routing, and automated supply drop pings.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Core Features
 
@@ -72,9 +142,3 @@ The bot follows a **snapshot-based storage** model, preserving full historical d
 - **Database**: **PostgreSQL** with `asyncpg` for high-performance async queries
 - **Sync Logic**: Standalone Python scripts for seeding regions and syncing with **WarAPI**
 - **Deployment**: Fully **Dockerized** for consistent execution across environments
-
-## Future Roadmap
-
-- **Logistics Threat Mapping**: Overlay "Front Line" map data to warn drivers about contested territory
-- **Supply Drop Alerts**: Automated pings when frontline bases run low on critical supplies
-- **Trend Charts**: Visual graphs of stockpile changes over time for strategic planning

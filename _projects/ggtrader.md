@@ -5,7 +5,7 @@ image: "/assets/imgs/project/ggtrader-logo.png"
 description: "An algorithmic trading bot and a research framework for professional strategy development."
 objective: "Create a reproducible and scalable trading research and execution framework for professional traders."
 status: "active"
-status_detail: "Core optimization"
+status_detail: "Phase 4 · Analytics & Optimization"
 order: 3
 project-tag: "ggtrader"
 tools: 
@@ -21,41 +21,40 @@ resources:
     icon: "fa-brands fa-github"
 
 timeline:
-  - date: "Phase 1: Foundation"
+  - date: "Phase 1"
     phase: "Core Engine"
-    details: "Built the modular trading engine and simulation logic with a focus on reproducibility."
+    details: "Modular simulation framework & vectorized patterns"
     completed: true
 
-  - date: "Phase 2: Data & Connectivity"
+  - date: "Phase 2"
     phase: "Exchanges & Adapters"
-    details: "Implemented Kraken exchange adapters and structured data management for raw/parquet formats"
+    details: "Kraken API integration & Parquet storage pipelines"
     completed: true
 
-  - date: "Phase 3: Intelligence"
+  - date: "Phase 3"
     phase: "Optimization Suite"
-    details: "Developed Walk-Forward Optimization (WFO) and sensitivity analysis scripts for strategy validation."
+    details: "Walk-Forward Optimization & sensitivity analysis"
     completed: true
 
-  - date: "Phase 4: Analytics"
+  - date: "Phase 4"
     phase: "Professional Insights"
-    details: "Integrated Jupyter Notebooks and ResultsManager for deep-dive visualization and parameter tracking."
+    details: "Jupyter visualization & ResultsManager audit trails"
     completed: false
 
-  - date: "Phase 5: Bot Architecture"
-    phase: "Bot Architecture"
-    details: "Developed a modular architecture for the trading bot with a focus on reproducibility."
+  - date: "Phase 5"
+    phase: "Execution Architecture"
+    details: "Position sizing algorithms & risk shields"
     completed: false
 
-  - date: "Phase 6: Bot Live Testing"
-    phase: "Bot Live Testing"
-    details: "Deployed the trading bot to a production environment."
+  - date: "Phase 6"
+    phase: "Live Paper Validation"
+    details: "Shadow order execution & latency tracking"
     completed: false
 
-  - date: "Phase 7: Bot Deployment"
-    phase: "Bot Deployment"
-    details: "Deployed the trading bot to a production environment."
+  - date: "Phase 7"
+    phase: "Production Deployment"
+    details: "Multi-strategy cloud execution nodes"
     completed: false
-
 
 reflection: "ggTrader turns individual trading scripts into a professional research lab, ensuring every trade is backed by rigorous statistical validation."
 ---
@@ -66,6 +65,85 @@ reflection: "ggTrader turns individual trading scripts into a professional resea
 for high-performance research and execution. It moves away from
 monolithic scripts toward a modular, scalable architecture that
 supports complex strategy validation and multi-exchange connectivity.
+
+### Roadmap & Development Phases
+
+The framework progresses through the following research and execution milestones:
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 4</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">7 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Quant Strategy Track</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Foundation & Core Engine</h4>
+<p class="phase-details">Built the modular trading engine and reproducible simulation logic using VectorBT patterns.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Data Ingestion & Exchange Adapters</h4>
+<p class="phase-details">Kraken REST/WebSocket exchange adapters and high-speed partitioned Parquet data stores.</p>
+</div>
+
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Optimization & Walk-Forward Testing</h4>
+<p class="phase-details">Implemented Walk-Forward Optimization (WFO) and multi-dimensional parameter sensitivity analysis.</p>
+</div>
+
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Phase 4 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Interactive Analytics & Audit Trails</h4>
+<p class="phase-details">Deep Jupyter Notebook visual tooling and ResultsManager timestamped run archives.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Execution & Risk Architecture</h4>
+<p class="phase-details">Dynamic position sizing algorithms, drawdown guards, and order-book impact simulations.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 6</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Live Paper Validation</h4>
+<p class="phase-details">Real-time shadow execution against live order books with execution slippage tracking.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Phase 7</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Production Cloud Deployment</h4>
+<p class="phase-details">Containerized multi-strategy execution nodes with automated failover and telemetry pings.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Core Features
 
