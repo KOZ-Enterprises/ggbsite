@@ -77,6 +77,7 @@ in simulation.
 
 The project is currently progressing through the following hardware-focused roadmap:
 
+<!-- markdownlint-disable MD033 -->
 <div class="roadmap-summary">
     <span class="roadmap-summary-item"><strong>Phase 1</strong> In Progress</span>
     <span class="roadmap-summary-sep">&middot;</span>
@@ -158,6 +159,7 @@ The project is currently progressing through the following hardware-focused road
         <p class="phase-details">General-purpose adaptive swarm execution layer.</p>
     </div>
 </div>
+<!-- markdownlint-enable MD033 -->
 
 ---
 
