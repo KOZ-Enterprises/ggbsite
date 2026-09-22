@@ -77,89 +77,89 @@ in simulation.
 
 The project is currently progressing through the following hardware-focused roadmap:
 
-<!-- markdownlint-disable MD033 -->
+<!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-    <span class="roadmap-summary-item"><strong>Phase 1</strong> In Progress</span>
-    <span class="roadmap-summary-sep">&middot;</span>
-    <span class="roadmap-summary-item">8 Development Milestones</span>
-    <span class="roadmap-summary-sep">&middot;</span>
-    <span class="roadmap-summary-item">Hardware Deployment Track</span>
+<span class="roadmap-summary-item"><strong>Phase 1</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">8 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Hardware Deployment Track</span>
 </div>
 
 <div class="roadmap-track">
-    <div class="roadmap-phase is-complete">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 0</span>
-            <span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
-        </div>
-        <h4 class="phase-title">Capstone Baseline</h4>
-        <p class="phase-details">v1.0.0-capstone simulation baseline in Isaac Lab.</p>
-    </div>
-
-    <div class="roadmap-phase is-active">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 1 &middot; Active Target</span>
-            <span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
-        </div>
-        <h4 class="phase-title">Shared-Scene Training</h4>
-        <p class="phase-details">Multi-drone training in complex shared simulation scenes.</p>
-    </div>
-
-    <div class="roadmap-phase">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 2</span>
-            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-        </div>
-        <h4 class="phase-title">Sim-to-Real Baseline</h4>
-        <p class="phase-details">Initial deployment to Crazyflie drones with LPS.</p>
-    </div>
-
-    <div class="roadmap-phase">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 3</span>
-            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-        </div>
-        <h4 class="phase-title">Decentralized Assignment</h4>
-        <p class="phase-details">Transitioning to peer-to-peer ranging and consensus logic.</p>
-    </div>
-
-    <div class="roadmap-phase">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 4</span>
-            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-        </div>
-        <h4 class="phase-title">Drone Show Capability</h4>
-        <p class="phase-details">Integration with <strong>Skybrush</strong> for expressive shapes and light shows.</p>
-    </div>
-
-    <div class="roadmap-phase">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 5</span>
-            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-        </div>
-        <h4 class="phase-title">Outdoor Deployment</h4>
-        <p class="phase-details">Extended fault tolerance and RTK-GPS integration.</p>
-    </div>
-
-    <div class="roadmap-phase">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 6</span>
-            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-        </div>
-        <h4 class="phase-title">Onboard Compute</h4>
-        <p class="phase-details">Moving all inference and obstacle avoidance to onboard chips.</p>
-    </div>
-
-    <div class="roadmap-phase is-stretch">
-        <div class="phase-header">
-            <span class="phase-badge">Phase 7</span>
-            <span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
-        </div>
-        <h4 class="phase-title">Hardware-Agnostic</h4>
-        <p class="phase-details">General-purpose adaptive swarm execution layer.</p>
-    </div>
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 0</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
 </div>
-<!-- markdownlint-enable MD033 -->
+<h4 class="phase-title">Capstone Baseline</h4>
+<p class="phase-details">v1.0.0-capstone simulation baseline in Isaac Lab.</p>
+</div>
+
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Phase 1 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Shared-Scene Training</h4>
+<p class="phase-details">Multi-drone training in complex shared simulation scenes.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Sim-to-Real Baseline</h4>
+<p class="phase-details">Initial deployment to Crazyflie drones with LPS.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Decentralized Assignment</h4>
+<p class="phase-details">Transitioning to peer-to-peer ranging and consensus logic.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 4</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Drone Show Capability</h4>
+<p class="phase-details">Integration with <strong>Skybrush</strong> for expressive shapes and light shows.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Outdoor Deployment</h4>
+<p class="phase-details">Extended fault tolerance and RTK-GPS integration.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 6</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Onboard Compute</h4>
+<p class="phase-details">Moving all inference and obstacle avoidance to onboard chips.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Phase 7</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Hardware-Agnostic</h4>
+<p class="phase-details">General-purpose adaptive swarm execution layer.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ---
 
