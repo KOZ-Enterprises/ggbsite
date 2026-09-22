@@ -103,6 +103,37 @@
     display: block;
     overflow-x: auto;
     max-width: 100%;
+    border-collapse: collapse;
+    margin: $space-3 0;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+}
+
+.page-body th {
+    background: $c-surface-deep;
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted-alt;
+    text-align: left;
+    padding: $space-1 16px;
+    border-bottom: 1px solid $c-border;
+}
+
+.page-body td {
+    padding: $space-1 16px;
+    border-bottom: 1px solid rgba($c-border, 0.35);
+    color: $c-body;
+    font-size: 14px;
+}
+
+.page-body tr:last-child td {
+    border-bottom: 0;
+}
+
+.page-body tr:hover td {
+    background: rgba($c-accent, 0.03);
 }
 
 .page-body pre,

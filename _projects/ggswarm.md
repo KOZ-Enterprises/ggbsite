@@ -21,6 +21,40 @@ resources:
   - name: "GG Swarm Repository"
     link: "https://github.com/garykuepper/ggSwarm"
     icon: "fa-brands fa-github"
+
+timeline:
+  - date: "Phase 0"
+    phase: "Capstone Baseline"
+    details: "Simulation baseline in Isaac Lab"
+    completed: true
+  - date: "Phase 1"
+    phase: "Shared-Scene Training"
+    details: "Multi-drone policy convergence"
+    completed: false
+  - date: "Phase 2"
+    phase: "Sim-to-Real Baseline"
+    details: "Crazyflie deployment with LPS"
+    completed: false
+  - date: "Phase 3"
+    phase: "Decentralized Assignment"
+    details: "P2P ranging & consensus logic"
+    completed: false
+  - date: "Phase 4"
+    phase: "Drone Show Capability"
+    details: "Skybrush integration for light shows"
+    completed: false
+  - date: "Phase 5"
+    phase: "Outdoor Deployment"
+    details: "Fault tolerance & RTK-GPS integration"
+    completed: false
+  - date: "Phase 6"
+    phase: "Onboard Compute"
+    details: "Edge inference & obstacle avoidance"
+    completed: false
+  - date: "Phase 7"
+    phase: "Hardware-Agnostic"
+    details: "General-purpose adaptive swarm layer"
+    completed: false
 ---
 
 ## Current Phase: GG Swarm Live (Post-Capstone)
@@ -43,16 +77,87 @@ in simulation.
 
 The project is currently progressing through the following hardware-focused roadmap:
 
-| Phase | Title | Status | Details |
-| :--- | :--- | :--- | :--- |
-| **0** | **Capstone Baseline** | Complete | v1.0.0-capstone simulation baseline. |
-| **1** | **Shared-Scene Training** | Active | Multi-drone training in complex shared simulation scenes. |
-| **2** | **Sim-to-Real Baseline** | Planned | Initial deployment to Crazyflie drones with LPS. |
-| **3** | **Decentralized Assignment** | Planned | Transitioning to peer-to-peer ranging and consensus logic. |
-| **4** | **Drone Show Capability** | Planned | Integration with **Skybrush** for expressive shapes and light shows. |
-| **5** | **Outdoor Deployment** | Planned | Extended fault tolerance and RTK-GPS integration. |
-| **6** | **Onboard Compute** | Planned | Moving all inference and obstacle avoidance to onboard chips. |
-| **7** | **Hardware-Agnostic** | Stretch | General-purpose adaptive swarm execution layer. |
+<div class="roadmap-summary">
+    <span class="roadmap-summary-item"><strong>Phase 1</strong> In Progress</span>
+    <span class="roadmap-summary-sep">&middot;</span>
+    <span class="roadmap-summary-item">8 Development Milestones</span>
+    <span class="roadmap-summary-sep">&middot;</span>
+    <span class="roadmap-summary-item">Hardware Deployment Track</span>
+</div>
+
+<div class="roadmap-track">
+    <div class="roadmap-phase is-complete">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 0</span>
+            <span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+        </div>
+        <h4 class="phase-title">Capstone Baseline</h4>
+        <p class="phase-details">v1.0.0-capstone simulation baseline in Isaac Lab.</p>
+    </div>
+
+    <div class="roadmap-phase is-active">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 1 &middot; Active Target</span>
+            <span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+        </div>
+        <h4 class="phase-title">Shared-Scene Training</h4>
+        <p class="phase-details">Multi-drone training in complex shared simulation scenes.</p>
+    </div>
+
+    <div class="roadmap-phase">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 2</span>
+            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+        </div>
+        <h4 class="phase-title">Sim-to-Real Baseline</h4>
+        <p class="phase-details">Initial deployment to Crazyflie drones with LPS.</p>
+    </div>
+
+    <div class="roadmap-phase">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 3</span>
+            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+        </div>
+        <h4 class="phase-title">Decentralized Assignment</h4>
+        <p class="phase-details">Transitioning to peer-to-peer ranging and consensus logic.</p>
+    </div>
+
+    <div class="roadmap-phase">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 4</span>
+            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+        </div>
+        <h4 class="phase-title">Drone Show Capability</h4>
+        <p class="phase-details">Integration with <strong>Skybrush</strong> for expressive shapes and light shows.</p>
+    </div>
+
+    <div class="roadmap-phase">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 5</span>
+            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+        </div>
+        <h4 class="phase-title">Outdoor Deployment</h4>
+        <p class="phase-details">Extended fault tolerance and RTK-GPS integration.</p>
+    </div>
+
+    <div class="roadmap-phase">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 6</span>
+            <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+        </div>
+        <h4 class="phase-title">Onboard Compute</h4>
+        <p class="phase-details">Moving all inference and obstacle avoidance to onboard chips.</p>
+    </div>
+
+    <div class="roadmap-phase is-stretch">
+        <div class="phase-header">
+            <span class="phase-badge">Phase 7</span>
+            <span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+        </div>
+        <h4 class="phase-title">Hardware-Agnostic</h4>
+        <p class="phase-details">General-purpose adaptive swarm execution layer.</p>
+    </div>
+</div>
 
 ---
 

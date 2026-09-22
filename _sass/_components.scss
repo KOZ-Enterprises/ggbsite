@@ -6,7 +6,7 @@
 // Contains: .skip-link, .tech-chip, .status-tag, .status-dot, .status-badge,
 //           .btn-primary, .btn-ghost, .log-section, .log-row, .rule-header,
 //           .card-grid, .card, .breadcrumb, .objective, .side-module,
-//           .side-timeline, .wide-card
+//           .side-timeline, .roadmap-track, .wide-card
 // =============================================================================
 
 @use "tokens" as *;
@@ -99,12 +99,15 @@
     border-color: rgba($c-amber, 0.45);
 }
 
-.status-tag[data-status="shipped"] {
+.status-tag[data-status="shipped"],
+.status-tag[data-status="complete"],
+.status-tag[data-status="completed"] {
     color: $c-blue;
     border-color: rgba($c-blue, 0.45);
 }
 
-.status-tag[data-status="dormant"] {
+.status-tag[data-status="dormant"],
+.status-tag[data-status="stretch"] {
     color: $c-muted-alt;
     border-color: $c-border;
 }
@@ -727,6 +730,116 @@
     font-family: $font-display;
     font-weight: 600;
     font-size: 14px;
+    color: $c-ink;
+}
+
+// ---- Roadmap Track & Phase Pipeline ---------------------------------------
+.roadmap-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $space-1;
+    margin-bottom: $space-2;
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted;
+}
+
+.roadmap-summary strong {
+    color: $c-accent;
+}
+
+.roadmap-summary-sep {
+    color: $c-border;
+}
+
+.roadmap-track {
+    display: flex;
+    flex-direction: column;
+    gap: $space-1;
+    margin: $space-2 0 $space-4;
+}
+
+.roadmap-phase {
+    background: $c-surface;
+    border: 1px solid $c-border;
+    border-left: 3px solid $c-border;
+    border-radius: $radius-surface;
+    padding: $space-2 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    transition: border-color 0.2s ease, background 0.2s ease;
+
+    &:hover {
+        background: $c-surface-hover;
+        border-color: rgba($c-accent, 0.35);
+    }
+
+    @include respond-to(mobile) {
+        padding: $space-2 16px;
+    }
+}
+
+.roadmap-phase.is-complete {
+    border-left-color: $c-blue;
+}
+
+.roadmap-phase.is-active {
+    border-color: rgba($c-accent, 0.6);
+    border-left-color: $c-accent;
+    background: linear-gradient(90deg, rgba($c-accent, 0.08) 0%, $c-surface 50%);
+    box-shadow: 0 0 16px rgba($c-accent, 0.12);
+}
+
+.roadmap-phase.is-stretch {
+    border-left-color: $c-muted-low;
+    border-style: dashed;
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+}
+
+.phase-badge {
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted-alt;
+}
+
+.roadmap-phase.is-active .phase-badge {
+    color: $c-accent;
+    font-weight: 600;
+}
+
+.roadmap-phase.is-complete .phase-badge {
+    color: $c-blue;
+}
+
+.phase-title {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    color: $c-ink;
+    margin: 0;
+}
+
+.phase-details {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: $c-body-dim;
+    margin: 0;
+}
+
+.phase-details strong {
     color: $c-ink;
 }
 
