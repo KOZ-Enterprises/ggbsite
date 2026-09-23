@@ -17,27 +17,6 @@ project-tag: "smart-mirror"
 tools:
   - name: "Raspberry Pi"
   - name: "MagicMirror²"
-
-timeline:
-  - date: "Phase 1"
-    phase: "Concept & Optics"
-    details: "Two-way acrylic glass selection & dimensioning"
-    completed: true
-
-  - date: "Phase 2"
-    phase: "Frame Assembly"
-    details: "Custom wood frame construction & monitor mounting"
-    completed: true
-
-  - date: "Phase 3"
-    phase: "Circuit Rebuild"
-    details: "110V power isolation & Raspberry Pi 4 upgrade"
-    completed: true
-
-  - date: "Phase 4"
-    phase: "Production Deployment"
-    details: "MagicMirror² module configuration & wall mounting"
-    completed: true
 ---
 
 ## Project Overview

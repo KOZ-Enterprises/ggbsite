@@ -20,42 +20,6 @@ resources:
     link: "https://github.com/garykuepper/ggTrader"
     icon: "fa-brands fa-github"
 
-timeline:
-  - date: "Phase 1"
-    phase: "Core Engine"
-    details: "Modular simulation framework & vectorized patterns"
-    completed: true
-
-  - date: "Phase 2"
-    phase: "Exchanges & Adapters"
-    details: "Kraken API integration & Parquet storage pipelines"
-    completed: true
-
-  - date: "Phase 3"
-    phase: "Optimization Suite"
-    details: "Walk-Forward Optimization & sensitivity analysis"
-    completed: true
-
-  - date: "Phase 4"
-    phase: "Professional Insights"
-    details: "Jupyter visualization & ResultsManager audit trails"
-    completed: false
-
-  - date: "Phase 5"
-    phase: "Execution Architecture"
-    details: "Position sizing algorithms & risk shields"
-    completed: false
-
-  - date: "Phase 6"
-    phase: "Live Paper Validation"
-    details: "Shadow order execution & latency tracking"
-    completed: false
-
-  - date: "Phase 7"
-    phase: "Production Deployment"
-    details: "Multi-strategy cloud execution nodes"
-    completed: false
-
 reflection: "ggTrader turns individual trading scripts into a professional research lab, ensuring every trade is backed by rigorous statistical validation."
 ---
 

@@ -20,37 +20,6 @@ resources:
     link: "https://github.com/garykuepper/HexMaster"
     icon: "fa-brands fa-github"
 
-timeline:
-  - date: "Phase 1"
-    phase: "Core Architecture"
-    details: "Snapshot-based PostgreSQL schema & historical tracking"
-    completed: true
-    
-  - date: "Phase 2"
-    phase: "OCR & Reporting"
-    details: "Tesseract OCR parsing of stockpile screenshots via /report"
-    completed: true
-
-  - date: "Phase 3"
-    phase: "Supply Chain Logic"
-    details: "Cartesian-Staggered hex math & 4x Seaport multipliers"
-    completed: true
-
-  - date: "Phase 4"
-    phase: "Guild Testing"
-    details: "Discord bot stress-testing with active Foxhole regiments"
-    completed: false
-
-  - date: "Phase 5"
-    phase: "Production Deployment"
-    details: "Docker containerization with automated database backups"
-    completed: false
-
-  - date: "Phase 6"
-    phase: "Threat Mapping"
-    details: "Live WarAPI map overlays & automated supply alerts"
-    completed: false
-
 reflection: "HexMaster bridges the gap between raw game data and strategic logistics, turning chaotic stockpiles into a searchable, actionable intelligence network."
 ---
 

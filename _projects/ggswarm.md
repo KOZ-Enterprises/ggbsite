@@ -21,40 +21,6 @@ resources:
   - name: "GG Swarm Repository"
     link: "https://github.com/garykuepper/ggSwarm"
     icon: "fa-brands fa-github"
-
-timeline:
-  - date: "Phase 0"
-    phase: "Capstone Baseline"
-    details: "Simulation baseline in Isaac Lab"
-    completed: true
-  - date: "Phase 1"
-    phase: "Shared-Scene Training"
-    details: "Multi-drone policy convergence"
-    completed: false
-  - date: "Phase 2"
-    phase: "Sim-to-Real Baseline"
-    details: "Crazyflie deployment with LPS"
-    completed: false
-  - date: "Phase 3"
-    phase: "Decentralized Assignment"
-    details: "P2P ranging & consensus logic"
-    completed: false
-  - date: "Phase 4"
-    phase: "Drone Show Capability"
-    details: "Skybrush integration for light shows"
-    completed: false
-  - date: "Phase 5"
-    phase: "Outdoor Deployment"
-    details: "Fault tolerance & RTK-GPS integration"
-    completed: false
-  - date: "Phase 6"
-    phase: "Onboard Compute"
-    details: "Edge inference & obstacle avoidance"
-    completed: false
-  - date: "Phase 7"
-    phase: "Hardware-Agnostic"
-    details: "General-purpose adaptive swarm layer"
-    completed: false
 ---
 
 ## Current Phase: GG Swarm Live (Post-Capstone)

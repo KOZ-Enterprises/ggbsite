@@ -6,8 +6,8 @@ layout: default
 Project detail page.
 - status: "active", "planned", "shipped", or "dormant" (project status)
 - status_detail: optional free-text phrase shown in the mono meta row
-- Objective, timeline, and body content in the main column
-- Tech stack, resources, timeline, and origin in the sidebar
+- Objective and body content (including the roadmap card) in the main column
+- Tech stack, resources, and origin in the sidebar
 {%- endcomment -%}
 
 {%- comment -%}
@@ -116,84 +116,6 @@ entries for projects whose posts were only ever matched by title.
             {% endfor %}
         </section>
         {% endif %}
-
-        <section class="side-module">
-            <div class="side-head">Timeline</div>
-            <div class="side-timeline">
-                {% if page.timeline %}
-                {% for item in page.timeline %}
-                <div class="tl-item">
-                    <span class="tl-marker {% if item.completed %}done{% endif %}"></span>
-                    <div class="tl-content">
-                        {% if item.date %}<span class="tl-date">{{ item.date }}</span>{% endif %}
-                        <span class="tl-phase">{{ item.phase }}</span>
-                        {% if item.details %}<span class="tl-detail">{{ item.details }}</span>{% endif %}
-                    </div>
-                </div>
-                {% endfor %}
-                {% else %}
-                {%- comment -%} Programmatic default timeline based on page.status {%- endcomment -%}
-                {% assign status = page.status | downcase %}
-                {% assign progress = 0 %}
-
-                {% if status == "completed" or status == "finished" or status == "live" or status == "production" or
-                status == "done" or status == "archived" or status == "maintenance" or status == "shipped" %}
-                {% assign progress = 4 %}
-                {% elsif status == "testing" or status == "validation" or status == "refinement" or status ==
-                "polish" or status == "beta" %}
-                {% assign progress = 3.5 %}
-                {% elsif status == "in progress" or status == "building" or status == "implementation" or status ==
-                "development" or status == "active" %}
-                {% assign progress = 2.5 %}
-                {% elsif status == "design" or status == "prototyping" or status == "mvp" or status ==
-                "architecture" %}
-                {% assign progress = 1.5 %}
-                {% elsif status == "research" or status == "discovery" or status == "concept" or status ==
-                "ideation" or status == "planning" or status == "planned" %}
-                {% assign progress = 0.5 %}
-                {% elsif status == "on hold" or status == "paused" or status == "dormant" %}
-                {% assign progress = 2.0 %}
-                {% endif %}
-
-                {% assign step1_name = page.step1_name | default: "Research" %}
-                {% assign step1_desc = page.step1_desc | default: "Concept & Requirements" %}
-                {% assign step2_name = page.step2_name | default: "Design" %}
-                {% assign step2_desc = page.step2_desc | default: "Architecture & Prototyping" %}
-                {% assign step3_name = page.step3_name | default: "Build" %}
-                {% assign step3_desc = page.step3_desc | default: "Implementation & Refinement" %}
-                {% assign step4_name = page.step4_name | default: "Test" %}
-                {% assign step4_desc = page.step4_desc | default: "Verification & Validation" %}
-
-                {% if status == "live" or status == "production" %}
-                {% assign step4_name = "Deployed" %}
-                {% assign step4_desc = "Production Release" %}
-                {% elsif status == "completed" or status == "finished" or status == "done" or status == "shipped" %}
-                {% assign step4_name = "Completed" %}
-                {% assign step4_desc = "Project Finalized" %}
-                {% elsif status == "maintenance" %}
-                {% assign step4_name = "Maintenance" %}
-                {% assign step4_desc = "Ongoing Support" %}
-                {% endif %}
-
-                {% capture steps_string %}{{ step1_name }}|{{ step1_desc }},{{ step2_name }}|{{ step2_desc }},{{
-                step3_name }}|{{ step3_desc }},{{ step4_name }}|{{ step4_desc }}{% endcapture %}
-                {% assign steps = steps_string | split: "," %}
-
-                {% for step_data in steps %}
-                {% assign parts = step_data | split: "|" %}
-                {% assign is_completed = false %}
-                {% if progress >= forloop.index %}{% assign is_completed = true %}{% endif %}
-                <div class="tl-item">
-                    <span class="tl-marker {% if is_completed %}done{% endif %}"></span>
-                    <div class="tl-content">
-                        <span class="tl-phase">{{ parts[0] }}</span>
-                        <span class="tl-detail">{{ parts[1] }}</span>
-                    </div>
-                </div>
-                {% endfor %}
-                {% endif %}
-            </div>
-        </section>
 
         {% if page.project-tag == "ggswarm" %}
         <section class="side-module">

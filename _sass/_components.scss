@@ -6,7 +6,7 @@
 // Contains: .skip-link, .tech-chip, .status-tag, .status-dot, .status-badge,
 //           .btn-primary, .btn-ghost, .log-section, .log-row, .rule-header,
 //           .card-grid, .card, .breadcrumb, .objective, .side-module,
-//           .side-timeline, .roadmap-track, .wide-card
+//           .roadmap-track, .wide-card
 // =============================================================================
 
 @use "tokens" as *;
@@ -645,64 +645,6 @@
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: $c-amber;
-}
-
-// ---- Sidebar timeline ------------------------------------------------------
-.side-timeline {
-    padding: 6px 0;
-}
-
-.tl-item {
-    display: flex;
-    gap: $space-2;
-    padding: $space-2 18px;
-}
-
-.tl-item + .tl-item {
-    border-top: 1px solid rgba($c-border, 0.25);
-}
-
-.tl-marker {
-    flex: 0 0 auto;
-    width: 11px;
-    height: 11px;
-    margin-top: 4px;
-    border: 2px solid $c-border;
-    border-radius: $radius-chip;
-}
-
-.tl-marker.done {
-    background: $c-accent;
-    border-color: $c-accent;
-    box-shadow: 0 0 8px rgba($c-accent, 0.6);
-}
-
-.tl-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    min-width: 0;
-}
-
-.tl-date {
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: $c-muted;
-}
-
-.tl-phase {
-    font-family: $font-display;
-    font-weight: 600;
-    font-size: 15px;
-    color: $c-ink;
-}
-
-.tl-detail {
-    font-size: 13px;
-    line-height: 1.5;
-    color: $c-body-dim;
 }
 
 // ---- Sidebar key/value rows (course pages) ---------------------------------
