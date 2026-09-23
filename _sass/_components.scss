@@ -729,7 +729,7 @@ $rail-marker-top: 14px;  // centres the marker on the phase-badge line
         width: $rail-marker;
         height: $rail-marker;
         box-sizing: border-box;
-        border: 2px solid $c-border;
+        border: 2px solid $c-muted-low;
         border-radius: $radius-chip;
         background: $c-bg;
         z-index: 1;
@@ -750,8 +750,37 @@ $rail-marker-top: 14px;  // centres the marker on the phase-badge line
     }
 }
 
-// The marker carries the state, so the pill is kept for screen readers only.
+// The pill becomes plain text after the badge ("PHASE 0 · COMPLETE"), so
+// state never rests on marker colour alone. The active badge already reads
+// "Active Target", so its pill stays for screen readers only.
+.roadmap-phase .phase-header {
+    justify-content: flex-start;
+    gap: $space-1;
+}
+
 .roadmap-phase .status-tag {
+    padding: 0;
+    border: 0;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    &::before {
+        content: "\00b7";
+        color: $c-muted-alt;
+    }
+
+    .status-dot {
+        display: none;
+    }
+}
+
+// Planned repeats down the rail, so it takes a dimmed amber (~5.4:1) rather
+// than the full-strength pill colour.
+.roadmap-phase .status-tag[data-status="planned"] {
+    color: rgba($c-amber, 0.7);
+}
+
+.roadmap-phase.is-active .status-tag {
     position: absolute;
     width: 1px;
     height: 1px;
@@ -783,7 +812,6 @@ $rail-marker-top: 14px;  // centres the marker on the phase-badge line
 
 .roadmap-phase.is-stretch::before {
     border-style: dashed;
-    border-color: $c-muted-low;
 }
 
 .phase-header {
