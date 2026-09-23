@@ -1,6 +1,6 @@
 ---
 layout: project
-title: "Drone"
+title: "ggSkybit"
 image: "/assets/imgs/project/drone2.png"
 description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
 objective: "Develop a custom quadcopter platform and flight control testbed for autonomous navigation and swarm algorithms."
@@ -24,6 +24,11 @@ logic and eventually swarm collaboration. The goal is to go
 from bare hardware design through flight controller software
 to autonomous navigation — bridging the gap between the
 simulated drones in GG Swarm and real-world flight.
+
+The name is a *Tron* nod: Bit is Flynn's little hovering
+companion, and one Bit is where a swarm starts. It is part
+of ggSkyGrid, my drone projects alongside ggSkylight (light
+shows) and GG Swarm.
 
 ### Roadmap & Development Phases
 

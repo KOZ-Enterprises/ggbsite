@@ -1,6 +1,6 @@
 ---
 layout: project
-title: "Rover"
+title: "ggGridRunner"
 image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
 description: "A smart RC car and a foundational platform for autonomous navigation experiments."
@@ -12,8 +12,8 @@ resources:
   - name: "GitHub Project Page"
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
-  - name: "ggRover Repository"
-    link: "https://github.com/garykuepper/ggRover-Controller"
+  - name: "ggGridRunner Repository"
+    link: "https://github.com/garykuepper/ggGridRunner"
     icon: "fa-brands fa-github"
 order: 9
 project-tag: "rover"
@@ -133,7 +133,7 @@ The project is currently progressing through the following hardware-focused road
 
 ## Connection to GG Swarm
 
-Like the Drone project, this rover is a stepping stone toward
+Like ggSkybit, my hobby drone, this rover is a stepping stone toward
 real-world autonomous coordination. The plan is to apply
 navigation and consensus algorithms developed in simulation
 to physical ground-based platforms.
