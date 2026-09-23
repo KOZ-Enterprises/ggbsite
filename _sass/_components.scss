@@ -697,48 +697,93 @@
     color: $c-border;
 }
 
+// A rail runs down the left edge: each phase draws its own marker (::before)
+// and the connector down to the next marker (::after), so the line is filled
+// up to the last completed phase and hollow beyond it. Phases are unboxed
+// text beside the rail; only the active one gets a tinted band.
+$rail-gutter: 28px;  // track indent that holds the rail
+$rail-marker: 12px;
+$rail-marker-top: 16px;  // centres the marker on the phase-badge line
+
 .roadmap-track {
     display: flex;
     flex-direction: column;
-    gap: $space-1;
+    gap: $space-half;
     margin: $space-2 0 $space-4;
+    padding-left: $rail-gutter;
 }
 
 .roadmap-phase {
-    background: $c-surface;
-    border: 1px solid $c-border;
-    border-left: 3px solid $c-border;
+    position: relative;
     border-radius: $radius-surface;
-    padding: $space-2 20px;
+    padding: 10px 16px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    transition: border-color 0.2s ease, background 0.2s ease;
+    gap: $space-half;
 
-    &:hover {
-        background: $c-surface-hover;
-        border-color: rgba($c-accent, 0.35);
+    &::before {
+        content: "";
+        position: absolute;
+        top: $rail-marker-top;
+        left: -$rail-gutter + 4px;
+        width: $rail-marker;
+        height: $rail-marker;
+        box-sizing: border-box;
+        border: 2px solid $c-border;
+        border-radius: $radius-chip;
+        background: $c-bg;
+        z-index: 1;
     }
 
-    @include respond-to(mobile) {
-        padding: $space-2 16px;
+    &::after {
+        content: "";
+        position: absolute;
+        top: $rail-marker-top + $rail-marker;
+        bottom: -$space-half - $rail-marker-top;
+        left: -$rail-gutter + 9px;
+        width: 2px;
+        background: $c-border;
     }
+
+    &:last-child::after {
+        display: none;
+    }
+}
+
+// The marker carries the state, so the pill is kept for screen readers only.
+.roadmap-phase .status-tag {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
 }
 
 .roadmap-phase.is-complete {
-    border-left-color: $c-blue;
+    &::before {
+        background: $c-blue;
+        border-color: $c-blue;
+    }
+
+    &::after {
+        background: $c-blue;
+    }
 }
 
 .roadmap-phase.is-active {
-    border-color: rgba($c-accent, 0.6);
-    border-left-color: $c-accent;
-    background: linear-gradient(90deg, rgba($c-accent, 0.08) 0%, $c-surface 50%);
-    box-shadow: 0 0 16px rgba($c-accent, 0.12);
+    background: linear-gradient(90deg, rgba($c-accent, 0.08) 0%, transparent 80%);
+
+    &::before {
+        background: $c-accent;
+        border-color: $c-accent;
+        box-shadow: 0 0 8px rgba($c-accent, 0.6);
+    }
 }
 
-.roadmap-phase.is-stretch {
-    border-left-color: $c-muted-low;
+.roadmap-phase.is-stretch::before {
     border-style: dashed;
+    border-color: $c-muted-low;
 }
 
 .phase-header {
