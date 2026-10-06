@@ -7,7 +7,8 @@
 // This partial is loaded after _pages.scss on purpose: a bare `.page-body h2`
 // must outrank the page-level heading rules that share its (0,1,1) specificity.
 //
-// Contains: .page-body and its descendants, .mermaid
+// Contains: .page-body and its descendants (incl. kramdown .footnote, .footnotes,
+//           .reversefootnote citations), .mermaid
 // =============================================================================
 
 @use "tokens" as *;
@@ -151,4 +152,43 @@
     margin: 24px 0;
     padding: $space-2 20px;
     color: $c-body;
+}
+
+// Citations: kramdown footnotes ([^key] in Markdown) styled like wiki references.
+// Inline marker reads [n]; the reference list carries a back-link to each citation.
+.page-body sup[id^="fnref"] {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    line-height: 0;
+    scroll-margin-top: 96px;   // clear the sticky nav when jumped to
+}
+
+.page-body a.footnote {
+    border-bottom: 0;
+    text-decoration: none;
+    &::before { content: "["; }
+    &::after { content: "]"; }
+}
+
+.page-body .footnotes {
+    font-size: $text-excerpt;
+    line-height: 1.65;
+
+    li {
+        margin-bottom: $space-1;
+        padding: 0 $space-1;
+        border-radius: $radius-chip;
+        scroll-margin-top: 96px;
+    }
+
+    li:target { background: $c-surface-hover; }
+
+    p { margin: 0; }
+}
+
+.page-body a.reversefootnote {
+    font-family: $font-mono;
+    border-bottom: 0;
+    text-decoration: none;
+    margin-left: $space-1;
 }

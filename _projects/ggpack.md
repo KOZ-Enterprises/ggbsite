@@ -15,7 +15,7 @@ tools:
   - name: "pytest"
 ---
 
-## Overview
+## Project Overview
 
 Same reason as [ggBleed](/projects/ggbleed/): aircraft ECS design is the work I know best,
 and I wanted something I could actually show. Everything here comes from public data
@@ -24,30 +24,22 @@ OpenModelica, which is open source, so nothing here depends on a paid tool.
 
 **ggPack** models an airliner air conditioning pack: the system that turns hot bleed air
 into cool, dry air for the cabin. The heart of it is a three-wheel bootstrap air cycle
-machine, with a compressor, turbine and ram fan on one shaft. It is a 737-800-class
-reference architecture built only from public sources. Its inlet conditions come from
-[ggBleed](/projects/ggbleed/).
+machine, with a compressor, turbine and ram fan on one shaft. Its inlet conditions come
+from [ggBleed](/projects/ggbleed/).
 
-## What It Models
+### Roadmap & Development Phases
 
-- **Shaft dynamics:** a single rotor inertia balancing turbine, compressor and fan torques,
-  with a published shaft mechanical efficiency.
-- **High-pressure water separation:** primary and secondary heat exchangers, reheater,
-  condenser and water extractor, with psychrometrics and evaporative spray of the extracted
-  water into the ram duct.
-- **Pack control:** flow control valve holding the pack-flow setpoint, temperature control
-  valve bypass, and ram air doors.
-- **ggBleed coupling:** runs directly on transient bleed outputs from ggBleed.
-
-## Approach
-
-As with ggBleed, the pack is built twice: a causal Python model and an acausal
-OpenModelica model. The OpenModelica cruise experiment runs at a published cruise case;
-it has no controller and models dry air, so it is a structural check, not a validation.
-
-### Roadmap
+The model progresses through the following milestones:
 
 <!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 2</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">4 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">ECS Simulation Track</span>
+</div>
+
 <div class="roadmap-track">
 <div class="roadmap-phase is-complete">
 <div class="phase-header">
@@ -87,17 +79,47 @@ it has no controller and models dry air, so it is a structural check, not a vali
 </div>
 <!-- markdownlint-enable MD033 MD046 -->
 
+## What It Models
+
+- **Shaft dynamics:** a single rotor inertia balancing turbine, compressor and fan torques.
+  The inertia is fitted to a published start-up simulation,[^p5] and the shaft mechanical
+  efficiency comes from a published component study.[^p8]
+- **High-pressure water separation:** primary and secondary heat exchangers, reheater,
+  condenser and water extractor, with psychrometrics and evaporative spray of the extracted
+  water into the ram duct. Heat-exchanger conductances are derived from published
+  effectiveness values.[^p2]
+- **Pack control:** flow control valve holding the pack-flow setpoint,[^p18] temperature
+  control valve bypass, and ram air doors. Ground ambient inputs follow a published
+  fault-simulation study.[^p1]
+- **ggBleed coupling:** runs directly on transient bleed outputs from ggBleed, with the
+  same published regulation setpoint and precooler band.[^b3]
+
+## Technical Approach
+
+As with ggBleed, the pack is built twice: a causal Python model and an acausal
+OpenModelica model. The OpenModelica cruise experiment runs at a published cruise
+case.[^p9] It has no controller and models dry air, so it is a structural check, not a
+validation.
+
 ## Validation
 
 A built-in `validate` command compares the model with three published cases: a ground
-reference case and a second ground point from Li et al., and two cruise cases from
-Chowdhury et al. Tolerances are the published mean deviations of an independent model.
+reference case,[^p5] a second ground point,[^p18] and two cruise cases.[^p9] Tolerances are
+the published mean deviations of an independent model of the same system.[^p19]
 
 Current state, stated plainly: **the pack is not yet calibrated.** Of 19 accuracy checks,
 4 are within tolerance (including shaft speed in both ground cases), the cruise
 controller reaches both published targets, and no physically impossible state occurs.
 Known gaps, such as the condenser's missing wet heat-exchanger model and a water-mass
 leak, are pinned as expected-failure tests so they stay visible.
+
+## Results
+
+![Model deviation from the published ground cases, in multiples of the published tolerance, for each pack station](/assets/imgs/project/ggpack-validation.png)
+
+Each point is one published measurement, plotted as the model's deviation in multiples
+of the published tolerance.[^p19] Most stations run cold, some by more than ten
+tolerances, which is the calibration work ahead.
 
 ## Research
 
@@ -106,40 +128,24 @@ reports and theses on aircraft bleed and air conditioning systems, each read and
 with a short summary and notes on where its data sits. Progress notes and research
 findings are posted below as the work goes on.
 
-## Results
-
-![ggPack ground reference case](/assets/imgs/project/ggpack-pulldown.png)
-
-The published ground reference case run through the Python model: station temperatures,
-pressures and shaft speed, moisture removal, and actuator positions.
-
 ## Sources & Disclaimer
 
 This is an independent educational project. It is a 737-800-class reference architecture built
-only from public sources: peer-reviewed journal papers and a government incident report. No manufacturer, maintenance, training or other proprietary documents
-were used, and it is not a replica of any manufacturer's hardware. It is not affiliated with or
-endorsed by Boeing, Airbus, or any equipment supplier.
+only from public sources: peer-reviewed journal papers and a government incident report. No manufacturer, maintenance, training or other
+proprietary documents were used, and it is not a replica of any manufacturer's hardware. It is
+not affiliated with or endorsed by Boeing, Airbus, or any equipment supplier.
 
-Every model value is cited to one of the sources below, derived from them by a written calculation,
-standard textbook physics, or a labelled generic modelling assumption. A provenance checker runs
-with the test suite and fails the build on any untagged value.
+Every model value in the code is tagged to one of the references below, to a derivation written
+out from them, to textbook physics, or to a labelled generic modelling assumption. A provenance
+checker runs with the test suite and fails the build on any untagged value.
 
-- **P1:** Esperon-Miguez, Jennions, Camacho Escobar, Hanov, "Simulating faults in a Boeing
-  737-200 Environmental Control System using a thermodynamic model", *Int. J. Prognostics and
-  Health Management* 10(2) (2019).
-- **P2:** Jennions, Ali, Esperon-Miguez, Camacho Escobar, "Simulation of an aircraft
-  environmental control system", *Applied Thermal Engineering* 172, 114925 (2020).
-- **P5:** Li, Hu, Sun, Wu, "Dynamic simulation model for three-wheel air-cycle refrigeration
-  systems in civil aircrafts", *Int. J. Refrigeration* 145, 353–365 (2023).
-- **P8:** Jennions, Ali, "Evaluation of Component Level Degradation in the Boeing 737-800 Air
-  Cycle Machine", *J. Thermal Science and Engineering Applications* 15(3), 031014 (2023).
-- **P9:** Chowdhury, Ali, Jennions, "Boeing 737-400 passenger air conditioner control system
-  model for accurate fault simulation", *J. Thermal Science and Engineering Applications*
-  14(9), 091008 (2022).
-- **P18:** Li, Hu, Lei, "Performance simulation and diagnosis of faulty states in air-cycle
-  refrigeration systems in civil aircrafts", *Int. J. Refrigeration* 156, 232–242 (2023).
-- **P19:** Li, Hu, Wang, Shen, "Temperature control method optimization for dual-pack air
-  cycle refrigeration system in civil aircraft based on dynamic system modelling",
-  *Int. J. Refrigeration* 191, 107067 (2026).
-- **B3:** Air Accident Investigation Bureau Malaysia, *Aircraft Serious Incident Final Report
-  SI 04/24, Boeing 737-800 9M-LCM* (2025).
+## References
+
+[^p5]: Li, Hu, Sun, Wu (2023). "Dynamic Simulation Model for Three-Wheel Air-Cycle Refrigeration Systems in Civil Aircrafts". *International Journal of Refrigeration* 145: 353–365. §4, Table 1. [doi:10.1016/j.ijrefrig.2022.08.026](https://doi.org/10.1016/j.ijrefrig.2022.08.026)
+[^p8]: Jennions, Ali (2023). "Evaluation of Component Level Degradation in the Boeing 737-800 Air Cycle Machine". *Journal of Thermal Science and Engineering Applications* 15(3): 031014. Fig. 3. [doi:10.1115/1.4056510](https://doi.org/10.1115/1.4056510)
+[^p2]: Jennions, Ali, Esperon-Miguez, Camacho Escobar (2020). "Simulation of an Aircraft Environmental Control System". *Applied Thermal Engineering* 172: 114925. Table 2. [doi:10.1016/j.applthermaleng.2020.114925](https://doi.org/10.1016/j.applthermaleng.2020.114925)
+[^p18]: Li, Hu, Lei (2023). "Performance Simulation and Diagnosis of Faulty States in Air-Cycle Refrigeration Systems in Civil Aircrafts". *International Journal of Refrigeration* 156: 232–242. Table 3. [doi:10.1016/j.ijrefrig.2023.10.006](https://doi.org/10.1016/j.ijrefrig.2023.10.006)
+[^p1]: Esperon-Miguez, Jennions, Camacho Escobar, Hanov (2019). "Simulating Faults in a Boeing 737-200 Environmental Control System Using a Thermodynamic Model". *International Journal of Prognostics and Health Management* 10(2). Table 7. [doi:10.36001/ijphm.2019.v10i2.2731](https://doi.org/10.36001/ijphm.2019.v10i2.2731)
+[^b3]: Air Accident Investigation Bureau Malaysia (2025). *Aircraft Serious Incident Final Report SI 04/24, Boeing 737-800 9M-LCM*. Ministry of Transport Malaysia. §1.6.2, §2.1.1, Figs. 9–10. [Report (PDF)](https://www.mot.gov.my/en/AAIB%20Statistic%20%20Accident%20Report%20Document/2024/5.%20Final%20Report%20SI%2004-24%209M-LCM%20.pdf)
+[^p9]: Chowdhury, Ali, Jennions (2022). "Boeing 737-400 Passenger Air Conditioner Control System Model for Accurate Fault Simulation". *Journal of Thermal Science and Engineering Applications* 14(9): 091008. Table 4. [doi:10.1115/1.4053740](https://doi.org/10.1115/1.4053740)
+[^p19]: Li, Hu, Wang, Shen (2026). "Temperature Control Method Optimization for Dual-Pack Air Cycle Refrigeration System in Civil Aircraft Based on Dynamic System Modelling". *International Journal of Refrigeration* 191: 107067. Table 3. [doi:10.1016/j.ijrefrig.2026.107067](https://doi.org/10.1016/j.ijrefrig.2026.107067)

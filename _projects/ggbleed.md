@@ -15,7 +15,7 @@ tools:
   - name: "pytest"
 ---
 
-## Overview
+## Project Overview
 
 Aircraft ECS design is the work I know best, and I wanted something I could actually
 show. So this is built only from public data: published papers, theses and government
@@ -24,32 +24,22 @@ nothing here depends on a paid tool.
 
 **ggBleed** models how an airliner's engines supply bleed air to the aircraft: hot,
 high-pressure air taken from the engine compressor, regulated, and cooled before it goes
-to air conditioning, anti-ice and pressurization. It is a 737-800-class reference
-architecture built only from public sources. It feeds directly into
+to air conditioning, anti-ice and pressurization. It feeds directly into
 [ggPack](/projects/ggpack/), the air conditioning pack model.
 
-## What It Models
+### Roadmap & Development Phases
 
-- **Compressible gas dynamics:** ideal-gas properties, isentropic and choked/unchoked
-  orifice flow, and the standard atmosphere.
-- **Precooler:** ε-NTU crossflow heat exchanger with a lumped core thermal mass.
-- **Valves and control:** high-stage valve, a pressure-regulating shutoff valve (PRSOV)
-  holding a gauge setpoint, and a fan air valve driven by an outlet thermostat, with sensor
-  and valve lags, a temperature limit and an overheat trip.
-- **Flight mission:** ground, takeoff, climb, cruise with a wing anti-ice step, idle
-  descent and approach, rebuilt from published engine port states, a published cruise
-  point and the standard atmosphere.
-
-## Approach
-
-The same system is built twice: a causal Python model and an acausal OpenModelica model,
-so the two paradigms can be compared side by side. The OpenModelica cruise experiment
-closes the plant with boundary sources and sinks and runs at the same cited cruise point
-as the Python mission.
-
-### Roadmap
+The model progresses through the following milestones:
 
 <!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Phase 2</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">4 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">ECS Simulation Track</span>
+</div>
+
 <div class="roadmap-track">
 <div class="roadmap-phase is-complete">
 <div class="phase-header">
@@ -89,19 +79,49 @@ as the Python mission.
 </div>
 <!-- markdownlint-enable MD033 MD046 -->
 
+## What It Models
+
+- **Compressible gas dynamics:** ideal-gas properties, isentropic and choked/unchoked
+  orifice flow, and the standard atmosphere.
+- **Precooler:** ε-NTU crossflow heat exchanger with a lumped core thermal mass. The core
+  time constant comes from an identified precooler model,[^b18] and the conductance is solved
+  from two published flight-test cases.[^b13]
+- **Valves and control:** high-stage valve, a pressure-regulating shutoff valve (PRSOV)
+  holding a gauge setpoint, and a fan air valve driven by an outlet thermostat. The setpoint,
+  control band, temperature limit and overheat trip come from an incident investigation
+  report,[^b3] and the sensor and valve lags from a laboratory bleed rig.[^b10]
+- **Flight mission:** ground, takeoff, climb, cruise with a wing anti-ice step, idle
+  descent and approach, rebuilt from published engine port states,[^r1][^b16] a published
+  cruise point[^p2] and the standard atmosphere.
+
+## Technical Approach
+
+The same system is built twice: a causal Python model and an acausal OpenModelica model,
+so the two paradigms can be compared side by side. The OpenModelica cruise experiment
+closes the plant with boundary sources and sinks and runs at the same published cruise
+point as the Python mission.[^p2]
+
 ## Validation
 
 So far the model is checked against published *limits*, not fitted to measured data:
 
-- Through the whole mission, the precooler outlet stays inside the control band published
-  in the AAIB Malaysia incident report, the intermediate stage supplies cruise, the high
-  stage takes over in descent, and nothing trips.
-- The PRSOV regulates to the published setpoint, and the temperature limit and trip act
-  at the published values.
-- The precooler's conductance is solved so two published flight-test cases land in that band.
+- Through climb and cruise, the sensed precooler outlet stays inside the published control
+  band,[^b3] the intermediate stage supplies cruise, the high stage takes over in descent, and
+  nothing trips.
+- The PRSOV regulates to the published setpoint, and the temperature limit and trip act at
+  the published values.[^b3]
+- The precooler's conductance is solved so the two flight-test cases land in that band.[^b13]
 
 The OpenModelica cruise experiment settles on the same setpoint and band. Measured-data
 validation cases are catalogued in the research library and are the next phase.
+
+## Results
+
+![Sensed precooler outlet temperature across the reference mission, against the published control band, temperature limit and overheat trip](/assets/imgs/project/ggbleed-mission.png)
+
+The sensed outlet temperature holds the published 390–440 °F band through climb and
+cruise[^b3] and dips below it at idle power in descent. It never reaches the temperature
+limit or the overheat trip.
 
 ## Research
 
@@ -110,37 +130,23 @@ reports and theses on aircraft bleed and air conditioning systems, each read and
 with a short summary and notes on where its data sits. Progress notes and research
 findings are posted below as the work goes on.
 
-## Results
-
-![ggBleed mission profile](/assets/imgs/project/ggbleed-mission.png)
-
-Mission profile from the Python model: temperatures, pressures, valve positions and flows
-from ground idle to landing.
-
 ## Sources & Disclaimer
 
 This is an independent educational project. It is a 737-800-class reference architecture built
-only from public sources: peer-reviewed papers, a doctoral dissertation, an FAA technical report and
-a government incident report. No manufacturer, maintenance, training or other proprietary documents
-were used, and it is not a replica of any manufacturer's hardware. It is not affiliated with or
-endorsed by Boeing, Airbus, or any equipment supplier.
+only from public sources: peer-reviewed papers, a doctoral dissertation, an FAA technical report and a government incident report. No manufacturer, maintenance, training or other
+proprietary documents were used, and it is not a replica of any manufacturer's hardware. It is
+not affiliated with or endorsed by Boeing, Airbus, or any equipment supplier.
 
-Every model value is cited to one of the sources below, derived from them by a written calculation,
-standard textbook physics, or a labelled generic modelling assumption. A provenance checker runs
-with the test suite and fails the build on any untagged value.
+Every model value in the code is tagged to one of the references below, to a derivation written
+out from them, to textbook physics, or to a labelled generic modelling assumption. A provenance
+checker runs with the test suite and fails the build on any untagged value.
 
-- **B3:** Air Accident Investigation Bureau Malaysia, *Aircraft Serious Incident Final Report
-  SI 04/24, Boeing 737-800 9M-LCM* (2025).
-- **B10:** Shang, *Fault detection and isolation in an aircraft engine bleed air system*,
-  PhD dissertation, Ryerson University (2011).
-- **B13:** Peng, "Research and Verification on the Solution of Bleed Air Temperature Deviation
-  of Civil Aircraft Pneumatic System", *J. Phys.: Conf. Ser.* 2410, 012009 (2022).
-- **B16:** Dai, Cui, "Thermal dynamic simulation study of the aircraft ECS laboratory air
-  source", *J. Phys.: Conf. Ser.* 2992, 012049 (2025).
-- **B18:** Shi, Dong, Liu, Luo, "Study on construction and identification of dynamic model of
-  precooler in aviation bleed air system", *J. Northwestern Polytechnical University* 42(6)
-  (2024).
-- **R1:** Jones, *Aircraft Air Quality and Bleed Air Contamination Detection*, FAA report
-  DOT/FAA/TC-21/45 (2022).
-- **P2:** Jennions, Ali, Esperon-Miguez, Camacho Escobar, "Simulation of an aircraft
-  environmental control system", *Applied Thermal Engineering* 172, 114925 (2020).
+## References
+
+[^b18]: Shi, Dong, Liu, Luo (2024). "Study on Construction and Identification of Dynamic Model of Precooler in Aviation Bleed Air System". *Journal of Northwestern Polytechnical University* 42(6): 1089. Table 2, Eq. 19. [doi:10.1051/jnwpu/20244261089](https://doi.org/10.1051/jnwpu/20244261089)
+[^b13]: Peng (2022). "Research and Verification on the Solution of Bleed Air Temperature Deviation of Civil Aircraft Pneumatic System". *Journal of Physics: Conference Series* 2410: 012009. Table 1. [doi:10.1088/1742-6596/2410/1/012009](https://doi.org/10.1088/1742-6596/2410/1/012009)
+[^b3]: Air Accident Investigation Bureau Malaysia (2025). *Aircraft Serious Incident Final Report SI 04/24, Boeing 737-800 9M-LCM*. Ministry of Transport Malaysia. §1.6.2, §2.1.1, Figs. 9–10. [Report (PDF)](https://www.mot.gov.my/en/AAIB%20Statistic%20%20Accident%20Report%20Document/2024/5.%20Final%20Report%20SI%2004-24%209M-LCM%20.pdf)
+[^b10]: Shang (2011). *Fault Detection and Isolation in an Aircraft Engine Bleed Air System*. PhD dissertation, Ryerson University. Ch. 2 and Ch. 5. [doi:10.32920/ryerson.14646084](https://doi.org/10.32920/ryerson.14646084)
+[^r1]: Jones (2022). *Aircraft Air Quality and Bleed Air Contamination Detection*. FAA report DOT/FAA/TC-21/45. Table 56. [ROSA P](https://rosap.ntl.bts.gov/view/dot/62770)
+[^b16]: Dai, Cui (2025). "Thermal Dynamic Simulation Study of the Aircraft ECS Laboratory Air Source". *Journal of Physics: Conference Series* 2992: 012049. §2, Tables 1–2. [doi:10.1088/1742-6596/2992/1/012049](https://doi.org/10.1088/1742-6596/2992/1/012049)
+[^p2]: Jennions, Ali, Esperon-Miguez, Camacho Escobar (2020). "Simulation of an Aircraft Environmental Control System". *Applied Thermal Engineering* 172: 114925. Table 2. [doi:10.1016/j.applthermaleng.2020.114925](https://doi.org/10.1016/j.applthermaleng.2020.114925)
