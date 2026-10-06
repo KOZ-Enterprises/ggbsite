@@ -1,12 +1,11 @@
 ---
 layout: project
-published: false
 title: "ggPack"
 image: "/assets/imgs/project/ggpack-pulldown.png"
 description: "A 1-D multi-physics simulation of an airliner air conditioning pack built around a 3-wheel bootstrap air cycle machine."
 objective: "Model air cycle machine dynamics, water separation and pack control, using only public sources, and validate the results against published cases."
 status: "active"
-status_detail: "Draft"
+status_detail: "Validation in progress"
 order: 5
 project-tag: "ggpack"
 tools:
@@ -17,8 +16,6 @@ tools:
 ---
 
 ## Overview
-
-<!-- TODO: why this project exists and who it is for. -->
 
 **ggPack** models an airliner air conditioning pack: the system that turns hot bleed air
 into cool, dry air for the cabin. The heart of it is a three-wheel bootstrap air cycle
@@ -97,14 +94,19 @@ controller reaches both published targets, and no physically impossible state oc
 Known gaps, such as the condenser's missing wet heat-exchanger model and a water-mass
 leak, are pinned as expected-failure tests so they stay visible.
 
+## Research
+
+The parameters and validation cases come from a curated library of 28 public papers,
+reports and theses on aircraft bleed and air conditioning systems, each read and filed
+with a short summary and notes on where its data sits. Progress notes and research
+findings are posted below as the work goes on.
+
 ## Results
 
 ![ggPack ground reference case](/assets/imgs/project/ggpack-pulldown.png)
 
 The published ground reference case run through the Python model: station temperatures,
 pressures and shaft speed, moisture removal, and actuator positions.
-
-<!-- TODO: add validation plots once Phase 2 lands. -->
 
 ## Sources & Disclaimer
 

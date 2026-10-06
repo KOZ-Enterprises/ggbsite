@@ -1,12 +1,11 @@
 ---
 layout: project
-published: false
 title: "ggBleed"
 image: "/assets/imgs/project/ggbleed-mission.png"
 description: "A 1-D multi-physics simulation of a turbofan engine's bleed air system, from bleed ports through pressure regulation to the precooler."
 objective: "Model bleed air pressure regulation and precooler heat transfer across a full flight mission, using only public sources, and validate the results against published cases."
 status: "active"
-status_detail: "Draft"
+status_detail: "Validation in progress"
 order: 4
 project-tag: "ggbleed"
 tools:
@@ -17,8 +16,6 @@ tools:
 ---
 
 ## Overview
-
-<!-- TODO: why this project exists and who it is for. -->
 
 **ggBleed** models how an airliner's engines supply bleed air to the aircraft: hot,
 high-pressure air taken from the engine compressor, regulated, and cooled before it goes
@@ -101,14 +98,19 @@ So far the model is checked against published *limits*, not fitted to measured d
 The OpenModelica cruise experiment settles on the same setpoint and band. Measured-data
 validation cases are catalogued in the research library and are the next phase.
 
+## Research
+
+The parameters and validation cases come from a curated library of 28 public papers,
+reports and theses on aircraft bleed and air conditioning systems, each read and filed
+with a short summary and notes on where its data sits. Progress notes and research
+findings are posted below as the work goes on.
+
 ## Results
 
 ![ggBleed mission profile](/assets/imgs/project/ggbleed-mission.png)
 
 Mission profile from the Python model: temperatures, pressures, valve positions and flows
 from ground idle to landing.
-
-<!-- TODO: add validation plots once Phase 2 lands. -->
 
 ## Sources & Disclaimer
 
