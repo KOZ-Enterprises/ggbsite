@@ -17,6 +17,11 @@ tools:
 
 ## Overview
 
+Aircraft ECS design is the work I know best, and I wanted something I could actually
+show. So this is built only from public data: published papers, theses and government
+reports, with every value cited. The models run in OpenModelica, which is open source, so
+nothing here depends on a paid tool.
+
 **ggBleed** models how an airliner's engines supply bleed air to the aircraft: hot,
 high-pressure air taken from the engine compressor, regulated, and cooled before it goes
 to air conditioning, anti-ice and pressurization. It is a 737-800-class reference

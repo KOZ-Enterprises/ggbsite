@@ -17,6 +17,11 @@ tools:
 
 ## Overview
 
+Same reason as [ggBleed](/projects/ggbleed/): aircraft ECS design is the work I know best,
+and I wanted something I could actually show. Everything here comes from public data
+(published papers and government reports, every value cited), and the models run in
+OpenModelica, which is open source, so nothing here depends on a paid tool.
+
 **ggPack** models an airliner air conditioning pack: the system that turns hot bleed air
 into cool, dry air for the cabin. The heart of it is a three-wheel bootstrap air cycle
 machine, with a compressor, turbine and ram fan on one shaft. It is a 737-800-class
