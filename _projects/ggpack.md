@@ -21,30 +21,29 @@ tools:
 <!-- TODO: why this project exists and who it is for. -->
 
 **ggPack** models an airliner air conditioning pack: the system that turns hot bleed air
-into cool, dry air for the cabin. The heart of it is a 3-wheel bootstrap air cycle machine,
-with a compressor, turbine and fan on one shaft. The reference architecture is a
-single-aisle airliner (737NG class). Its inlet conditions come from
+into cool, dry air for the cabin. The heart of it is a three-wheel bootstrap air cycle
+machine, with a compressor, turbine and ram fan on one shaft. It is a 737-800-class
+reference architecture built only from public sources. Its inlet conditions come from
 [ggBleed](/projects/ggbleed/).
 
 ## What It Models
 
-- **Shaft dynamics:** a rotor inertia balance between turbine, compressor, fan and bearing torques.
-- **High-pressure water separation:** reheater, condenser and centrifugal water extractor,
-  with phase-change psychrometrics and ram air water spray.
-- **Pack control:** flow control valve scheduling, temperature control valve bypass, and
-  modulating ram air doors.
+- **Shaft dynamics:** a single rotor inertia balancing turbine, compressor and fan torques,
+  with a published shaft mechanical efficiency.
+- **High-pressure water separation:** primary and secondary heat exchangers, reheater,
+  condenser and water extractor, with psychrometrics and evaporative spray of the extracted
+  water into the ram duct.
+- **Pack control:** flow control valve holding the pack-flow setpoint, temperature control
+  valve bypass, and ram air doors.
 - **ggBleed coupling:** runs directly on transient bleed outputs from ggBleed.
 
 ## Approach
 
-<!-- TODO: expand. -->
-
 As with ggBleed, the pack is built twice: a causal Python model and an acausal
-OpenModelica model.
+OpenModelica model. The OpenModelica cruise experiment runs at a published cruise case;
+it has no controller and models dry air, so it is a structural check, not a validation.
 
 ### Roadmap
-
-<!-- TODO: confirm phases and status before publishing. -->
 
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-track">
@@ -57,18 +56,27 @@ OpenModelica model.
 <p class="phase-details">Python and OpenModelica pack models, coupled to ggBleed.</p>
 </div>
 
+<div class="roadmap-phase is-complete">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
+</div>
+<h4 class="phase-title">Public-Sources Audit</h4>
+<p class="phase-details">Every parameter traced to a public source, derived, or labelled as an assumption, enforced by a checker in the test suite.</p>
+</div>
+
 <div class="roadmap-phase is-active">
 <div class="phase-header">
-<span class="phase-badge">Phase 1 &middot; Active Target</span>
+<span class="phase-badge">Phase 2 &middot; Active Target</span>
 <span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
 </div>
-<h4 class="phase-title">Public Sourcing &amp; Validation</h4>
-<p class="phase-details">Trace every parameter to a public source and validate against published cases.</p>
+<h4 class="phase-title">Validation</h4>
+<p class="phase-details">Calibrate against the published ground and cruise cases, and add a wet heat-exchanger model for the condenser.</p>
 </div>
 
 <div class="roadmap-phase">
 <div class="phase-header">
-<span class="phase-badge">Phase 2</span>
+<span class="phase-badge">Phase 3</span>
 <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
 <h4 class="phase-title">Write-Up</h4>
@@ -79,19 +87,52 @@ OpenModelica model.
 
 ## Validation
 
-<!-- TODO: fill from docs/VALIDATION_SOURCES.md once the research pass is done. -->
-First target: reproduce the bootstrap pack baseline from Pérez-Grande &amp; Leo
-(2002), widely reused in later ECS literature.
+A built-in `validate` command compares the model with three published cases: a ground
+reference case and a second ground point from Li et al., and two cruise cases from
+Chowdhury et al. Tolerances are the published mean deviations of an independent model.
+
+Current state, stated plainly: **the pack is not yet calibrated.** Of 19 accuracy checks,
+4 are within tolerance (including shaft speed in both ground cases), the cruise
+controller reaches both published targets, and no physically impossible state occurs.
+Known gaps, such as the condenser's missing wet heat-exchanger model and a water-mass
+leak, are pinned as expected-failure tests so they stay visible.
 
 ## Results
 
-<!-- TODO: key plots and comparisons against the validation cases. -->
+![ggPack ground reference case](/assets/imgs/project/ggpack-pulldown.png)
+
+The published ground reference case run through the Python model: station temperatures,
+pressures and shaft speed, moisture removal, and actuator positions.
+
+<!-- TODO: add validation plots once Phase 2 lands. -->
 
 ## Sources & Disclaimer
 
-This is an independent educational project. It is built only from publicly available
-material, cited below, and contains no proprietary data. It is not affiliated with or
+This is an independent educational project. It is a 737-800-class reference architecture built
+only from public sources: peer-reviewed journal papers and a government incident report. No manufacturer, maintenance, training or other proprietary documents
+were used, and it is not a replica of any manufacturer's hardware. It is not affiliated with or
 endorsed by Boeing, Airbus, or any equipment supplier.
 
-<!-- TODO: citation list from docs/VALIDATION_SOURCES.md. Do not publish until every
-     parameter on this page traces to a source here. -->
+Every model value is cited to one of the sources below, derived from them by a written calculation,
+standard textbook physics, or a labelled generic modelling assumption. A provenance checker runs
+with the test suite and fails the build on any untagged value.
+
+- **P1:** Esperon-Miguez, Jennions, Camacho Escobar, Hanov, "Simulating faults in a Boeing
+  737-200 Environmental Control System using a thermodynamic model", *Int. J. Prognostics and
+  Health Management* 10(2) (2019).
+- **P2:** Jennions, Ali, Esperon-Miguez, Camacho Escobar, "Simulation of an aircraft
+  environmental control system", *Applied Thermal Engineering* 172, 114925 (2020).
+- **P5:** Li, Hu, Sun, Wu, "Dynamic simulation model for three-wheel air-cycle refrigeration
+  systems in civil aircrafts", *Int. J. Refrigeration* 145, 353–365 (2023).
+- **P8:** Jennions, Ali, "Evaluation of Component Level Degradation in the Boeing 737-800 Air
+  Cycle Machine", *J. Thermal Science and Engineering Applications* 15(3), 031014 (2023).
+- **P9:** Chowdhury, Ali, Jennions, "Boeing 737-400 passenger air conditioner control system
+  model for accurate fault simulation", *J. Thermal Science and Engineering Applications*
+  14(9), 091008 (2022).
+- **P18:** Li, Hu, Lei, "Performance simulation and diagnosis of faulty states in air-cycle
+  refrigeration systems in civil aircrafts", *Int. J. Refrigeration* 156, 232–242 (2023).
+- **P19:** Li, Hu, Wang, Shen, "Temperature control method optimization for dual-pack air
+  cycle refrigeration system in civil aircraft based on dynamic system modelling",
+  *Int. J. Refrigeration* 191, 107067 (2026).
+- **B3:** Air Accident Investigation Bureau Malaysia, *Aircraft Serious Incident Final Report
+  SI 04/24, Boeing 737-800 9M-LCM* (2025).
