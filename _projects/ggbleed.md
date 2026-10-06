@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "ggBleed"
-image: "/assets/imgs/project/ggbleed-mission.png"
+image: "/assets/imgs/project/ggbleed-logo.png"
 description: "A 1-D multi-physics simulation of a turbofan engine's bleed air system, from bleed ports through pressure regulation to the precooler."
 objective: "Model bleed air pressure regulation and precooler heat transfer across a full flight mission, using only public sources, and validate the results against published cases."
 status: "active"

@@ -1,7 +1,7 @@
 ---
 layout: project
 title: "ggPack"
-image: "/assets/imgs/project/ggpack-pulldown.png"
+image: "/assets/imgs/project/ggpack-logo.png"
 description: "A 1-D multi-physics simulation of an airliner air conditioning pack built around a 3-wheel bootstrap air cycle machine."
 objective: "Model air cycle machine dynamics, water separation and pack control, using only public sources, and validate the results against published cases."
 status: "active"
