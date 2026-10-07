@@ -25,7 +25,7 @@ resources:
 
 ## Current Phase: GG Swarm Live (Post-Capstone)
 
-Following the successful completion of the academic capstone, the project has transitioned into **GG Swarm Live**, a real-hardware deployment program. The focus is now on taking the decentralized GATv2/PPO policies developed in simulation and deploying them onto physical PX4-based airframes. This creates an adaptive execution layer that can handle formation stability, obstacle avoidance, and decentralized coordination for commercial drone light shows.
+Following the successful completion of the academic capstone, the project has transitioned into **GG Swarm Live**, a real-hardware deployment program. The focus is now on taking the decentralized GATv2[^gatv2]/PPO[^ppo] policies developed in simulation and deploying them onto physical PX4-based airframes. This creates an adaptive execution layer that can handle formation stability, obstacle avoidance, and decentralized coordination for commercial drone light shows.
 
 ### Cinematic Trailer
 
@@ -139,7 +139,7 @@ The capstone addressed a critical bottleneck in the deployment of unmanned aeria
 
 ### Technical Architecture
 
-The architecture was split into the **Brain** (GATv2 spatial reasoning) and the **Muscles** (MINCO trajectory optimization), unified by a GNSC 5-Layer model.
+The architecture was split into the **Brain** (GATv2 spatial reasoning) and the **Muscles** (MINCO[^minco] trajectory optimization), unified by a GNSC 5-Layer model.
 
 #### GNSC 5-Layer Architecture
 
@@ -162,7 +162,7 @@ flowchart BT
 
 ### Capstone Timeline & Simulation Performance
 
-The simulation phase leveraged **NVIDIA Isaac Lab** for GPU-accelerated physics, achieving high-fidelity results in formation stability and obstacle avoidance.
+The simulation phase leveraged **NVIDIA Isaac Lab**[^isaaclab] for GPU-accelerated physics, achieving high-fidelity results in formation stability and obstacle avoidance.
 
 * **Mean Formation Error**: < 0.1m during steady flight.
 * **Success Rate**: > 95% across randomized obstacle-dense environments.
@@ -173,3 +173,10 @@ The simulation phase leveraged **NVIDIA Isaac Lab** for GPU-accelerated physics,
 * **Weeks 5–11**: Core Development (Brain/Muscles) (Completed)
 * **Weeks 12–15**: Stress Testing and Showcase Prep (Completed)
 * **Week 16**: Capstone Festival Delivery (Completed April 2026)
+
+## References
+
+[^gatv2]: Brody, Alon, Yahav (2022). "How Attentive Are Graph Attention Networks?". *International Conference on Learning Representations (ICLR)*. [arXiv:2105.14491](https://arxiv.org/abs/2105.14491)
+[^ppo]: Schulman, Wolski, Dhariwal, Radford, Klimov (2017). "Proximal Policy Optimization Algorithms". [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)
+[^minco]: Wang, Zhou, Xu, Gao (2022). "Geometrically Constrained Trajectory Optimization for Multicopters". *IEEE Transactions on Robotics* 38(5): 3259–3278. [doi:10.1109/TRO.2022.3160022](https://doi.org/10.1109/TRO.2022.3160022)
+[^isaaclab]: Mittal, Yu, Yu, Liu, et al. (2023). "Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments". *IEEE Robotics and Automation Letters* 8(6): 3740–3747. The framework that became NVIDIA Isaac Lab. [doi:10.1109/LRA.2023.3270034](https://doi.org/10.1109/LRA.2023.3270034)

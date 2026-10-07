@@ -21,7 +21,7 @@ This post introduces the [**GG Swarm**]({{ page.project-url }}) capstone project
 
 ## Executive Summary
 
-The GG Swarm architecture comprises the **"brain,"** a Graph Attention Network (GATv2) that enables scalable, permutation-invariant spatial awareness via local message passing, and the **"muscles,"** which use trajectory optimization to ensure dynamically feasible maneuvers with reduced velocity jitter. To ensure high-fidelity testing and training, implementation occurs in **NVIDIA Isaac Lab**, utilizing GPU-accelerated simulation on **Google Cloud** to perform high-scale training across thousands of environments.
+The GG Swarm architecture comprises the **"brain,"** a Graph Attention Network (GATv2)[^gatv2] that enables scalable, permutation-invariant spatial awareness via local message passing, and the **"muscles,"** which use MINCO trajectory optimization[^minco] to ensure dynamically feasible maneuvers with reduced velocity jitter. To ensure high-fidelity testing and training, implementation occurs in **NVIDIA Isaac Lab**,[^isaaclab] utilizing GPU-accelerated simulation on **Google Cloud** to perform high-scale training across thousands of environments.
 
 ## Project Goals and Objectives
 
@@ -57,7 +57,7 @@ The project employs a **"Centralized Training, Decentralized Execution" (CTDE)**
 | :--- | :--- | :--- |
 | **Proposal & Plan** | Defining project scope, requirements, and research foundation. | 1–4 |
 | **Foundation** | Install Isaac Lab; configure assets; finalize connectivity logic. | 5–6 |
-| **Brain Development** | Train GATv2 policy using PPO; test basic formation keeping. | 7–8 |
+| **Brain Development** | Train GATv2 policy using PPO;[^ppo] test basic formation keeping. | 7–8 |
 | **Muscle Refinement** | Integrate MINCO optimization; implement SwarmRaft consensus. | 9–10 |
 | **Stress Testing** | Conduct agent loss tests; benchmark in high-density obstacles. | 11–12 |
 | **Showcase Prep** | Finalize RTX Tiled Rendering; record HD demonstration. | 13–15 |
@@ -79,3 +79,10 @@ Due to the massive hardware requirements for parallel training, we are utilizing
 - **Hardware**: Local RTX 3070 for development, Cloud GPUs for training.
 
 Stay tuned for updates as we progress through Brain Development!
+
+## References
+
+[^gatv2]: Brody, Alon, Yahav (2022). "How Attentive Are Graph Attention Networks?". *International Conference on Learning Representations (ICLR)*. [arXiv:2105.14491](https://arxiv.org/abs/2105.14491)
+[^minco]: Wang, Zhou, Xu, Gao (2022). "Geometrically Constrained Trajectory Optimization for Multicopters". *IEEE Transactions on Robotics* 38(5): 3259–3278. [doi:10.1109/TRO.2022.3160022](https://doi.org/10.1109/TRO.2022.3160022)
+[^isaaclab]: Mittal, Yu, Yu, Liu, et al. (2023). "Orbit: A Unified Simulation Framework for Interactive Robot Learning Environments". *IEEE Robotics and Automation Letters* 8(6): 3740–3747. The framework that became NVIDIA Isaac Lab. [doi:10.1109/LRA.2023.3270034](https://doi.org/10.1109/LRA.2023.3270034)
+[^ppo]: Schulman, Wolski, Dhariwal, Radford, Klimov (2017). "Proximal Policy Optimization Algorithms". [arXiv:1707.06347](https://arxiv.org/abs/1707.06347)

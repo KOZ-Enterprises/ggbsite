@@ -162,6 +162,37 @@ tags: [csumb, subject-matter]
 - Technical: `robotics`, `marl`, `autonomous-systems`, `ml`
 - Specific projects: `ggswarm`, `hexmaster`, `smart-mirror`
 
+### Citations & References
+
+Any fact, value, method or result taken from published work is cited the way a wiki does
+it: a numbered inline marker that links to a reference list at the bottom, which links back.
+Live examples: `_projects/ggbleed.md`, `_projects/ggpack.md`, `_projects/ggswarm.md`.
+
+- **Inline:** a kramdown footnote, `[^key]`, placed after the punctuation (`...a lab rig.[^b10]`).
+  It renders as `[n]`. Reuse the same key for every citation of the same source; kramdown
+  numbers by first use and adds one back-link per citation. Never hand-write `<sup>` markup.
+- **Key:** a short lowercase slug, either the source's ID where one exists (ggResearch IDs
+  such as `b3` and `p5` on ggBleed/ggPack, which must match that repo's `docs/SOURCES.md`) or
+  the method name (`gatv2`, `ppo`).
+- **List:** every definition goes at the very end of the file, under a final `## References`
+  heading, which must be the page's last heading. Keep the definitions in first-citation order.
+- **Format:** `Surname, Surname (Year). "Article Title". *Venue* vol(issue): pages. Location. [link](url)`
+  - Surnames only. Up to four authors; beyond that, the first four, then "et al.".
+  - Books, theses and reports: italic title, no quotes.
+  - Location is the table, figure or section the material came from, when the page relies
+    on a specific value.
+  - Link preference: DOI (`[doi:10.x/y](https://doi.org/10.x/y)`), then arXiv, then the
+    publisher's or agency's official URL. Never link a paywalled copy, a local path, or the
+    tailnet-only ggResearch site.
+- **Verify before publishing:** resolve every DOI or URL and check the title, authors, year,
+  volume and pages against the record (`curl -sLH 'Accept: application/vnd.citationstyles.csl+json' https://doi.org/<doi>`).
+  Never cite from memory.
+- **Excerpts:** no citations above `<!--more-->`, because archive cards would show markers
+  whose references are missing.
+- **Not citations:** links to tools, products, docs and repositories stay ordinary inline links.
+- **Styling:** lives in the citations block of `_sass/_content.scss`. The back-link glyph
+  is `kramdown.footnote_backlink` in `_config.yml`.
+
 ## Deployment Pipeline
 
 ```text
@@ -208,7 +239,7 @@ tags: [csumb, subject-matter]
 
 1. Create file: `_posts/YYYY-MM-DD-slug-title.md`
 2. Add front-matter (see Front-Matter Conventions above)
-3. Write markdown content
+3. Write markdown content (cite published sources per Citations & References)
 4. Use `<!--more-->` to mark archive cutoff
 5. Commit & push to `publish` branch → Auto-deploys
 
