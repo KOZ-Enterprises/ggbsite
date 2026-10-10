@@ -32,8 +32,6 @@ shows) and GG Swarm.
 
 ### Roadmap & Development Phases
 
-The project is currently progressing through the following hardware-focused roadmap:
-
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
 <span class="roadmap-summary-item"><strong>Parked</strong></span>
