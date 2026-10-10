@@ -4,8 +4,8 @@ title: "ggSkybit"
 image: "/assets/imgs/project/drone2.png"
 description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
 objective: "Develop a custom quadcopter platform and flight control testbed for autonomous navigation and swarm algorithms."
-status: "planned"
-status_detail: "Phase 0 · Conceptualization"
+status: "dormant"
+status_detail: "Parked · waits on ggGridRunner"
 order: 10
 project-tag: "drone"
 tools: 
@@ -36,7 +36,7 @@ The project is currently progressing through the following hardware-focused road
 
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-<span class="roadmap-summary-item"><strong>Phase 0</strong> In Progress</span>
+<span class="roadmap-summary-item"><strong>Parked</strong></span>
 <span class="roadmap-summary-sep">&middot;</span>
 <span class="roadmap-summary-item">8 Development Milestones</span>
 <span class="roadmap-summary-sep">&middot;</span>
@@ -44,10 +44,10 @@ The project is currently progressing through the following hardware-focused road
 </div>
 
 <div class="roadmap-track">
-<div class="roadmap-phase is-active">
+<div class="roadmap-phase">
 <div class="phase-header">
-<span class="phase-badge">Phase 0 &middot; Active Target</span>
-<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+<span class="phase-badge">Phase 0</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
 <h4 class="phase-title">Conceptualization & Architecture</h4>
 <p class="phase-details">Avionics layout, power distribution budgeting, and PlatformIO toolchain selection.</p>
@@ -113,7 +113,7 @@ The project is currently progressing through the following hardware-focused road
 <span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
 </div>
 <h4 class="phase-title">Swarm Sim-to-Real Transfer</h4>
-<p class="phase-details">Deploying decentralized GATv2/MINCO swarm navigation policies directly onto the physical drone.</p>
+<p class="phase-details">Flying certified multi-drone plans from the shared planning core, as one unit of a small swarm.</p>
 </div>
 </div>
 <!-- markdownlint-enable MD033 MD046 -->
@@ -121,7 +121,7 @@ The project is currently progressing through the following hardware-focused road
 ## Technical Approach
 
 - **Frame**: Custom chassis designed in SolidWorks/Onshape
-- **Flight Controller**: Arduino-based with PlatformIO toolchain
+- **Flight Controller**: Arduino/ESP32-based with PlatformIO toolchain
 - **Control Software**: C++ firmware for motor control,
   sensor fusion, and PID stabilization
 - **Remote Controller**: Separate custom-built controller
@@ -129,7 +129,8 @@ The project is currently progressing through the following hardware-focused road
 
 ## Connection to GG Swarm
 
-This project is the physical counterpart to GG Swarm. Once
-the simulated swarm coordination policies are validated in
-Isaac Lab, the plan is to transfer those algorithms onto
-real hardware starting with this drone platform.
+This is the "one drone" step of my hardware ladder: ground rover, then one
+drone, then many. It waits until the rover drives on its remote, then
+reuses the same firmware, IMU and radio-link lessons for a flight
+controller. Swarm work starts from a certifiable planning core, not by
+loading a learned policy onto this airframe.

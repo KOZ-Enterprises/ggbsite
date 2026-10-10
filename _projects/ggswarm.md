@@ -2,30 +2,39 @@
 layout: project
 title: "GG Swarm"
 image: "/assets/imgs/project/ggswarm-logo.png"
-description: "A decentralized coordination framework transitioning from simulation to real-world drone light shows."
-objective: "Deploy an adaptive RL-based execution layer onto physical PX4-based drone swarms for commercial light shows and complex formation maneuvers."
-status: "active"
-status_detail: "Hardware deployment"
+description: "Decentralized drone-swarm research, moving from a simulated RL capstone toward a real swarm built on a certifiable planning core."
+objective: "Build a legitimate decentralized swarm: a deterministic plan-and-certify core first, then online replanning behind a safety filter, with the learned GATv2/PPO policy benchmarked as a challenger."
+status: "dormant"
+status_detail: "Parked · waits on the CrazySim test"
 order: 1
 project-tag: "ggswarm"
 tools:
   - name: "Python"
   - name: "PyTorch"
-  - name: "PX4 Autopilot"
   - name: "Skybrush"
   - name: "NVIDIA Isaac Lab"
   - name: "GATv2"
   - name: "PPO"
   - name: "Crazyflie"
+  - name: "ArduPilot"
 resources:
   - name: "GG Swarm Repository"
     link: "https://github.com/garykuepper/ggSwarm"
     icon: "fa-brands fa-github"
 ---
 
-## Current Phase: GG Swarm Live (Post-Capstone)
+## Current Phase: Re-planned, Parked (Post-Capstone)
 
-Following the successful completion of the academic capstone, the project has transitioned into **GG Swarm Live**, a real-hardware deployment program. The focus is now on taking the decentralized GATv2[^gatv2]/PPO[^ppo] policies developed in simulation and deploying them onto physical PX4-based airframes. This creates an adaptive execution layer that can handle formation stability, obstacle avoidance, and decentralized coordination for commercial drone light shows.
+After the capstone I asked how real drone swarms get built. Three
+independent surveys agreed: swarms that work in the field run on
+predictable, checkable planning code, not end-to-end learning. So the plan
+changed. A deterministic plan-and-certify core comes first. It assigns
+drones to formation slots, plans the transitions and proves them safe
+before anything flies. Online decentralized replanning comes next, behind
+a safety filter, and the GATv2[^gatv2]/PPO[^ppo] policy from the capstone
+runs behind that filter as a challenger, benchmarked against the classical
+methods. Hardware goes Crazyflie indoors first, then an ArduPilot outdoor
+drone. The work is parked while my ground rover comes first.
 
 ### Cinematic Trailer
 
@@ -41,15 +50,13 @@ in simulation.
 
 ### Roadmap & Development Phases
 
-The project is currently progressing through the following hardware-focused roadmap:
-
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-<span class="roadmap-summary-item"><strong>Phase 1</strong> In Progress</span>
+<span class="roadmap-summary-item"><strong>Parked</strong></span>
 <span class="roadmap-summary-sep">&middot;</span>
-<span class="roadmap-summary-item">8 Development Milestones</span>
+<span class="roadmap-summary-item">6 Milestones</span>
 <span class="roadmap-summary-sep">&middot;</span>
-<span class="roadmap-summary-item">Hardware Deployment Track</span>
+<span class="roadmap-summary-item">Plan-and-Certify First</span>
 </div>
 
 <div class="roadmap-track">
@@ -59,16 +66,16 @@ The project is currently progressing through the following hardware-focused road
 <span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
 </div>
 <h4 class="phase-title">Capstone Baseline</h4>
-<p class="phase-details">v1.0.0-capstone simulation baseline in Isaac Lab.</p>
+<p class="phase-details">v1.0.0-capstone: GATv2/PPO formation policy in Isaac Lab.</p>
 </div>
 
-<div class="roadmap-phase is-active">
+<div class="roadmap-phase is-complete">
 <div class="phase-header">
-<span class="phase-badge">Phase 1 &middot; Active Target</span>
-<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
 </div>
-<h4 class="phase-title">Shared-Scene Training</h4>
-<p class="phase-details">Multi-drone training in complex shared simulation scenes.</p>
+<h4 class="phase-title">Plan-and-Certify Core v1</h4>
+<p class="phase-details">Slot assignment, smooth transitions and a validator that proves separation, speed limits and geofence before flight.</p>
 </div>
 
 <div class="roadmap-phase">
@@ -76,8 +83,8 @@ The project is currently progressing through the following hardware-focused road
 <span class="phase-badge">Phase 2</span>
 <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
-<h4 class="phase-title">Sim-to-Real Baseline</h4>
-<p class="phase-details">Initial deployment to Crazyflie drones with LPS.</p>
+<h4 class="phase-title">CrazySim Test</h4>
+<p class="phase-details">Fly certified plans in the Crazyflie simulator and compare flown against planned.</p>
 </div>
 
 <div class="roadmap-phase">
@@ -85,8 +92,8 @@ The project is currently progressing through the following hardware-focused road
 <span class="phase-badge">Phase 3</span>
 <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
-<h4 class="phase-title">Decentralized Assignment</h4>
-<p class="phase-details">Transitioning to peer-to-peer ranging and consensus logic.</p>
+<h4 class="phase-title">Crazyflie Indoors</h4>
+<p class="phase-details">A few real Crazyflies flying certified formations.</p>
 </div>
 
 <div class="roadmap-phase">
@@ -94,35 +101,17 @@ The project is currently progressing through the following hardware-focused road
 <span class="phase-badge">Phase 4</span>
 <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
-<h4 class="phase-title">Drone Show Capability</h4>
-<p class="phase-details">Integration with <strong>Skybrush</strong> for expressive shapes and light shows.</p>
-</div>
-
-<div class="roadmap-phase">
-<div class="phase-header">
-<span class="phase-badge">Phase 5</span>
-<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-</div>
-<h4 class="phase-title">Outdoor Deployment</h4>
-<p class="phase-details">Extended fault tolerance and RTK-GPS integration.</p>
-</div>
-
-<div class="roadmap-phase">
-<div class="phase-header">
-<span class="phase-badge">Phase 6</span>
-<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
-</div>
-<h4 class="phase-title">Onboard Compute</h4>
-<p class="phase-details">Moving all inference and obstacle avoidance to onboard chips.</p>
+<h4 class="phase-title">Decentralized Replanning</h4>
+<p class="phase-details">Drones react to each other live behind a safety filter; the RL policy is benchmarked head to head.</p>
 </div>
 
 <div class="roadmap-phase is-stretch">
 <div class="phase-header">
-<span class="phase-badge">Phase 7</span>
+<span class="phase-badge">Phase 5</span>
 <span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
 </div>
-<h4 class="phase-title">Hardware-Agnostic</h4>
-<p class="phase-details">General-purpose adaptive swarm execution layer.</p>
+<h4 class="phase-title">Outdoor Swarm</h4>
+<p class="phase-details">ArduPilot outdoor drones, shared with the ggSkylight show platform.</p>
 </div>
 </div>
 <!-- markdownlint-enable MD033 MD046 -->
