@@ -5,7 +5,7 @@ image: "/assets/imgs/project/ggswarm-logo.png"
 description: "Decentralized drone-swarm research, moving from a simulated RL capstone toward a real swarm built on a certifiable planning core."
 objective: "Build a legitimate decentralized swarm: a deterministic plan-and-certify core first, then online replanning behind a safety filter, with the learned GATv2/PPO policy benchmarked as a challenger."
 status: "dormant"
-status_detail: "Parked · waits on the CrazySim test"
+status_detail: "Parked · waits on CrazySim test + a free slot"
 order: 1
 project-tag: "ggswarm"
 tools:
@@ -75,7 +75,7 @@ in simulation.
 <span class="status-tag" data-status="complete"><span class="status-dot"></span>Complete</span>
 </div>
 <h4 class="phase-title">Plan-and-Certify Core v1</h4>
-<p class="phase-details">Slot assignment, smooth transitions and a validator that proves separation, speed limits and geofence before flight.</p>
+<p class="phase-details">Built in ggChoreo: slot assignment, smooth transitions and a validator that proves separation, speed limits and geofence before flight.</p>
 </div>
 
 <div class="roadmap-phase">
