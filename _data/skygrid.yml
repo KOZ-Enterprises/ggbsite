@@ -3,51 +3,56 @@
 stages:
   - range: "Stages 1–4"
     status: active
-    label: Current
-    title: "Build a safe rover"
+    label: Current focus
+    title: "Build — get the rover moving safely"
+    short: "The rover drives safely and holds a heading"
     description: >-
-      Bring the chassis, motor channels, steering, encoders and IMU together. Establish safe remote
-      driving before adding autonomy.
-    evidence: "A repeatable drive log, heading hold and a deliberate test that radio loss stops motion."
+      Assemble the chassis, control the motors and steering, and measure movement with sensors.
+      Start with remote driving, then teach the rover to hold a steady heading.
+    evidence: "The rover drives reliably, holds its heading and stops if the radio connection fails."
     project: ggGridRunner
     link: /projects/rover/
   - range: "Stages 5–6"
     status: planned
     label: Planned
-    title: "Make the models meet the measurements"
+    title: "Simulate — practice navigation before real flight"
+    short: "Practice navigation in simulation"
     description: >-
-      Learn ROS 2 frames, timestamped sensor data, fused odometry and bag replay on the PC. Exercise
-      rover navigation and a single quad in simulation.
-    evidence: "Repeatable navigation, useful estimator plots and a simulated loss-of-link test."
-    project: ggChoreo and the shared software path
+      Connect the rover’s measurements to a computer using ROS 2, a robotics software framework.
+      Learn to estimate position and test navigation with virtual vehicles, including one drone.
+    evidence: "Virtual vehicles repeat their routes, and the simulated drone handles a lost connection."
+    project: Shared software and ggChoreo
     link: /projects/ggskygrid/#ggchoreo
   - range: "Stages 7–8"
     status: planned
     label: Planned
-    title: "Fly one real aircraft"
+    title: "Fly — make one indoor drone repeat a mission"
+    short: "One real indoor drone repeats a mission"
     description: >-
-      Start with one Crazyflie and native Bitcraze tools, then move to Crazyswarm2. Compare real flight
-      with the simulated behavior.
-    evidence: "Ten repeatable takeoff, trajectory and landing missions without pilot correction."
-    project: ggSwarm
+      Start with a Crazyflie, a small indoor drone platform. Learn its standard flight tools before
+      connecting it to the shared robotics software. Compare its real movements with the simulation.
+    evidence: "One drone completes ten takeoff, route and landing missions without pilot correction."
+    project: Flight foundation for ggSwarm
     link: /projects/ggswarm/
   - range: "Stages 9–11"
     status: planned
     label: Planned
-    title: "Give the rover a map"
+    title: "Navigate — give the rover a map"
+    short: "The rover builds and reuses a map"
     description: >-
-      Add 2D lidar for mapping and navigation, with processing on the PC first. Move computing onboard
-      only when the tether limits the experiment.
-    evidence: "Save and reload a map, relocalize and complete three contact-free navigation runs."
+      Add a laser distance scanner so the rover can map its surroundings and find its position.
+      Run the navigation software on a connected computer first; move it onboard only if needed.
+    evidence: "The rover reuses a saved map, finds itself on it and completes three runs without contact."
     project: ggGridRunner
     link: /projects/rover/
   - range: "Stages 12–13"
     status: planned
     label: Planned
-    title: "Coordinate, then scale"
+    title: "Coordinate — prove the plan before adding drones"
+    short: "Several virtual drones, kept apart"
     description: >-
-      Use ggChoreo to validate multi-drone trajectories in simulation. Establish positioning and
-      fault-separation requirements before adding another aircraft.
-    evidence: "Synchronized simulated missions, checked separation, individual aborts and a fleet abort."
+      Test several virtual drones following ggChoreo’s routes together. Work out how real aircraft
+      will share a position reference and how one aircraft’s failure can be handled before buying a second.
+    evidence: "Simulated drones stay separated, with tested ways to stop one aircraft or the whole group."
     project: ggSwarm and ggChoreo
     link: /projects/ggswarm/

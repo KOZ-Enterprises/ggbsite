@@ -1,41 +1,47 @@
 {% assign chart = site.data.skygrid_timeline %}
+{% assign stages = site.data.skygrid.stages %}
 <section class="skygrid-section skygrid-chart" aria-labelledby="chart-heading">
-    <div class="rule-header"><h2 class="rule-title" id="chart-heading">The combined timeline</h2><span class="rule-line"></span></div>
-    <p>One sequence across rover, software and aerial work. These are learning stages, not weeks. Hover over or focus a mark for its demonstration.</p>
-    <p id="chart-scroll-note" class="skygrid-meta">On smaller screens, scroll the chart sideways or open the table below.</p>
-    <div class="sg-scroll" tabindex="0" role="region" aria-label="Autonomy timeline" aria-describedby="chart-scroll-note">
-        <div class="sg-grid" style="--periods: {{ chart.periods }}">
-            <div class="sg-row sg-axis"><div></div><div class="sg-cells">
-                {% for phase in chart.phases %}<span class="sg-phase" style="grid-column: {{ phase.from }} / {{ phase.to | plus: 1 }}">{{ phase.label }}</span>{% endfor %}
-            </div></div>
-            <div class="sg-row sg-axis"><div class="sg-label">Stage</div><div class="sg-cells">
-                {% for n in (1..chart.periods) %}<span class="sg-tick" style="grid-column: {{ n }}">{{ n }}</span>{% endfor %}
-            </div></div>
-            {% for track in chart.tracks %}
-            <div class="sg-group {{ track.color }}"><span class="sg-swatch" aria-hidden="true"></span>{{ track.name }}</div>
-            {% assign rows = chart.rows | where: 'track', track.id %}
-            {% for row in rows %}
-            {% capture description %}{{ row.name }}. {{ row.when }}.{% if row.spend %} ${{ row.spend }} estimate.{% endif %} {{ row.done }}{% endcapture %}
-            <div class="sg-row {{ track.color }}"><div class="sg-label">{{ row.name }}</div><div class="sg-cells">
-                {% for n in (1..chart.periods) %}<i class="sg-line" aria-hidden="true" style="grid-column: {{ n }}"></i>{% endfor %}
-                <span class="sg-mark" data-kind="{{ row.kind }}" tabindex="0" role="img" aria-label="{{ description | strip | escape }}" style="grid-column: {{ row.from }} / span {{ row.span }}"></span>
-                {% if row.spend %}<span class="sg-price" style="grid-column: {{ row.from }}">${{ row.spend }}</span>{% endif %}
-            </div></div>
-            {% endfor %}
-            {% endfor %}
-        </div>
-    </div>
+    <div class="rule-header"><h2 class="rule-title" id="chart-heading">The roadmap</h2><span class="rule-line"></span></div>
+    <p>Five milestones, read top to bottom. Each shows what it covers, the work inside it on a 13-stage scale, and the demonstration that lets me move on. Stages are an order, <strong>not weeks or deadlines</strong>; a stage lasts as long as the build and testing need.</p>
     <div class="sg-legend" aria-label="Chart legend">
         {% for track in chart.tracks %}<span class="{{ track.color }}"><i class="sg-swatch" aria-hidden="true"></i>{{ track.name }}</span>{% endfor %}
         <span><i class="sg-diamond" aria-hidden="true"></i>Purchase</span>
-        <span><i class="sg-diamond" data-kind="gate" aria-hidden="true"></i>Gate or decision</span>
+        <span><i class="sg-diamond" data-kind="gate" aria-hidden="true"></i>Readiness check or decision</span>
     </div>
-    <details class="sg-table"><summary class="btn-ghost">Table view</summary>
+    <p id="chart-scroll-note" class="skygrid-meta">Bars show which stages hold the work. Hover or focus a mark for its completion criteria. On smaller screens, scroll sideways or use the table below.</p>
+    <div class="sg-scroll" tabindex="0" role="region" aria-label="Roadmap by milestone" aria-describedby="chart-scroll-note">
+        <div class="sg-grid" style="--periods: {{ chart.periods }}">
+            {% for phase in chart.phases %}
+            {% assign stage = stages[forloop.index0] %}
+            {% assign rows = chart.rows | where_exp: 'r', 'r.from >= phase.from and r.from <= phase.to' %}
+            <div class="sg-band" id="ms-{{ forloop.index }}" data-status="{{ stage.status }}">
+                <div class="sg-ms">
+                    <p class="skygrid-meta">{{ stage.range }} · {{ stage.label }}</p>
+                    <h3>{{ stage.title }}</h3>
+                    <p>{{ stage.description }}</p>
+                    <p class="skygrid-proof"><strong>Ready to move on when:</strong> {{ stage.evidence }}</p>
+                </div>
+                <div class="sg-row sg-axis" aria-hidden="true"><div class="sg-label">Stage</div><div class="sg-cells">
+                    {% for n in (1..chart.periods) %}<span class="sg-tick{% if n >= phase.from and n <= phase.to %} sg-in{% endif %}" style="grid-column: {{ n }}">{{ n }}</span>{% endfor %}
+                </div></div>
+                {% for row in rows %}
+                {% assign track = chart.tracks | where: 'id', row.track | first %}
+                {% capture description %}{{ row.name }}. {{ row.when }}.{% if row.spend %} ${{ row.spend }} estimate.{% endif %} {{ row.done }}{% endcapture %}
+                <div class="sg-row {{ track.color }}"><div class="sg-label">{{ row.name }}</div><div class="sg-cells">
+                    {% for n in (1..chart.periods) %}<i class="sg-line" aria-hidden="true" style="grid-column: {{ n }}"></i>{% endfor %}
+                    <span class="sg-mark" data-kind="{{ row.kind }}" tabindex="0" role="img" aria-label="{{ description | strip | escape }}" style="grid-column: {{ row.from }} / span {{ row.span }}"></span>
+                    {% if row.spend %}<span class="sg-price" style="grid-column: {{ row.from }}">${{ row.spend }}</span>{% endif %}
+                </div></div>
+                {% endfor %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <details class="sg-table"><summary class="btn-ghost">Read activities in stage order</summary>
         <div class="sg-scroll" tabindex="0" role="region" aria-label="Timeline table">
             <table><caption>All timeline activities and demonstrations</caption><thead><tr><th scope="col">When</th><th scope="col">Item</th><th scope="col">Track</th><th scope="col">Type</th><th scope="col">Demonstration</th><th scope="col">Estimate</th></tr></thead><tbody>
-                {% assign ordered_rows = chart.rows | sort: 'from' %}
-                {% for row in ordered_rows %}{% assign track = chart.tracks | where: 'id', row.track | first %}
-                <tr><td>{{ row.when }}</td><td>{{ row.name }}</td><td>{{ track.name }}</td><td>{% case row.kind %}{% when 'buy' %}Purchase{% when 'gate' %}Gate{% else %}Work{% endcase %}</td><td>{{ row.done }}</td><td>{% if row.spend %}${{ row.spend }}{% else %}—{% endif %}</td></tr>
+                {% for row in chart.rows %}{% assign track = chart.tracks | where: 'id', row.track | first %}
+                <tr><td>{{ row.when }}</td><td>{{ row.name }}</td><td>{{ track.name }}</td><td>{% case row.kind %}{% when 'buy' %}Purchase{% when 'gate' %}Readiness check{% else %}Work{% endcase %}</td><td>{{ row.done }}</td><td>{% if row.spend %}${{ row.spend }}{% else %}—{% endif %}</td></tr>
                 {% endfor %}
             </tbody></table>
         </div>

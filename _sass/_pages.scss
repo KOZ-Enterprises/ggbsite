@@ -710,53 +710,55 @@
     letter-spacing: 1px;
     margin: $space-2 0;
 }
-.skygrid-evidence, .skygrid-projects {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: $space-3;
-    article {
-        padding: $space-3;
-        border: 1px solid $c-border;
-        border-radius: $radius-surface;
-        background: $c-surface;
-        scroll-margin-top: 100px;
-    }
-    p { margin: 0 0 $space-2; }
-    a { display: inline-flex; align-items: center; min-height: $touch-min; }
-    @include respond-to(mobile) { grid-template-columns: 1fr; }
-}
-.skygrid-path {
+// Five-step overview before any detail: the whole path in one glance.
+.skygrid-journey {
     list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: $space-2;
     padding: 0;
     margin: $space-4 0;
     > li {
-        display: grid;
-        grid-template-columns: 180px minmax(0, 1fr);
-        border-top: 1px solid $c-border;
-        padding: $space-4 0;
-        gap: $space-4;
+        border-top: 2px solid $c-border;
+        &[data-status="active"] { border-top-color: $c-accent; }
     }
-    > li:last-child { border-bottom: 1px solid $c-border; }
+    a {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+        height: 100%;
+        padding: $space-2 $space-1 $space-2 0;
+        color: $c-body;
+        text-decoration: none;
+        &:hover strong, &:focus-visible strong { color: $c-accent; }
+    }
+    strong { font-family: $font-display; font-size: 20px; font-weight: 400; color: $c-ink; }
+    .skygrid-meta { margin: 0; }
     @include respond-to(mobile) {
-        > li { grid-template-columns: 1fr; gap: $space-2; }
+        grid-template-columns: 1fr;
+        > li { border-top-width: 1px; }
+        a { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: $space-1 $space-2; min-height: $touch-min; }
     }
 }
-.skygrid-step {
-    > span:first-child { font-family: $font-display; font-size: 36px; color: $c-ink; }
-    .skygrid-meta { margin: $space-1 0; }
-}
-.skygrid-state {
-    display: inline-flex;
-    align-items: center;
-    gap: $space-1;
-    font-family: $font-mono;
-    font-size: 12px;
-    color: $c-body-dim;
-    &::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: $c-muted; }
-}
-.skygrid-stage-body {
-    p { margin: 0 0 $space-2; max-width: 75ch; }
-    a { display: inline-flex; align-items: center; min-height: $touch-min; }
+.skygrid-subhead { margin-top: $space-5; }
+.skygrid-projects {
+    margin: $space-3 0;
+    article {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: $space-4;
+        padding: $space-3 0;
+        border-top: 1px solid $c-border;
+        scroll-margin-top: 100px;
+        &:last-child { border-bottom: 1px solid $c-border; }
+        h3 { margin: 0; }
+        .skygrid-meta { margin: $space-1 0 0; }
+        .skygrid-stages { margin-top: 0; color: $c-body-dim; white-space: nowrap; }
+        p { margin: 0 0 $space-2; max-width: 70ch; }
+        strong { color: $c-ink; }
+        a { display: inline-flex; align-items: center; min-height: $touch-min; }
+        @include respond-to(mobile) { grid-template-columns: 1fr; gap: $space-2; }
+    }
 }
 .skygrid-proof { color: $c-body-dim; strong { color: $c-ink; } }
 
@@ -784,9 +786,23 @@
 .sg-cells { display: grid; grid-template-columns: repeat(var(--periods), minmax(0, 1fr)); position: relative; }
 .sg-line { grid-row: 1; border-left: 1px solid $c-rule; min-height: 40px; &:last-of-type { border-right: 1px solid $c-rule; } }
 .sg-axis { font-family: $font-mono; font-size: 11px; color: $c-muted; }
-.sg-phase { grid-row: 1; border-top: 2px solid $c-border; margin: 0 3px; padding: 4px 0; text-transform: uppercase; letter-spacing: 1px; }
-.sg-tick { grid-row: 1; text-align: center; padding: 2px 0; border-left: 1px solid $c-rule; }
-.sg-group { display: flex; align-items: center; gap: $space-1; padding: $space-2 0 $space-1; font-family: $font-mono; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: $c-ink; }
+.sg-tick { grid-row: 1; text-align: center; padding: 2px 0; border-left: 1px solid $c-rule; &.sg-in { color: $c-ink; } }
+.sg-band {
+    padding-top: $space-4;
+    &:first-child { padding-top: $space-2; }
+    &[data-status="active"] .sg-ms { border-left-color: $c-accent; }
+}
+.sg-ms {
+    position: sticky;
+    left: 0;
+    width: min(720px, calc(100vw - 96px));
+    margin-bottom: $space-2;
+    padding-left: $space-2;
+    border-left: 2px solid $c-border;
+    h3 { margin: 0 0 $space-1; }
+    p { margin: 0 0 $space-1; font-size: 14px; }
+    .skygrid-meta { margin: 0 0 $space-1; font-size: 12px; }
+}
 .sg-swatch { display: inline-block; width: 12px; height: 8px; border-radius: 2px; background: var(--track); flex: none; }
 .sg-mark {
     grid-row: 1;
