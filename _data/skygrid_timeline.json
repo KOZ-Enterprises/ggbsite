@@ -1,0 +1,192 @@
+{
+  "periods": 13,
+  "unit": "Stage",
+  "phases": [
+    {
+      "to": 4,
+      "label": "Build",
+      "from": 1
+    },
+    {
+      "to": 10,
+      "label": "Autonomy",
+      "from": 5
+    },
+    {
+      "to": 13,
+      "label": "Extend",
+      "from": 11
+    }
+  ],
+  "tracks": [
+    {
+      "id": "rover",
+      "name": "Rover",
+      "color": "track-1"
+    },
+    {
+      "id": "ros",
+      "name": "ROS 2 and simulation",
+      "color": "track-2"
+    },
+    {
+      "id": "aerial",
+      "name": "Aerial",
+      "color": "track-3"
+    }
+  ],
+  "rows": [
+    {
+      "track": "rover",
+      "name": "Chassis, power and one-motor bench tests",
+      "to": 2,
+      "kind": "bar",
+      "done": "Mechanical assembly ready; bounded commands, inhibit and timeout tested",
+      "from": 1,
+      "span": 2,
+      "when": "Stages 1–2"
+    },
+    {
+      "track": "rover",
+      "name": "Four drive channels, steering calibration and encoders",
+      "to": 3,
+      "kind": "bar",
+      "done": "Synchronized logs; calibrated steering; no unexplained resets",
+      "from": 2,
+      "span": 2,
+      "when": "Stages 2–3"
+    },
+    {
+      "track": "rover",
+      "name": "IMU, heading hold and XBee failsafes",
+      "to": 4,
+      "kind": "bar",
+      "done": "20-minute drive log; radio loss stops motion; deliberate re-arm",
+      "from": 3,
+      "span": 2,
+      "when": "Stages 3–4"
+    },
+    {
+      "track": "rover",
+      "name": "Safe rover gate — stop adding base features",
+      "to": 4,
+      "kind": "gate",
+      "done": "Rover drives safely on remote and heading hold is demonstrated",
+      "from": 4,
+      "span": 1,
+      "when": "Stage 4"
+    },
+    {
+      "track": "ros",
+      "name": "ROS 2, URDF, TF and versioned serial bridge",
+      "to": 5,
+      "kind": "bar",
+      "done": "Correct frame tree and timestamped encoder / IMU topics on the PC",
+      "from": 5,
+      "span": 1,
+      "when": "Stage 5"
+    },
+    {
+      "track": "ros",
+      "name": "EKF, bag replay and simulated Nav2",
+      "to": 6,
+      "kind": "bar",
+      "done": "Fused odometry with residual plots; repeatable simulated navigation",
+      "from": 5,
+      "span": 2,
+      "when": "Stages 5–6"
+    },
+    {
+      "track": "aerial",
+      "name": "Single-quad simulation and loss-of-link test",
+      "to": 6,
+      "kind": "bar",
+      "done": "Take off, square, injected link loss and landing; written physical-flight test",
+      "from": 6,
+      "span": 1,
+      "when": "Stage 6"
+    },
+    {
+      "track": "aerial",
+      "name": "First aircraft gate",
+      "to": 7,
+      "kind": "gate",
+      "done": "Simulation passes; safe flight area ready; purchase fits the budget",
+      "from": 7,
+      "span": 1,
+      "when": "Stage 7"
+    },
+    {
+      "track": "aerial",
+      "name": "One Crazyflie STEM bundle",
+      "to": 7,
+      "kind": "buy",
+      "done": "Historical bundle estimate; recheck price before buying",
+      "from": 7,
+      "spend": 320,
+      "span": 1,
+      "when": "Stage 7"
+    },
+    {
+      "track": "aerial",
+      "name": "Native Bitcraze flights, then Crazyswarm2",
+      "to": 8,
+      "kind": "bar",
+      "done": "Ten repeatable takeoff–trajectory–landing missions without pilot correction",
+      "from": 8,
+      "span": 1,
+      "when": "Stage 8"
+    },
+    {
+      "track": "rover",
+      "name": "2D lidar, once simulated navigation works",
+      "to": 9,
+      "kind": "buy",
+      "done": "C1 research estimate; verify ROS driver and return policy before buying",
+      "from": 9,
+      "spend": 69,
+      "span": 1,
+      "when": "Stage 9"
+    },
+    {
+      "track": "ros",
+      "name": "Tethered mapping, relocalization and Nav2",
+      "to": 10,
+      "kind": "bar",
+      "done": "Save and reload a map; three contact-free runs; fault logs",
+      "from": 9,
+      "span": 2,
+      "when": "Stages 9–10"
+    },
+    {
+      "track": "rover",
+      "name": "Onboard Pi review — only if the tether blocks work",
+      "to": 11,
+      "kind": "gate",
+      "done": "If needed, budget Pi, power and storage; verify MCU stops safely when Linux fails",
+      "from": 11,
+      "span": 1,
+      "when": "Stage 11"
+    },
+    {
+      "track": "ros",
+      "name": "ggChoreo trajectories and multi-drone simulation",
+      "to": 12,
+      "kind": "bar",
+      "done": "Validated separated trajectories, synchronized launch, individual and fleet abort tests",
+      "from": 12,
+      "span": 1,
+      "when": "Stage 12"
+    },
+    {
+      "track": "aerial",
+      "name": "Positioning and second-aircraft review",
+      "to": 13,
+      "kind": "gate",
+      "done": "Single-aircraft missions repeat; shared-frame and fault-separation requirements demonstrated before scaling",
+      "from": 13,
+      "span": 1,
+      "when": "Stage 13"
+    }
+  ]
+}

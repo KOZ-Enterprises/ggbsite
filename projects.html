@@ -14,9 +14,16 @@ permalink: /projects/
     </p>
 </section>
 
+<section class="skygrid-feature" aria-labelledby="skygrid-feature-title">
+    <div><p class="page-kicker">Connected projects</p><h2 id="skygrid-feature-title">ggSkyGrid</h2><p>From a ground rover to coordinated flight. Follow the learning path connecting the builds, simulations and swarm research.</p></div>
+    <a class="btn-ghost" href="{{ '/projects/ggskygrid/' | relative_url }}">Explore the roadmap →</a>
+</section>
+
 <section class="card-grid">
     {% assign sorted_projects = site.projects | sort: "order" %}
     {% for project in sorted_projects %}
+    {% unless project.project_hub %}
     {% include project-card.html project=project %}
+    {% endunless %}
     {% endfor %}
 </section>

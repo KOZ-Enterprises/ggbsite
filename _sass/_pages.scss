@@ -3,7 +3,7 @@
 // Styling used by exactly one page. If a second page starts using one of these
 // blocks, move it to _components.scss rather than copying it.
 //
-// Contains: .intro-band and .feature-hero (home), .capstone-card, .registry
+// Contains: .intro-actions and .feature-hero (home), .capstone-card, .registry
 //           and .prior-degrees (coursework), .post-page (log entry), .xp-list
 //           and .edu-list (about), .tag-strip and .year-block (archives),
 //           .tag-hash (tag page)
@@ -11,21 +11,8 @@
 
 @use "tokens" as *;
 
-// ---- Home: intro band ------------------------------------------------------
-// COLLISION SET - the home band is the shared treatment from _layout.scss,
-// scaled up. Both rules are (0,1,0) and both set padding and margin, so this
-// wins only because _pages.scss loads after _layout.scss. Do not move it
-// earlier, and do not restate the border, the radius or the grid here.
-.intro-band {
-    padding: $space-6;
-    margin: 0 0 $space-5;
-
-    @include respond-to(mobile) {
-        padding: $space-4 $space-2;
-        margin: 0 0 $space-3;
-    }
-}
-
+// ---- Home: actions ---------------------------------------------------------
+// The intro band uses the shared page-header spacing in _layout.scss.
 .intro-actions {
     display: flex;
     flex-wrap: wrap;
@@ -686,3 +673,142 @@
 .tag-hash {
     color: $c-accent;
 }
+
+// ggSkyGrid entrance on the project index.
+.skygrid-feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-4;
+    margin-bottom: $space-4;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+    background: $c-surface;
+    h2 { margin: 0 0 $space-1; }
+    p { max-width: 65ch; margin: 0; }
+    .page-kicker { margin-bottom: $space-1; }
+    .btn-ghost { flex-shrink: 0; }
+    @include respond-to(mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: $space-3;
+    }
+}
+
+// ggSkyGrid's public learning path, read in order at every screen width.
+.skygrid-section {
+    margin: $space-6 0;
+    > p { max-width: 80ch; }
+    h3 { font-family: $font-display; font-style: normal; margin: 0 0 $space-2; color: $c-ink; }
+    p { color: $c-body; }
+}
+.skygrid-meta {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $c-muted;
+    letter-spacing: 1px;
+    margin: $space-2 0;
+}
+.skygrid-evidence, .skygrid-projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: $space-3;
+    article {
+        padding: $space-3;
+        border: 1px solid $c-border;
+        border-radius: $radius-surface;
+        background: $c-surface;
+        scroll-margin-top: 100px;
+    }
+    p { margin: 0 0 $space-2; }
+    a { display: inline-flex; align-items: center; min-height: $touch-min; }
+    @include respond-to(mobile) { grid-template-columns: 1fr; }
+}
+.skygrid-path {
+    list-style: none;
+    padding: 0;
+    margin: $space-4 0;
+    > li {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        border-top: 1px solid $c-border;
+        padding: $space-4 0;
+        gap: $space-4;
+    }
+    > li:last-child { border-bottom: 1px solid $c-border; }
+    @include respond-to(mobile) {
+        > li { grid-template-columns: 1fr; gap: $space-2; }
+    }
+}
+.skygrid-step {
+    > span:first-child { font-family: $font-display; font-size: 36px; color: $c-ink; }
+    .skygrid-meta { margin: $space-1 0; }
+}
+.skygrid-state {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $c-body-dim;
+    &::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: $c-muted; }
+}
+.skygrid-stage-body {
+    p { margin: 0 0 $space-2; max-width: 75ch; }
+    a { display: inline-flex; align-items: center; min-height: $touch-min; }
+}
+.skygrid-proof { color: $c-body-dim; strong { color: $c-ink; } }
+
+// Original gg-theme timeline's validated categorical palette. These three
+// chart-only literals are intentional: the teal site accent is not a data series.
+.skygrid-chart {
+    --sg-violet: #9085e9;
+    --sg-orange: #d95926;
+    --sg-green: #199e70;
+    .track-1 { --track: var(--sg-violet); }
+    .track-2 { --track: var(--sg-orange); }
+    .track-3 { --track: var(--sg-green); }
+}
+.sg-scroll {
+    overflow-x: auto;
+    padding: $space-2;
+    background: $c-surface;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+    &:focus-visible { outline: 2px solid $c-accent; outline-offset: 2px; }
+}
+.sg-grid { min-width: 900px; }
+.sg-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); border-bottom: 1px solid $c-rule; }
+.sg-label { padding: $space-1 $space-2 $space-1 0; align-self: center; font-size: 13px; line-height: 1.35; color: $c-body; }
+.sg-cells { display: grid; grid-template-columns: repeat(var(--periods), minmax(0, 1fr)); position: relative; }
+.sg-line { grid-row: 1; border-left: 1px solid $c-rule; min-height: 40px; &:last-of-type { border-right: 1px solid $c-rule; } }
+.sg-axis { font-family: $font-mono; font-size: 11px; color: $c-muted; }
+.sg-phase { grid-row: 1; border-top: 2px solid $c-border; margin: 0 3px; padding: 4px 0; text-transform: uppercase; letter-spacing: 1px; }
+.sg-tick { grid-row: 1; text-align: center; padding: 2px 0; border-left: 1px solid $c-rule; }
+.sg-group { display: flex; align-items: center; gap: $space-1; padding: $space-2 0 $space-1; font-family: $font-mono; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: $c-ink; }
+.sg-swatch { display: inline-block; width: 12px; height: 8px; border-radius: 2px; background: var(--track); flex: none; }
+.sg-mark {
+    grid-row: 1;
+    align-self: center;
+    height: 12px;
+    background: var(--track);
+    z-index: 1;
+    &[data-kind="bar"] { margin: 0 3px; border-radius: 4px; }
+    &[data-kind="buy"], &[data-kind="gate"] { width: 12px; justify-self: center; transform: rotate(45deg); box-shadow: 0 0 0 2px $c-surface; }
+    &[data-kind="gate"] { background: $c-surface; border: 2px solid var(--track); }
+    &:focus-visible { outline: 2px solid $c-ink; outline-offset: 4px; }
+}
+.sg-price { grid-row: 1; align-self: center; justify-self: start; margin-left: calc(50% + 14px); white-space: nowrap; font-family: $font-mono; font-size: 11px; color: $c-ink; }
+.sg-legend { display: flex; flex-wrap: wrap; gap: $space-2 $space-3; margin-top: $space-2; font-size: 13px; color: $c-body-dim; > span { display: inline-flex; align-items: center; gap: $space-1; } }
+.sg-diamond { display: inline-block; width: 10px; height: 10px; background: $c-ink; transform: rotate(45deg); &[data-kind="gate"] { background: transparent; border: 2px solid $c-ink; } }
+.sg-table {
+    margin: $space-3 0;
+    summary { cursor: pointer; min-height: $touch-min; }
+    &[open] summary { margin-bottom: $space-2; }
+    table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 13px; }
+    caption { text-align: left; padding: $space-2 0; }
+    th, td { padding: $space-2; text-align: left; border-bottom: 1px solid $c-rule; }
+    th { font-family: $font-mono; color: $c-body-dim; }
+}
+.sg-tooltip { position: fixed; pointer-events: none; z-index: 100; max-width: min(300px, calc(100vw - 32px)); padding: $space-2; border: 1px solid $c-border; border-radius: $radius-surface; background: $c-surface-deep; color: $c-ink; font-size: 14px; line-height: 1.5; }

@@ -1,0 +1,53 @@
+# Public summary of ggSkyGrid/PLAN.md. Stages are not calendar durations.
+# Update when the canonical plan changes; do not include private planning links.
+stages:
+  - range: "Stages 1–4"
+    status: active
+    label: Current
+    title: "Build a safe rover"
+    description: >-
+      Bring the chassis, motor channels, steering, encoders and IMU together. Establish safe remote
+      driving before adding autonomy.
+    evidence: "A repeatable drive log, heading hold and a deliberate test that radio loss stops motion."
+    project: ggGridRunner
+    link: /projects/rover/
+  - range: "Stages 5–6"
+    status: planned
+    label: Planned
+    title: "Make the models meet the measurements"
+    description: >-
+      Learn ROS 2 frames, timestamped sensor data, fused odometry and bag replay on the PC. Exercise
+      rover navigation and a single quad in simulation.
+    evidence: "Repeatable navigation, useful estimator plots and a simulated loss-of-link test."
+    project: ggChoreo and the shared software path
+    link: /projects/ggskygrid/#ggchoreo
+  - range: "Stages 7–8"
+    status: planned
+    label: Planned
+    title: "Fly one real aircraft"
+    description: >-
+      Start with one Crazyflie and native Bitcraze tools, then move to Crazyswarm2. Compare real flight
+      with the simulated behavior.
+    evidence: "Ten repeatable takeoff, trajectory and landing missions without pilot correction."
+    project: ggSwarm
+    link: /projects/ggswarm/
+  - range: "Stages 9–11"
+    status: planned
+    label: Planned
+    title: "Give the rover a map"
+    description: >-
+      Add 2D lidar for mapping and navigation, with processing on the PC first. Move computing onboard
+      only when the tether limits the experiment.
+    evidence: "Save and reload a map, relocalize and complete three contact-free navigation runs."
+    project: ggGridRunner
+    link: /projects/rover/
+  - range: "Stages 12–13"
+    status: planned
+    label: Planned
+    title: "Coordinate, then scale"
+    description: >-
+      Use ggChoreo to validate multi-drone trajectories in simulation. Establish positioning and
+      fault-separation requirements before adding another aircraft.
+    evidence: "Synchronized simulated missions, checked separation, individual aborts and a fleet abort."
+    project: ggSwarm and ggChoreo
+    link: /projects/ggswarm/

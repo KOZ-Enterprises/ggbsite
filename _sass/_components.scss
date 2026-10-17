@@ -921,3 +921,11 @@ $rail-marker-top: 14px;  // centres the marker on the phase-badge line
     gap: $space-2;
     margin-bottom: $space-1;
 }
+
+// Cross-project navigation on the connected project detail pages.
+.project-family {
+    margin: 0 0 $space-2;
+    font-family: $font-mono;
+    font-size: 12px;
+    a { display: inline-flex; align-items: center; min-height: $touch-min; }
+}

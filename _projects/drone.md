@@ -1,11 +1,12 @@
 ---
 layout: project
+skygrid_member: true
 title: "ggSkybit"
 image: "/assets/imgs/project/drone2.png"
-description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
-objective: "Develop a custom quadcopter platform and flight control testbed for autonomous navigation and swarm algorithms."
+description: "A custom quadcopter for exploring airframe design, embedded firmware and flight control."
+objective: "Build a custom quadcopter to learn flight control, as a separate branch of the ggSkyGrid autonomy path."
 status: "dormant"
-status_detail: "Parked · waits on ggGridRunner"
+status_detail: "Parked · optional flight-control branch"
 order: 10
 project-tag: "drone"
 tools: 
@@ -19,16 +20,13 @@ tools:
 
 ## Project Overview
 
-A custom-built quadcopter designed as a testbed for control
-logic and eventually swarm collaboration. The goal is to go
-from bare hardware design through flight controller software
-to autonomous navigation — bridging the gap between the
-simulated drones in GG Swarm and real-world flight.
+A custom-built quadcopter for learning airframe design, embedded firmware
+and flight control hands-on. This is an optional branch of
+[ggSkyGrid](/projects/ggskygrid/). The main autonomy path uses a Crazyflie
+for early physical flight, so it does not depend on this custom controller.
 
-The name is a *Tron* nod: Bit is Flynn's little hovering
-companion, and one Bit is where a swarm starts. It is part
-of ggSkyGrid, my drone projects alongside ggSkylight (light
-shows) and GG Swarm.
+The name is a *Tron* nod: Bit is Flynn's little hovering companion.
+The milestones below describe the custom build if I return to it.
 
 ### Roadmap & Development Phases
 
@@ -127,8 +125,7 @@ shows) and GG Swarm.
 
 ## Connection to GG Swarm
 
-This is the "one drone" step of my hardware ladder: ground rover, then one
-drone, then many. It waits until the rover drives on its remote, then
-reuses the same firmware, IMU and radio-link lessons for a flight
-controller. Swarm work starts from a certifiable planning core, not by
-loading a learned policy onto this airframe.
+The rover's firmware, IMU and radio-link lessons carry into this custom
+flight-control project if I return to it. The main autonomy path instead
+starts physical flight with one Crazyflie. Swarm work builds on a checked
+planning core and repeatable single-aircraft missions.

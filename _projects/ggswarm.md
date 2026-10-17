@@ -1,11 +1,12 @@
 ---
 layout: project
+skygrid_member: true
 title: "GG Swarm"
 image: "/assets/imgs/project/ggswarm-logo.png"
 description: "Decentralized drone-swarm research, moving from a simulated RL capstone toward a real swarm built on a certifiable planning core."
 objective: "Build a legitimate decentralized swarm: a deterministic plan-and-certify core first, then online replanning behind a safety filter, with the learned GATv2/PPO policy benchmarked as a challenger."
 status: "dormant"
-status_detail: "Parked · waits on CrazySim test + a free slot"
+status_detail: "Parked · simulation and single-aircraft evidence first"
 order: 1
 project-tag: "ggswarm"
 tools:
@@ -93,7 +94,7 @@ in simulation.
 <span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
 </div>
 <h4 class="phase-title">Crazyflie Indoors</h4>
-<p class="phase-details">A few real Crazyflies flying certified formations.</p>
+<p class="phase-details">One Crazyflie first, with repeatable missions. Add aircraft only after multi-drone simulation and positioning requirements are demonstrated.</p>
 </div>
 
 <div class="roadmap-phase">

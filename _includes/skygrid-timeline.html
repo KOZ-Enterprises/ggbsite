@@ -1,0 +1,46 @@
+{% assign chart = site.data.skygrid_timeline %}
+<section class="skygrid-section skygrid-chart" aria-labelledby="chart-heading">
+    <div class="rule-header"><h2 class="rule-title" id="chart-heading">The combined timeline</h2><span class="rule-line"></span></div>
+    <p>One sequence across rover, software and aerial work. These are learning stages, not weeks. Hover over or focus a mark for its demonstration.</p>
+    <p id="chart-scroll-note" class="skygrid-meta">On smaller screens, scroll the chart sideways or open the table below.</p>
+    <div class="sg-scroll" tabindex="0" role="region" aria-label="Autonomy timeline" aria-describedby="chart-scroll-note">
+        <div class="sg-grid" style="--periods: {{ chart.periods }}">
+            <div class="sg-row sg-axis"><div></div><div class="sg-cells">
+                {% for phase in chart.phases %}<span class="sg-phase" style="grid-column: {{ phase.from }} / {{ phase.to | plus: 1 }}">{{ phase.label }}</span>{% endfor %}
+            </div></div>
+            <div class="sg-row sg-axis"><div class="sg-label">Stage</div><div class="sg-cells">
+                {% for n in (1..chart.periods) %}<span class="sg-tick" style="grid-column: {{ n }}">{{ n }}</span>{% endfor %}
+            </div></div>
+            {% for track in chart.tracks %}
+            <div class="sg-group {{ track.color }}"><span class="sg-swatch" aria-hidden="true"></span>{{ track.name }}</div>
+            {% assign rows = chart.rows | where: 'track', track.id %}
+            {% for row in rows %}
+            {% capture description %}{{ row.name }}. {{ row.when }}.{% if row.spend %} ${{ row.spend }} estimate.{% endif %} {{ row.done }}{% endcapture %}
+            <div class="sg-row {{ track.color }}"><div class="sg-label">{{ row.name }}</div><div class="sg-cells">
+                {% for n in (1..chart.periods) %}<i class="sg-line" aria-hidden="true" style="grid-column: {{ n }}"></i>{% endfor %}
+                <span class="sg-mark" data-kind="{{ row.kind }}" tabindex="0" role="img" aria-label="{{ description | strip | escape }}" style="grid-column: {{ row.from }} / span {{ row.span }}"></span>
+                {% if row.spend %}<span class="sg-price" style="grid-column: {{ row.from }}">${{ row.spend }}</span>{% endif %}
+            </div></div>
+            {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <div class="sg-legend" aria-label="Chart legend">
+        {% for track in chart.tracks %}<span class="{{ track.color }}"><i class="sg-swatch" aria-hidden="true"></i>{{ track.name }}</span>{% endfor %}
+        <span><i class="sg-diamond" aria-hidden="true"></i>Purchase</span>
+        <span><i class="sg-diamond" data-kind="gate" aria-hidden="true"></i>Gate or decision</span>
+    </div>
+    <details class="sg-table"><summary class="btn-ghost">Table view</summary>
+        <div class="sg-scroll" tabindex="0" role="region" aria-label="Timeline table">
+            <table><caption>All timeline activities and demonstrations</caption><thead><tr><th scope="col">When</th><th scope="col">Item</th><th scope="col">Track</th><th scope="col">Type</th><th scope="col">Demonstration</th><th scope="col">Estimate</th></tr></thead><tbody>
+                {% assign ordered_rows = chart.rows | sort: 'from' %}
+                {% for row in ordered_rows %}{% assign track = chart.tracks | where: 'id', row.track | first %}
+                <tr><td>{{ row.when }}</td><td>{{ row.name }}</td><td>{{ track.name }}</td><td>{% case row.kind %}{% when 'buy' %}Purchase{% when 'gate' %}Gate{% else %}Work{% endcase %}</td><td>{{ row.done }}</td><td>{% if row.spend %}${{ row.spend }}{% else %}—{% endif %}</td></tr>
+                {% endfor %}
+            </tbody></table>
+        </div>
+    </details>
+    <p class="skygrid-meta">Hardware estimates from October 13–14, 2026. Tax, shipping, build consumables and optional hardware excluded. Prices need checking before purchase.</p>
+    <div class="sg-tooltip" hidden></div>
+</section>
+<script src="{{ '/assets/js/skygrid-timeline.js' | relative_url }}" defer></script>

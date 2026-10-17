@@ -1,5 +1,6 @@
 ---
 layout: project
+skygrid_member: true
 title: "ggGridRunner"
 image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
