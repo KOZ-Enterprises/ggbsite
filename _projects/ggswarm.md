@@ -5,8 +5,8 @@ title: "GG Swarm"
 image: "/assets/imgs/project/ggswarm-logo.png"
 description: "Decentralized drone-swarm research, moving from a simulated RL capstone toward a real swarm built on a certifiable planning core."
 objective: "Build a legitimate decentralized swarm: a deterministic plan-and-certify core first, then online replanning behind a safety filter, with the learned GATv2/PPO policy benchmarked as a challenger."
-status: "dormant"
-status_detail: "Parked · simulation and single-aircraft evidence first"
+status: "active"
+status_detail: "Simulation and planning · physical flights later"
 order: 1
 project-tag: "ggswarm"
 tools:
@@ -24,7 +24,7 @@ resources:
     icon: "fa-brands fa-github"
 ---
 
-## Current Phase: Re-planned, Parked (Post-Capstone)
+## Current Phase: Simulation and Planning (Post-Capstone)
 
 After the capstone I asked how real drone swarms get built. Three
 independent surveys agreed: swarms that work in the field run on
@@ -35,7 +35,7 @@ before anything flies. Online decentralized replanning comes next, behind
 a safety filter, and the GATv2[^gatv2]/PPO[^ppo] policy from the capstone
 runs behind that filter as a challenger, benchmarked against the classical
 methods. Hardware goes Crazyflie indoors first, then an ArduPilot outdoor
-drone. The work is parked while my ground rover comes first.
+drone. Simulation and planning are active. The rover remains the main bench build, with physical swarm work following the single-aircraft and simulation milestones.
 
 ### Cinematic Trailer
 
@@ -53,7 +53,7 @@ in simulation.
 
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-<span class="roadmap-summary-item"><strong>Parked</strong></span>
+<span class="roadmap-summary-item"><strong>Active</strong></span>
 <span class="roadmap-summary-sep">&middot;</span>
 <span class="roadmap-summary-item">6 Milestones</span>
 <span class="roadmap-summary-sep">&middot;</span>

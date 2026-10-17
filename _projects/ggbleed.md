@@ -4,8 +4,8 @@ title: "ggBleed"
 image: "/assets/imgs/project/ggbleed-logo.png"
 description: "A 1-D multi-physics simulation of a turbofan engine's bleed air system, from bleed ports through pressure regulation to the precooler."
 objective: "Model bleed air pressure regulation and precooler heat transfer across a full flight mission, using only public sources, and validate the results against published cases."
-status: "active"
-status_detail: "Validation in progress"
+status: "semi-active"
+status_detail: "Occasional work · validation"
 order: 4
 project-tag: "ggbleed"
 tools:
@@ -33,7 +33,7 @@ The model progresses through the following milestones:
 
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-<span class="roadmap-summary-item"><strong>Phase 2</strong> In Progress</span>
+<span class="roadmap-summary-item"><strong>Phase 2</strong> Occasional Work</span>
 <span class="roadmap-summary-sep">&middot;</span>
 <span class="roadmap-summary-item">4 Development Milestones</span>
 <span class="roadmap-summary-sep">&middot;</span>
@@ -59,10 +59,10 @@ The model progresses through the following milestones:
 <p class="phase-details">Every parameter traced to a public source, derived, or labelled as an assumption, enforced by a checker in the test suite.</p>
 </div>
 
-<div class="roadmap-phase is-active">
+<div class="roadmap-phase">
 <div class="phase-header">
-<span class="phase-badge">Phase 2 &middot; Active Target</span>
-<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+<span class="phase-badge">Phase 2 &middot; Current Milestone</span>
+<span class="status-tag" data-status="semi-active"><span class="status-dot"></span>Semi-active</span>
 </div>
 <h4 class="phase-title">Validation</h4>
 <p class="phase-details">Compare against published measured and simulated cases from the research library.</p>

@@ -4,8 +4,8 @@ title: "HexMaster"
 image: "/assets/imgs/project/hexmaster-logo.png"
 description: "A powerful Discord bot and an intelligent logistics coordinator for Foxhole groups."
 objective: "Enable seamless stockpile management and intelligent supply chain coordination for large-scale logistics operations."
-status: "active"
-status_detail: "Phase 4 · Guild Testing & Verification"
+status: "dormant"
+status_detail: "Paused · Guild testing and verification"
 order: 2
 project-tag: "hexmaster"
 tools: 
@@ -35,7 +35,7 @@ The project progresses through the following logistics and bot engineering miles
 
 <!-- markdownlint-disable MD033 MD046 -->
 <div class="roadmap-summary">
-<span class="roadmap-summary-item"><strong>Phase 4</strong> In Progress</span>
+<span class="roadmap-summary-item"><strong>Phase 4</strong> Paused</span>
 <span class="roadmap-summary-sep">&middot;</span>
 <span class="roadmap-summary-item">6 Development Milestones</span>
 <span class="roadmap-summary-sep">&middot;</span>
@@ -70,13 +70,13 @@ The project progresses through the following logistics and bot engineering miles
 <p class="phase-details">Developed requisition algorithms with 4x Seaport multipliers and custom Cartesian-Staggered hex math for accurate distance sorting.</p>
 </div>
 
-<div class="roadmap-phase is-active">
+<div class="roadmap-phase">
 <div class="phase-header">
-<span class="phase-badge">Phase 4 &middot; Active Target</span>
-<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+<span class="phase-badge">Phase 4 &middot; Current Milestone</span>
+<span class="status-tag" data-status="dormant"><span class="status-dot"></span>Dormant</span>
 </div>
 <h4 class="phase-title">Guild Testing & Verification</h4>
-<p class="phase-details">Active live testing with Foxhole logistics regiments, verifying OCR edge cases, command response latency, and database concurrency.</p>
+<p class="phase-details">Paused at live testing with Foxhole logistics regiments, covering OCR edge cases, command response latency, and database concurrency.</p>
 </div>
 
 <div class="roadmap-phase">

@@ -106,6 +106,7 @@
     border-color: rgba($c-blue, 0.45);
 }
 
+.status-tag[data-status="semi-active"],
 .status-tag[data-status="dormant"],
 .status-tag[data-status="stretch"] {
     color: $c-muted-alt;
@@ -142,6 +143,7 @@
     border-color: rgba($c-blue, 0.45);
 }
 
+.status-badge[data-status="semi-active"],
 .status-badge[data-status="dormant"] {
     color: $c-muted-alt;
     border-color: $c-border;
