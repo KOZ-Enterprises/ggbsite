@@ -7,7 +7,8 @@
 // This partial is loaded after _pages.scss on purpose: a bare `.page-body h2`
 // must outrank the page-level heading rules that share its (0,1,1) specificity.
 //
-// Contains: .page-body and its descendants, .mermaid
+// Contains: .page-body and its descendants (incl. kramdown .footnote, .footnotes,
+//           .reversefootnote citations), .mermaid
 // =============================================================================
 
 @use "tokens" as *;
@@ -16,6 +17,8 @@
 .mermaid {
     text-align: center;
     margin: $space-3 0;
+    max-width: 100%;
+    overflow-x: auto;
 }
 
 // One body size. Previously 15/15.5/16.5px with line-heights 1.7/1.8/1.85.
@@ -29,6 +32,18 @@
     @include respond-to(mobile) {
         font-size: 15.5px;
         line-height: $lh-body;
+    }
+}
+
+.page-body a {
+    text-decoration: underline;
+    text-decoration-color: rgba($c-accent, 0.4);
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, text-decoration-color 0.2s ease;
+
+    &:hover {
+        color: $c-accent-hover;
+        text-decoration-color: $c-accent-hover;
     }
 }
 
@@ -89,6 +104,37 @@
     display: block;
     overflow-x: auto;
     max-width: 100%;
+    border-collapse: collapse;
+    margin: $space-3 0;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+}
+
+.page-body th {
+    background: $c-surface-deep;
+    font-family: $font-mono;
+    font-size: $text-meta;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted-alt;
+    text-align: left;
+    padding: $space-1 16px;
+    border-bottom: 1px solid $c-border;
+}
+
+.page-body td {
+    padding: $space-1 16px;
+    border-bottom: 1px solid rgba($c-border, 0.35);
+    color: $c-body;
+    font-size: 14px;
+}
+
+.page-body tr:last-child td {
+    border-bottom: 0;
+}
+
+.page-body tr:hover td {
+    background: rgba($c-accent, 0.03);
 }
 
 .page-body pre,
@@ -106,4 +152,43 @@
     margin: 24px 0;
     padding: $space-2 20px;
     color: $c-body;
+}
+
+// Citations: kramdown footnotes ([^key] in Markdown) styled like wiki references.
+// Inline marker reads [n]; the reference list carries a back-link to each citation.
+.page-body sup[id^="fnref"] {
+    font-family: $font-mono;
+    font-size: $text-meta;
+    line-height: 0;
+    scroll-margin-top: 96px;   // clear the sticky nav when jumped to
+}
+
+.page-body a.footnote {
+    border-bottom: 0;
+    text-decoration: none;
+    &::before { content: "["; }
+    &::after { content: "]"; }
+}
+
+.page-body .footnotes {
+    font-size: $text-excerpt;
+    line-height: 1.65;
+
+    li {
+        margin-bottom: $space-1;
+        padding: 0 $space-1;
+        border-radius: $radius-chip;
+        scroll-margin-top: 96px;
+    }
+
+    li:target { background: $c-surface-hover; }
+
+    p { margin: 0; }
+}
+
+.page-body a.reversefootnote {
+    font-family: $font-mono;
+    border-bottom: 0;
+    text-decoration: none;
+    margin-left: $space-1;
 }

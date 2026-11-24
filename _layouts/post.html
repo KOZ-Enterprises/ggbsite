@@ -16,9 +16,9 @@ full minute on exact multiples. Round to nearest instead, with a floor of 1.
 {%- assign read_time = words | plus: 100 | divided_by: 200 -%}
 {%- if read_time < 1 -%}{%- assign read_time = 1 -%}{%- endif -%}
 
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/archives/">Archives</a>
-    <span class="breadcrumb-sep">/</span>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
     <span class="breadcrumb-current">{{ page.date | date: "%Y-%m-%d" }}</span>
 </nav>
 

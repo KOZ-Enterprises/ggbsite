@@ -3,7 +3,7 @@
 // Styling used by exactly one page. If a second page starts using one of these
 // blocks, move it to _components.scss rather than copying it.
 //
-// Contains: .intro-band and .feature-hero (home), .capstone-card, .registry
+// Contains: .intro-actions and .feature-hero (home), .capstone-card, .registry
 //           and .prior-degrees (coursework), .post-page (log entry), .xp-list
 //           and .edu-list (about), .tag-strip and .year-block (archives),
 //           .tag-hash (tag page)
@@ -11,21 +11,8 @@
 
 @use "tokens" as *;
 
-// ---- Home: intro band ------------------------------------------------------
-// COLLISION SET - the home band is the shared treatment from _layout.scss,
-// scaled up. Both rules are (0,1,0) and both set padding and margin, so this
-// wins only because _pages.scss loads after _layout.scss. Do not move it
-// earlier, and do not restate the border, the radius or the grid here.
-.intro-band {
-    padding: $space-6;
-    margin: 0 0 $space-5;
-
-    @include respond-to(mobile) {
-        padding: $space-4 $space-2;
-        margin: 0 0 $space-3;
-    }
-}
-
+// ---- Home: actions ---------------------------------------------------------
+// The intro band uses the shared page-header spacing in _layout.scss.
 .intro-actions {
     display: flex;
     flex-wrap: wrap;
@@ -249,7 +236,7 @@
     text-decoration: none;
     transition: background 0.2s ease;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-template-columns: 1fr auto;
         gap: $space-1;
         padding: 16px 18px;
@@ -270,7 +257,7 @@
     letter-spacing: 1px;
     color: $c-accent;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1;
         grid-row: 1;
     }
@@ -278,7 +265,7 @@
 
 // (0,2,0) - overrides the shared badge font-size on specificity, not order
 .registry-row .status-badge {
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 2;
         grid-row: 1;
         justify-self: end;
@@ -292,7 +279,7 @@
     font-size: 16px;
     color: $c-ink;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1 / -1;
         grid-row: 2;
     }
@@ -304,7 +291,7 @@
     line-height: 1.5;
     color: $c-muted;
 
-    @include respond-to(mobile) {
+    @include respond-to(nav) {
         grid-column: 1 / -1;
         grid-row: 3;
     }
@@ -584,6 +571,7 @@
 }
 
 .year-name {
+    margin: 0;
     font-family: $font-display;
     font-weight: 700;
     font-size: 22px;
@@ -685,3 +673,158 @@
 .tag-hash {
     color: $c-accent;
 }
+
+// ggSkyGrid entrance on the project index.
+.skygrid-feature {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    padding: $space-4;
+    margin-bottom: $space-4;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+    background: $c-surface;
+    h2 { margin: 0 0 $space-1; }
+    p { max-width: 65ch; margin: 0; }
+    .page-kicker { margin-bottom: $space-1; }
+    .btn-ghost { flex-shrink: 0; }
+    @include respond-to(mobile) {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: $space-3;
+    }
+}
+
+// ggSkyGrid's public learning path, read in order at every screen width.
+.skygrid-section {
+    margin: $space-6 0;
+    > p { max-width: 80ch; }
+    h3 { font-family: $font-display; font-style: normal; margin: 0 0 $space-2; color: $c-ink; }
+    p { color: $c-body; }
+}
+.skygrid-meta {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $c-muted;
+    letter-spacing: 1px;
+    margin: $space-2 0;
+}
+// Five-step overview before any detail: the whole path in one glance.
+.skygrid-journey {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: $space-2;
+    padding: 0;
+    margin: $space-4 0;
+    > li {
+        border-top: 2px solid $c-border;
+        &[data-status="active"] { border-top-color: $c-accent; }
+    }
+    a {
+        display: flex;
+        flex-direction: column;
+        gap: $space-1;
+        height: 100%;
+        padding: $space-2 $space-1 $space-2 0;
+        color: $c-body;
+        text-decoration: none;
+        &:hover strong, &:focus-visible strong { color: $c-accent; }
+    }
+    strong { font-family: $font-display; font-size: 20px; font-weight: 400; color: $c-ink; }
+    .skygrid-meta { margin: 0; }
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+        > li { border-top-width: 1px; }
+        a { flex-direction: row; flex-wrap: wrap; align-items: baseline; gap: $space-1 $space-2; min-height: $touch-min; }
+    }
+}
+.skygrid-subhead { margin-top: $space-5; }
+.skygrid-projects {
+    margin: $space-3 0;
+    article {
+        display: grid;
+        grid-template-columns: 240px minmax(0, 1fr);
+        gap: $space-4;
+        padding: $space-3 0;
+        border-top: 1px solid $c-border;
+        scroll-margin-top: 100px;
+        &:last-child { border-bottom: 1px solid $c-border; }
+        h3 { margin: 0; }
+        .skygrid-meta { margin: $space-1 0 0; }
+        .skygrid-stages { margin-top: 0; color: $c-body-dim; white-space: nowrap; }
+        p { margin: 0 0 $space-2; max-width: 70ch; }
+        strong { color: $c-ink; }
+        a { display: inline-flex; align-items: center; min-height: $touch-min; }
+        @include respond-to(mobile) { grid-template-columns: 1fr; gap: $space-2; }
+    }
+}
+.skygrid-proof { color: $c-body-dim; strong { color: $c-ink; } }
+
+// Original gg-theme timeline's validated categorical palette. These three
+// chart-only literals are intentional: the teal site accent is not a data series.
+.skygrid-chart {
+    --sg-violet: #9085e9;
+    --sg-orange: #d95926;
+    --sg-green: #199e70;
+    .track-1 { --track: var(--sg-violet); }
+    .track-2 { --track: var(--sg-orange); }
+    .track-3 { --track: var(--sg-green); }
+}
+.sg-scroll {
+    overflow-x: auto;
+    padding: $space-2;
+    background: $c-surface;
+    border: 1px solid $c-border;
+    border-radius: $radius-surface;
+    &:focus-visible { outline: 2px solid $c-accent; outline-offset: 2px; }
+}
+.sg-grid { min-width: 900px; }
+.sg-row { display: grid; grid-template-columns: 250px minmax(0, 1fr); border-bottom: 1px solid $c-rule; }
+.sg-label { padding: $space-1 $space-2 $space-1 0; align-self: center; font-size: 13px; line-height: 1.35; color: $c-body; }
+.sg-cells { display: grid; grid-template-columns: repeat(var(--periods), minmax(0, 1fr)); position: relative; }
+.sg-line { grid-row: 1; border-left: 1px solid $c-rule; min-height: 40px; &:last-of-type { border-right: 1px solid $c-rule; } }
+.sg-axis { font-family: $font-mono; font-size: 11px; color: $c-muted; }
+.sg-tick { grid-row: 1; text-align: center; padding: 2px 0; border-left: 1px solid $c-rule; &.sg-in { color: $c-ink; } }
+.sg-band {
+    padding-top: $space-4;
+    &:first-child { padding-top: $space-2; }
+    &[data-status="active"] .sg-ms { border-left-color: $c-accent; }
+}
+.sg-ms {
+    position: sticky;
+    left: 0;
+    width: min(720px, calc(100vw - 96px));
+    margin-bottom: $space-2;
+    padding-left: $space-2;
+    border-left: 2px solid $c-border;
+    h3 { margin: 0 0 $space-1; }
+    p { margin: 0 0 $space-1; font-size: 14px; }
+    .skygrid-meta { margin: 0 0 $space-1; font-size: 12px; }
+}
+.sg-swatch { display: inline-block; width: 12px; height: 8px; border-radius: 2px; background: var(--track); flex: none; }
+.sg-mark {
+    grid-row: 1;
+    align-self: center;
+    height: 12px;
+    background: var(--track);
+    z-index: 1;
+    &[data-kind="bar"] { margin: 0 3px; border-radius: 4px; }
+    &[data-kind="buy"], &[data-kind="gate"] { width: 12px; justify-self: center; transform: rotate(45deg); box-shadow: 0 0 0 2px $c-surface; }
+    &[data-kind="gate"] { background: $c-surface; border: 2px solid var(--track); }
+    &:focus-visible { outline: 2px solid $c-ink; outline-offset: 4px; }
+}
+.sg-price { grid-row: 1; align-self: center; justify-self: start; margin-left: calc(50% + 14px); white-space: nowrap; font-family: $font-mono; font-size: 11px; color: $c-ink; }
+.sg-legend { display: flex; flex-wrap: wrap; gap: $space-2 $space-3; margin-top: $space-2; font-size: 13px; color: $c-body-dim; > span { display: inline-flex; align-items: center; gap: $space-1; } }
+.sg-diamond { display: inline-block; width: 10px; height: 10px; background: $c-ink; transform: rotate(45deg); &[data-kind="gate"] { background: transparent; border: 2px solid $c-ink; } }
+.sg-table {
+    margin: $space-3 0;
+    summary { cursor: pointer; min-height: $touch-min; }
+    &[open] summary { margin-bottom: $space-2; }
+    table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 13px; }
+    caption { text-align: left; padding: $space-2 0; }
+    th, td { padding: $space-2; text-align: left; border-bottom: 1px solid $c-rule; }
+    th { font-family: $font-mono; color: $c-body-dim; }
+}
+.sg-tooltip { position: fixed; pointer-events: none; z-index: 100; max-width: min(300px, calc(100vw - 32px)); padding: $space-2; border: 1px solid $c-border; border-radius: $radius-surface; background: $c-surface-deep; color: $c-ink; font-size: 14px; line-height: 1.5; }

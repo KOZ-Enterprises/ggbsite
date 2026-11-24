@@ -1,0 +1,58 @@
+# Public summary of ggSkyGrid/PLAN.md. Stages are not calendar durations.
+# Update when the canonical plan changes; do not include private planning links.
+stages:
+  - range: "Stages 1–4"
+    status: active
+    label: Current focus
+    title: "Build — get the rover moving safely"
+    short: "The rover drives safely and holds a heading"
+    description: >-
+      Assemble the chassis, control the motors and steering, and measure movement with sensors.
+      Start with remote driving, then teach the rover to hold a steady heading.
+    evidence: "The rover drives reliably, holds its heading and stops if the radio connection fails."
+    project: ggGridRunner
+    link: /projects/rover/
+  - range: "Stages 5–6"
+    status: planned
+    label: Planned
+    title: "Simulate — practice navigation before real flight"
+    short: "Practice navigation in simulation"
+    description: >-
+      Connect the rover’s measurements to a computer using ROS 2, a robotics software framework.
+      Learn to estimate position and test navigation with virtual vehicles, including one drone.
+    evidence: "Virtual vehicles repeat their routes, and the simulated drone handles a lost connection."
+    project: Shared software and ggChoreo
+    link: /projects/ggskygrid/#ggchoreo
+  - range: "Stages 7–8"
+    status: planned
+    label: Planned
+    title: "Fly — make one indoor drone repeat a mission"
+    short: "One real indoor drone repeats a mission"
+    description: >-
+      Start with a Crazyflie, a small indoor drone platform. Learn its standard flight tools before
+      connecting it to the shared robotics software. Compare its real movements with the simulation.
+    evidence: "One drone completes ten takeoff, route and landing missions without pilot correction."
+    project: Flight foundation for ggSwarm
+    link: /projects/ggswarm/
+  - range: "Stages 9–11"
+    status: planned
+    label: Planned
+    title: "Navigate — give the rover a map"
+    short: "The rover builds and reuses a map"
+    description: >-
+      Add a laser distance scanner so the rover can map its surroundings and find its position.
+      Run the navigation software on a connected computer first; move it onboard only if needed.
+    evidence: "The rover reuses a saved map, finds itself on it and completes three runs without contact."
+    project: ggGridRunner
+    link: /projects/rover/
+  - range: "Stages 12–13"
+    status: planned
+    label: Planned
+    title: "Coordinate — prove the plan before adding drones"
+    short: "Several virtual drones, kept apart"
+    description: >-
+      Test several virtual drones following ggChoreo’s routes together. Work out how real aircraft
+      will share a position reference and how one aircraft’s failure can be handled before buying a second.
+    evidence: "Simulated drones stay separated, with tested ways to stop one aircraft or the whole group."
+    project: ggSwarm and ggChoreo
+    link: /projects/ggswarm/

@@ -3,13 +3,35 @@
 // Reusable units that appear on two or more pages. A rule belongs here only if
 // more than one page uses it; single-page styling lives in _pages.scss.
 //
-// Contains: .tech-chip, .status-tag, .status-dot, .status-badge,
+// Contains: .skip-link, .tech-chip, .status-tag, .status-dot, .status-badge,
 //           .btn-primary, .btn-ghost, .log-section, .log-row, .rule-header,
 //           .card-grid, .card, .breadcrumb, .objective, .side-module,
-//           .side-timeline, .wide-card
+//           .roadmap-track, .wide-card
 // =============================================================================
 
 @use "tokens" as *;
+
+// ---- Skip link -------------------------------------------------------------
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: $space-2;
+    background: $c-surface;
+    color: $c-accent;
+    padding: $space-1 $space-2;
+    border: 1px solid $c-accent;
+    border-radius: $radius-chip;
+    font-family: $font-mono;
+    font-size: $text-meta;
+    z-index: 9999;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+    top: $space-2;
+}
 
 // ---- Tech chip -------------------------------------------------------------
 .tech-chip {
@@ -77,12 +99,16 @@
     border-color: rgba($c-amber, 0.45);
 }
 
-.status-tag[data-status="shipped"] {
+.status-tag[data-status="shipped"],
+.status-tag[data-status="complete"],
+.status-tag[data-status="completed"] {
     color: $c-blue;
     border-color: rgba($c-blue, 0.45);
 }
 
-.status-tag[data-status="dormant"] {
+.status-tag[data-status="semi-active"],
+.status-tag[data-status="dormant"],
+.status-tag[data-status="stretch"] {
     color: $c-muted-alt;
     border-color: $c-border;
 }
@@ -117,6 +143,7 @@
     border-color: rgba($c-blue, 0.45);
 }
 
+.status-badge[data-status="semi-active"],
 .status-badge[data-status="dormant"] {
     color: $c-muted-alt;
     border-color: $c-border;
@@ -177,6 +204,11 @@
     color: $c-bg;
 }
 
+.btn-primary:active {
+    transform: scale(0.98);
+    opacity: 0.9;
+}
+
 .btn-ghost {
     color: $c-accent;
     border: 1px solid $c-border;
@@ -185,6 +217,11 @@
 .btn-ghost:hover {
     border-color: $c-accent;
     color: $c-ink;
+}
+
+.btn-ghost:active {
+    transform: scale(0.98);
+    background: rgba($c-accent, 0.08);
 }
 
 // ---- Section rule header ---------------------------------------------------
@@ -612,64 +649,6 @@
     color: $c-amber;
 }
 
-// ---- Sidebar timeline ------------------------------------------------------
-.side-timeline {
-    padding: 6px 0;
-}
-
-.tl-item {
-    display: flex;
-    gap: $space-2;
-    padding: $space-2 18px;
-}
-
-.tl-item + .tl-item {
-    border-top: 1px solid rgba($c-border, 0.25);
-}
-
-.tl-marker {
-    flex: 0 0 auto;
-    width: 11px;
-    height: 11px;
-    margin-top: 4px;
-    border: 2px solid $c-border;
-    border-radius: $radius-chip;
-}
-
-.tl-marker.done {
-    background: $c-accent;
-    border-color: $c-accent;
-    box-shadow: 0 0 8px rgba($c-accent, 0.6);
-}
-
-.tl-content {
-    display: flex;
-    flex-direction: column;
-    gap: 3px;
-    min-width: 0;
-}
-
-.tl-date {
-    font-family: $font-mono;
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: $c-muted;
-}
-
-.tl-phase {
-    font-family: $font-display;
-    font-weight: 600;
-    font-size: 15px;
-    color: $c-ink;
-}
-
-.tl-detail {
-    font-size: 13px;
-    line-height: 1.5;
-    color: $c-body-dim;
-}
-
 // ---- Sidebar key/value rows (course pages) ---------------------------------
 .side-kv {
     display: flex;
@@ -695,6 +674,189 @@
     font-family: $font-display;
     font-weight: 600;
     font-size: 14px;
+    color: $c-ink;
+}
+
+// ---- Roadmap Track & Phase Pipeline ---------------------------------------
+.roadmap-summary {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: $space-1;
+    margin-bottom: $space-2;
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted;
+}
+
+.roadmap-summary strong {
+    color: $c-accent;
+}
+
+.roadmap-summary-sep {
+    color: $c-border;
+}
+
+// A rail runs down the left edge: each phase draws its own marker (::before)
+// and the connector down to the next marker (::after), so the line is filled
+// up to the last completed phase and hollow beyond it. Phases are unboxed
+// text beside the rail; only the active one gets a tinted band.
+$rail-gutter: 28px;  // track indent that holds the rail
+$rail-marker: 12px;
+$rail-marker-top: 14px;  // centres the marker on the phase-badge line
+
+.roadmap-track {
+    display: flex;
+    flex-direction: column;
+    gap: $space-half;
+    margin: $space-2 0 $space-4;
+    padding-left: $rail-gutter;
+}
+
+.roadmap-phase {
+    position: relative;
+    border-radius: $radius-surface;
+    padding: $space-1 $space-2;
+    display: flex;
+    flex-direction: column;
+    gap: $space-half;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: $rail-marker-top;
+        left: -$rail-gutter + 4px;
+        width: $rail-marker;
+        height: $rail-marker;
+        box-sizing: border-box;
+        border: 2px solid $c-muted-low;
+        border-radius: $radius-chip;
+        background: $c-bg;
+        z-index: 1;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        top: $rail-marker-top + $rail-marker;
+        bottom: -$space-half - $rail-marker-top;
+        left: -$rail-gutter + 9px;
+        width: 2px;
+        background: $c-border;
+    }
+
+    &:last-child::after {
+        display: none;
+    }
+}
+
+// The pill becomes plain text after the badge ("PHASE 0 · COMPLETE"), so
+// state never rests on marker colour alone. The active badge already reads
+// "Active Target", so its pill stays for screen readers only.
+.roadmap-phase .phase-header {
+    justify-content: flex-start;
+    gap: $space-1;
+}
+
+.roadmap-phase .status-tag {
+    padding: 0;
+    border: 0;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+
+    &::before {
+        content: "\00b7";
+        color: $c-muted-alt;
+    }
+
+    .status-dot {
+        display: none;
+    }
+}
+
+// Planned repeats down the rail, so it takes a dimmed amber (~5.4:1) rather
+// than the full-strength pill colour.
+.roadmap-phase .status-tag[data-status="planned"] {
+    color: rgba($c-amber, 0.7);
+}
+
+.roadmap-phase.is-active .status-tag {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.roadmap-phase.is-complete {
+    &::before {
+        background: $c-blue;
+        border-color: $c-blue;
+    }
+
+    &::after {
+        background: $c-blue;
+    }
+}
+
+.roadmap-phase.is-active {
+    background: linear-gradient(90deg, rgba($c-accent, 0.08) 0%, transparent 80%);
+
+    &::before {
+        background: $c-accent;
+        border-color: $c-accent;
+        box-shadow: 0 0 8px rgba($c-accent, 0.6);
+    }
+}
+
+.roadmap-phase.is-stretch::before {
+    border-style: dashed;
+}
+
+.phase-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+}
+
+.phase-badge {
+    font-family: $font-mono;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: $c-muted-alt;
+}
+
+.roadmap-phase.is-active .phase-badge {
+    color: $c-accent;
+    font-weight: 600;
+}
+
+.roadmap-phase.is-complete .phase-badge {
+    color: $c-blue;
+}
+
+.phase-title {
+    font-family: $font-display;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.3px;
+    color: $c-ink;
+    margin: 0;
+}
+
+.phase-details {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: $c-body-dim;
+    margin: 0;
+}
+
+.phase-details strong {
     color: $c-ink;
 }
 
@@ -760,4 +922,12 @@
     justify-content: space-between;
     gap: $space-2;
     margin-bottom: $space-1;
+}
+
+// Cross-project navigation on the connected project detail pages.
+.project-family {
+    margin: 0 0 $space-2;
+    font-family: $font-mono;
+    font-size: 12px;
+    a { display: inline-flex; align-items: center; min-height: $touch-min; }
 }

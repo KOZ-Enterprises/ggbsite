@@ -1,0 +1,74 @@
+---
+layout: default
+title: "ggSkyGrid"
+date: 2026-10-15
+description: "From a ground rover to coordinated flight: the shared learning path connecting my embedded hardware, flight experiments and swarm research."
+status: "active"
+status_detail: "Building the ground foundation"
+project-tag: "ggskygrid"
+order: 0
+project_hub: true
+---
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="{{ '/projects/' | relative_url }}">Projects</a>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span class="breadcrumb-current">ggSkyGrid</span>
+</nav>
+<header class="page-head">
+    <p class="page-kicker">ggSkyGrid · Learning autonomous robotics</p>
+    <h1 class="page-title">From a rover to a coordinated drone swarm</h1>
+    <p class="page-lead">My goal is to build robots that can understand where they are, move toward a goal and eventually work together. I’m starting with a ground rover, then one small indoor drone, before attempting coordinated flight with several aircraft.</p>
+    <p class="skygrid-meta">Current focus: building the rover · Roadmap updated October 17, 2026</p>
+</header>
+
+<ol class="skygrid-journey" aria-label="The five milestones, in order">
+    {% for stage in site.data.skygrid.stages %}
+    <li data-status="{{ stage.status }}"><a href="#ms-{{ forloop.index }}">
+        <span class="skygrid-meta">{{ stage.range }}{% if stage.status == 'active' %} · Now{% endif %}</span>
+        <strong>{{ stage.title | split: ' — ' | first }}</strong>
+        <span>{{ stage.short }}</span>
+    </a></li>
+    {% endfor %}
+</ol>
+
+<section class="skygrid-section" aria-labelledby="goal-heading">
+    <div class="rule-header"><h2 class="rule-title" id="goal-heading">The goal</h2><span class="rule-line"></span></div>
+    <p>ggSkyGrid is my plan for learning autonomous robotics from the ground up: robots that work out where they are, choose a route and reach a goal without me steering every move.</p>
+    <p>The destination is a small group of drones flying planned formations, checking that they stay apart and with a way to stop one drone, or all of them, when something goes wrong. I’m getting there in steps: a ground rover first (easy to test, cheap to crash), then simulation, then one small indoor drone, and only then more drones.</p>
+</section>
+
+<section class="skygrid-section" aria-labelledby="projects-heading">
+    <div class="rule-header"><h2 class="rule-title" id="projects-heading">The projects</h2><span class="rule-line"></span></div>
+    <p>ggSkyGrid is the umbrella over five projects. Three sit on the main path; the stages they appear in are the milestones in the roadmap below.</p>
+    <div class="skygrid-projects">
+        <article id="gggridrunner">
+            <div><h3><a href="{{ '/projects/rover/' | relative_url }}">ggGridRunner</a></h3><p class="skygrid-meta">Ground rover</p><p class="skygrid-meta skygrid-stages">Stages 1–4 and 9–11</p></div>
+            <div><p>A rover with four steerable wheels. The goal is to go from reliable remote driving to sensing its own movement, building a map and driving itself to a destination.</p><p><strong>Where it fits:</strong> where I learn motors, sensors and control on a vehicle that is safe to test.</p><p><strong>Status:</strong> building now — motor tests, the radio link and the chassis.</p></div>
+        </article>
+        <article id="ggchoreo">
+            <div><h3>ggChoreo</h3><p class="skygrid-meta">Planning software</p><p class="skygrid-meta skygrid-stages">Stages 5–6 and 12–13</p></div>
+            <div><p>Software that gives each drone a place in a formation, plans its route and checks that the routes stay apart and within motion limits.</p><p><strong>Where it fits:</strong> turns a formation into movements I can check in simulation before anything flies.</p><p><strong>Status:</strong> version 1 built; it plans, checks and replays routes in simulation.</p></div>
+        </article>
+        <article id="ggswarm">
+            <div><h3><a href="{{ '/projects/ggswarm/' | relative_url }}">ggSwarm</a></h3><p class="skygrid-meta">Drone coordination</p><p class="skygrid-meta skygrid-stages">Stages 7–8 and 12–13</p></div>
+            <div><p>A research project that began as a simulation capstone: several drones learning to work together. The goal is real coordinated flight, starting with planned routes and later adapting plans in flight.</p><p><strong>Where it fits:</strong> brings planning, flight and group behavior together.</p><p><strong>Status:</strong> simulation capstone complete. No physical drone swarm yet.</p></div>
+        </article>
+    </div>
+    <h3 class="skygrid-subhead">Optional side branches</h3>
+    <p>Related interests, but neither is needed to finish the main path.</p>
+    <div class="skygrid-projects">
+        <article id="ggskybit">
+            <div><h3><a href="{{ '/projects/drone/' | relative_url }}">ggSkybit</a></h3><p class="skygrid-meta">Custom flight controller · Parked</p></div>
+            <div><p>A custom quadcopter for learning how flight electronics and control software keep an aircraft stable. The main path flies an existing indoor drone instead, so this build stays a separate experiment.</p></div>
+        </article>
+        <article id="ggskylight">
+            <div><h3>ggSkylight</h3><p class="skygrid-meta">Drone light shows · Not yet scoped</p></div>
+            <div><p>A possible future use for coordinated flight: outdoor drone light shows. The operating requirements and business scope are still open; the indoor work here is only an early foundation.</p></div>
+        </article>
+    </div>
+</section>
+
+{% include skygrid-timeline.html %}
+
+<div class="page-actions"><a href="{{ '/projects/' | relative_url }}" class="btn-ghost">← All projects</a></div>

@@ -1,7 +1,7 @@
 <div class="nav-shell" id="myNavbar">
     <a class="nav-brand" href="/">
         <span class="nav-mark">
-            <img src="/assets/branding/logo/ggbytes-transparent-g.png" alt="GaryGigabytes" />
+            <img src="/assets/branding/logo/ggbytes-transparent-g.png" alt="GaryGigabytes" width="26" height="26" />
         </span>
         <span class="nav-wordmark">
             <span class="nav-name">GARY<em>GIGABYTES</em></span>
@@ -11,15 +11,15 @@
 
     <button class="nav-icon" type="button" onclick="toggleNavbar()" aria-label="Menu"
         aria-expanded="false" aria-controls="myNavbar">
-        <span class="nav-icon-bar"></span>
-        <span class="nav-icon-bar"></span>
-        <span class="nav-icon-bar"></span>
+        <span class="nav-icon-bar" aria-hidden="true"></span>
+        <span class="nav-icon-bar" aria-hidden="true"></span>
+        <span class="nav-icon-bar" aria-hidden="true"></span>
     </button>
 
     <div class="nav-menu">
-        <a href="/" class="nav-item {% if page.url == '/' %}active{% endif %}">Home</a>
-        <a href="/projects/" class="nav-item {% if page.url contains '/projects/' %}active{% endif %}">Projects</a>
-        <a href="/csumb/" class="nav-item {% if page.url contains '/csumb/' %}active{% endif %}">Coursework</a>
-        <a href="/about/" class="nav-item {% if page.url == '/about/' %}active{% endif %}">About</a>
+        <a href="/" class="nav-item {% if page.url == '/' %}active{% endif %}"{% if page.url == '/' %} aria-current="page"{% endif %}>Home</a>
+        <a href="/projects/" class="nav-item {% if page.url contains '/projects/' %}active{% endif %}"{% if page.url contains '/projects/' %} aria-current="page"{% endif %}>Projects</a>
+        <a href="/csumb/" class="nav-item {% if page.url contains '/csumb/' %}active{% endif %}"{% if page.url contains '/csumb/' %} aria-current="page"{% endif %}>Coursework</a>
+        <a href="/about/" class="nav-item {% if page.url == '/about/' %}active{% endif %}"{% if page.url == '/about/' %} aria-current="page"{% endif %}>About</a>
     </div>
 </div>

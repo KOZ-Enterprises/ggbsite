@@ -86,3 +86,8 @@ $bp-mobile:  700px;  // single column, mobile type scale
   @else if $bp == mobile{ @media screen and (max-width: $bp-mobile) { @content; } }
   @else { @error "Unknown breakpoint `#{$bp}`. Use wide, nav, or mobile."; }
 }
+
+@mixin reduced-motion {
+  @media (prefers-reduced-motion: reduce) { @content; }
+}
+

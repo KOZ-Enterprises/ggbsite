@@ -59,7 +59,7 @@ PAGE ACTIONS    back-link / primary action     (detail pages)
 | Project / Course / Tag | band | `.detail-grid` (main + side) | yes |
 | Blog post | **plain** `.post-head` | `.page-body` + related entries | yes |
 
-`.page-head`, `.detail-head` and `.intro-band` share one rule in `_layout.scss`; `.intro-band` overrides only its larger padding and margin, in `_pages.scss`. Blog posts are the one deliberate exclusion: a textured band above body prose would compete with it rather than frame it.
+`.page-head`, `.detail-head` and `.intro-band` share one rule in `_layout.scss`, including the same padding and margins on desktop and mobile. Blog posts are the one deliberate exclusion: a textured band above body prose would compete with it rather than frame it.
 
 ## The partials
 
@@ -72,7 +72,7 @@ Listed in manifest order: broad to specific, and load-bearing.
 | `_layout.scss` | page shells and grids: the header band, `.detail-grid`, `.bio-grid` |
 | `_nav.scss` | `.nav-shell` and everything inside it |
 | `_components.scss` | reused on 2+ pages: `.card`, `.log-row`, `.btn-*`, `.side-*` |
-| `_pages.scss` | used on exactly one page: `.registry`, `.xp-list`, and `.intro-band`'s override of the shared band |
+| `_pages.scss` | used on exactly one page: `.registry`, `.xp-list`, and `.intro-actions` |
 | `_content.scss` | Markdown prose — `.page-body` descendants, `.mermaid` |
 | `_footer.scss` | `footer`, `.social-icons`, `.footer-mark` |
 | `_utilities.scss` | standalone helpers, loaded last so they can override |
@@ -120,3 +120,12 @@ python script/dead-css.py --count    # must be 0
 ```bash
 python script/geometry.py --count    # must be 0
 ```
+
+## Timeline data colors
+
+The ggSkyGrid chart in `_sass/_pages.scss` carries the three validated
+categorical colors from the gg-theme timeline: violet `#9085e9`, orange
+`#d95926` and green `#199e70`. They are scoped to chart marks and legend
+swatches. Text still uses the site tokens, and the teal accent remains
+reserved for interface chrome. These are intentional chart exceptions
+to the closed UI palette.

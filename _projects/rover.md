@@ -1,113 +1,114 @@
 ---
 layout: project
-title: "Rover"
+skygrid_member: true
+title: "ggGridRunner"
 image: "/assets/imgs/project/rover-sil.png"
 image_caption: "Rover Prototype"
-description: "A smart RC car and a foundational platform for autonomous navigation experiments."
-objective: "Develop a rover with wireless control and eventually autonomous navigation."
-status: "planned"
-status_detail: "Conceptualization"
+description: "A 4-wheel-steering ground rover: where I learn embedded hardware and firmware before anything flies."
+objective: "Build an STM32 rover driven by a PS4 controller over XBee radios, with a safe, checksummed remote link, then heading hold."
+status: "active"
+status_detail: "Primary project · Milestone 1: Motors spin"
 reflection: "Rover has taught me about wireless communication, embedded motor control, and practical hardware debugging. It's also helping lay the foundation for future robotics projects."
 resources:
   - name: "GitHub Project Page"
     link: "https://github.com/users/garykuepper/projects/2/"
     icon: "fas fa-code"
-  - name: "ggRover Repository"
-    link: "https://github.com/garykuepper/ggRover-Controller"
+  - name: "ggGridRunner Repository"
+    link: "https://github.com/garykuepper/ggGridRunner"
     icon: "fa-brands fa-github"
 order: 9
 project-tag: "rover"
-tools: 
-  - name: "Arduino"
+tools:
+  - name: "STM32 (Blue Pill)"
+  - name: "Arduino Pro Micro"
   - name: "XBee"
-  - name: "PS4 Controller" 
-  - name: "DRV8871 Motor Drivers"
+  - name: "PS4 Controller"
   - name: "C++"
+  - name: "PlatformIO"
   - name: "3D Printing"
-
-timeline:
-  - date: "Phase 0: Conceptualization"
-    phase: "Conceptualization"
-    details: "Conceptualize the rover hardware and software architecture."
-    completed: false
-
-  - date: "Phase 1: Hardware Design"
-    phase: "Design"
-    details: "Design the rover chassis and electronics layout."
-    completed: false
-  
-  - date: "Phase 1.5: Hardware Design of Remote Controller"
-    phase: "Design"
-    details: "Design the remote controller chassis and electronics layout."
-    completed: false
-
-  - date: "Phase 2: Software Bench Build"
-    phase: "Software"
-    details: "Build the software architecture for the rover."
-    completed: false
-
-  - date: "Phase 2.5: Software Bench Build of Remote Controller"
-    phase: "Software"
-    details: "Build the software architecture for the remote controller."
-    completed: false
-
-  - date: "Phase 3: Hardware Build"
-    phase: "Hardware"
-    details: "Build the rover hardware."
-    completed: false
-
-  - date: "Phase 3.5: Hardware Build of Remote Controller"
-    phase: "Hardware"
-    details: "Build the remote controller hardware."
-    completed: false
-  
-  - date: "Phase 4: Testing"
-    phase: "Testing"
-    details: "Test the rover."
-    completed: false
-
-  - date: "Phase 4.5: Testing of Remote Controller"
-    phase: "Testing"
-    details: "Test the remote controller."
-    completed: false
-
-  - date: "Phase 5: Integration Testing"
-    phase: "Testing"
-    details: "Test the rover and remote controller together."
-    completed: false
-
-  - date: "Phase 6: Deployment"
-    phase: "Deployment"
-    details: "Deploy the rover and remote controller."
-    completed: false
-
-  - date: "Phase 7: Future"
-    phase: "Future"
-    details: "Apply algorithms learned from GG Swarm project to the rover."
-    completed: false
-
 ---
 
 ## Project Overview
 
-A smart RC car built as a foundational platform for autonomous
-navigation experiments. Starting with wireless joystick control
-and working toward self-driving capabilities using lessons
-from the GG Swarm project.
+A ground rover with four independently steered wheels (Ackermann, crab and
+spin-in-place modes). An STM32 Blue Pill runs the rover; an Arduino Pro
+Micro reads a PS4 controller and talks to it over XBee radios. It is the
+first rung of my drone projects: learn firmware, IMU drift, motor control
+and a failsafe radio link where a mistake doesn't crash.
+
+### Roadmap & Development Phases
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Milestone 1</strong> In Progress</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">4 Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Ground → Air</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase is-active">
+<div class="phase-header">
+<span class="phase-badge">Milestone 1 &middot; Active Target</span>
+<span class="status-tag" data-status="active"><span class="status-dot"></span>Active</span>
+</div>
+<h4 class="phase-title">Motors spin</h4>
+<p class="phase-details">STM32 flashed; motors run forward and reverse with correct throttle scaling, wheels in the air.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Milestone 2</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Safe remote link</h4>
+<p class="phase-details">PS4 → XBee → motors, with framed, CRC-checked packets and a dead-man's switch.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">In parallel</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Chassis build</h4>
+<p class="phase-details">Suspension designed, printed and assembled, in parallel with the bench milestones.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Milestone 3</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Drives on remote</h4>
+<p class="phase-details">Electronics in the chassis, driven around on the remote.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Milestone 4</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Heading hold</h4>
+<p class="phase-details">Encoders plus IMU hold a straight line.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Technical Approach
 
-- **Compute**: Arduino-based control with XBee wireless
-  communication
+- **Compute**: STM32 Blue Pill on the rover, Arduino Pro Micro in the
+  remote, linked by XBee radios
 - **Input**: PS4 controller for manual driving
-- **Drive**: DRV8871 motor drivers for differential steering
+- **Drive**: four driven wheels, each steered by its own servo
+  (motor driver still being chosen)
 - **Chassis**: 3D-printed custom frame
 - **Software**: C++ firmware for motor control and
   wireless command parsing
 
 ## Connection to GG Swarm
 
-Like the Drone project, this rover is a stepping stone toward
+Like ggSkybit, my hobby drone, this rover is a stepping stone toward
 real-world autonomous coordination. The plan is to apply
 navigation and consensus algorithms developed in simulation
 to physical ground-based platforms.

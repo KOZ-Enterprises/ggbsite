@@ -1,0 +1,202 @@
+{
+  "periods": 13,
+  "unit": "Stage",
+  "phases": [
+    {
+      "label": "Build",
+      "to": 4,
+      "from": 1
+    },
+    {
+      "label": "Simulate",
+      "to": 6,
+      "from": 5
+    },
+    {
+      "label": "Fly",
+      "to": 8,
+      "from": 7
+    },
+    {
+      "label": "Navigate",
+      "to": 11,
+      "from": 9
+    },
+    {
+      "label": "Coordinate",
+      "to": 13,
+      "from": 12
+    }
+  ],
+  "tracks": [
+    {
+      "id": "rover",
+      "name": "Ground robot · ggGridRunner",
+      "color": "track-1"
+    },
+    {
+      "id": "ros",
+      "name": "Software and simulation · shared tools",
+      "color": "track-2"
+    },
+    {
+      "id": "aerial",
+      "name": "Flight · toward ggSwarm",
+      "color": "track-3"
+    }
+  ],
+  "rows": [
+    {
+      "track": "rover",
+      "name": "Build chassis and test one motor",
+      "to": 2,
+      "kind": "bar",
+      "done": "Chassis assembled; motor commands stay within limits; disabling control or losing commands stops the motor.",
+      "from": 1,
+      "span": 2,
+      "when": "Stages 1–2"
+    },
+    {
+      "track": "rover",
+      "name": "Connect all motors, steering and wheel sensors",
+      "to": 3,
+      "kind": "bar",
+      "done": "Steering calibrated; sensor readings recorded together; no unexplained controller resets.",
+      "from": 2,
+      "span": 2,
+      "when": "Stages 2–3"
+    },
+    {
+      "track": "rover",
+      "name": "Hold a heading and stop on radio loss",
+      "to": 4,
+      "kind": "bar",
+      "done": "Record a 20-minute drive; losing the radio stops motion; restarting requires a deliberate command.",
+      "from": 3,
+      "span": 2,
+      "when": "Stages 3–4"
+    },
+    {
+      "track": "rover",
+      "name": "Check: rover is safe to drive",
+      "to": 4,
+      "kind": "gate",
+      "done": "The rover drives safely by remote control and can hold a steady heading.",
+      "from": 4,
+      "span": 1,
+      "when": "Stage 4"
+    },
+    {
+      "track": "ros",
+      "name": "Connect rover sensors to the computer",
+      "to": 5,
+      "kind": "bar",
+      "done": "The computer receives wheel and motion-sensor readings with matching times and a consistent model of the rover.",
+      "from": 5,
+      "span": 1,
+      "when": "Stage 5"
+    },
+    {
+      "track": "ros",
+      "name": "Estimate position and practice virtual navigation",
+      "to": 6,
+      "kind": "bar",
+      "done": "Combine sensor readings into a position estimate, inspect its errors and repeat navigation routes in simulation.",
+      "from": 5,
+      "span": 2,
+      "when": "Stages 5–6"
+    },
+    {
+      "track": "aerial",
+      "name": "Practice one drone mission in simulation",
+      "to": 6,
+      "kind": "bar",
+      "done": "A virtual drone takes off, flies a square and handles an intentionally lost connection; write the real-flight test procedure.",
+      "from": 6,
+      "span": 1,
+      "when": "Stage 6"
+    },
+    {
+      "track": "aerial",
+      "name": "Check: ready for indoor flight",
+      "to": 7,
+      "kind": "gate",
+      "done": "The simulation passes, an appropriate indoor flight area is ready and the purchase fits the budget.",
+      "from": 7,
+      "span": 1,
+      "when": "Stage 7"
+    },
+    {
+      "track": "aerial",
+      "name": "Buy the first small indoor drone",
+      "to": 7,
+      "kind": "buy",
+      "done": "Buy one Crazyflie indoor drone bundle after the readiness check; recheck the historical price estimate.",
+      "from": 7,
+      "spend": 320,
+      "span": 1,
+      "when": "Stage 7"
+    },
+    {
+      "track": "aerial",
+      "name": "Repeat a real takeoff, route and landing",
+      "to": 8,
+      "kind": "bar",
+      "done": "Complete ten takeoff, route and landing missions without pilot correction.",
+      "from": 8,
+      "span": 1,
+      "when": "Stage 8"
+    },
+    {
+      "track": "rover",
+      "name": "Add a laser scanner for mapping",
+      "to": 9,
+      "kind": "buy",
+      "done": "Confirm the laser scanner works with the robotics software and check price and return policy before buying.",
+      "from": 9,
+      "spend": 69,
+      "span": 1,
+      "when": "Stage 9"
+    },
+    {
+      "track": "ros",
+      "name": "Build a map and navigate with the rover",
+      "to": 10,
+      "kind": "bar",
+      "done": "Save and reload a map, find the rover’s position on it and complete three runs without contact; record failures.",
+      "from": 9,
+      "span": 2,
+      "when": "Stages 9–10"
+    },
+    {
+      "track": "rover",
+      "name": "Decide: does the rover need its own computer?",
+      "to": 11,
+      "kind": "gate",
+      "done": "Only add an onboard computer if the cable limits testing; account for power and storage, and verify the rover stops if the computer fails.",
+      "from": 11,
+      "span": 1,
+      "when": "Stage 11"
+    },
+    {
+      "track": "ros",
+      "name": "Rehearse several drones moving together",
+      "to": 12,
+      "kind": "bar",
+      "done": "Virtual drones follow checked routes with adequate separation and synchronized starts; test stopping one aircraft and the whole group.",
+      "from": 12,
+      "span": 1,
+      "when": "Stage 12"
+    },
+    {
+      "track": "aerial",
+      "name": "Check: ready to consider a second drone",
+      "to": 13,
+      "kind": "gate",
+      "done": "Before adding another drone, repeat single-drone missions and demonstrate how aircraft share position coordinates and handle failures independently.",
+      "from": 13,
+      "span": 1,
+      "when": "Stage 13"
+    }
+  ]
+}

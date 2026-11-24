@@ -39,7 +39,7 @@ permalink: /archives/
 {% for year in posts_by_year %}
 <section class="year-block">
     <div class="year-head">
-        <span class="year-name">{{ year.name }}</span>
+        <h2 class="year-name">{{ year.name }}</h2>
         <span class="year-count">
             {{ year.items | size }} {% if year.items.size == 1 %}entry{% else %}entries{% endif %}
         </span>

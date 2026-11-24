@@ -4,13 +4,14 @@
 {% include head.html %}
 
 <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
-    <nav id="nav">
+    <nav id="nav" aria-label="Primary">
         {% include nav.html %}
     </nav>
-    <div id="main" class="main-content">
+    <main id="main" class="main-content">
         {{ content }}
-    </div>
+    </main>
     <div id="footer">
         {% include footer.html %}
     </div>

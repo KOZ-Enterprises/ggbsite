@@ -1,11 +1,12 @@
 ---
 layout: project
-title: "Drone"
+skygrid_member: true
+title: "ggSkybit"
 image: "/assets/imgs/project/drone2.png"
-description: "A quadcopter platform and a custom control logic testbed for swarm collaboration."
-objective: "Build a simple drone n stuff yo"
-status: "planned"
-status_detail: "Conceptualization"
+description: "A custom quadcopter for exploring airframe design, embedded firmware and flight control."
+objective: "Build a custom quadcopter to learn flight control, as a separate branch of the ggSkyGrid autonomy path."
+status: "dormant"
+status_detail: "Parked · optional flight-control branch"
 order: 10
 project-tag: "drone"
 tools: 
@@ -15,82 +16,108 @@ tools:
   - name: "C++"
   - name: "Clion"
   - name: "PlatformIO"
-
-timeline:
-  - date: "Phase 0: Conceptualization"
-    phase: "Conceptualization"
-    details: "Conceptualize the drone hardware and software architecture."
-    completed: false
-
-  - date: "Phase 1: Hardware Design"
-    phase: "Design"
-    details: "Design the drone chassis and electronics layout."
-    completed: false
-
-  - date: "Phase 1.5: Hardware Design of Remote Controller"
-    phase: "Design"
-    details: "Design the remote controller chassis and electronics layout."
-    completed: false
-
-  - date: "Phase 2: Software Bench Build"
-    phase: "Software"
-    details: "Build the software architecture for the drone."
-    completed: false
-
-  - date: "Phase 2.5: Software Bench Build of Remote Controller"
-    phase: "Software"
-    details: "Build the software architecture for the remote controller."
-    completed: false
-
-  - date: "Phase 3: Hardware Build"
-    phase: "Hardware"
-    details: "Build the drone hardware."
-    completed: false
-
-  - date: "Phase 3.5: Hardware Build of Remote Controller"
-    phase: "Hardware"
-    details: "Build the remote controller hardware."
-    completed: false
-
-  - date: "Phase 4: Testing"
-    phase: "Testing"
-    details: "Test the drone."
-    completed: false
-
-  - date: "Phase 4.5: Testing of Remote Controller"
-    phase: "Testing"
-    details: "Test the remote controller."
-    completed: false
-
-  - date: "Phase 5: Integration Testing"
-    phase: "Testing"
-    details: "Test the drone and remote controller together."
-    completed: false
-
-  - date: "Phase 6: Deployment"
-    phase: "Deployment"
-    details: "Deploy the drone and remote controller."
-    completed: false
-
-  - date: "Phase 7: Future"
-    phase: "Future"
-    details: "Apply algorithms learned from GG Swarm project to the drone."
-    completed: false
-
 ---
 
 ## Project Overview
 
-A custom-built quadcopter designed as a testbed for control
-logic and eventually swarm collaboration. The goal is to go
-from bare hardware design through flight controller software
-to autonomous navigation — bridging the gap between the
-simulated drones in GG Swarm and real-world flight.
+A custom-built quadcopter for learning airframe design, embedded firmware
+and flight control hands-on. This is an optional branch of
+[ggSkyGrid](/projects/ggskygrid/). The main autonomy path uses a Crazyflie
+for early physical flight, so it does not depend on this custom controller.
+
+The name is a *Tron* nod: Bit is Flynn's little hovering companion.
+The milestones below describe the custom build if I return to it.
+
+### Roadmap & Development Phases
+
+<!-- markdownlint-disable MD033 MD046 -->
+<div class="roadmap-summary">
+<span class="roadmap-summary-item"><strong>Parked</strong></span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">8 Development Milestones</span>
+<span class="roadmap-summary-sep">&middot;</span>
+<span class="roadmap-summary-item">Avionics & Swarm Track</span>
+</div>
+
+<div class="roadmap-track">
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 0</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Conceptualization & Architecture</h4>
+<p class="phase-details">Avionics layout, power distribution budgeting, and PlatformIO toolchain selection.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 1</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Airframe CAD & Structural Design</h4>
+<p class="phase-details">3D-printed and carbon-fiber frame design in SolidWorks/Onshape with optimized thrust-to-weight ratio.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 1.5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Remote Controller Hardware</h4>
+<p class="phase-details">Custom handheld transmitter enclosure, dual-axis hall effect gimbals, and battery integration.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 2</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Flight Controller Bench Build</h4>
+<p class="phase-details">Arduino/ESP32 sensor fusion (IMU, barometer) and real-time PID attitude stabilization firmware.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 2.5</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Controller Firmware</h4>
+<p class="phase-details">Low-latency telemetry communications, channel calibration, and failsafe watchdog logic.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 3</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Chassis Assembly & Wiring</h4>
+<p class="phase-details">ESC wiring, brushless motor mounting, vibration isolation, and physical hardware assembly.</p>
+</div>
+
+<div class="roadmap-phase">
+<div class="phase-header">
+<span class="phase-badge">Phase 4</span>
+<span class="status-tag" data-status="planned"><span class="status-dot"></span>Planned</span>
+</div>
+<h4 class="phase-title">Hover & Flight Verification</h4>
+<p class="phase-details">Tethered thrust tests, dynamic PID tuning, telemetry logging, and autonomous return-to-home.</p>
+</div>
+
+<div class="roadmap-phase is-stretch">
+<div class="phase-header">
+<span class="phase-badge">Phase 5</span>
+<span class="status-tag" data-status="stretch"><span class="status-dot"></span>Stretch</span>
+</div>
+<h4 class="phase-title">Swarm Sim-to-Real Transfer</h4>
+<p class="phase-details">Flying certified multi-drone plans from the shared planning core, as one unit of a small swarm.</p>
+</div>
+</div>
+<!-- markdownlint-enable MD033 MD046 -->
 
 ## Technical Approach
 
 - **Frame**: Custom chassis designed in SolidWorks/Onshape
-- **Flight Controller**: Arduino-based with PlatformIO toolchain
+- **Flight Controller**: Arduino/ESP32-based with PlatformIO toolchain
 - **Control Software**: C++ firmware for motor control,
   sensor fusion, and PID stabilization
 - **Remote Controller**: Separate custom-built controller
@@ -98,7 +125,7 @@ simulated drones in GG Swarm and real-world flight.
 
 ## Connection to GG Swarm
 
-This project is the physical counterpart to GG Swarm. Once
-the simulated swarm coordination policies are validated in
-Isaac Lab, the plan is to transfer those algorithms onto
-real hardware starting with this drone platform.
+The rover's firmware, IMU and radio-link lessons carry into this custom
+flight-control project if I return to it. The main autonomy path instead
+starts physical flight with one Crazyflie. Swarm work builds on a checked
+planning core and repeatable single-aircraft missions.

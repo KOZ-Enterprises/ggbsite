@@ -12,10 +12,10 @@ render as empty "No preview" project cards. Restrict to real projects.
 {%- assign doc_count = tagged_projects | size -%}
 {%- assign post_count = page.tagged_posts | size -%}
 
-<nav class="breadcrumb">
+<nav class="breadcrumb" aria-label="Breadcrumb">
     <a href="/archives/">Archives</a>
-    <span class="breadcrumb-sep">/</span>
-    <span class="breadcrumb-current">Tag</span>
+    <span class="breadcrumb-sep" aria-hidden="true">/</span>
+    <span class="breadcrumb-current">#{{ page.tag }}</span>
 </nav>
 
 {%- comment -%}
