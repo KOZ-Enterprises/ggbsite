@@ -1,6 +1,6 @@
 # Gary Gigabytes: AI Agent Context Guide
 
-This file explains the project structure, conventions, and context for AI agents working on the ggbsite repository.
+This file explains the project structure, conventions, and context for AI agents working on the ggbsite repository. `_site/AGENTS.md` is generated output, not an independent instruction source.
 
 ## Project Identity
 
@@ -205,10 +205,10 @@ Live examples: `_projects/ggbleed.md`, `_projects/ggpack.md`, `_projects/ggswarm
 3. Merge to `publish` Branch
    └─> Triggers GitHub Actions workflow
 
-4. Build & Deploy (GitHub Actions)
-   ├─> Build Docker image (via Dockerfile)
-   ├─> Push to Google Container Registry (GCR)
-   ├─> Deploy to Google Cloud Run (us-central1)
+4. Build & Deploy
+   ├─> GitHub Actions submits and waits for Google Cloud Build
+   ├─> Cloud Build builds the Docker image and pushes it to GCR
+   ├─> GitHub Actions deploys it to Google Cloud Run (us-central1)
    └─> Load Balancer routes traffic from garygigabytes.com
 
 5. Live
@@ -231,7 +231,6 @@ Live examples: `_projects/ggbleed.md`, `_projects/ggpack.md`, `_projects/ggswarm
 | `.github/workflows/*.yml` | CI/CD automation | Changing build/deploy process |
 | `Dockerfile` | Container definition | Changing base image or build steps |
 | `DEPLOYMENT.md` | Ops docs | Recording deployment procedures |
-| `.agent/rules/.cursorrules` | AI agent context | Improving agent understanding |
 
 ## How to Add Content
 
@@ -335,6 +334,6 @@ git push origin publish     # Trigger GitHub Actions workflow
 ## Contact & Support
 
 - **Primary Contact:** Gary Kuepper
-- **Email:** [LinkedIn Profile](https://www.linkedin.com/in/garykuepper/)
+- **LinkedIn:** [LinkedIn Profile](https://www.linkedin.com/in/garykuepper/)
 - **Issues:** GitHub repo issues for bugs/feature requests
 - **Deployment Questions:** See DEPLOYMENT.md and CLOUD_RUN_SETUP.md
