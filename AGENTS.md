@@ -172,7 +172,7 @@ Live examples: `_projects/ggbleed.md`, `_projects/ggpack.md`, `_projects/ggswarm
   It renders as `[n]`. Reuse the same key for every citation of the same source; kramdown
   numbers by first use and adds one back-link per citation. Never hand-write `<sup>` markup.
 - **Key:** a short lowercase slug, either the source's ID where one exists (ggResearch IDs
-  such as `b3` and `p5` on ggBleed/ggPack, which must match that repo's `docs/SOURCES.md`) or
+  such as `b3` and `p5` on ggBleed/ggPack, which must match that repo's own sources file) or
   the method name (`gatv2`, `ppo`).
 - **List:** every definition goes at the very end of the file, under a final `## References`
   heading, which must be the page's last heading. Keep the definitions in first-citation order.
